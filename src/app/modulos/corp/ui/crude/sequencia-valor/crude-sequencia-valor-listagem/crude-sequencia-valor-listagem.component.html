@@ -1,0 +1,11 @@
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaCrudeSequenciaValor"
+  [apiService]='apiSequenciaValorService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDSequenciaValor'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilho'>
+</app-grid-pesquisa>

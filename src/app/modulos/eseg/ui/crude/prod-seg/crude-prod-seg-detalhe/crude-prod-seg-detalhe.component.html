@@ -1,0 +1,438 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do produto de seguro no CRUDE@@crude-prod-seg.label.IDProdSeg">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['IDProdSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox 
+            formControlName="IDProdSeg" 
+            [format]="'N0'" 
+            [min]="0" 
+            [max]="999999999"
+            [autoCorrect]="false" 
+            [spinners]="false" 
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3"></div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Seguradora|Identifica o Seguradora do produto de seguro@@crude-prod-seg.label.IDSeguradora">
+              Seguradora
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDSeguradora']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+            placeholder='selecione' 
+            formControlName='IDSeguradora'
+            [apiService]='apiSeguradoraService' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chNomeSeguradora"
+            apiFieldKey="IDSeguradora" 
+            (valorAlterado)="PopularCoberturaPrincipal($event)">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Grupo de Seguro|Identifica a Grupo de Seguro do produto de seguro no CRUDE@@crude-prod-seg.label.inCodGrupoSeguro">
+              Grupo de Seguro
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodGrupoSeguro']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+            #selectGrupoSeguro
+            placeholder='selecione' 
+            formControlName='inCodGrupoSeguro'
+            [apiService]='apiGrupoSeguroService' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodGrupoSeguro" 
+            (valorAlterado)="PopularRamo($event)">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Ramo de Seguro|Identifica a Ramo de Seguro do produto de seguro no CRUDE@@crude-prod-seg.label.IDRamoSeguro">
+              Ramo de Seguro
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDRamoSeguro']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+            #selectRamoSeguro 
+            placeholder='selecione' 
+            formControlName='IDRamoSeguro'
+            [apiService]='apiRamoSeguroService' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chDescricao"
+            apiFieldKey="IDRamoSeguro">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Seguro|Identifica a Tipo de Seguro do produto de seguro no CRUDE@@crude-prod-seg.label.inCodTipoSeguro">
+              Tipo de Seguro
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoSeguro']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+            placeholder='selecione' 
+            formControlName='inCodTipoSeguro' 
+            [apiService]='apiTipoSeguroService'
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chDescricao" 
+            apiFieldKey="inCodTipoSeguro">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Cobrança do Seguro|Identifica a Tipo de Cobrança do Seguro do produto de seguro no CRUDE@@crude-prod-seg.label.inCodTipoCobrancaSeg">
+              Tipo de Cobrança do Seguro
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoCobrancaSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+            placeholder='selecione' 
+            formControlName='inCodTipoCobrancaSeg'
+            [apiService]='apiTipoCobrancaSegService' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodTipoCobrancaSeg">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código do produto de seguro no CRUDE@@crude-prod-seg.label.chCodProdSeg">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodProdSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input 
+            kendoTextBox 
+            formControlName="chCodProdSeg" 
+            type="text" 
+            name="chCodProdSeg" 
+            id="chCodProdSeg"
+            maxlength="20">
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código Sistema Externo|Identifica o Código Sistema Externo do produto de seguro no CRUDE@@crude-prod-seg.label.chCodProdExt">
+              Código Sistema Externo
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodProdExt']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input 
+            kendoTextBox 
+            formControlName="chCodProdExt" 
+            type="text" 
+            name="chCodProdExt" 
+            id="chCodProdExt"
+            maxlength="20">
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Descrição|Identifica a Descrição do produto de seguro no CRUDE@@crude-prod-seg.label.chDescricao">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input 
+            kendoTextBox 
+            formControlName="chDescricao" 
+            type="text" 
+            name="chDescricao" 
+            id="chDescricao"
+            maxlength="50">
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Periodicidade de Contribuição|Identifica o Periodicidade de Contribuição do seguro de produto no CRUDE@@crude-prod-seg.label.inCodTipoPerContrib">
+              Periodicidade de Contribuição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoPerContrib']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+            placeholder='selecione' 
+            formControlName='inCodTipoPerContrib'
+            [apiService]='apiTipoPerContribService' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodTipoPerContrib">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cobertura Principal|Identifica a Cobertura Principal do produto de seguro no CRUDE@@crude-prod-seg.label.IDCoberturaSeg">
+              Cobertura Principal
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDCoberturaSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+            #selectCoberturaPrincipal 
+            placeholder='selecione' 
+            formControlName='IDCoberturaSeg'
+            [apiService]='apiCoberturaSegService' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chDescricao"
+            apiFieldKey="IDCoberturaSeg">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Sequência Número Proposta|Identifica a Sequência Número Proposta do produto de seguro no CRUDE@@crude-prod-seg.label.chCodSeqPropSeg">
+              Sequência Número Proposta
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodSeqPropSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+            placeholder='selecione' 
+            formControlName='chCodSeqPropSeg' 
+            [apiService]='apiSequenciaService'
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chDescricao" 
+            apiFieldKey="chCodSequencia">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Prefixo|Identifica o Prefixo do produto de seguro no CRUDE@@crude-prod-seg.label.inPrefNumPropSeg">
+              Prefixo
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inPrefNumPropSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox 
+            formControlName="inPrefNumPropSeg" 
+            [format]="'N0'" 
+            [min]="0" 
+            [max]="999999"
+            [autoCorrect]="false" 
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Num.Dig.|Identifica o Num.Dig. do produto de seguro no CRUDE@@crude-prod-seg.label.inNumDigSeqPropSeg">
+              Num.Dig.
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumDigSeqPropSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox 
+            formControlName="inNumDigSeqPropSeg" 
+            [format]="'N0'" 
+            [min]="0" 
+            [max]="99"
+            [autoCorrect]="false" 
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número Susep|Identifica o Número Susep do produto do seguro no CRUDE@@crude-prod-seg.label.chNumSusep">
+              Número Susep
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumSusep']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input 
+            kendoTextBox 
+            formControlName="chNumSusep" 
+            type="text" 
+            name="chNumSusep" 
+            id="chNumSusep" 
+            maxlength="20">
+        </label>
+      </div>
+      <div class="form-group col-md-2">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Idade Min.|Identifica o Idade Min. do produto do seguro no CRUDE@@crude-prod-seg.label.inNumIdadeMin">
+              Idade Min.
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumIdadeMin']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox 
+            formControlName="inNumIdadeMin" 
+            [format]="'N0'" 
+            [min]="0" 
+            [max]="999"
+            [maxlength]="3"
+            [autoCorrect]="false" 
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-2">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Idade Máx.|Identifica o Idade Máx. do produto do seguro no CRUDE@@crude-prod-seg.label.inNumIdadeMax">
+              Idade Máx.
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumIdadeMax']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox 
+            formControlName="inNumIdadeMax" 
+            [format]="'N0'" 
+            [min]="0" 
+            [max]="999"
+            [autoCorrect]="false" 
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio Venda|Identifica o Inicio Venda do produto de seguro no CRUDE@@crude-prod-seg.label.daDatIniVenda">
+              Inicio Venda
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatIniVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatIniVenda'></kendo-datepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Fim Venda|Identifica o Fim Venda do produto de seguro no CRUDE@@crude-prod-seg.label.daDatFimVenda">
+              Fim Venda
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatFimVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatFimVenda'></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição Detalhada|Identifica a Descrição Detalhada do produto de seguro no CRUDE@@crude-prod-seg.label.chDesDetalhe">
+              Descrição Detalhada
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesDetalhe']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea 
+            kendoTextArea 
+            class="k-textarea" 
+            formControlName="chDesDetalhe" 
+            rows="10"
+            style="width: 100%;">
+          </textarea>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

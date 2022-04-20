@@ -1,0 +1,252 @@
+<div style="display: none">
+  <!-- on-line ou batch serão obrigatórias -->
+  <span
+    i18n="
+      Opção: ON-LINE |Opção do Dropdow exibindo as opções de filtro para o tipo
+      de execução do relatório
+      @@componente.operacaoBarraAcao.tipoExecucao.opt.01"
+    #traducaoOptOnLine
+  >
+    on-line
+  </span>
+  <span
+    i18n="
+      Opção: BATCH |Opção do Dropdow exibindo as opções de filtro para o tipo de
+      execução do relatório @@componente.operacaoBarraAcao.tipoExecucao.opt.02"
+    #traducaoOptBatch
+  >
+    batch
+  </span>
+  <!-- Uma ou outra ou nenhuma (em caso de operação que retorna somente log) das duas serão marcadas pelo desenvolvedor -->
+  <span
+    i18n="
+      Opção: Exportação para Arquivo |Opção de Dropdow exibindo as opções para
+      exportação de arquivo
+      @@componente.operacaoBarraAcao.exportacaoArquivo.opt.01"
+    #traducaoOptExportarParaArquivo
+  >
+    exportação para arquivo
+  </span>
+  <!-- Esta opção exibe os modelos de relatório se tiver sido informado mais de um -->
+  <span
+    i18n="
+      Opção: Exibir relatório |Opção de Dropdow exibindo as opções para
+      exportação de arquivo
+      @@componente.operacaoBarraAcao.exportacaoArquivo.opt.02"
+    #traducaoOptExportarParaRelatorio
+  >
+    exibir relatório
+  </span>
+  <!-- Escolhendo exportação para arquivo: ele automaticamente exibe as opóes de arquivo -->
+  <span
+    i18n="
+      Opção: Arquivo CSV |Opção de filtro do Dropdow exibindo as opções para
+      exportação de tipo de arquivo de saída
+      @@componente.operacaoBarraAcao.tipoArquivoSaida.opt.01"
+    #traducaoOptArquivoSaida01
+  >
+    arquivo csv
+  </span>
+  <span
+    i18n="
+      Filtro de exportação para tipo de arquivo de saída |Opção de Dropdow
+      exibindo as opções para exportação de tipo de arquivo de saída
+      @@componente.operacaoBarraAcao.tipoArquivoSaida.opt.02"
+    #traducaoOptArquivoSaida02
+  >
+    arquivo excel
+  </span><span i18n="
+        Filtro de exportação para tipo de arquivo de saída |Opção de Dropdow
+        exibindo as opções para exportação de tipo de arquivo de saída
+        @@componente.operacaoBarraAcao.tipoArquivoSaida.opt.03" #traducaoOptArquivoSaida03>
+    arquivo word
+  </span>
+</div>
+<div
+  (window:resize)="onResize($event)"
+>
+  <div id="container">
+    <div
+      class="invalido"
+      *ngIf="apiErrorCollection.mensagem_geral_html != null"
+      [innerHTML]="apiErrorCollection.mensagem_geral_html"
+    ></div>
+    <ng-content></ng-content>
+  </div>
+  <app-aguarde-carregando #aguardeCarregando></app-aguarde-carregando>
+  <div #barraAcao class="barra-acao" [style.width]="larguraBarraAcao">
+    <form action="" [formGroup]="formGroupOpcoes" class="k-form">
+      <div class="form-row row">
+        <div class="form-group col-md-6" *ngIf="optionsTipoExecucao.length > 1">
+          <label
+            for="comboTipoExecucao"
+            i18n="
+              Filtro de Tipo de execução |Dropdow exibindo as opções de filtro
+              para o tipo de execução do relatório
+              @@componente.operacaoBarraAcao.label.tipoExecucao"
+            >tipo de execução</label
+          >
+          <kendo-combobox
+            id="comboTipoExecucao"
+            formControlName="inTipoExecucao"
+            [valuePrimitive]="true"
+            [data]="optionsTipoExecucao"
+            [filterable]="true"
+            textField="texto"
+            valueField="id"
+            placeholder="selecione"
+            class="form-control"
+          ></kendo-combobox>
+        </div>
+        <div class="form-group col-md-6" *ngIf="optionsModoExibicao.length > 1">
+          <label
+            for="comboExportacaoArquivo"
+            i18n="
+              Filtro de Exportação para Arquivo |Dropdow exibindo as opções de
+              filtro para Exportação para Arquivo do relatório
+              @@componente.operacaoBarraAcao.label.modoExibicao"
+            >tipo de saída</label
+          >
+          <kendo-combobox
+            id="comboExportacaoArquivo"
+            formControlName="inTipoSaida"
+            [valuePrimitive]="true"
+            [data]="optionsModoExibicao"
+            [filterable]="true"
+            textField="texto"
+            valueField="id"
+            placeholder="selecione"
+            class="form-control"
+            (valueChange)="tipoSaidaAlterado($event)"
+            (selectionChange)="selecaoSaidaAlterado($event)"
+          ></kendo-combobox>
+        </div>
+        <div
+          class="form-group col-md-6"
+          *ngIf="
+            opcoesSelecinadasDoRelatorio.inTipoSaida == 0 &&
+            this.optionsModoExibicao.length > 0
+          "
+        >
+          <label
+            for="comboTipoArquivoSaida"
+            i18n="
+              Label: tipo de arquivo de saída|Dropdow exibindo as opções para
+              Exportação para Tipo de Arquivo de saída do relatório
+              @@componente.operacaoBarraAcao.tipoArquivoSaida"
+            >tipo de arquivo de saída</label
+          >
+          <kendo-combobox
+            id="comboTipoArquivoSaida"
+            formControlName="inTipoArqSaida"
+            [valuePrimitive]="true"
+            [data]="optionsTipoArquivoSaida"
+            [filterable]="true"
+            textField="texto"
+            valueField="id"
+            placeholder="selecione"
+            class="form-control"
+          ></kendo-combobox>
+        </div>
+        <div
+          class="form-group col-md-6"
+          *ngIf="
+            opcoesSelecinadasDoRelatorio.inTipoSaida == 1 &&
+            optionsModelosRelatorios.length > 1
+          "
+        >
+          <label
+            for="comboModeloRelatorio"
+            i18n="
+              Label: Modelo de relatório |Usado pro Dropdow exibindo as opções
+              de modelos de relaórios pro usuário escolher qual deseja
+              ver@@componente.operacaoBarraAcao.labe.modeloRelatorio"
+            >modelo de relatório</label
+          >
+          <kendo-combobox
+            id="comboModeloRelatorio"
+            formControlName="codRelatorio"
+            [valuePrimitive]="true"
+            [data]="optionsModelosRelatorios"
+            [filterable]="true"
+            textField="texto"
+            valueField="id"
+            placeholder="selecione"
+            class="form-control"
+          ></kendo-combobox>
+        </div>
+      </div>
+    </form>
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <button
+          kendoButton
+          [disabled]="formGroupPesquisa.invalid"
+          class="form-control"
+          (click)="btnExecutarConsulta()"
+          [primary]="true"
+          i18n="
+            botão de executar consulta |botão que aciona a chamada pra api de
+            forma a executar a consulta de relatório solicitada
+            @@componente.operacaoBarraAcao.executarConsulta"
+        >
+          Executar
+        </button>
+      </div>
+      <div class="form-group col-md-2">
+        <a
+          *ngIf="urlDownload"
+          [href]="urlDownload"
+          target="_blank"
+          kendoButton
+          class="form-control k-button"
+          (click)="btnDownload()"
+          [primary]="false"
+          i18n="
+            botão de Fazer download |botão para fazer o download do arquivo após
+            retorno da consulta processada pela api
+            @@componente.operacaoBarraAcao.fazerDownload"
+        >
+          Fazer download
+        </a>
+      </div>
+      <div class="form-group col-md-2">
+        <a
+          *ngIf="urlExibirLog"
+          [href]="urlExibirLog"
+          target="_blank"
+          kendoButton
+          class="form-control k-button"
+          (click)="btnExibirLog()"
+          [primary]="false"
+          i18n="
+            botão de exibir log |botão para exibir o log em um modal após
+            retorno da consulta processada pela api
+            @@componente.operacaoBarraAcao.exibirLog"
+        >
+          Exibir log
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <kendo-dialog 
+  title="atenção" 
+  i18n-title="
+            Título |Título do modal de erros
+            @@componente.operacaoBarraAcao.modalError.titulo"
+  *ngIf="openedDialogError" 
+  (close)="closeDialog('cancel')" 
+  [minWidth]="100" 
+  [width]="300">
+    <div
+      class="invalido"
+      [innerHTML]="apiErrorCollection.mensagem_geral_html"
+    ></div>
+    <kendo-dialog-actions>
+        <button kendoButton (click)="closeDialogEerror()"
+        i18n="botão 'fechar'|Botão para no modal que exibe os erros vindos da API@@componente.operacaoBarraAcao.modalError.botao.fechar"
+        >fechar</button>
+    </kendo-dialog-actions>
+</kendo-dialog>
+</div>

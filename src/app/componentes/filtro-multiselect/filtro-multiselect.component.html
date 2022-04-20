@@ -1,0 +1,14 @@
+<kendo-multiselect 
+  #formControlMultiselect
+  [(ngModel)]="selectedValues"
+  [allowCustom]="true"
+  [filterable]="true"
+  [data]="filteredItems"
+  (valueChange)="valueChange($event)"
+  [textField]="apiFieldExibir"
+  [valueField]="apiFieldKey"
+  [placeholder]='placeholder'
+  (filterChange)="handleFilter($event)"
+  [valuePrimitive]="usarValoresPrimitivos()"
+  [disabled]="disabled"
+></kendo-multiselect>

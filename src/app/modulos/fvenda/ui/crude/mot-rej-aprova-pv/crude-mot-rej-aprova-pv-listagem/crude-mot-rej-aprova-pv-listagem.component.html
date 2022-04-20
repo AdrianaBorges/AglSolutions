@@ -1,0 +1,24 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Motivo da Rejeição da Solicitação de Aprovação de Pedido de Venda Listagem@@crude-mot-rej-aprova-pv-listagem.breadcrumb">
+  Motivo Rejeição: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Motivo da Rejeição da Solicitação de Aprovação de Pedido de Venda@@crude-mot-rej-aprova-pv-listagem.titulo">
+    MOTIVO DA REJEIÇÃO DA SOLICITAÇÃO DE APROVAÇÃO DE PEDIDO DE VENDA
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaMotRejSolAprPV"
+  [apiService]='apiMotRejSolAprPvService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodMotRejSolAprPV'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

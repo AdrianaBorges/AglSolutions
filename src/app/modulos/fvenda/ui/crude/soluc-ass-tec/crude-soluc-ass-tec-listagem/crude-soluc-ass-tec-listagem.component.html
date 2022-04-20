@@ -1,0 +1,24 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Solução para Assistência Técnica Listagem@@crude-soluc-ass-tec-listagem.breadcrumb">
+  Solução para Assistência Técnica: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Solução para Assistência Técnica@@crude-soluc-ass-tec-listagem.titulo.soluc-ass-tec">
+    SOLUÇÃO PARA ASSISTÊNCIA TÉCNICA
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaSolucAssTec"
+  [apiService]='apiSolucAssTecService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodSolucAssTec'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

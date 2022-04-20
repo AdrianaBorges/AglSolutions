@@ -1,0 +1,11 @@
+<app-grid-pesquisa 
+  #gridFiltro 
+  idGrid="pesquisaCrudeAssistSeg" 
+  [apiService]='apiAssistSegService'
+  nomeMetodoOrdenacao='mudarOrdenacao' 
+  nomeMetodoApi='listar' 
+  apiFieldKey='IDAssistSeg'
+  [colunasGrid]='getColunasGridCadastro()' 
+  pageSize='15'
+  [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilho'>
+</app-grid-pesquisa>

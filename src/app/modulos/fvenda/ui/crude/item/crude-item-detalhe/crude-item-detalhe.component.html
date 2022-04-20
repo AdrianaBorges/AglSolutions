@@ -1,0 +1,544 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Item@@crude-Item-detalhe.breadcrumb">
+  Item ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Item@@crude-Item-detalhe.titulo.Item">
+      ITEM
+    </div>
+  </h1>
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do CRUDE@@crude-Item.label.IDItem">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDItem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDItem"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código do CRUDE@@crude-Item.label.chCodItem">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodItem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input maxlength="50" required kendoTextBox formControlName="chCodItem" type="text" name="chCodItem" id="chCodItem" />
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Referência|Identifica o Referência no CRUDE@@crude-Item.label.chCodComplem">
+              Referência
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodComplem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodComplem" type="text" name="chCodComplem" id="chCodComplem" maxlength="50" />
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label EAN|Identifica o EAN no CRUDE@@crude-Item.label.chCodEAN">
+              EAN
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodEAN']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodEAN" type="text" name="chCodEAN" id="chCodEAN" maxlength="20" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica o Descrição no CRUDE@@crude-Item.label.chDescricao">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDescricao" type="text" name="chDescricao" id="chDescricao" maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Espécie do Item|Identifica o Espécie do Item no CRUDE@@crude-Item.label.inCodEspecieItem">
+              Espécie do Item
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodEspecieItem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='inCodEspecieItem'
+            [apiService]='apiEspecieItemService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodEspecieItem"
+            required>
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Categoria|Identifica o Categoria no CRUDE@@crude-Item.label.IDCategoria">
+              Categoria
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDCategoria']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='IDCategoria'
+            [apiService]='apiCategoriaService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="IDCategoria">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Família Comercial|Identifica o Família Comercial no CRUDE@@crude-Item.label.IDFamCom">
+              Família Comercial
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDFamCom']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='IDFamCom'
+            [apiService]='apiFamComService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="IDFamCom">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Família de Materiais|Identifica o Família de Materiais no CRUDE@@crude-Item.label.IDFamMat">
+              Família de Materiais
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDFamMat']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='IDFamMat'
+            [apiService]='apiFamMatService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="IDFamMat">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Grupo de Estoque|Identifica a Grupo de Estoque no CRUDE@@crude-Item.label.IDGrpEst">
+              Grupo de Estoque
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDGrpEst']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='IDGrpEst'
+            [apiService]='apiGrpEstService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="IDGrpEst">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-2">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Unidade|Identifica o Unidade no CRUDE@@crude-Item.label.chCodUM">
+              Unidade
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodUM']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodUM" type="text" name="chCodUM" id="chCodUM" maxlength="5" />
+        </label>
+      </div>
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label N.C.M|Identifica o N.C.M no CRUDE@@crude-Item.label.chCodNCM">
+              N.C.M
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodNCM']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodNCM" type="text" name="chCodNCM" id="chCodNCM" maxlength="20" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label % IPI|Identifica o % IPI no CRUDE@@crude-Item.label.dePercIPI">
+              % IPI
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dePercIPI']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="dePercIPI"
+            [format]="'N4'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label % ST|Identifica o % ST no CRUDE@@crude-Item.label.dePercST">
+              % ST
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dePercST']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="dePercST"
+            [format]="'N4'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Peso Bruto|Identifica o Peso Bruto no CRUDE@@crude-Item.label.dePesoBruto">
+              Peso Bruto
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dePesoBruto']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="dePesoBruto"
+            [format]="'N3'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Peso Liquido|Identifica o Peso Liquido no CRUDE@@crude-Item.label.dePesoLiquido">
+              Peso Liquido
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dePesoLiquido']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="dePesoLiquido"
+            [format]="'N3'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Largura|Identifica o Largura no CRUDE@@crude-Item.label.deLargura">
+              Largura
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deLargura']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deLargura"
+            [format]="'N5'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Altura|Identifica o Altura no CRUDE@@crude-Item.label.deAltura">
+              Altura
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deAltura']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deAltura"
+            [format]="'N5'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Comprimento|Identifica o Comprimento no CRUDE@@crude-Item.label.deComprimento">
+              Comprimento
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deComprimento']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deComprimento"
+            [format]="'N5'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Qtd.Múltipla|Identifica o Qtd.Múltipla no CRUDE@@crude-Item.label.deQtdMultipla">
+              Qtd.Múltipla
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deQtdMultipla']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deQtdMultipla"
+            [format]="'N2'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Qtd.Mínima|Identifica o Qtd.Mínima no CRUDE@@crude-Item.label.deQtdMinima">
+              Qtd.Mínima
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deQtdMinima']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deQtdMinima"
+            [format]="'N2'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Qtd.Máxima|Identifica o Qtd.Máxima no CRUDE@@crude-Item.label.deQtdMaxima">
+              Qtd.Máxima
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deQtdMaxima']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deQtdMaxima"
+            [format]="'N2'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Permite Desconto ?|Identifica o Permite Desconto ? no CRUDE@@crude-Item.label.lgPermDesconto">
+              Permite Desconto ?
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['lgPermDesconto']">
+            </app-form-control-alerta-erro-api>
+          </span>
+           <kendo-switch
+            [onLabel]="'Sim'"
+            [offLabel]="'Não'"
+            id="lgPermDesconto"
+            formControlName='lgPermDesconto'>
+          </kendo-switch>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Desconto Máximo|Identifica o Desconto Máximo no CRUDE@@crude-Item.label.deDescMaximo">
+              Desconto Máximo
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deDescMaximo']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deDescMaximo"
+            [format]="'N5'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Controle por Lote/Série ?|Identifica o Controle por Lote/Série ? no CRUDE@@crude-Item.label.lgControleLoteSerie">
+              Controle por Lote/Série ?
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['lgControleLoteSerie']">
+            </app-form-control-alerta-erro-api>
+          </span>
+           <kendo-switch
+            [onLabel]="'Sim'"
+            [offLabel]="'Não'"
+            id="lgControleLoteSerie"
+            formControlName='lgControleLoteSerie'>
+          </kendo-switch>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Observação|Identifica o Observação no CRUDE@@crude-Item.label.chDesObservacao">
+              Observação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesObservacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesObservacao" rows="5" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação Cadastral|Identifica o Situação Cadastral no CRUDE@@crude-Item.label.chDesSituacaoCad">
+              Situação Cadastral
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesSituacaoCad']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chDesSituacaoCad" name="chDesSituacaoCad" id="chDesSituacaoCad" disabled="true" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

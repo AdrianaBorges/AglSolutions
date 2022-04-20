@@ -1,0 +1,24 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Origem Assistência Técnica Listagem@@crude-origem-ass-tec-listagem.breadcrumb">
+  Origem: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Origem Assistência Técnica@@crude-origem-ass-tec-listagem.titulo.origem-ass-tec">
+    ORIGEM DA ASSISTÊNCIA TÉCNICA
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaOrigemAssTec"
+  [apiService]='apiOrigemAssTecService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodOrigemAssTec'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

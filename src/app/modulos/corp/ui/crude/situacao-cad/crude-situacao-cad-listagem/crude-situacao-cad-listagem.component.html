@@ -1,0 +1,25 @@
+<span 
+    #breadcrumb_traducao
+    style='display:none;'
+    i18n="breadcrumb|Breadcrumb do CRUDE de Situação Cadastral@@crude-situacao-cad-listagem.breadcrumb">
+    Início/Situação Cadastral/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+    <div
+    i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Situação Cadastral@@crude-situacao-cad-listagem.titulo.situacao-cad">
+    SITUAÇÃO CADASTRAL
+    </div>
+</h1>
+
+<app-grid-pesquisa
+    #gridFiltro
+    idGrid="pesquisaSituacaoCad"
+    [apiService]='apiSituacaoCadService'
+    nomeMetodoOrdenacao='mudarOrdenacao'
+    nomeMetodoApi='listar'
+    apiFieldKey='inCodSituacaoCad'
+    [colunasGrid]='getColunasGridCadastro()'
+    pageSize='15'
+    [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

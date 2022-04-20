@@ -1,0 +1,81 @@
+<span 
+    #breadcrumb_traducao
+    style='display:none;'
+    i18n="breadcrumb|Breadcrumb do CRUDE de Corretagem de Seguro@@crude-cto-cor-seg-listagem.breadcrumb">
+    Contrato de Corretagem de Seguro : Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Contrato de Corretagem de Seguro@@crude-cto-cor-seg-listagem.titulo.contrato-corretagem">
+    CONTRATO DE CORRETAGEM DE SEGURO
+  </div>
+</h1>
+
+<div class="area-filtro">
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">
+          <span>
+            <ng-container i18n="Label Tipo de Papel|Label Tipo de Papel@@crude-cto-cor-seg-listagem.tipoPapel">
+              Tipo de Papel
+            </ng-container>
+          </span>
+        </label>
+        <app-filtro-multiselect
+          formControlName='listaTipoPapel' 
+          [apiService]='apiTipoPapelService' 
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chDesTipoPapel" 
+          apiFieldKey="inCodTipoPapel"
+          placeholder="ambos"
+          pesquisaFieldWhere='inCodTipoPapel'
+          childComponentFieldWhere='PapelPessoa.inCodTipoPapel'
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputTexto">
+          <span>
+            <ng-container i18n="Label Situação Cadastral|Label Situação Cadastral@@crude-cto-cor-seg-listagem.situacaoCadastral">
+              Situação Cadastral
+            </ng-container>
+          </span>
+        </label>
+        <app-filtro-multiselect
+          formControlName='listaSituacaoCadastral'
+          [apiService]='apiSituacaoCadService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chDescricao"
+          apiFieldKey="inCodSituacaoCad"
+          placeholder="ambos"
+          pesquisaFieldWhere='CtoCorSeg.inCodSituacaoCad'
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-3">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> 
+          <ng-container i18n="botão Filtrar|botão Filtrar@@crude-cto-cor-seg-listagem.btnFiltrar">
+            Filtrar
+          </ng-container>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<app-grid-pesquisa
+    #gridFiltro
+    idGrid="pesquisaCtoCorSeg"
+    [apiService]='apiCtoCorSegEL01Service'
+    nomeMetodoOrdenacao='mudarOrdenacao'
+    nomeMetodoApi='listar'
+    apiFieldKey='IDCtoCorSeg'
+    [colunasGrid]='getColunasGridCadastro()'
+    pageSize='15'
+    [rotaCadastro]='gridRotasCadastro'
+    (btn_Inativar_click)='btn_Inativar_click($event)' [btn_Inativar_exibir]='btn_Inativar_exibir' btn_Inativar_titulo ='Inativar Contrato' i18n-btn_Inativar_titulo="botão de ação: inativar|botão na coluna de ação para inativar um contrato de corretagem de seguro@@crude-cto-cor-seg-listagem.btn_Inativar_tooltip"
+    (btn_Reativar_click)='btn_Reativar_click($event)' [btn_Reativar_exibir]='btn_Reativar_exibir' btn_Reativar_titulo ='Reativar Contrato' i18n-btn_Reativar_titulo="botão de ação: reativar|botão na coluna de ação para reativar um contrato de corretagem de seguro@@crude-cto-cor-seg-listagem.btn_Reativar_tooltip"
+    (btn_Validar_click)='btn_Validar_click($event)'   [btn_Validar_exibir] ='btn_Validar_exibir'  btn_Validar_titulo  ='Validar Contrato' i18n-btn_Validar_titulo="botão de ação: validar|botão na coluna de ação para validar um contrato de corretagem de seguro@@crude-cto-cor-seg-listagem.btn_Validar_tooltip"
+    (btn_Cancelar_click)='btn_Cancelar_click($event)' [btn_Cancelar_exibir]='btn_Cancelar_exibir' btn_Cancelar_titulo ='Cancelar Contrato' i18n-btn_Cancalar_titulo="botão de ação: cancelar|botão na coluna de ação para cancelar um contrato de corretagem de seguro@@crude-cto-cor-seg-listagem.btn_Cancelar_tooltip">
+</app-grid-pesquisa>

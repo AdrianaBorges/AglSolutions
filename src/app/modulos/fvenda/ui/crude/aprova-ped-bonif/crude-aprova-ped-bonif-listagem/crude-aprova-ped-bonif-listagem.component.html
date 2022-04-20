@@ -1,0 +1,58 @@
+<span
+  #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de Aprovação de Pedido de Bonificação@@crude-aprova-ped-bonif-listagem.breadcrumb">
+  Aprovação de Bonificação: listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de Aprovação de Pedido de Bonificação@@crude-aprova-ped-bonif-listagem.titulo">
+    APROVAÇÃO DE PEDIDO DE BONIFICAÇÃO
+  </div>
+</h1>
+
+<div class="area-filtro">
+  <div class="form-row">
+    <div class="col-md-10"></div>
+    <div class="form-group col-md-2">
+      <div class="pull-right">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> Atualizar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-grid-pesquisa #gridFiltro
+  idGrid="pesquisaAprovaBonificacao"
+  [apiService]='apiSolicAprovPVEL01Service'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDSolicAprovPV'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'
+  (colunaEditarBotaoClick)='colunaEditarBotaoClick($event)'
+  [btn_acao_exibir]='btn_acao_exibir'>
+
+  <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha id="btnAprovarSolicitacao" icone='check-circle'
+      rotaFilha_tooltip='Aprovar a Solicitação'
+      i18n-rotaFilha_tooltip="botão para Aprovar a Solicitação|btnAprovarSolicitacao@@crude-aprova-ped-bonif-listagem.grid.btn.acao.AprovarSolicitacao">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha id="btnRejeitarSolicitacao" icone='close'
+      rotaFilha_tooltip='Rejeitar a Solicitação'
+      i18n-rotaFilha_tooltip="botão para Rejeitar a Solicitação|btnRejeitarSolicitacao@@crude-aprova-ped-bonif-listagem.grid.btn.acao.RejeitarSolicitacao">
+    </app-grid-pesquisa-botao-acao-linha>
+  </app-grid-pesquisa-container-botoes-acao-linha>
+
+  <ng-template appGridPesquisaDetalheTemplate let-dataItem>
+    <div class='grid-filho'>
+      <app-grid-pesquisa 
+        [itens]='mapearArrrayDeDetalhesDaLinha(dataItem)'
+        [colunasGrid]='getColunasGridCadastroFilho()'>
+      </app-grid-pesquisa>
+    </div>
+  </ng-template>
+
+</app-grid-pesquisa>

@@ -1,0 +1,115 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Situações do Pedido de Venda@@crude-situacao-ped-ven-edicao.breadcrumb">
+  Situação ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Situações do Pedido de Venda@@crude-situacao-ped-ven-detalhe.titulo.situacao-ped-ven">
+      SITUAÇÃO DO PEDIDO DE VENDA
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral_html != null' [innerHTML] = 'apiErrorCollection.mensagem_geral_html'>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Codigo|Identifica o codigo da Situações do Pedido de Venda CRUDE@@crude-situacao-ped-ven-detalhe.label.inCodSituacaoPedVen">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodSituacaoPedVen']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodSituacaoPedVen"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            required
+            >
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica a descricao da Situações do Pedido de Venda CRUDE@@crude-situacao-ped-ven-detalhe.label.chDescricao">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDescricao" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span i18n="Label Permite Redigitar|Identifica se Permite que Pedidos de Venda nesta situação, podem retornar para situação de digitação, antes de serem enviados para empresa no CRUDE@@crude-situacao-ped-ven-detalhe.label.lgPermRedigitar">
+            Permite Redigitar ?
+          </span>
+          <kendo-switch
+            [onLabel]="'sim'"
+            [offLabel]="'não'"
+            formControlName="lgPermRedigitar"
+            name="lgPermRedigitar"
+            id="lgPermRedigitar" >
+          </kendo-switch>
+        </label>
+      </div>
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span i18n="Label Permite Devolver|Indicador se Permite que Pedidos de Venda nesta situação, podem retornar para situação de digitação, depois de serem enviados para empresa no CRUDE@@crude-situacao-ped-ven-detalhe.label.lgPermDevolver">
+            Permite Devolver ?
+          </span>
+          <kendo-switch
+            [onLabel]="'sim'"
+            [offLabel]="'não'"
+            formControlName="lgPermDevolver"
+            name="lgPermDevolver"
+            id="lgPermDevolver" >
+          </kendo-switch>
+        </label>
+      </div>
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span i18n="Label Permite Cancelar|Indicador se Permite que Pedidos de Venda nesta situação, possam ser cancelados, sem possibilidade de retornar para situação de digitação no CRUDE@@crude-situacao-ped-ven-detalhe.label.lgPermCancelar">
+            Permite Cancelar ?
+          </span>
+          <kendo-switch
+            [onLabel]="'sim'"
+            [offLabel]="'não'"
+            formControlName="lgPermCancelar"
+            name="lgPermCancelar"
+            id="lgPermCancelar" >
+          </kendo-switch>
+        </label>
+      </div>
+    </div>
+
+  </form>
+</app-cadastro-barra-acao>

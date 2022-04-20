@@ -1,0 +1,135 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Campanha de Venda@@crude-campanha-listagem.breadcrumb">
+  Campanha de Venda: listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de Campanha de Venda@@crude-campanha-listagem.titulo">
+    CAMPANHA DE VENDA
+  </div>
+</h1>
+
+<span
+  #traducao_msg_btnLiberar_sucesso
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de Liberar Campanha@@crude-campanha-listagem.btn.btnLiberar.sucesso">
+  Campanha Liberada com Sucesso 
+</span>
+<span
+  #traducao_msg_btnSuspender_sucesso
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de Suspender Campanha@@crude-campanha-listagem.btn.btnSuspender.sucesso">
+  Campanha Suspensa com Sucesso 
+</span>
+<span
+  #traducao_msg_btnReativar_sucesso
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de Reativar Campanha@@crude-campanha-listagem.btn.btnReativar.sucesso">
+  Campanha Reativada com Sucesso 
+</span>
+<span
+  #traducao_msg_btnCancelar_sucesso
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de Cancelar Campanha@@crude-campanha-listagem.btn.btnCancelar.sucesso">
+Campanha Cancelada com Sucesso 
+</span>
+<span
+  #traducao_msg_btnEncerrar_sucesso
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de Encerrar Campanha@@crude-campanha-listagem.btn.btnEncerrar.sucesso">
+Campanha Encerrada com Sucesso 
+</span>
+
+<div class="area-filtro">
+
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Tipo de Campanha</label>
+        <app-filtro-multiselect 
+          formControlName='listaTipoCampanha' 
+          [apiService]='apiTipoCampanhaService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="inCodTipoCampanha" 
+          placeholder="ambos"
+          pesquisaFieldWhere='inCodTipoCampanha' 
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Situação da Campanha</label>
+        <app-filtro-multiselect 
+          formControlName='listaSituacaoCamp' 
+          [apiService]='apiSituacaoCampService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="inCodSituacaoCamp" 
+          placeholder="ambos"
+          pesquisaFieldWhere='inCodSituacaoCamp' 
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="col-md-2"></div>
+      <div class="form-group col-md-2">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> pesquisar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-grid-pesquisa #gridFiltro 
+  idGrid="pesquisaCampanha" 
+  [apiService]='apiCampanhaEL01Service' 
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar' 
+  apiFieldKey='IDCampanha' 
+  [colunasGrid]='getColunasGridCadastro()' 
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro' 
+  [formGroupPesquisa]='formGroupPesquisa'
+  (colunaEditarBotaoClick)='colunaEditarBotaoClick($event)'
+  [btn_acao_exibir]='btn_acao_exibir'>
+  <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnLiberar"
+      icone='check-circle'
+      rotaFilha_tooltip='Liberar Campanha'
+      i18n-rotaFilha_tooltip="botão para Liberar Campanha|btnLiberar@@crude-campanha-listagem.grid.btn.acao.Liberar">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnSuspender"
+      icone='close'
+      rotaFilha_tooltip='Suspender Campanha'
+      i18n-rotaFilha_tooltip="botão para Suspender a Campanha|btnSuspender@@crude-campanha-listagem.grid.btn.acao.Suspender">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnReativar"
+      icone='undo'
+      rotaFilha_tooltip='Reativar Campanha'
+      i18n-rotaFilha_tooltip="botão para Reativar campanha|btnReativar@@crude-campanha-listagem.grid.btn.acao.Reativar">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnCancelar"
+      icone='cancel'
+      rotaFilha_tooltip='Cancelar Campanha'
+      i18n-rotaFilha_tooltip="botão para Cancelar campanha|btnCancelar@@crude-campanha-listagem.grid.btn.acao.Cancelar">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnEncerrar"
+      icone='lock'
+      rotaFilha_tooltip='Encerrar Campanha'
+      i18n-rotaFilha_tooltip="botão para Encerrar Campanha|btnEncerrar@@crude-campanha-listagem.grid.btn.acao.Encerrar">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnParametros"
+      icone='grid-layout'
+      rotaFilha_tooltip='Parametros da Campanha'
+      i18n-rotaFilha_tooltip="botão para Parametros da Campanha|btnParametros@@crude-campanha-listagem.grid.btn.acao.Parametros">
+    </app-grid-pesquisa-botao-acao-linha>
+  </app-grid-pesquisa-container-botoes-acao-linha>
+</app-grid-pesquisa>

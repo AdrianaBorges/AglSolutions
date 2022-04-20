@@ -1,0 +1,24 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Lote/Série do Item Listagem@@crude-item-lote-serie-listagem.breadcrumb">
+  Lote/Série do Item: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Lote/Série do Item@@crude-item-lote-serie-listagem.titulo.item-lote-serie">
+    LOTE/SÉRIE DO ITEM
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaItemLoteSerie"
+  [apiService]='apiItemLoteSerieEl01Service'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDItemLoteSerie'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

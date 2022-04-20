@@ -1,0 +1,24 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Situacao Assistência Técnica Listagem@@crude-situacao-ass-tec-listagem.breadcrumb">
+  Situacao Assistência Técnica: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Situacao Assistência Técnica@@crude-situacao-ass-tec-listagem.titulo.situacao-ass-tec">
+    SITUAÇÃO ASSISTÊNCIA TÉCNICA
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaSituacaoAssTec"
+  [apiService]='apiSituacaoAssTecService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodSituacaoAssTec'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

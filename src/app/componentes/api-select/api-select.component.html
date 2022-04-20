@@ -1,0 +1,75 @@
+<span 
+  #traducao_carregando
+  style='display:none;'
+  i18n="carregando|menssagem quando o componente api-select está carregando os dados@@api-select.carregando"
+>carregando</span>
+<!-- <select
+  #formControlSelect
+  class="custom-select" 
+  name="" 
+  id="" 
+  [disabled]="disabled"
+  [(ngModel)]="id_selecionado"
+  (click)="onTouched()"
+  (focusout)="onTouched();"
+  (ngModelChange)="onChange($event)">
+  
+  <option [ngValue]="0">{{placeholder}}</option>
+  <option *ngFor="let item of listagem" 
+          [ngValue]="item[apiFieldKey]">
+          {{item[apiFieldExibir]}}
+  </option>
+</select> -->
+<kendo-combobox
+        *ngIf="listaColunas.length == 0"
+        [disabled]="disabled"
+        [(ngModel)]="id_selecionado"
+        [valuePrimitive]="true"
+        [data]="data"
+        [filterable]="true"
+        [textField]="apiFieldExibir"
+        [valueField]="apiFieldKey"
+        (filterChange)="handleFilter($event)"
+        (valueChange)="onChange($event)"
+        (focus)="onTouched()"
+        (blur)="onTouched()"
+        [class.ng-invalid]="formControlTemErro()"
+        [class.ng-valid]="!formControlTemErro()"
+>
+</kendo-combobox>
+
+<kendo-multicolumncombobox
+        *ngIf="listaColunas.length > 0"
+        [disabled]="disabled"
+        [(ngModel)]="id_selecionado"
+        [valuePrimitive]="true"
+        [data]="data"
+        [filterable]="true"
+        [textField]="'name'"
+        [textField]="apiFieldExibir"
+        [valueField]="apiFieldKey"
+        (filterChange)="handleFilter($event)"
+        (valueChange)="onChange($event)"
+        (focus)="onTouched()"
+        (blur)="onTouched()"
+        [class.ng-invalid]="formControlTemErro()"
+        [class.ng-valid]="!formControlTemErro()"
+>
+<!-- 
+  [placeholder]="'Select a product...'"
+  (open)="handleOpen($event)"
+  (close)="handleClose($event)" 
+  (selectionChange)="onChange($event)"
+-->
+
+  <ng-container *ngFor="let coluna of listaColunas">
+    <kendo-combobox-column   
+        [field]="coluna.field"
+        [title]="coluna.title"
+        [width]="coluna.width"
+    >
+    </kendo-combobox-column>
+  </ng-container>
+    
+
+</kendo-multicolumncombobox>

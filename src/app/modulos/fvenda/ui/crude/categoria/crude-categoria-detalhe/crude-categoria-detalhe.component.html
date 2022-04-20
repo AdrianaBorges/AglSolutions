@@ -1,0 +1,106 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Categoria@@crude-categoria-edicao.breadcrumb">
+  Categoria ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Categoria@@crude-categoria-detalhe.titulo.categoria">
+      CATEGORIA
+    </div>
+  </h1>
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do Categoria CRUDE@@crude-categoria-detalhe.label.IDCategoria">
+              ID
+            </ng-container>
+            <!-- <span class="k-required">*</span> -->
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDCategoria']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDCategoria"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Codigo|Identifica o codigo do Categoria CRUDE@@crude-categoria-detalhe.label.chCodCategoria">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodCategoria']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodCategoria" maxlength="20" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-10 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica a descricao do Categoria CRUDE@@crude-categoria-detalhe.label.chDescricao">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDescricao" required maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Categoria Superiora|Identifica a Categoria Superiora do Categoria CRUDE@@crude-categoria-detalhe.label.IDCategoriaPai">
+              Categoria Superiora
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDCategoriaPai']"> 
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            #IDCategoriaPai
+            placeholder='selecione'
+            formControlName='IDCategoriaPai'
+            [apiService]='apiCategoriaPaiService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="IDCategoria">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

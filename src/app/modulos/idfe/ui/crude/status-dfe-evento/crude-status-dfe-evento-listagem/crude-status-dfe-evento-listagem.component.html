@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE Status De Resposta De Evento Do DFe@@crude-status-dfe-evento-listagem.breadcrumb">
+  Início/Status Evento DFe/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Status De Resposta De Evento Do DFe@@crude-status-dfe-evento-listagem.titulo.status-dfe-evento">
+    STATUS DE RESPOSTA DE EVENTO DO DFe
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaStatusDfeEvento"
+  [apiService]='apiStatusDfeEventoService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodStatusDFeEvento'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

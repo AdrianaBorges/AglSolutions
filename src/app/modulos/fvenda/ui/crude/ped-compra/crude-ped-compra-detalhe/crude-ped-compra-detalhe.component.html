@@ -1,0 +1,412 @@
+<!-- isNotVisible='true' -->
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral_html != null' [innerHTML] = 'apiErrorCollection.mensagem_geral_html'></div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3 col-lg-2 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do CRUDE@@crude-ped-compra.label.IDPedCompra">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDPedCompra']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDPedCompra"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3 col-lg-4 col-sm-12"></div>
+      <div class="form-group col-md-3 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação|Identifica a Situação no CRUDE@@crude-ped-compra.label.inCodSituacaoPedComp">
+              Situação:
+            </ng-container>
+            {{modelPedCompraEL01.chDesSituacaoPedComp }}
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodSituacaoPedComp']">
+            </app-form-control-alerta-erro-api>
+          </span>
+        </label>
+        <img [src]="getImageSituacao()"/>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+         <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Estabelecimento|Identifica o Estabelecimento do Pedido de Compra CRUDE@@crude-ped-compra-detalhe.label.IDEstabelec">
+              Estabelecimento
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDEstabelec']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select  
+            placeholder='selecione' 
+            formControlName='IDEstabelec'
+            [apiService]='apiEstabelecimentoService' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chNome"
+            apiFieldKey="IDEstabelec">
+          </app-api-select>
+        </label>
+      </div>
+     <div class="form-group col-md-6 col-lg-3 col-sm-12">
+         <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Númerodo Pedido de Compra CRUDE@@crude-ped-compra-detalhe.label.inNumPedCompra">
+              Número
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumPedCompra']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inNumPedCompra"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-3 col-sm-12">
+         <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data Pedido|Identifica o Data Pedido do Pedido de Compra CRUDE@@crude-ped-compra-detalhe.label.daDatPedCompra">
+              Data Pedido
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatPedCompra']">
+            </app-form-control-alerta-erro-api>
+          </span>
+         <kendo-datepicker formControlName='daDatPedCompra'></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-10 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cliente|Identifica o Cliente@@crude-ped-compra.label.IDClienteVenda">
+              Cliente
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDClienteVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_Cliente'
+            placeholder="selecione"
+            modalTitulo='Cliente'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiClienteEL02Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeCliente"
+            [colunasGrid]="apiClienteEL02Service.getColunasGrid()"
+            apiFieldKey="inCodCliente"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='Código'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigo'
+            (valorAlterado)='mudancaRepresentante($event)'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome Contato Cliente|Identifica o Nome Contato Cliente no CRUDE@@crude-ped-compra.label.chNomContatoCliente">
+              Nome Contato Cliente
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomContatoCliente']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox maxlength="50" formControlName="chNomContatoCliente" type="text" name="chNomContatoCliente" id="chNomContatoCliente"/>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Num.Pedido Cliente|Identifica o Num.Pedido Cliente no CRUDE@@crude-ped-compra.label.chNumPedCliente">
+              Num.Pedido Cliente
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumPedCliente']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox maxlength="20" formControlName="chNumPedCliente" type="text" name="chNumPedCliente" id="chNumPedCliente"/>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-10 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Representante|Identifica o Representante@@crude-ped-compra.label.IDRepresentante">
+              Representante
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDRepresentante']">
+            </app-form-control-alerta-erro-api>
+          </span>
+         <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_Representante'
+            placeholder="selecione"
+            modalTitulo='Representante'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiRepresVendaEL01Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeRepresentante"
+            [colunasGrid]="apiRepresVendaEL01Service.getColunasGrid()" 
+            apiFieldKey="inCodRepresentante" 
+            [pageSize]="'10'"
+            pesquisaRapida="true" 
+            pesquisaRapidaTipo="number" 
+            pesquisaRapidaPlaceholder='Código' 
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigo'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tabela de Preços|Identifica o Tabela de Preços do CRUDE@@crude-ped-compra.label.IDTabPreco">
+              Tabela de Preços
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDTabPreco']">
+            </app-form-control-alerta-erro-api>
+          </span>
+         <app-api-select  
+            placeholder='selecione' 
+            formControlName='IDTabPreco'
+            [apiService]='apiTabPrecoEL01Service' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chDescricao"
+            apiFieldKey="IDTabPreco">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Total Produtos|Identifica o Total Produtos do CRUDE@@crude-ped-compra.label.deValProduto">
+              Total Produtos
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValProduto']">
+            </app-form-control-alerta-erro-api>
+          </span>
+        <kendo-numerictextbox
+            formControlName="deValProduto"
+            [format]="'C2'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false" disabled>
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Total Geral|Identifica o Total Geral do CRUDE@@crude-ped-compra.label.deValTotal">
+              Total Geral
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValTotal']">
+            </app-form-control-alerta-erro-api>
+          </span>
+        <kendo-numerictextbox
+            formControlName="deValTotal"
+            [format]="'C2'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false" disabled> 
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Observação|Identifica o Observação do CRUDE@@crude-ped-compra.label.chDesObservacao">
+              Observação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesObservacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+           <textarea kendoTextArea  class="k-textarea" formControlName="chDesObservacao" rows="5" style="width: 100%;"></textarea>
+        </label>
+      </div>
+
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <h1 kendoCardTitle>LOG de Inclusão</h1>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Inclusão|Identifica a Data de Inclusão@@crude-ped-compra.label.inclusao">
+                  Data/Hora:
+                </span>
+                <span>
+                  {{modelPedCompraEL01.dtDatInclusao | date: 'short'}}
+                </span>
+              </div>              
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Usuário Inclusão|Identifica o Usuário de Inclusão@@crude-ped-compra.label.UsuarioInclusao">
+                  Usuário:
+                </span>
+                <span>
+                  {{modelPedCompraEL01.chNomeUsuarioInclusao }}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>    
+      </div>
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">    
+        <h1 kendoCardTitle>LOG da Última Alteração</h1>    
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Alteração|Identifica a Data de Alteração@@crude-ped-compra.label.alteracao">
+                  Data/Hora:
+                </span>
+                <span>
+                  {{modelPedCompraEL01.dtDatUltAlteracao | date: 'short'}}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Usuário Alteração|Identifica o Usuário de Alteração@@crude-ped-compra.label.UsuarioAlteracao">
+                  Usuário:
+                </span>
+                <span>
+                  {{modelPedCompraEL01.chNomeUsuarioAlteracao }}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">      
+        <h1 kendoCardTitle>LOG de Liberação</h1>      
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Liberação|Identifica a Data de Liberação@@crude-ped-compra.label.Liberação">
+                  Data/Hora:
+                </span>
+                <span>
+                  {{modelPedCompraEL01.dtDatLiberacao | date: 'short'}}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Usuário Liberação|Identifica o Usuário de Liberação@@crude-ped-compra.label.UsuarioLiberação">
+                  Usuário:
+                </span>
+                <span>
+                  {{modelPedCompraEL01.chNomeUsuarioLibera }}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">      
+        <h1 kendoCardTitle>LOG de Retorno ao Cliente</h1>      
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Retorno Cliente|Identifica a Data de Retorno Cliente@@crude-ped-compra.label.RetornoCliente">
+                  Data/Hora:
+                </span>
+                <span>
+                  {{modelPedCompraEL01.dtDatRetorno | date: 'short'}}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

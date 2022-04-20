@@ -1,0 +1,138 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Assistência Técnica@@crude-ass-tecnica.breadcrumb">
+  Assistência Técnica: listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de Assistência Técnica@@crude-ass-tecnica.titulo">
+    ASSISTÊNCIA TÉCNICA
+  </div>
+</h1>
+
+<span
+  #traducao_msg_btnCancelar_sucesso
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de Cancelar@@crude-ass-tecnica-listagem.btn.btnCancelar.sucesso">
+  Assistência Têcnica cancelada com Sucesso 
+</span>
+
+<div class="area-filtro">
+
+  <form action="" [formGroup]="formPesquisaAssTecnica" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Estabelecimento</label>
+        <app-filtro-multiselect 
+          formControlName='listaEstabelecimento' 
+          [apiService]='apiEstabelecimentoService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chNomeAbreviado" 
+          apiFieldKey="IDEstabelec"
+          placeholder="ambos" 
+          pesquisaFieldWhere='IDEstabelec' 
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Situação</label>
+        <app-filtro-multiselect 
+          formControlName='listaSituacaoAssTecnica' 
+          [apiService]='apiSituacaoAssTecService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="inCodSituacaoAssTec" 
+          placeholder="ambos"
+          pesquisaFieldWhere='inCodSituacaoAssTec' 
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Tipo</label>
+        <app-filtro-multiselect 
+          formControlName='listaTipoAssTecEL01' 
+          [apiService]='apiTipoAssTecEL01Service'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="inCodTipoAssTec"
+          placeholder="ambos" 
+          pesquisaFieldWhere='inCodTipoAssTec' 
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Origem</label>
+        <app-filtro-multiselect 
+          formControlName='listaOrigemAssTec' 
+          [apiService]='apiOrigemAssTecService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="inCodOrigemAssTec" 
+          placeholder="ambos"
+          pesquisaFieldWhere='inCodOrigemAssTec' 
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="col-md-2"></div>
+      <div class="form-group col-md-2">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> pesquisar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-grid-pesquisa #gridFiltro 
+  idGrid="pesquisaAssTecnicaEL01" 
+  [apiService]='apiAssTecnicaEL01Service' 
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar' 
+  apiFieldKey='IDAssTecnica' 
+  [colunasGrid]='getColunasGridCadastro()' 
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro' 
+  [formGroupPesquisa]='formPesquisaAssTecnica'
+  (colunaEditarBotaoClick)='colunaEditarBotaoClick($event)'
+  [btn_acao_exibir]='btn_acao_exibir'>
+  <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnCancelar"
+      icone='close'
+      rotaFilha_tooltip='Cancelar Assistência Técnica'
+      i18n-rotaFilha_tooltip="botão para Cancelar a Assistência Técnica|btnCancelar@@crude-ass-tecnica-listagem.grid.btn.acao.Cancelar">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnManutencaoItensAssTecnica"
+      icone='grid-layout'
+      rotaFilha_tooltip='Manuntenção de Itens'
+      i18n-rotaFilha_tooltip="botão para Chamar a manuntenção de Itens|btnManutencaoItensAssTecnica@@crude-ass-tecnica-listagem.grid.btn.acao.ManutencaoItensAssTecnica">
+    </app-grid-pesquisa-botao-acao-linha>
+  </app-grid-pesquisa-container-botoes-acao-linha>
+</app-grid-pesquisa>
+<div class="k-overlay" *ngIf="AbrirMotivoCancelamento"></div>
+<kendo-window #modal [(top)]='topModal' [(left)]="leftModal" *ngIf="AbrirMotivoCancelamento"
+  [draggable]="false" [minWidth]="250" [width]="500" >
+  <kendo-window-titlebar>
+    <div class="k-window-title">Motivo do Cancelamento</div>
+    <div class="text-right">
+      <button kendoWindowCloseAction (click)="DesistirCancelar()"></button>
+    </div>
+  </kendo-window-titlebar>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <textarea kendoTextArea class="k-textarea" [(ngModel)]="modelAssTecnicaEl01.chDesMotivoCanc" rows="5"
+        style="width: 100%;"></textarea>
+    </div>
+  </div>
+  <div class="text-right">
+    <button type="button" class="k-button k-primary"
+      [disabled]="modelAssTecnicaEl01.chDesMotivoCanc == '' || modelAssTecnicaEl01.chDesMotivoCanc == undefined "
+      (click)="cancelarAssTecnica()">Confirmar</button> &nbsp;&nbsp;
+    <button type="button" class="k-button k-danger" (click)="DesistirCancelar()">Cancelar</button>
+  </div>
+</kendo-window>

@@ -1,0 +1,25 @@
+<span 
+    #breadcrumb_traducao
+    style='display:none;'
+    i18n="breadcrumb|Breadcrumb do CRUDE de Tipo de Opção de Menu@@crude-tipo-menu-opcao-listagem.breadcrumb">
+    Início/Tipo Opção Menu/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+    <div
+    i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Tipo de Opção de Menu@@crude-tipo-menu-opcao-listagem.titulo.tipo-menu-opcao">
+    TIPO DE OPÇÃO DE MENU
+    </div>
+</h1>
+
+<app-grid-pesquisa
+    #gridFiltro
+    idGrid="pesquisaTipoMenuOpcao"
+    [apiService]='apiTipoMenuOpcaoService'
+    nomeMetodoOrdenacao='mudarOrdenacao'
+    nomeMetodoApi='listar'
+    apiFieldKey='inCodTipoMenuOpcao'
+    [colunasGrid]='getColunasGridCadastro()'
+    pageSize='15'
+    [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

@@ -1,0 +1,23 @@
+@mixin titulo_crude {
+    display: block;
+    background-color: lighten($color: rgb(235, 235, 235), $amount: 0.8) ;
+    padding: 5px 0 5px 15px;
+    font-size: 14px;
+    margin-left: -12px;
+    margin-right: -12px;
+}
+
+@mixin titulo_crude_tab_1 {
+    @include titulo_crude;
+    
+    margin-top: 5px;
+}
+
+.k-tabstrip:first-child > .k-content {
+    padding-bottom: 0;
+}
+
+//tentativa de remover o padding que está afastando o componente de CRUDE da esquerda do conteúdo da TAB
+// .k-tabstrip > .k-content:nth-child(2) {
+//     padding-left: 0;   
+// }

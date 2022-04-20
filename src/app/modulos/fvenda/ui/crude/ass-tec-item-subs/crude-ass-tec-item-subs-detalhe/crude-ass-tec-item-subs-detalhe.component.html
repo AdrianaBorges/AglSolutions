@@ -1,0 +1,253 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do CRUDE@@crude-ass-tec-item-subs.label.IDAssTecItemSubs">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDAssTecItemSubs']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDAssTecItemSubs"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+         <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Item|Identifica o Item no CRUDE@@crude-ass-tec-item-subs-detalhe.label.IDItem">
+              Item
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDItem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa #pesquisa
+            tipo='edicao'
+            formControlName='UIItem'
+            placeholder="selecione"
+            modalTitulo='ITEM'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiItemEL01Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listarOnlyItem'
+            apiFieldExibir="chDescricao"
+            [colunasGrid]="apiItemEL01Service.getColunasGrid()"
+            apiFieldKey="chCodItem"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="text"
+            pesquisaRapidaPlaceholder='Código'
+            pesquisaRapidaMaxlength='50'
+            pesquisaRapidaWidth='20'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigoOnlyItem'
+            (valorAlterado)="ValidarItemSerie($event)">
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Lote/Série|Identifica o Lote/Série@@crude-ass-tec-item-subs.label.IDItemLoteSerie">
+              Lote/Série
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDItemLoteSerie']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select #loteSerie
+            placeholder='selecione'
+            formControlName='IDItemLoteSerie'
+            [apiService]='apiItemLoteSerieEl01Service'
+            apiNomeMetodoListar='listar'
+            [carregarIniciando]="false"
+            apiFieldExibir="chDesLoteSerie"
+            apiFieldKey="IDItemLoteSerie">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Complemento|Identifica o Complemento no CRUDE@@crude-ass-tec-item-subs.label.chDesComplem">
+              Complemento
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesComplem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesComplem" rows="5" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+           <span>
+             <ng-container i18n="Label Quantidade|Identifica o Quantidade do CRUDE@@crude-ass-tec-item-subs.label.deQtdSubs">
+               Quantidade
+             </ng-container>
+             <span class="k-required">*</span>
+             <app-form-control-alerta-erro-api
+               [mensagemErro]="apiErrorCollection.campos['deQtdSubs']">
+             </app-form-control-alerta-erro-api>
+           </span>
+           <kendo-numerictextbox
+             formControlName="deQtdSubs"
+             [format]="'N4'"
+             [min]="0"
+             [max]="999999999"
+             [autoCorrect]="false"
+             [spinners]="false"
+             required>
+           </kendo-numerictextbox>
+         </label>
+       </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+       <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Num.Solicitação Estoque|Identifica o Num.Solicitação Estoque do CRUDE@@crude-ass-tec-item-subs.label.chNumSolicEstoque">
+              Num.Solicitação Estoque
+            </ng-container>
+            <!-- <span class="k-required">*</span> -->
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumSolicEstoque']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNumSolicEstoque" type="text" name="chNumSolicEstoque" id="chNumSolicEstoque" maxlength="20"/>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+       <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data Solicitação Estoque|Identifica o Data Solicitação Estoque do CRUDE@@crude-ass-tec-item-subs.label.dtDatSolicEstoque">
+              Data Solicitação Estoque
+            </ng-container>
+            <!-- <span class="k-required">*</span> -->
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatSolicEstoque']">
+            </app-form-control-alerta-erro-api>
+          </span>
+            <kendo-datepicker formControlName='dtDatSolicEstoque'></kendo-datepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+           <span>
+             <ng-container i18n="Label Data Recebimento Estoque|Identifica a Data Recebimento Estoque do CRUDE@@crude-ass-tec-item-subs.label.dtDatRecebEstoque">
+               Data Recebimento Estoque
+             </ng-container>
+             <!-- <span class="k-required">*</span> -->
+             <app-form-control-alerta-erro-api
+               [mensagemErro]="apiErrorCollection.campos['dtDatRecebEstoque']">
+             </app-form-control-alerta-erro-api>
+           </span>
+             <kendo-datepicker formControlName='dtDatRecebEstoque'></kendo-datepicker>
+         </label>
+       </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <h1 kendoCardTitle>LOG de Inclusão</h1>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Inclusão|Identifica a Data de Inclusão@@crude-ass-tec-item-subs.label.inclusao">
+                  Data/Hora:
+                </span>
+                <span>
+                  {{modelAssTecItemSubs.dtDatInclusao | date: 'short'}}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Usuário Inclusão|Identifica o Usuário de Inclusão@@crude-ass-tec-item-subs.label.UsuarioInclusao">
+                  Usuário:
+                </span>
+                <span>
+                  {{modelAssTecItemSubs.chNomeUsuarioInclusao }}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <h1 kendoCardTitle>LOG da Última Alteração</h1>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Alteração|Identifica a Data de Alteração@@crude-ass-tec-item-subs.label.alteracao">
+                  Data/Hora:
+                </span>
+                <span>
+                  {{modelAssTecItemSubs.dtDatUltAlteracao | date: 'short'}}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Usuário Alteração|Identifica o Usuário de Alteração@@crude-ass-tec-item-subs.label.UsuarioAlteracao">
+                  Usuário:
+                </span>
+                <span>
+                  {{modelAssTecItemSubs.chNomeUsuarioAlteracao }}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

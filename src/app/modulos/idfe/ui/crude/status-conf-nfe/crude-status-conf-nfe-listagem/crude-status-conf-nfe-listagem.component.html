@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE Status De Confirmação Da NFe pelo Destinatário@@crude-status-conf-nfe-listagem.breadcrumb">
+  Início/Status Confirmação NFe/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Status De Confirmação Da NFe pelo Destinatário@@crude-status-conf-nfe-listagem.titulo.status-conf-nfe">
+    STATUS DE CONFIRMAÇÃO DA NFe PELO DESTINATÁRIO
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaStatusConfNfe"
+  [apiService]='apiStatusConfNfeService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodStatusConfNFe'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

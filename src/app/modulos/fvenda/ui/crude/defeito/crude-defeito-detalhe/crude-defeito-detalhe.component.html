@@ -1,0 +1,156 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Defeito@@crude-defeito-edicao.breadcrumb">
+  Defeito ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Defeito@@crude-defeito-detalhe.titulo.defeito">
+      DEFEITO
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do defeito  no CRUDE@@crude-defeito.label.IDDefeito">
+              ID
+            </ng-container>
+            <!-- <span class="k-required">*</span> -->
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDDefeito']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDDefeito"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-4 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código do defeito no CRUDE@@crude-defeito.label.chCodDefeito">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodDefeito']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodDefeito" type="text" name="chCodDefeito" id="chCodDefeito" maxlength="20" required />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Defeito|Identifica o Tipo de Defeito do defeito da @@crude-defeito.label.inCodTipoDefeito">
+              Tipo de Defeito
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoDefeito']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='inCodTipoDefeito'
+            required
+            [apiService]='apiTipoDefeitoService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodTipoDefeito">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica a Descrição no CRUDE@@crude-defeito.label.chDescricao">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDescricao" type="text" name="chDescricao" id="chDescricao" maxlength="50" required />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Resumo do Problema|Identifica o Resumo do Problema do defeito  no CRUDE@@crude-defeito.label.chDesProblema">
+              Resumo do Problema
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesProblema']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesProblema" rows="6" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Possível Solução|Identifica o Possível Solução do defeito  no CRUDE@@crude-defeito.label.chDesSolucao">
+              Possível Solução
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesSolucao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesSolucao" rows="6" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>     
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação Cadastral|Identifica o Situação Cadastral do defeito  no CRUDE@@crude-defeito.label.chDesSituacaoCad">
+              Situação Cadastral
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesSituacaoCad']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chDesSituacaoCad" name="chDesSituacaoCad" id="chDesSituacaoCad" disabled="true" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

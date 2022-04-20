@@ -1,0 +1,68 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE de Tipo de Pessoa@@crude-tipo-pessoa-edicao.breadcrumb">
+  Início/Tipo Pessoa/Edição
+</span>
+
+<app-cadastro-barra-acao 
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div
+      i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Tipo de Pessoa@@crude-tipo-pessoa-detalhe.titulo.tipo-pessoa">
+      TIPO DE PESSOA
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-3">          
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Codigo|Identifica o codigo do tipo pessoa CRUDE@@crude-tipo-pessoa-detalhe.label.codigo">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoPessoa']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodTipoPessoa" 
+            [format]="'N0'"
+            [min]="1" 
+            [max]="999999999" 
+            [autoCorrect]="false" 
+            [spinners]="false"
+            required>
+          </kendo-numerictextbox>
+        </label>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descricao|Identifica a descrição do tipo pessoa CRUDE@@crude-tipo-pessoa-detalhe.label.descricao">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesTipoPessoa']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDesTipoPessoa" required maxlength="20" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

@@ -1,0 +1,50 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb do programa@@crude-programa-listagem.breadcrumb">
+  Programa: Listagem</span>
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de programa@@crude-programa-listagem.titulo">
+    PROGRAMA
+  </div>
+</h1>
+
+<app-grid-pesquisa 
+  #gridFiltro idGrid="pesquisaPrograma"
+  [apiService]='apiProgramaService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='chCodPrograma'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'
+  (colunaEditarBotaoClick)='colunaEditarBotaoClick($event)'>
+  
+  <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnAcaoExibirNiveis"
+      icone='redo'
+      rotaFilha_url='programa-nivel'
+      rotaFilha_tooltip='exibir lista de níveis do programa'
+      i18n-rotaFilha_tooltip="botão para exibir o crude de níveis do programa|btnAcaoExibirNiveis@@crude-programa-listagem.grid.btn.acao.niveis">
+    </app-grid-pesquisa-botao-acao-linha>
+    <!--
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnAcaosave"
+      icone='save'
+      rotaFilha_tooltip='segundo botão dinamico'>
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnAcaoDownload"
+      icone='download'
+      rotaFilha_tooltip='segundo botão dinamico'>
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnAcaoLock"
+      icone='lock'
+      rotaFilha_url='programa-nivel'
+      rotaFilha_tooltip='segundo botão dinamico'>
+    </app-grid-pesquisa-botao-acao-linha>
+    -->
+  </app-grid-pesquisa-container-botoes-acao-linha>
+</app-grid-pesquisa>

@@ -1,0 +1,61 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de segurado@@crude-segurado.breadcrumb">
+  Início/Segurado/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de segurado@@crude-segurado.titulo">
+    SEGURADO
+  </div>
+</h1>
+
+<div class="area-filtro">
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputTexto">Tipo de pessoa</label>
+        <app-filtro-multiselect
+          formControlName='listaTipoPessoa'
+          [apiService]='apiTipoPessoaService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chDesTipoPessoa"
+          apiFieldKey="inCodTipoPessoa"
+          placeholder="ambos"
+          pesquisaFieldWhere='inCodTipoPessoa'
+          [pesquisaGridFiltro]="gridFiltro"
+          childComponentFieldWhere='Pessoa.inCodTipoPessoa'>
+        </app-filtro-multiselect>
+      </div>
+      
+      <div class="form-group col-md-3"></div>
+
+      <div class="form-group col-md-3">
+        <button kendoButton 
+          class="form-control btn-filtro-acao"
+          (click)="executarPesquisa()"
+          [primary]="true">
+          <span class="k-icon k-i-search"></span> 
+          pesquisar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<app-grid-pesquisa 
+  #gridFiltro
+  idGrid="pesquisaSegurado"
+  [apiService]='apiService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDPessoa'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  i18n-rotaCadastroNomeBotoes="botões novo|botões de nova física e jurídica@@crude-segurado.botoes.grid.novo"
+  rotaCadastroNomeBotoes='PF|PJ'
+  [rotaCadastro]='gridRotasCadastro'
+  [formGroupPesquisa]='formGroupPesquisa'>
+</app-grid-pesquisa>

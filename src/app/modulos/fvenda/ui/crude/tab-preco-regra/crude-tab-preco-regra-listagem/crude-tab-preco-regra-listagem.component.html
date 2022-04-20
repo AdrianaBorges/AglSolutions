@@ -1,0 +1,144 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Regra para Utilização de Tabela de Preços@@crude-tab-preco-regra-listagem.breadcrumb">
+  Regra: listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de Regra para Utilização de Tabela de Preços@@crude-tab-preco-regra-listagem.titulo">
+    REGRA PARA UTILIZAÇÃO DE TABELA DE PREÇOS
+  </div>
+</h1>
+
+<div class="area-filtro">
+
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+       <div class="form-group col-md-3">
+        <label for="inputTexto">País</label>
+        <app-filtro-multiselect
+          formControlName='listaPais'
+          [apiService]='apiPaisService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chNomeAbreviado"
+          apiFieldKey="IDPais"
+          placeholder="ambos"
+          pesquisaFieldWhere='TabPrecoRegra.IDPais'
+          [childComponent]='filtroUF'
+          childComponentFieldWhere='Pais.IDPais'
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputTexto">UF</label>
+        <app-filtro-multiselect
+          #filtroUF
+          formControlName='listaUF'
+          [apiService]='apiUfService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chNome"
+          apiFieldKey="IDUF"
+          placeholder="ambos"
+          pesquisaFieldWhere='TabPrecoRegra.IDUF'
+          [childComponent]='filtroCidade'
+          childComponentFieldWhere='UF.IDUF'
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputTexto">Cidade</label>
+        <app-filtro-multiselect
+          #filtroCidade
+          formControlName='listaCidade'
+          [apiService]='apiCidadeService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chNome"
+          apiFieldKey="IDCidade"
+          placeholder="ambos"
+          pesquisaFieldWhere='TabPrecoRegra.IDCidade'
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputTexto">Região</label>
+        <app-filtro-multiselect
+          formControlName='listaRegiao'
+          [apiService]='apiRegiaoService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chDescricao"
+          apiFieldKey="chCodRegiao"
+          pesquisaFieldWhere='chCodRegiao'
+          [childComponent]='filtroMicrorregiao'
+          childComponentFieldWhere='Regiao.chCodRegiao'
+          placeholder="ambos"
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputTexto">Microrregião</label>
+        <app-filtro-multiselect
+         #filtroMicrorregiao
+         formControlName='listaMicroRegiao'
+         [apiService]='apiMicrorregiaoService'
+         apiNomeMetodoListar='listar'
+         apiFieldExibir="chDescricao"
+         apiFieldKey="IDMicrorregiao"
+         placeholder="ambos"
+         pesquisaFieldWhere='TabPrecoRegra.IDMicrorregiao'
+         [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="inputTexto">Grupo de Cliente</label>
+        <app-filtro-multiselect
+          formControlName='listaGrupoCliente'
+          [apiService]='apiGrupoClienteService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chDescricao"
+          apiFieldKey="chCodGrupoCliente"
+          placeholder="ambos"
+          pesquisaFieldWhere='chCodGrupoCliente'
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputTexto">Canal de Venda</label>
+        <app-filtro-multiselect
+          formControlName='listaCanalVendas'
+          [apiService]='apiCanalVendaService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chDescricao"
+          apiFieldKey="chCodCanalVenda"
+          placeholder="ambos"
+          pesquisaFieldWhere='chCodCanalVenda'
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-3">
+      </div>
+      <div class="form-group col-md-2">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> pesquisar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-grid-pesquisa #gridFiltro
+  idGrid="pesquisaTabPrecoRegra"
+  [apiService]='apiTabPrecoRegraEL01Service'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDTabPrecoRegra'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'
+  [formGroupPesquisa]='formGroupPesquisa'>
+</app-grid-pesquisa>

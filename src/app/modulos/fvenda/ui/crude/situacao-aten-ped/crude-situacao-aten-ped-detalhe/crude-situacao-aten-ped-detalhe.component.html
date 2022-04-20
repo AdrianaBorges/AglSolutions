@@ -1,0 +1,69 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Situação de Atendimento do Item do Pedido de Venda@@crude-situacao-aten-ped-edicao.breadcrumb">
+  Situação Atendimento ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Situação de Atendimento do Item do Pedido de Venda@@crude-situacao-aten-ped-detalhe.titulo.situacao-aten-ped">
+    SITUAÇÃO DE ATENDIMENTO DO ITEM DO PEDIDO DE VENDA
+    </div>
+  </h1>
+  
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral_html != null' [innerHTML] = 'apiErrorCollection.mensagem_geral_html'>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Codigo|Identifica o codigo da Situação de Atendimento do Item do Pedido de Venda CRUDE@@crude-situacao-aten-ped-detalhe.label.inCodSituacaoAtenPed">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodSituacaoAtenPed']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodSituacaoAtenPed"
+            [format]="'N0'"
+            [min]="1" 
+            [max]="999999999"            
+            [autoCorrect]="false" 
+            [spinners]="false"
+            required
+            >
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica a descricao da Situação de Atendimento do Item do Pedido de Venda CRUDE@@crude-situacao-aten-ped-detalhe.label.chDescricao">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDescricao" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

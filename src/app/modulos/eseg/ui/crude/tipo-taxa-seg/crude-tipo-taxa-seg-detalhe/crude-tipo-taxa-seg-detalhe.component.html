@@ -1,0 +1,68 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE de Tipo de Taxa do Seguro@@crude-tipo-taxa-seg-edicao.breadcrumb">
+  Início/Tipo Taxa/Edição
+</span>
+
+<app-cadastro-barra-acao 
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div
+      i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Tipo de Taxa do Seguro@@crude-tipo-taxa-seg-detalhe.titulo.tipo-taxa-seg">
+      TIPO DE TAXA DO SEGURO
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-3">            
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código do Tipo de Taxa do Seguro no CRUDE@@crude-tipo-taxa-seg-detalhe.label.codigo">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoTaxaSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodTipoTaxaSeg"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            required>
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    
+      <div class="form-group col-md-5">            
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica a Descrição do Tipo de Taxa do seguro no CRUDE@@crude-tipo-taxa-seg-detalhe.label.descricao">
+              Descrição
+            </ng-container>                      
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDescricao" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

@@ -1,0 +1,18 @@
+<div class="cor-fundo" [style.background-color]="configEmpresa.corFundoLogin" ></div>
+
+<div class="container" >
+    <div class="centrado">
+          <div class="card" >
+            <div class="card-header" [style.background-color]="configEmpresa.corFundoLogo" >
+                <img class="card-img-top " style="width:100px" alt="Logo" src="{{configEmpresa.urlLogo}}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Página não encontrada</h5>
+                <p class="card-text">Clique abaixo para o logar</p>
+                <button type="submit" kendoButton [primary]="true" (click)="goToLogin()" >ir para o login</button>
+            </div>
+            
+          </div>
+  </div>
+</div>
+

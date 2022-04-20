@@ -1,0 +1,53 @@
+//Aplica o estílo para o H1 dentro das tabs para virar o título da tab
+kendo-tabstrip h1{
+    @include titulo_crude;
+}
+
+/*
+Usado para criar o título dentro da listagem do CRUDE
+ele seleciona o primeiro div filho de H1, sendo H1 o primeiro irmão logo após de SPAN
+*/
+// app-crude-programa-nivel-listagem > h1:nth-child(2) div{
+//     @include titulo_crude;
+//     margin-left: 0;
+// }
+.titulo_tela_listagem{
+    @include titulo_crude;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+
+    div {
+      margin-left: -15px;
+    }
+}
+
+kendo-tabstrip #k-tabstrip-tabpanel-0 {
+
+    padding-bottom: 0;
+
+    h1:first-child{
+        @include titulo_crude;
+        margin-bottom: 0;
+    }
+}
+
+// .titulo-crude {
+//     @include titulo_crude;
+// }
+
+// Mudança nos espaçamentos dos campos de formulários
+.form-group{
+  margin-bottom: 3px;
+}
+label{
+  margin-bottom: 0;
+}
+h1{
+  margin-bottom: 0;
+}
+
+// Classe do pacote padrão do kendo - arquivo: _layout
+.k-form .k-form-field{
+  margin-top: 0;
+}

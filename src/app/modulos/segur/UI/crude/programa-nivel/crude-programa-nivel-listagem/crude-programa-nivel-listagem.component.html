@@ -1,0 +1,58 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb do programa@@crude-programa-nivel-listagem.breadcrumb">
+  Nível : Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da listagem|Título do conteúdo da listagem do nível do Programa@@crude-programa-nivel-listagem.titulo.niveis">
+    NÍVEL DO PROGRAMA
+  </div>
+  <div>
+    <span i18n="Detalhes Programa|texto que precede os dados do Programa@@crude-programa-nivel-listagem.titulo.dadosPrograma">
+      Programa:
+    </span>
+    {{modelPrograma.chCodPrograma}} - {{modelPrograma.chDesTitPrograma}}
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaCrudeProgramaNivel"
+  [apiService]='apiProgramaNivelService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDProgramaNivel'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+  
+  <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnAcaoExibirSeguranca"
+      icone='redo'
+      rotaFilha_url='seguranca-programa'
+      rotaFilha_tooltip='Exibir Lista de Segurança do Programa'
+      i18n-rotaFilha_tooltip="botão para exibir o crude de Segurança do programa|btnAcaoExibirSeguranca@@crude-programa-nivel-listagem.grid.btn.acao.seguranca">
+    </app-grid-pesquisa-botao-acao-linha>
+    <!--
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnAcaosave"
+      icone='save'
+      rotaFilha_tooltip='segundo botão dinamico'>
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnAcaoDownload"
+      icone='download'
+      rotaFilha_tooltip='segundo botão dinamico'>
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnAcaoLock"
+      icone='lock'
+      rotaFilha_url='programa-nivel'
+      rotaFilha_tooltip='segundo botão dinamico'>
+    </app-grid-pesquisa-botao-acao-linha>
+    -->
+  </app-grid-pesquisa-container-botoes-acao-linha>
+</app-grid-pesquisa>

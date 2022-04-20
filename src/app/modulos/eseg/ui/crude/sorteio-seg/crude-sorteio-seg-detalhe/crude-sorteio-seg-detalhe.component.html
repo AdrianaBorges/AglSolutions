@@ -1,0 +1,145 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o codigo ID do sorteio do seguro@@crude-sorteio-seg-detalhe.label.IDSorteioSeg">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDSorteioSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDSorteioSeg"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false" 
+            disabled='true'>
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-2"></div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código do sorteio do seguro@@crude-sorteio-seg-detalhe.label.chCodSorteioSeg">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodSorteioSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodSorteioSeg" maxlength="20" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica a Descrição do sorteio do seguro@@crude-sorteio-seg-detalhe.label.chDescricao">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDescricao" maxlength="50" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição Externa|Identifica a Descrição Externa da sorteio do seguro@@crude-sorteio-seg-detalhe.label.chDesExterna">
+              Descrição Externa
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesExterna']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDesExterna" maxlength="50" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor do Sorteio|Identifica o Valor do Sorteio da sorteio do seguro@@crude-sorteio-seg-detalhe.label.deValSorteio">
+              Valor do Sorteio
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValSorteio']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox 
+            formControlName="deValSorteio" 
+            [format]="'C2'" 
+            [min]="0" 
+            [max]="999999999"
+            [autoCorrect]="false" 
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Num.Tit.Cap|Identifica o Número de Capitalização do sorteio do seguro@@crude-sorteio-seg-detalhe.label.chNumTitCap">
+              Título de Capitalização
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumTitCap']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNumTitCap" maxlength="25" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição Detalhada|Identifica a Descrição Detalhada do sorteio do seguro@@crude-sorteio-seg-detalhe.label.chDesDetalhe">
+              Descrição Detalhada
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesDetalhe']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea 
+            class="k-textarea"
+            formControlName="chDesDetalhe"
+            rows="10"
+            style="width: 100%;">
+          </textarea>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

@@ -1,0 +1,140 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral_html != null' [innerHTML] = 'apiErrorCollection.mensagem_geral_html'>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 col-lg-2 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do CRUDE@@crude-tab-preco-item.label.IDTabPrecoItem">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDTabPrecoItem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDTabPrecoItem"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-10 col-sm-12">
+         <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Item|Identifica o Item do CRUDE@@crude-tab-preco-item-detalhe.label.IDItem">
+              Item
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDItem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIItem'
+            placeholder="selecione"
+            modalTitulo='ITEM'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiItemEL01Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listarOnlyItem'
+            apiFieldExibir="chDescricao"
+            [colunasGrid]="apiItemEL01Service.getColunasGrid()"
+            apiFieldKey="chCodItem"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="text"
+            pesquisaRapidaPlaceholder='Código'
+            pesquisaRapidaMaxlength='50'
+            pesquisaRapidaWidth='20'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigoOnlyItem'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data Inicio Validade|Identifica a Data Inicio Validade do preco do item no CRUDE@@crude-tab-preco-item-detalhe.label.dtDatValidIni">
+              Início Validade
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatValidIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+        <kendo-datepicker
+        formControlName='dtDatValidIni'
+        required>
+      </kendo-datepicker>
+      </label>
+      </div>
+      <div class="form-group col-md-4 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Qtd.Minima|Identifica a Qtd.Mínima para o preco do item no CRUDE@@crude-tab-preco-item-detalhe.label.deQtdMinima">
+              Quant.Mínima
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deQtdMinima']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deQtdMinima"
+            [format]="'N4'"
+            [min]="0"
+            [autoCorrect]="false"
+            [spinners]="false"
+            required>
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Preço Venda|Identifica o Preço Venda no CRUDE@@crude-tab-preco-item.label.dePrecoVenda">
+              Preço Venda
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dePrecoVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+           <kendo-numerictextbox
+            formControlName="dePrecoVenda"
+            [format]="'c2'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

@@ -1,0 +1,347 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Regra para Utilização de Tabela de Preços@@crude-tab-preco-regra-detalhe.breadcrumb">
+  Regra ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Regra para Utilização de Tabela de Preços@@crude-tab-preco-regra-detalhe.titulo.TabPrecoRegraVenda">
+       REGRA PARA UTILIZAÇÃO DE TABELA DE PREÇOS
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral_html != null' [innerHTML] = 'apiErrorCollection.mensagem_geral_html'>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-2 col-lg-2 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do CRUDE@@crude-tab-preco-regra.label.IDTabPrecoRegra">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDTabPrecoRegra']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDTabPrecoRegra"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label País|Identifica o País do CRUDE@@crude-tab-preco-regra.label.IDPais">
+              País
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDPais']">
+            </app-form-control-alerta-erro-api>
+          </span>
+           <app-api-select #filtroPais
+            placeholder='selecione'
+            formControlName='IDPais'
+            [apiService]='apiPaisService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeAbreviado"
+            apiFieldKey="IDPais"
+            [childComponent]='filtroUF'
+            childComponentFieldWhere='Pais.IDPais'>
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label UF|Identifica o UF no CRUDE@@crude-tab-preco-regra.label.IDUF">
+              UF
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDUF']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            #filtroUF
+            placeholder='selecione'
+            formControlName='IDUF'
+            [apiService]='apiUFService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNome"
+            apiFieldKey="IDUF"
+            [childComponent]='filtroCidade'
+            childComponentFieldWhere='UF.IDUF'>
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cidade|Identifica o Cidade no CRUDE@@crude-tab-preco-regra.label.IDCidade">
+              Cidade
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDCidade']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select #filtroCidade
+            placeholder='selecione'
+            formControlName='IDCidade'
+            [apiService]='apiCidadeService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNome"
+            apiFieldKey="IDCidade">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12" >
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Região|Identifica o Região no CRUDE@@crude-tab-preco-regra.label.chCodRegiao">
+             Região
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodRegiao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select #filtroRegiao
+            placeholder='selecione'
+            formControlName='chCodRegiao'
+            [apiService]='apiRegiaoService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodRegiao"
+            [childComponent]='filtroMicrorregiao'
+            childComponentFieldWhere='Regiao.chCodRegiao'>
+          </app-api-select>
+        </label>
+      </div>
+
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Microrregião|Identifica o Microrregião no CRUDE@@crude-tab-preco-regra.label.IDMicrorregiao">
+              Microrregião
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDMicrorregiao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select #filtroMicrorregiao
+            placeholder='selecione'
+            formControlName='IDMicrorregiao'
+            [apiService]='apiMicrorregiaoService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="IDMicrorregiao">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Grupo de Cliente|Identifica o Grupo de Cliente no CRUDE@@crude-tab-preco-regra.label.chCodGrupoCliente">
+              Grupo de Cliente
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodGrupoCliente']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='chCodGrupoCliente'
+            [apiService]='apiGrupoClienteService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodGrupoCliente">
+          </app-api-select>
+        </label>
+      </div>
+
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Canal de Venda|Identifica o Canal de Venda no CRUDE@@crude-tab-preco-regra.label.chCodCanalVenda">
+              Canal de Venda
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodCanalVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='chCodCanalVenda'
+            [apiService]='apiCanalVendaService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodCanalVenda">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-10 col-sm-12">
+      <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cliente Matriz|Identifica o Cliente Matriz no CRUDE@@crude-tab-preco-regra.label.IDClienteVendaPai">
+              Cliente Matriz
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDClienteVendaPai']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_ClienteVendaPai'
+            placeholder="selecione"
+            modalTitulo='Cliente'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiClienteEL02PaiService'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeCliente"
+            [colunasGrid]="apiClienteEL02Service.getColunasGrid()"
+            apiFieldKey="inCodCliente"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='Código'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigo'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-10 col-sm-12">
+      <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cliente|Identifica o Cliente no CRUDE@@crude-tab-preco-regra.label.IDClienteVenda">
+              Cliente
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDClienteVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_ClienteVenda'
+            placeholder="selecione"
+            modalTitulo='Cliente'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiClienteEL02Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeCliente"
+            [colunasGrid]="apiClienteEL02Service.getColunasGrid()"
+            apiFieldKey="inCodCliente"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='Código'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigo'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio Validade|Identifica o Inicio Validade no CRUDE@@crude-tab-preco-regra.label.dtDatValidIni">
+              Inicio Validade
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatValidIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+         <kendo-datetimepicker formControlName='dtDatValidIni' required></kendo-datetimepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Fim Validade|Identifica o Fim Validade no CRUDE@@crude-tab-preco-regra.label.dtDatValidFim">
+             Fim Validade
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatValidFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+         <kendo-datetimepicker formControlName='dtDatValidFim' required></kendo-datetimepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tabela de Preço|Identifica o Tabela de Preço no CRUDE@@crude-tab-preco-regra.label.IDTabPreco">
+              Tabela de Preço
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDTabPreco']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='IDTabPreco'
+            [apiService]='apiTabPrecoEL01Service'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="IDTabPreco">
+            <kendo-combobox-column
+              field="chCodTabPreco"
+              i18n-title="Titulo Código|Identifica o titulo Código das opções de tabela de preço@@crude-tab-preco-regra-detalhe.combo.tab-preco.codigo"
+              title="Código"
+              width="30">
+            </kendo-combobox-column>
+            <kendo-combobox-column
+              field="chDescricao"
+              i18n-title="Titulo Descrição|Identifica o titulo Descrição das opções de tabela de preco@@crude-tab-preco-detalhe.combo.tab-preco.descricao"
+              title="Descrição"
+              width="80">
+            </kendo-combobox-column>
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

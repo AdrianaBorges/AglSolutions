@@ -1,0 +1,92 @@
+<app-cadastro-barra-acao #cadastroBarraAcao isNotVisible='true' [formGroup]='meuForm' (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()' (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label ID|Identifica o codigo ID do email@@crude-pessoa-email-detalhe.label.IDPessoaEmail">
+              ID</ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['IDPessoaEmail']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox formControlName="IDPessoaEmail" [format]="'N0'" [min]="0" [max]="999999999"
+            [autoCorrect]="'true'" [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Tipo de E-Mail|Identifica o Tipo de E-Mail@@crude-pessoa-email-detalhe.label.inCodTipoPessoaEmail">
+              Tipo de E-Mail</ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['inCodTipoPessoaEmail']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select placeholder='selecione' [apiService]='apiTipoPessoaEmailService' apiNomeMetodoListar='listar'
+            apiFieldExibir='chDescricao' apiFieldKey='inCodTipoPessoaEmail' formControlName='inCodTipoPessoaEmail'>
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Endereço de E-Mail|Identifica o Endereço de E-Mail@@crude-pessoa-email-detalhe.label.chEmail">
+              Endereço de E-Mail</ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chEmail']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chEmail" />
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span
+            i18n="Label Inclusão|Identifica se a pessoa física no CRUDE é Politicamente Exposta@@crude-pessoa-email-detalhe.label.dtDatInclusao">
+            Inclusão
+          </span>
+          <span>
+            <!-- https://angular.io/api/common/DatePipe -->
+            {{modelPessoaEmail.dtDatInclusao | date: 'short'}}
+          </span>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span
+            i18n="Label Última Alteração|Identifica a data da Última Alteração do cadastro de pessoa física no CRUDE@@crude-pessoa-email-detalhe.label.dtDatUltAlteracao">
+            Última Alteração
+          </span>
+          <span>
+            {{(modelPessoaEmail.dtDatUltAlteracao == null? textoTraducaoSemAlteracao.innerText: modelPessoaEmail.dtDatUltAlteracao | date: 'short' )}}
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <span #textoTraducaoSemAlteracao style="display:none;"
+      i18n="Informativo do label Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-pessoa-fisica.label.info.semAlteracao">Não
+      houve alteração ainda</span>
+
+  </form>
+
+</app-cadastro-barra-acao>

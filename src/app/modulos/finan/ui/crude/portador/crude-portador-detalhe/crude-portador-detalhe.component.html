@@ -1,0 +1,267 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE dePortador@@crude-portador-edicao.breadcrumb">
+  Início/Portador/Edição
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE dePortador@@crude-portador-detalhe.titulo.portador">
+      PORTADOR
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código daPortador no CRUDE@@crude-portador-detalhe.label.inCodPortador">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodPortador']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodPortador"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            required>
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-5">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome Abreviado|Identifica o Nome Abreviado daPortador no CRUDE@@crude-portador-detalhe.label.chNomAbreviado">
+              Nome Abreviado
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomAbreviado']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomAbreviado" required maxlength="25" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome|Identifica o Nome do Portador no CRUDE@@crude-portador-detalhe.label.chNome">
+              Nome
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNome']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNome" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Banco|Identifica o Banco no CRUDE@@crude-portador-detalhe.label.inCodBanco">
+              Banco
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodBanco']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='inCodBanco'
+            [apiService]='apiBancoService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNome"
+            apiFieldKey="inCodBanco">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Agência|Identifica o Agência no CRUDE@@crude-portador-detalhe.label.chAgencia">
+              Agência
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chAgencia']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chAgencia" maxlength="10" />
+        </label>
+      </div>
+      <div class="form-group col-1">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label DV Agência|Identifica o DV Agência no CRUDE@@crude-portador-detalhe.label.chDVAgencia">
+              DV
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDVAgencia']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDVAgencia" maxlength="2" />
+        </label>
+      </div>
+      <div class="form-group col-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Conta|Identifica o Conta no CRUDE@@crude-portador-detalhe.label.chConta">
+              Conta
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chConta']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chConta" maxlength="20" />
+        </label>
+      </div>
+      <div class="form-group col-1">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label DV Conta|Identifica o Dv Conta no CRUDE@@crude-portador-detalhe.label.chDVConta">
+              DV
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDVConta']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDVConta" maxlength="2" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Sequência Nosso Número|Identifica  Sequência Nosso Número no CRUDE@@crude-portador-detalhe.label.chCodSeqNossoNum">
+              Sequência Nosso Número
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodSeqNossoNum']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='chCodSeqNossoNum'
+            [apiService]='apiSequenciaNumService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodSequencia"
+            (valorAlterado)="valorAlteradoSeqNossoNum($event)">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Sequência Remessa Cobrança|Identifica Sequência Remessa Cobrança no CRUDE@@crude-portador-detalhe.label.chDesSeqRemCob">
+              Sequência Remessa Cobrança
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodSeqRemCob']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='chCodSeqRemCob'
+            [apiService]='apiSequenciaRemService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodSequencia"
+            (valorAlterado)="valorAlteradoSeqRemCob($event)">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número Convenio Cobrança|Identifica Número Convenio Cobrança no CRUDE@@crude-portador-detalhe.label.chConvenioCobranca">
+              Número Convenio Cobrança
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chConvenioCobranca']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chConvenioCobranca" maxlength="20" />
+        </label>
+      </div>
+      <div class="form-group col-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código de Transmissão|Identifica Código de Transmissão no CRUDE@@crude-portador-detalhe.label.chCodTransmissao">
+              Código de Transmissão
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodTransmissao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodTransmissao" maxlength="20" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome da Pasta para Geração de Arquivos de Remessa|Identifica Nome da Pasta para Geração de Arquivos de Remessa no CRUDE@@crude-portador-detalhe.label.chNomPastaArqRem">
+              Nome da Pasta para Geração de Arquivos de Remessa
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomPastaArqRem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomPastaArqRem" maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome do Arquivo de Remessa|Identifica Nome do Arquivo de Remessa no CRUDE@@crude-portador-detalhe.label.chNomArqRem">
+              Nome do Arquivo de Remessa
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomArqRem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomArqRem" maxlength="100" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

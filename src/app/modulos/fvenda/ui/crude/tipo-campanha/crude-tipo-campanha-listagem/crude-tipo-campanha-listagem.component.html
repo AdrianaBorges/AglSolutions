@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE Tipo de Campanha@@crude-tipo-campanha-listagem.breadcrumb">
+  Tipo Campanha: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Tipo de Campanha@@crude-tipo-campanha-listagem.titulo.tipo-campanha">
+    TIPO DE CAMPANHA
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaTipoCampanha"
+  [apiService]='apiTipoCampanhaService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodTipoCampanha'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

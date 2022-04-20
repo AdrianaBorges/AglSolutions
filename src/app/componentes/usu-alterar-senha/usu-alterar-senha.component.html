@@ -1,0 +1,87 @@
+<kendo-window id='alterarSenhaComponent' *ngIf="opened" [draggable]="true" width="300" height="420" [resizable]="false"
+  [state]="default" (stateChange)="onStateChange($event)" autofocus [class.sombreado-janela]='true'>
+  <kendo-window-titlebar>
+    <div class='k-window-title'>Alterar senha</div>
+    <button kendoButton (click)="onClose($event)" [icon]="'close'" [look]="'bare'"></button>
+  </kendo-window-titlebar>
+
+  <div class="invalido" *ngIf='erros.mensagem_geral != null'>
+    {{erros.mensagem_geral}}
+  </div>
+  <form class="k-form" #formTrocarSenha>
+    <label class="k-form-field">
+      <span>
+        Senha antiga <span class="k-required">*</span>
+      </span>
+      <input #pimeiroInput [(ngModel)]="dados.senhaAntiga" required id="inputSenhaAntiga" name="inputSenhaAntiga"
+        #inputSenhaAntiga="ngModel" [class.form-control]='true' [class.invalido]='false'
+        [class.is-valid]='!inputSenhaAntiga.invalid && inputSenhaAntiga.touched'
+        [class.is-invalid]='inputSenhaAntiga.invalid && inputSenhaAntiga.touched' type="password" class="k-textbox"
+        placeholder="senha antiga" />
+      <div *ngIf="inputSenhaAntiga.invalid && (inputSenhaAntiga.dirty || inputSenhaAntiga.touched)"
+        class="invalid-feedback">
+        <div *ngIf="inputSenhaAntiga.errors.required">
+          Obrigatório
+        </div>
+      </div>
+    </label>
+    <label class="k-form-field">
+      <span>
+        Senha nova <span class="k-required">*</span>
+      </span>
+      <input [(ngModel)]="dados.senhaNova" required id="inputSenhaNova" name="inputSenhaNova" #inputSenhaNova="ngModel"
+        [class.form-control]='true' [class.invalido]='false'
+        [class.is-valid]='!inputSenhaNova.invalid && inputSenhaNova.touched'
+        [class.is-invalid]='inputSenhaNova.invalid && inputSenhaNova.touched' type="password" class="k-textbox"
+        placeholder="senha nova" />
+      <div *ngIf="inputSenhaNova.invalid && (inputSenhaNova.dirty || inputSenhaNova.touched)" class="invalid-feedback">
+        <div *ngIf="inputSenhaNova.errors.required">
+          Obrigatório
+        </div>
+      </div>
+    </label>
+
+    <label class="k-form-field">
+      <span>
+        Informe novamente a nova senha
+        <span class="k-required">*</span>
+      </span>
+
+      <input [(ngModel)]="dados.senhaNova2" required id="inputSenhaNova2" name="inputSenhaNova2"
+        #inputSenhaNova2="ngModel" [class.form-control]='true' [class.invalido]='false'
+        [class.is-valid]='!inputSenhaNova2.invalid && inputSenhaNova2.touched'
+        [class.is-invalid]='inputSenhaNova2.invalid && inputSenhaNova2.touched' type="password" class="k-textbox"
+        placeholder="senha nova" />
+      <div *ngIf="inputSenhaNova2.invalid && (inputSenhaNova2.dirty || inputSenhaNova2.touched)"
+        class="invalid-feedback">
+        <div *ngIf="inputSenhaNova2.errors.required">
+          Obrigatório
+        </div>
+      </div>
+    </label>
+    <div class='row'>
+      <div class="col">
+        <div class="text-left">
+          <button 
+          kendoButton 
+          [primary]="false" 
+          class="form-control" 
+          type="button" (click)="voltar()"
+          >Cancelar</button>
+        </div>
+      </div>
+      <div class="col">
+        <div class="text-right">
+          <button 
+          kendoButton 
+          [primary]='true'
+          type="submit" 
+          class="form-control" (click)="alterarSenha()"
+          >Alterar</button>
+        </div>
+      </div>
+      
+    </div>
+
+  </form>
+</kendo-window>

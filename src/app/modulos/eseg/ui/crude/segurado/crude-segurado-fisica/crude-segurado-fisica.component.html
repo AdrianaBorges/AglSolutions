@@ -1,0 +1,319 @@
+<app-cadastro-barra-acao 
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID (documento de identiddade) da segurado pessoa física no CRUDE@@crude-segurado-segurado-pessoa-fisica.label.id">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDPessoa']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+              formControlName="IDPessoa"
+              [format]="'N0'"
+              [min]="1"
+              [max]="999999999"
+              [autoCorrect]="false"
+              [spinners]="false"
+              disabled="true">
+            </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label CPF|Identifica o CPF da pessoa@@crude-segurado-pessoa-fisica.label.cpf">
+              CPF
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumIdentificacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-maskedtextbox #cpf
+            id="inputMaskCPF"
+            mask="000.000.000-00" 
+            formControlName="CPF"
+            [class.maskedCPF]="true"
+            style="width:150px"
+            (blur)="procurarPorCPF(cpf.value)">
+          </kendo-maskedtextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nascimento|Identifica a Data de Nascimento da pessoa física no CRUDE@@crude-segurado-pessoa-fisica.label.nascimento">
+              Nascimento
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatNascim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatNascim'></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome|Identifica o nome da pessoa física no CRUDE@@crude-segurado-pessoa-fisica.label.nome">
+              Nome
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomePessoa']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomePessoa" type="text" name="chNomePessoa" id="chNomePessoa" maxlength="50" required>
+        </label>
+      </div>
+      <div class="form-group col-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome da Mãe|Identifica o Nome do Mãe da pessoa física no CRUDE@@crude-segurado-pessoa-fisica.label.NomeDaMae">
+              Nome da Mãe
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeMae']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeMae" type="text" name="nomeMae" id="nomeMae" maxlength="50">
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-6">
+          <label class="k-form-field">
+            <span>
+              <ng-container i18n="Label Nome da Pai|Identifica o Nome do Pai da pessoa física no CRUDE@@crude-segurado-pessoa-fisica.label.NomeDoPai">
+                Nome do Pai
+              </ng-container>
+              <app-form-control-alerta-erro-api
+                [mensagemErro]="apiErrorCollection.campos['chNomePai']">
+              </app-form-control-alerta-erro-api>
+            </span>
+            <input kendoTextBox formControlName="chNomePai" type="text" name="nomeMae" id="nomeMae" maxlength="50">
+          </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nacionalidade|Identifica a Nacionalidade da pessoa física no CRUDE@@crude-segurado-pessoa-fisica.label.nacionalidade">
+              Nacionalidade
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesNacionalidade']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chDesNacionalidade" name="chDesNacionalidade" id="chDesNacionalidade" maxlength="40">
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Genero|Identifica o Gênero da pessoa física no CRUDE@@crude-segurado-pessoa-fisica.label.Genero">
+              Gênero
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodSexo']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='inCodSexo'
+            [apiService]='apiSexoService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodSexo">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Estado Civil|Identifica o Estado Civil da pessoa física no CRUDE@@crude-segurado-pessoa-fisica.label.EstadoCivil">
+              Estado Civil
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodEstadoCivil']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='inCodEstadoCivil'
+            [apiService]='apiEstadoCivilService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodEstadoCivil">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Grau de Instrução|Identifica o Grau de Instrução da pessoa física no CRUDE@@crude-segurado-pessoa-fisica.label.GrauDeInstrucao">
+              Grau de Instrução
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodGrauInst']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='inCodGrauInst'
+            [apiService]='apiGrauInstrucaoService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodGrauInst">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Raça/Cor|Identifica a Raça ou Cor da pessoa física no CRUDE@@crude-segurado-pessoa-fisica.label.RacaOuCor">
+              Raça/Cor
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodRacaCor']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='inCodRacaCor'
+            [apiService]='apiRacaCorService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodRacaCor">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Profissão|Identifica a Profissão da pessoa física no CRUDE@@crude-segurado-pessoa-fisica.label.profissao">
+              Profissão
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodProfissao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_CodProfissao'
+            placeholder="selecione"
+            modalTitulo='Profissão'
+            modalHeight="530"
+            modalWidth="800"
+      
+            [apiService]='apiProfissaoService'
+            [colunasGrid]='apiProfissaoService.getColunasGrid()'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodProfissao"
+            [pageSize]="'8'"
+
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='cod'
+            pesquisaRapidaApiNomeMetodo='pesquisarPorId'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Renda Mensal|Identifica a Renda Mensal da pessoa física no CRUDE@@crude-segurado-pessoa-fisica.label.RendaMensal">
+              Renda Mensal
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValorRendaMensal']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deValorRendaMensal" 
+            [format]="'c2'"
+            [min]="0" 
+            [max]="999999999" 
+            [autoCorrect]="false" 
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group  col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Pessoa Politicamente Exposta|Identifica se a pessoa física no CRUDE é Politicamente Exposta@@crude-segurado-pessoa-fisica.label.politicamenteExposta">
+            Pessoa Politicamente Exposta
+          </span>
+          <kendo-switch 
+            [onLabel]="'sim'"
+            [offLabel]="'não'"
+            formControlName="lgIndPEP"
+            name="lgIndPEP" 
+            id="lgIndPEP" >
+          </kendo-switch>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Inclusão|Identifica se a pessoa física no CRUDE é Politicamente Exposta@@crude-segurado-pessoa-fisica.label.inclusao">
+            Inclusão
+          </span>
+          <span>
+            {{modelSegurado.dtDatInclusao | date: 'short'}}
+          </span>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Última Alteração|Identifica a data da Última Alteração do cadastro de pessoa física no CRUDE@@crude-segurado-pessoa-fisica.label.ultimaAlteracao">
+            Última Alteração
+          </span>
+          <span>
+            {{(modelSegurado.dtDatUltAlteracao == null? textoTraducaoSemAlteracao.innerText: modelSegurado.dtDatUltAlteracao | date: 'short' )}}
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <span   #textoTraducaoSemAlteracao  style="display:none;"
+      i18n="Informativo do label Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-segurado-pessoa-fisica.label.info.semAlteracao">
+      Não houve alteração ainda
+    </span>
+  
+  </form>
+</app-cadastro-barra-acao>
+
+

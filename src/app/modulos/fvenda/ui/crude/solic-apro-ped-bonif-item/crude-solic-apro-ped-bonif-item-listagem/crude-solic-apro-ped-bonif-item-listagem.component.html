@@ -1,0 +1,46 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Solicitação de Aprovação de Pedido de Bonificação@@crude-solic-apro-ped-bonif-item-listagem.breadcrumb">
+  Pedido Bonificação: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem Solicitação de Aprovação de Pedido de Bonificação@@crude-solic-apro-ped-bonif-listagem.titulo">
+    ITEM DA SOLICITAÇÃO DE APROVAÇÃO DE PEDIDO DE BONIFICAÇÃO
+  </div>
+  <div>
+    <span i18n="Detalhes  Solicitação - Número|texto que precede os dados do Solicitação - Número@@crude-solic-apro-ped-bonif-listagem.titulo.dadosNumero">
+      Solicitação - Número: 
+    </span>
+    {{modelSolicAprovPVEL01.inCodSituacaoSolAprPV}} -
+    <span i18n="Detalhes  Data|texto que precede os dados do Data@@crude-solic-apro-ped-bonif-listagem.titulo.dadosData">
+      Data:
+    </span>
+    {{modelSolicAprovPVEL01.dtDatSolic | date: 'short'}}
+    <br/>
+    <span i18n="Detalhes Cliente|texto que precede os dados do Cliente@@crude-solic-apro-ped-bonif-listagem.titulo.dadosCliente">
+      Cliente:
+    </span>
+    {{modelSolicAprovPVEL01.inCodCliente}} - {{modelSolicAprovPVEL01.chNomAbrevCliente }} - {{modelSolicAprovPVEL01.chNomeCliente }}
+  </div>
+</h1>
+<app-grid-pesquisa #gridFiltro
+  idGrid="pesquisaSolicitacaoAprovacaoItem"
+  [apiService]='apiSolicAprovPVItemEL01Service'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDSolicAprovPVItem'
+  [colunasGrid]='getColunasGridCadastro()'
+  [formGroupPesquisa]='formGroupPesquisa'
+  pageSize='15'
+  (colunaEditarBotaoClick)='colunaEditarBotaoClick($event)'
+  [rotaCadastro]='gridRotasCadastro'
+  [btn_acao_exibir]='btn_acao_exibir'>
+  <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha id="chamarInterface" icone='grid-layout'
+    rotaFilha_tooltip='Chamar a Interface'
+    i18n-rotaFilha_tooltip="botão para Chamar a Interface|chamarInterface@@crude-solic-apro-ped-bonif-item-listagem.grid.btn.acao.ChamarInterface">
+  </app-grid-pesquisa-botao-acao-linha>
+  </app-grid-pesquisa-container-botoes-acao-linha>
+</app-grid-pesquisa>

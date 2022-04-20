@@ -1,0 +1,66 @@
+<span 
+  #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de Pedido de Compra de Cliente@@tabs-ped-compra.breadcrumb">
+  Pedido Compra ID:
+</span>
+
+<kendo-tabstrip #kendoTab appCadastroTab id='idTabCadItem' [tab]='kendoTab' [cadastroBarraAcao]='cad.cadastroBarraAcao' (tabSelect)="onTabSelect($event)">
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab PEDIDO|Nome da tab PEDIDO de Pedido de Compra de Cliente@@tabs-ped-compra.tab.pedido"
+    [ngClass]='app-tab-content'
+    [title]="'PEDIDO'"
+    [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Titulo Pedido de Compra de Cliente|Título interno que identifica o CRUDE de Pedido de Compra de Cliente@@tabs-ped-compra.tab.pedido.titulo">
+          PEDIDO DE COMPRA DE CLIENTE
+        </div>
+      </h1>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'ITEM'|Nome da tab 'ITEM' de Pedido de Compra de Cliente@@tabs-ped-compra.tab.item"
+    title='ITEM'
+    [selected]="tabSelecionada(1)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Item' de Pedido de Compra de Cliente@@tabs-ped-compra.tab.titulo.item">
+          ITEM DO PEDIDO DE COMPRA DE CLIENTE
+        </div>
+        <div>
+          <span i18n="Detalhes  Estabelecimento Pedido Compra|texto que precede os dados do EStabelecimento Pedido Compra@@crude-ped-compra.titulo.dadosEstabelecimentoPedCompra">
+            Estabelecimento:
+          </span>
+          {{cad.modelPedCompraEL01.chCodEstabelec}} - {{cad.modelPedCompraEL01.chNomAbrevEstabelec}} /
+          <span i18n="Detalhes  Número Pedido Compra|texto que precede os dados do Número Pedido Compra@@crude-ped-compra.titulo.dadosNumeroPedCompra">
+            Número:
+          </span>
+          {{cad.modelPedCompraEL01.inNumPedCompra}} /
+          <span i18n="Detalhes  Data Pedido Compra|texto que precede os dados do Data Pedido Compra@@crude-ped-compra.titulo.dadosDataPedCompra">
+            Data:
+          </span>
+          {{cad.modelPedCompraEL01.daDatPedCompra | date: 'short'}}
+          <br/>
+          <span i18n="Detalhes  Cliente Pedido Compra|texto que precede os dados do Origem Pedido Compra@@crude-ped-compra.titulo.dadosOrigemPedCompra">
+            Cliente:
+          </span>
+          {{cad.modelPedCompraEL01.inCodCliente }} - {{cad.modelPedCompraEL01.chNomAbrevCliente}} - {{cad.modelPedCompraEL01.chNomeCliente}}
+          <br/>
+          <span i18n="Detalhes  Pedido Compra|texto que precede os dados do  Pedido Compra@@crude-ped-compra.titulo.dadosPedidoPedCompra">
+            Pedido:
+          </span>
+          {{cad.modelPedCompraEL01.chNumPedCliente }}
+        </div>
+      </h1>
+      <app-crude-ped-compra-item-detalhe #gridInterfaceTabCadastroFilhoItemPedido>
+      </app-crude-ped-compra-item-detalhe>
+      <app-crude-ped-compra-item-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoItemPedido'>
+      </app-crude-ped-compra-item-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+
+<app-crude-ped-compra-detalhe #cad [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-ped-compra-detalhe>

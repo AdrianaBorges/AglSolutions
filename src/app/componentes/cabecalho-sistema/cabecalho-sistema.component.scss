@@ -1,0 +1,65 @@
+@import '../../../estilos/_variaveis';
+
+$altura-cabecalho: 30px;
+
+.cabecalho{
+    
+    display: block;
+    width: 100%;
+    height: $altura-cabecalho;
+    //padding: 2px;
+    text-align: right;
+    font-size: 12px;
+}
+
+.usuario{
+    display: block;
+    //background-color: darken($color: $accent, $amount: 10%);
+    height: 100%;
+    //max-width: 200px;
+    padding: 6px 5px 0 5px;
+    float: right;
+    cursor: pointer;
+}
+
+.descTipoUsuario {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.content {
+    padding: 30px;
+    color: #787878;
+    background-color: #fcf7f8;
+    border: 1px solid rgba(0,0,0,.05);
+    min-height: 100px;
+    
+}
+kendo-popup{
+//     left: none;
+//     top: none;
+//     // width: 160px;
+//     // top: 30px;
+//     // float: right;
+
+//     // padding: 20px;
+//     //margin: 20px;
+//     //top: $altura-cabecalho;
+    text-align: center;
+}
+
+.popup-icon {
+    font-size: 40px;
+    position: relative;
+    top: 70%;
+    left:50%;
+    transform: translate(-50%, 30%);
+}
+
+.card {
+    border-radius: 0;
+}
+
+.card-body{
+    text-align: left;
+}

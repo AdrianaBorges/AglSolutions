@@ -1,0 +1,42 @@
+<div class="container " style="height:120px;background-color: #FFFF">
+    <div class="row ">
+        <div class="col-lg-12" style="display: flex;width: 100%;justify-content: center;">
+            <img style="margin-top:20px;" class="img-responsive" src="{{configEmpresa.urlLogo}}" alt="Agileit IT Logo" title="AgileIT" data-displaymode="Original">
+        </div>
+    </div>
+</div>
+<div class="containerlogin img-responsive"  style="margin:0 auto;height:565px;background-repeat: no-repeat-x;width: 100%;" [style.background-image]="'url(' + configEmpresa.imgFundoLoginRedirect + ')'">
+    
+    
+    <div class="col-lg-4 box" style="padding:30px;background-color: #FFFF;">
+
+        <div *ngIf='id_erro == 0'
+        i18n="mensagem: aguardando autenticação|Mensagem exibida enquanto sistema está autenticando usuário@@redirect-acesso.component.label.msgAguardando">
+            aguardando autenticação
+        </div>
+        
+        <div *ngIf='id_erro == 1'
+        i18n="mensagem: Token não informado|Mensagem exibida quando o token não foi informado na url@@redirect-acesso.component.label.msgTokenNaoInformado">
+            Token não informado
+        </div>
+        
+        <div *ngIf='id_erro == 2'
+        i18n="mensagem: Erro de autenticação:|Mensagem exibida quando houve erro ao validar o token do usuário@@redirect-acesso.component.label.msgTokenInvalido">
+            Erro de autenticação:
+        </div>
+        
+        <div *ngIf='erros.mensagem_geral||erros.getListaErros()'>
+            <div *ngIf='erros.mensagem_geral && erros.lErros.length == 0'>
+                {{erros.mensagem_geral}}
+            </div>
+            <ul>
+                <li *ngFor='let erro of erros.getListaErros()'>
+                    {{erro.chDescricaoErro}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div> <!-- /container -->
+
+<iframe scrolling="no" style="border: none; overflow:hidden;overflow-y:hidden;" width="100%" height="670px" name="rodapeexterno" [src]="sanitizer.bypassSecurityTrustResourceUrl(configEmpresa.url_rodapeLoginRedirect)"></iframe>
+<app-aguarde-carregando #aguardeCarregando></app-aguarde-carregando>

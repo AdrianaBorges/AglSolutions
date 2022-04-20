@@ -1,0 +1,116 @@
+<!-- isNotVisible='true' -->
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral_html != null' [innerHTML] = 'apiErrorCollection.mensagem_geral_html'>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 col-lg-2 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do CRUDE@@crude-tab-preco.label.IDTabPreco">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDTabPreco']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDTabPreco"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-4 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código do CRUDE@@crude-tab-preco.label.chCodTabPreco">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodTabPreco']">
+            </app-form-control-alerta-erro-api>
+          </span>
+            <input kendoTextBox maxlength="20" formControlName="chCodTabPreco" type="text" name="chCodTabPreco" id="chCodTabPreco"/>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+         <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica A Descrição CRUDE@@crude-tab-preco-detalhe.label.chDescricao">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+           <input kendoTextBox maxlength="50" formControlName="chDescricao" type="text" name="chDescricao" id="chDescricao"/>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio Validade|Identifica o Inicio Validade do CRUDE@@crude-tab-preco-detalhe.label.dtDatValidIni">
+              Inicio Validade
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatValidIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datetimepicker formControlName='dtDatValidIni' required></kendo-datetimepicker>
+        </label>
+      </div>      
+      <div class="form-group col-md-6 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Fim Validade|Identifica o Inicio Validade do CRUDE@@crude-tab-preco-detalhe.label.dtDatValidFim">
+              Fim Validade
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatValidFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datetimepicker formControlName='dtDatValidFim' required></kendo-datetimepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação|Identifica o Situação  no CRUDE@@crude-tab-preco.label.chDesSituacaoCad">
+              Situação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesSituacaoCad']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chDesSituacaoCad" name="chDesSituacaoCad" id="chDesSituacaoCad" disabled="true" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

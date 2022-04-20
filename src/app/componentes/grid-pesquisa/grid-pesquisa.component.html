@@ -1,0 +1,393 @@
+<span
+  #btn_novo_traducao
+  style='display:none;'
+  i18n="grid.cabecalho.btn.novo|botão padrão de criar novo registro no cabeçalho do grid@@id_grid_pesquisa_cabecalho_btn_novo">
+  Solicitação de Crédito: listagem
+</span>
+
+<app-caixa-dialogo #caixaDialogo></app-caixa-dialogo>
+<!-- <kendo-dialog *ngIf="dialogo.aberto" [title]="dialogo.titulo" (close)="dialogo_fechar()">
+  <p style="margin: 30px; text-align: center;">{{dialogo.mensagem}}</p>
+
+  <kendo-dialog-actions>
+    <button kendoButton (click)="dialogo_fechar()">OK</button>
+  </kendo-dialog-actions>
+</kendo-dialog> -->
+
+<!-- 
+[scrollable]="'none'"
+[style.min-width]='getExpessuraGrid()'
+class='content'
+(edit)="gridEdit($event)"
+(remove)="gridRemove($event)" -->
+<app-aguarde-carregando #aguardeCarregando></app-aguarde-carregando>
+<kendo-grid
+      #meuGrid
+      [ngClass]="{'invisivel': isNotVisible}"
+      [style.height]='getAlturaGrid()'
+      [data]="gridView"
+      [pageSize]="pageSize"
+      [skip]="state.skip"
+      [pageable]="paginavel"
+      [selectable]="true"
+      filterable="menu"
+      [filter]="state.filter"
+      [loading]="loading"
+      [navigable]="true"
+      (pageChange)="pageChange($event)"
+      (filterChange)="filterChange($event)"
+      (selectionChange)="selectionChange($event)"
+      [resizable]="true"
+      [sortable]="sortable"
+      [sort]="sort"
+      (sortChange)="sortChange($event)"
+    >
+  <ng-template kendoGridToolbarTemplate *ngIf='!esconderColunaButoesAcao'>
+    <span  class='BtnCreateArea'>
+      <span *ngIf='pode_btn_acao_exibir(btn_create,null)'>
+        <button  
+        *ngFor="let rotaBtn of botoesCriarNovo; index as i"
+        (click)="gridAbrirRotaCadastroNovo(rotaBtn)" class="k-button"><span class="k-icon k-i-plus"></span>{{get_rotaCadastroNomeBotoes(i, rotaBtn)}}</button>
+        <!-- <button  
+        *ngFor="let rotaBtn of botoesCriarNovo; index as i"
+        (click)="gridAbrirRotaCadastroNovo(rotaBtn)" class="k-button"><span class="k-icon k-i-plus"></span> <span i18n="grid.btn.novo|botão padrão de criar novo registro no cabeçalho do grid@@id_grid_pesquisa_component_btn_novo">{get_rotaCadastroNomeBotoes(i, rotaBtn), select, Novo {Novo} other { {{get_rotaCadastroNomeBotoes(i, rotaBtn)}} } }</span></button> -->
+      </span>
+      
+      <button 
+      *ngFor="let nomeBtn of getBotoesAcoes(); index as i"
+      (click)="cabecalhoBotaoClick_event(i)" class="k-button"> {{nomeBtn}}</button>
+    </span>
+    <!-- Por enquanto marquei para a exportação de PDF não ser mais exibida -->
+    <button *ngIf='1 == 2 && permissao_exportar && !esconderColunaButoesAcao' kendoGridPDFCommand icon="file-pdf" i18n="button.exportar pdf|botão no cabeçalho do grid para exportar os dados para pdf@@id_grid_pesquisa_component_exportar_pdf">Exportar para PDF</button>
+    <button *ngIf='permissao_exportar && !esconderColunaButoesAcao' type="button" kendoGridExcelCommand icon="file-excel" i18n="button.exportar excel|botão no cabeçalho do grid para exportar os dados para pdf@@id_grid_pesquisa_component_exportar_excel">Exportar para Excel</button>
+  </ng-template>
+  
+  <kendo-grid-pdf fileName="dadosGrid.pdf" [allPages]="true" [repeatHeaders]="true">
+    <kendo-grid-pdf-margin 
+      paperSize="A4" 
+      top="1cm" left="1cm" right="1cm" bottom="1cm">
+    </kendo-grid-pdf-margin>
+    
+    <!-- Informo aqui apenas as colunas que deverão ser exportadas -->
+    <!-- se não fizer isso a coluna de commandos tb é exportada -->
+    <kendo-grid-column
+      *ngFor="let column of columns; let columnIndex = index"
+      field="{{column.field}}"
+      title="{{column.title}}"
+      [style]="{'padding': '2px'}"
+      format="{{column.format}}">
+        <ng-template 
+          *ngIf='column.tipo == "GridPesquisaColumnFormat"'
+          kendoGridCellTemplate 
+          let-dataItem>
+          <span>
+            {{executarFormatacaoColuna(columnIndex, dataItem)}}
+          </span>
+        </ng-template>
+        <ng-template 
+          *ngIf='column.tipo == "GridPesquisaColumnAgregada"'
+          kendoGridCellTemplate 
+          let-dataItem>
+          <span *ngFor="let campo of getGridPesquisaColumnsAgregadas(column.field); let odd = odd">
+            <span *ngIf='!odd'>{{dataItem[campo]}}</span>
+            <span *ngIf='odd'>{{campo}}</span>
+          </span>
+        </ng-template>
+        <ng-template 
+          *ngIf='column.type == "boolean"'
+          kendoGridCellTemplate 
+          let-dataItem>
+          <span 
+            *ngIf='dataItem[column.field] == true'
+            i18n="Sim|Opção exibida na coluna do grid quando o valor for iguala a true@@grid_pesquisa_component_coluna_boolean_true">
+            Sim
+          </span>
+          <span 
+            *ngIf='dataItem[column.field] == false || dataItem[column.field] == null'
+            i18n="Não|Opção exibida na coluna do grid quando o valor for iguala a false ou null@@grid_pesquisa_component_coluna_boolean_false">
+            Não
+          </span>
+        </ng-template>
+        <ng-template 
+          *ngIf='column.type == "boolean"'
+          kendoGridFilterMenuTemplate
+          let-column="column"
+          let-filter="filter"
+          let-filterService="filterService">
+          <div class='filtroBoolean'>
+            <div>
+              <input 
+                type="radio" 
+                [name]="'optSim'+column.field" 
+                [id]="'optSim'+column.field" 
+                value="Sim" 
+                (change)="filtroBooleanAlterado($event, filterService, column.field)" 
+                [checked]='persistenciaFiltroBoolean[column.field] == true'
+                kendoRadioButton />
+              <label 
+                [for]="'optSim'+column.field"
+                i18n="Sim|Texto exibido como opção do filtro@@grid_pesquisa_component_filtro_boolean_true"
+              >Sim</label>
+            </div>
+            <div>
+              <input 
+                type="radio" 
+                [name]="'optNao'+column.field" 
+                [id]="'optNao'+column.field" 
+                value="Não" 
+                (change)="filtroBooleanAlterado($event, filterService, column.field)" 
+                [checked]='persistenciaFiltroBoolean[column.field] == false'
+                kendoRadioButton />
+              <label 
+                [for]="'optNao'+column.field" 
+                i18n="Não|Texto exibido como opção do filtro@@grid_pesquisa_component_filtro_boolean_false"
+              >Não</label>
+            </div>
+          </div>
+        </ng-template>
+    </kendo-grid-column> 
+  </kendo-grid-pdf>
+
+  <kendo-grid-excel fileName="dadosGrid.xlsx" [fetchData]="allData" >
+    <kendo-excelexport-column 
+      *ngFor="let column of columns"
+      field="{{column.field}}"
+      title="{{column.title}}">
+    </kendo-excelexport-column>
+  </kendo-grid-excel>
+
+  <!-- <kendo-grid-command-column title="Editar" width="95" minResizableWidth="95" *ngIf='apiFieldKey' >
+      <ng-template kendoGridCellTemplate>
+          <button *ngIf='!permissao_editar' kendoGridEditCommand   [icon]="'eye'" class="k-primary" title="Visualizar" i18n-title="button.row.visualizar|botão de visualizar no registro do grid@@id_grid_pesquisa_component_visualizar_item"></button>
+          <button *ngIf='permissao_editar'  kendoGridEditCommand   [icon]="'edit'" class="k-primary" title="Editar" i18n-title="button.row.editar|botão de editar no registro do grid@@id_grid_pesquisa_component_editar_item"></button>
+          <button *ngIf='permissao_excluir' kendoGridRemoveCommand [icon]="'delete'" title="Visualizar para exclusão" i18n-title="button.row.excluir|botão de excluir no registro do grid@@id_grid_pesquisa_component_excluir_item"></button>
+          
+      </ng-template>
+  </kendo-grid-command-column> -->
+  <kendo-grid-column
+    *ngIf='!esconderColunaButoesAcao'
+    [width]="grid_coluna_editar_width" 
+    minResizableWidth="95"
+    [style]="{'padding': '2px'}"
+    title='EDITAR'
+    i18n-title="grid.column.editar|Coluna dos botões de edição@@grid_pesquisa_component_coluna_editar">
+    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+      <button kendoButton class='btn-grid-coluna-editar' *ngIf='pode_btn_acao_exibir(btn_read,dataItem)' (click)='gridEdit(dataItem)'   [icon]="'eye'"    title="Visualizar" i18n-title="button.row.visualizar|botão de visualizar no registro do grid@@id_grid_pesquisa_component_visualizar_item"></button>
+      <button kendoButton class='btn-grid-coluna-editar' *ngIf='pode_btn_acao_exibir(btn_update,dataItem)'  (click)='gridEdit(dataItem)'   [icon]="'edit'"   title="Editar"     i18n-title="button.row.editar|botão de editar no registro do grid@@id_grid_pesquisa_component_editar_item"></button>
+      <button kendoButton class='btn-grid-coluna-editar' *ngIf='pode_btn_acao_exibir(btn_delete,dataItem)' (click)='gridRemove(dataItem)' [icon]="'delete'" title="Visualizar para exclusão" i18n-title="button.row.excluir|botão de excluir no registro do grid@@id_grid_pesquisa_component_excluir_item"></button>
+
+      <button kendoButton class='btn-grid-coluna-editar' *ngIf='pode_btn_Validar_exibir(dataItem)' (click)='send_btn_Validar_click(dataItem)'   [icon]="'check-circle'"    [title]="btn_Validar_titulo" ></button>
+      <button kendoButton class='btn-grid-coluna-editar' *ngIf='pode_btn_Inativar_exibir(dataItem)'  (click)='send_btn_Inativar_click(dataItem)'   [icon]="'close'"   [title]="btn_Inativar_titulo"    ></button>
+      <button kendoButton class='btn-grid-coluna-editar' *ngIf='pode_btn_Reativar_exibir(dataItem)' (click)='send_btn_Reativar_click(dataItem)' [icon]="'undo'" [title]="btn_Reativar_titulo" ></button>
+      <button kendoButton class='btn-grid-coluna-editar' *ngIf='pode_btn_Cancelar_exibir(dataItem)' (click)='send_btn_Cancelar_click(dataItem)' [icon]="'cancel'" [title]="btn_Cancelar_titulo" ></button>
+      <!-- <button 
+        kendoButton 
+        class='btn-crude-filho'
+        [icon]="'myspace'" 
+        [title]="rotaFilha_tooltip" 
+        (click)="abrirRotaFilha(dataItem)"></button> -->
+       <ng-container>
+        <ng-container *ngFor="let botao of gridPesquisaContainerBotoesAcaoLinhaComponent.listaBotoesAcao">
+          <button 
+            *ngIf='pode_btn_acao_exibir(botao,dataItem)'
+            kendoButton 
+            class='btn-grid-coluna-editar'
+            [icon]="botao.icone || 'myspace'" 
+            [title]="botao.rotaFilha_tooltip" 
+            (click)="btn_crude_filho_abrirRotaFilha(botao, dataItem)">
+          </button>
+        </ng-container>
+       </ng-container>
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column
+      *ngFor="let column of columns; let columnIndex = index"
+      field="{{column.field}}"
+      [title]="column.title"
+      format="{{column.format}}"
+      filter="{{column.type}}"
+      [filterable]="column.filterable"
+      [hidden]="column.hidden"
+      [width]="column.width"
+      [style]="{'padding': '2px', 'text-align': column.type === 'numeric' ? 'right' : column.type === 'date' ? 'center' : 'inherit'}"
+      >
+      <ng-template 
+        *ngIf='column.tipo == "GridPesquisaColumnFormat"'
+        kendoGridCellTemplate 
+        let-dataItem>
+        <span>
+          {{executarFormatacaoColuna(columnIndex, dataItem)}}
+        </span>
+      </ng-template>
+      <ng-template 
+        *ngIf='column.tipo == "GridPesquisaColumnAgregada"'
+        kendoGridCellTemplate 
+        let-dataItem>
+        <span *ngFor="let campo of getGridPesquisaColumnsAgregadas(column.field); let odd = odd">
+          <span *ngIf='!odd'>{{dataItem[campo]}}</span>
+          <span *ngIf='odd'>{{campo}}</span>
+        </span>
+      </ng-template>
+      <ng-template 
+        *ngIf='column.type == "boolean"'
+        kendoGridCellTemplate 
+        let-dataItem>
+        <span 
+          *ngIf='dataItem[column.field] == true'
+          i18n="Sim|Opção exibida na coluna do grid quando o valor for iguala a true@@grid_pesquisa_component_coluna_boolean_true">
+          Sim
+        </span>
+        <span 
+          *ngIf='dataItem[column.field] == false || dataItem[column.field] == null'
+          i18n="Não|Opção exibida na coluna do grid quando o valor for iguala a false ou null@@grid_pesquisa_component_coluna_boolean_false">
+          Não
+        </span>
+      </ng-template>
+      <ng-template 
+        *ngIf='column.type == "boolean"'
+        kendoGridFilterMenuTemplate
+        let-column="column"
+        let-filter="filter"
+        let-filterService="filterService">
+        <div class='filtroBoolean'>
+          <div>
+            <input 
+              type="radio" 
+              [name]="'optSim'+column.field" 
+              [id]="'optSim'+column.field" 
+              value="Sim" 
+              (change)="filtroBooleanAlterado($event, filterService, column.field)" 
+              [checked]='persistenciaFiltroBoolean[column.field] == true'
+              kendoRadioButton />
+            <label 
+              [for]="'optSim'+column.field"
+              i18n="Sim|Texto exibido como opção do filtro@@grid_pesquisa_component_filtro_boolean_true"
+            >Sim</label>
+          </div>
+          <div>
+            <input 
+              type="radio" 
+              [name]="'optNao'+column.field" 
+              [id]="'optNao'+column.field" 
+              value="Não" 
+              (change)="filtroBooleanAlterado($event, filterService, column.field)" 
+              [checked]='persistenciaFiltroBoolean[column.field] == false'
+              kendoRadioButton />
+            <label 
+              [for]="'optNao'+column.field" 
+              i18n="Não|Texto exibido como opção do filtro@@grid_pesquisa_component_filtro_boolean_false"
+            >Não</label>
+          </div>
+        </div>
+        
+        <!-- <kendo-switch
+            offLabel="Não"
+            [checked]="'false'"
+            onLabel="Sim"
+            (valueChange)="filtroBooleanAlterado($event, filterService, column.field)">
+        </kendo-switch> -->
+    </ng-template>
+  </kendo-grid-column> 
+  <ng-template kendoGridDetailTemplate let-dataItem *ngIf="gridPesquisaDetalheTemplateDirective">
+    <section>
+      <ng-container *ngTemplateOutlet="gridPesquisaDetalheTemplateDirective.templateRef; context: {$implicit: dataItem}"></ng-container>
+    </section>
+  </ng-template>
+  <ng-template kendoGridDetailTemplate let-dataItem *ngIf="camposDetalheLinha && !gridPesquisaDetalheTemplateDirective">
+    <section >
+        <div class="container">
+            <span class="row">
+                <div class="col-md-1" *ngIf="gridPesquisaBotaoDetalhesOrientacao!='vertical'"></div>
+                <div class="col-md-1" *ngIf="gridPesquisaBotaoDetalhesOrientacao=='vertical'">
+                    <div class="container">
+                        <div class="row" *ngFor="let botao of listGridPesquisaBotaoDetalhes">
+                            <div class="col-md-12">
+                                <button kendoButton 
+                                class="form-control btn-coluna"
+                                (click)="executarAcaoBotao(botao, dataItem)"
+                                [primary]="true">{{botao.nome}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-11">
+                    <div class="container">
+                        <div *ngFor="let column of camposDetalheLinha">
+                            <span *ngIf='column.detalheGrid == true' class="row">
+                                <div class="col-sm-3 ">
+                                    <strong>
+                                        {{column.nomeColuna}}: 
+                                    </strong>
+                                </div>
+                                <div class="col-sm-9">
+                                    {{dataItem[column.nomePropriedade]}}
+                                </div>
+                                <!-- <span>
+                                  <strong>
+                                      {{column.nomeColuna}}: 
+                                  </strong>
+                                </span>
+                                <span>{{dataItem[column.nomePropriedade]}}</span> -->
+                            </span>
+                        </div>
+                        <span class="row col-btn-linha" *ngIf="gridPesquisaBotaoDetalhesOrientacao=='horizontal'">
+                            <div class="col-sm-12" >
+                                <button kendoButton *ngFor="let botao of listGridPesquisaBotaoDetalhes"
+                                [style.width]="botao.width + 'px'"
+                                class="form-control btn-horizontal "
+                                (click)="executarAcaoBotao(botao, dataItem)"
+                                [primary]="true">{{botao.nome}}</button>
+                            </div>
+                        </span>
+                    </div>  
+                </div>
+            </span>
+        </div>
+        
+      
+    </section>
+  </ng-template>
+    
+
+    <!-- https://github.com/telerik/kendo-angular-messages/blob/develop/messages/grid/grid.pt-BR.yml -->
+  <!-- <kendo-grid-messages
+        pagerPage="Página"
+        pagerOf="de"
+        pagerItems="itens"
+        pagerItemsPerPage="itens por página"
+        noRecords="Nenhum registro encontrado"
+        pagerFirstPage="Ir para a primeira página"
+        pagerPreviousPage="Ir para a página anterior"
+        pagerNextPage="Ir para a próxima página"
+        pagerLastPage="Ir para a última página"
+        groupPanelEmpty="Arraste aqui o cabeçalho de uma coluna para agrupar por esta coluna"
+        filterEqOperator="É igual a"
+        filterNotEqOperator="Não é igual a"
+        filterIsNullOperator="É nulo"
+        filterIsNotNullOperator="É não nulo"
+        filterIsEmptyOperator="É vazio"
+        filterIsNotEmptyOperator="É não vazio"
+        filterStartsWithOperator="Começa com"
+        filterContainsOperator="Contém"
+        filterNotContainsOperator="Não contém"
+        filterEndsWithOperator="Termina com"
+        filterGteOperator="É maior que ou igual a"
+        filterGtOperator="É maior que"
+        filterLteOperator="É menor que ou igual a"
+        filterLtOperator="É menor que ou igual a"
+        filterIsTrue="É verdade"
+        filterIsFalse="É falso"
+        filterBooleanAll="(Todos)"
+        filterAfterOrEqualOperator="É posterior ou igual a"
+        filterAfterOperator="É posterior a"
+        filterBeforeOperator="É anterior a"
+        filterBeforeOrEqualOperator="É anterior ou igual a"
+        filterFilterButton="Filtrar"
+        filterClearButton="Limpar"
+        filterAndLogic="E"
+        filterOrLogic="OU" >
+  </kendo-grid-messages> -->
+  <kendo-grid-messages></kendo-grid-messages>
+      
+</kendo-grid> 

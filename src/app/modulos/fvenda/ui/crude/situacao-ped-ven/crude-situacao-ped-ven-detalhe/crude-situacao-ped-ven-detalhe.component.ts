@@ -1,0 +1,171 @@
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ApiErrorCollection } from '../../../../../../api-error/api-error-collection';
+import { CabecalhoBreadcrumbService } from '../../../../../../componentes/cabecalho-breadcrumb/cabecalho-breadcrumb.service';
+import { CadastroBarraAcaoComponent } from '../../../../../../componentes/cadastro-barra-acao/cadastro-barra-acao.component';
+import { ApiSituacaoPedVenService } from '../../../../api/api-situacao-ped-ven.service';
+import { ModelSituacaoPedVen } from '../../../../models/model-situacao-ped-ven';
+import { Location } from "@angular/common";
+@Component({
+  selector: 'app-crude-situacao-ped-ven-detalhe',
+  templateUrl: './crude-situacao-ped-ven-detalhe.component.html',
+  styleUrls: ['./crude-situacao-ped-ven-detalhe.component.scss']
+})
+export class CrudeSituacaoPedVenDetalheComponent implements OnInit {
+
+  @ViewChild('cadastroBarraAcao', { static: true }) cadastroBarraAcao: CadastroBarraAcaoComponent;
+  @ViewChild('breadcrumb_traducao', { static: true }) breadcrumb_traducao: ElementRef;
+
+  public meuForm: FormGroup;
+  public modelSituacaoPedVen: ModelSituacaoPedVen;
+  public apiErrorCollection: ApiErrorCollection;
+  private operacao: 'inclusao' | 'edicao';
+
+  constructor(
+    public cabecalhoBreadcrumbService: CabecalhoBreadcrumbService,
+    private formB: FormBuilder,
+    private route: ActivatedRoute,
+    public apiSituacaoPedVenService: ApiSituacaoPedVenService,
+    private _location: Location
+  ) {
+    this.apiErrorCollection = new ApiErrorCollection();
+    this.modelSituacaoPedVen = new ModelSituacaoPedVen();
+  }
+
+  ngOnInit() {
+    this.inicializarDados();
+    this.criarBreadCrumbs();
+  }
+
+  private inicializarDados() {
+    this.criarForm(true);
+    this.configurarStatusForm();
+    this.getSituacaoPedidoVenda();
+  }
+
+  private criarBreadCrumbs() {
+    var id = this.route.snapshot.paramMap.get('id');
+    var traducao: string = this.breadcrumb_traducao.nativeElement.innerText;
+    this.cabecalhoBreadcrumbService.setNomeBreadcrumbRotaAtual(traducao + ' ' + id);
+  }
+
+  private configurarStatusForm() {
+    var id = +this.route.snapshot.paramMap.get('id');
+
+    if (id > 0) {
+      this.meuForm.get('inCodSituacaoPedVen').disable();
+    }
+  }
+
+  private criarForm(emEdicao: boolean) {
+    if (this.meuForm) {
+      this.cadastroBarraAcao.formGroupDatabind.setValues(this.meuForm, this.modelSituacaoPedVen, emEdicao);
+    } else {
+      this.meuForm = this.formB.group({
+        inCodSituacaoPedVen: [this.modelSituacaoPedVen.inCodSituacaoPedVen, Validators.required],
+        chDescricao: [this.modelSituacaoPedVen.chDescricao, Validators.required],
+        lgPermRedigitar: [this.modelSituacaoPedVen.chDescricao],
+        lgPermDevolver: [this.modelSituacaoPedVen.chDescricao],
+        lgPermCancelar: [this.modelSituacaoPedVen.chDescricao],
+      });
+    }
+  }
+
+  private getSituacaoPedidoVenda() {
+    var id: number;
+    id = +this.route.snapshot.paramMap.get('id');
+
+    if (id == 0) {
+      this.modelSituacaoPedVen = new ModelSituacaoPedVen();
+      this.modelSituacaoPedVen.inCodSituacaoPedVen = null;
+      this.modelSituacaoPedVen.chDescricao = "";
+      this.modelSituacaoPedVen.lgPermRedigitar = null;
+      this.modelSituacaoPedVen.lgPermDevolver = null;
+      this.modelSituacaoPedVen.lgPermCancelar = null;
+
+
+      this.operacao = 'inclusao';
+      this.criarForm(true);
+    } else {
+      this.cadastroBarraAcao.exibirAguarde();
+      this.apiSituacaoPedVenService.obter(id).then(
+        dados_API => {
+          this.modelSituacaoPedVen = dados_API;
+          this.operacao = 'edicao';
+          this.criarForm(false);
+          this.cadastroBarraAcao.esconderAguarde();
+        },
+        erro => {
+          this.cadastroBarraAcao.esconderAguarde();
+          this.apiErrorCollection = erro;
+        }
+      );
+    }
+  }
+
+  private coletarDadosForm() {
+    this.cadastroBarraAcao.formGroupDatabind.getValues(this.meuForm, this.modelSituacaoPedVen);
+  }
+
+  btnCancelar() {
+    this.cadastroBarraAcao.exibirAguarde();
+    this.getSituacaoPedidoVenda();
+    this.cadastroBarraAcao.esconderAguarde();
+  }
+
+  btnConfirmar() {
+    this.cadastroBarraAcao.exibirAguarde();
+    this.coletarDadosForm();
+    if (this.operacao == 'edicao') {
+      this.alterar();
+    } else {
+      this.incluir();
+    }
+  }
+
+  btnExcluir() {
+    this.apiSituacaoPedVenService.excluir(this.modelSituacaoPedVen.inCodSituacaoPedVen).then(
+      sucesso => {
+        this._location.back();
+      },
+      erro => {
+        this.apiErrorCollection = erro;
+      }
+    );
+  }
+
+  alterar() {
+    this.apiSituacaoPedVenService.alterar(this.modelSituacaoPedVen).then(
+      sucesso => {
+        this.apiErrorCollection = new ApiErrorCollection();
+        this.modelSituacaoPedVen = sucesso;
+        this.criarForm(false);
+        this.cadastroBarraAcao.esconderAguarde();
+      },
+      erro => {
+        console.error('erro = ', erro);
+        this.apiErrorCollection = erro;
+        this.cadastroBarraAcao.esconderAguarde();
+      }
+    );
+  }
+
+  incluir() {
+    this.apiSituacaoPedVenService.criar(this.modelSituacaoPedVen).then(
+      sucesso => {
+        this.apiErrorCollection = new ApiErrorCollection();
+        this.modelSituacaoPedVen = sucesso;
+        this.meuForm.controls['inCodSituacaoPedVen'].disable();
+        this.criarForm(false);
+        this.operacao = 'edicao';
+        this.cadastroBarraAcao.esconderAguarde();
+      },
+      erro => {
+        console.error('erro = ', erro);
+        this.apiErrorCollection = erro;
+        this.cadastroBarraAcao.esconderAguarde();
+      }
+    );
+  }
+}

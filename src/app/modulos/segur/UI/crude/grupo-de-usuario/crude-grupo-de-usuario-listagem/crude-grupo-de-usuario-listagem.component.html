@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb do grupo de usúarios@@crude-grupo-de-usuario-listagem.breadcrumb">
+  Início/Grupo Usuários/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de grupo de usuario@@crude-grupo-de-usuario-listagem.titulo">
+    GRUPO DE USUÁRIOS
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaGrupoUsuario"
+  [apiService]='apiGrupoUsuarioService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='chCodGrupoUsuario'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

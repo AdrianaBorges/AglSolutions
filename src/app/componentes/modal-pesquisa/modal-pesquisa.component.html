@@ -1,0 +1,54 @@
+<kendo-window 
+  id='alterarSenhaComponent'
+  *ngIf="opened"
+  [draggable]="true"
+  [width] ="width"
+  [height]="height"
+  [resizable]="true"
+  [state]="default"
+  (stateChange)="onStateChange($event)"
+  autofocus
+  [class.sombreado-janela]='true'
+  class="window"
+>
+<kendo-window-titlebar>
+  <div class='k-window-title'>{{titulo}}</div>
+  <button kendoButton (click)="cadastrar($event)" [icon]="'add'" [look]="'bare'" *ngIf='exibirBotaoAdd'></button>
+  <button kendoButton (click)="fechar($event)" [icon]="'close'" [look]="'bare'"></button>
+</kendo-window-titlebar>
+
+  <div class="invalido" *ngIf='erros.mensagem_geral != null'>
+    {{erros.mensagem_geral}}
+  </div>
+  
+  <app-grid-pesquisa
+  #gridPesquisa
+  [style.width]="(width - 32) + 'px'"
+  
+  [apiService]='apiService'
+  [nomeMetodoApi]='nomeMetodoApi'
+  [colunasGrid]='colunasGrid'
+  [pageSize]='pageSize'
+
+  [pageSize]='pageSize'
+  (mudouSelecao)='selectionChange($event)'
+  (resultadosTotaisMudou)='resultadosTotaisMudou($event)'
+  [esconderColunaButoesAcao]="true"
+  [naoPersistirFiltro]="true"
+  >
+
+  </app-grid-pesquisa>
+
+  <form class="k-form botoesModal">
+    <div class="text-right">
+        <button type="button" class="k-button btn-filtro-acao" (click)="cancelar()"
+        i18n="botão cancelar|botão Cancelar da seleção de um novo registro para coleta de chave estrangeira@@componente.modalPesquisaComponente.cancelar"
+        >Cancelar</button>
+        <button 
+        type="button" class="k-button k-primary" (click)="confirmar()"
+        i18n="botão confirmar|botão Conformar da seleção de um novo registro para coleta de chave estrangeira@@componente.modalPesquisaComponente.confirmar"
+        >Confirmar</button>
+    </div>
+  </form>
+  
+</kendo-window>

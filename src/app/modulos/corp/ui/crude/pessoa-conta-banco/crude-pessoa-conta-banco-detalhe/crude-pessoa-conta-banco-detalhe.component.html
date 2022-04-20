@@ -1,0 +1,240 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o codigo ID da conta bancária@@crude-pessoa-conta-banco-detalhe.label.IDPessoaContaBanco">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDPessoaContaBanco']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDPessoaContaBanco"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="'false'"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Banco|Identifica o banco associado a pessoa@@crude-pessoa-conta-banco-detalhe.label.inCodBanco">
+              Banco
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodBanco']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            [apiService]='apiBancoService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir='chNome'
+            apiFieldKey='inCodBanco'
+            formControlName='inCodBanco'>
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Conta|Identifica o tipo de conta associado a pessoa@@crude-pessoa-conta-banco-detalhe.label.inCodTipoContaBanco">
+              Tipo de Conta
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoContaBanco']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            [apiService]='apiTipoContaService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir='chDescricao'
+            apiFieldKey='inCodTipoContaBanco'
+            formControlName='inCodTipoContaBanco'>
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Agência|Identifica a agência do banco da pessoa@@crude-pessoa-conta-banco-detalhe.label.chAgencia">
+              Agência
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chAgencia']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chAgencia" maxlength="10" />
+        </label>
+      </div>
+      <div class="form-group col-md-1">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label DV Agência|Identifica o digito verificador da agência do banco da pessoa@@crude-pessoa-conta-banco-detalhe.label.chDVAgencia">
+              DV
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDVAgencia']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDVAgencia" maxlength="2" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Conta|Identifica a conta do banco da pessoa@@crude-pessoa-conta-banco-detalhe.label.chConta">
+              Conta
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chConta']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chConta" maxlength="20" />
+        </label>
+      </div>
+      <div class="form-group col-md-1">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label DV Conta|Identifica o digito verificador da conta do banco da pessoa@@crude-pessoa-conta-banco-detalhe.label.chDVConta">
+              DV
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDVConta']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDVConta" maxlength="2" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Documento|Identifica o tipo de documento associado a pessoa@@crude-pessoa-conta-banco-detalhe.label.inCodTipoDocumento">
+              Tipo de Documento
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoDocumento']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            [apiService]='apiTipoDocumentoService'
+            apiNomeMetodoListar='listarDocPrinc'
+            apiFieldExibir='chDesTipoDocumento'
+            apiFieldKey='inCodTipoDocumento'
+            formControlName='inCodTipoDocumento'>
+          </app-api-select>
+        </label>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Numero do Documento|Identifica o número do documento da pessoa@@crude-pessoa-conta-banco-detalhe.label.inNumIdentificacaoTitular">
+              Número do Documento
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumIdentificacaoTitular']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-maskedtextbox
+            id="inputMaskIdentificador" 
+            [mask]="habilitarMask()"
+            formControlName="inNumIdentificacaoTitular"
+            (keypress)="numberOnly($event)"
+            style="width:150px">
+          </kendo-maskedtextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome do Titular da Conta|Identifica o tipo de documento associado a pessoa@@crude-pessoa-conta-banco-detalhe.label.chNomeTitular">
+              Nome do Titular da Conta
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeTitular']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeTitular" maxlength="50" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Inclusão|Identifica se a pessoa física no CRUDE é Politicamente Exposta@@crude-pessoa-conta-banco-detalhe.label.dtDatInclusao">
+            Inclusão
+          </span>
+          <span>
+            {{modelPessoaContaBanco.dtDatInclusao | date: 'short'}}
+          </span>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Última Alteração|Identifica a data da Última Alteração do cadastro de pessoa física no CRUDE@@crude-pessoa-conta-banco-detalhe.label.dtDatUltAlteracao">
+            Última Alteração
+          </span>
+          <span>
+            {{(modelPessoaContaBanco.dtDatUltAlteracao == null? textoTraducaoSemAlteracao.innerText: modelPessoaContaBanco.dtDatUltAlteracao | date: 'short' )}}
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <span #textoTraducaoSemAlteracao style="display:none;"
+      i18n="Informativo do label Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-pessoa-fisica.label.info.semAlteracao">
+      Não houve alteração ainda
+    </span>
+
+  </form>
+</app-cadastro-barra-acao>

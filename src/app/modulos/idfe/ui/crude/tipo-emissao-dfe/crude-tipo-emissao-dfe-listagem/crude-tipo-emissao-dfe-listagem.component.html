@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE Tipo De Emissão Do DFe@@crude-tipo-emissao-dfe-listagem.breadcrumb">
+  Início/Tipo Emissão DFe/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Tipo De Emissão Do DFe@@crude-tipo-emissao-dfe-listagem.titulo.tipo-emissao-dfe">
+    TIPO DE EMISSÃO DO DFe
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaTipoEmissaoDfe"
+  [apiService]='apiTipoEmissaoDfeService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodTipoEmissaoDFe'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

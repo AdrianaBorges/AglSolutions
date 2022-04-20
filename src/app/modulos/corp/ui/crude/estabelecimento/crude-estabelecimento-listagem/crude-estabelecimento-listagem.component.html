@@ -1,0 +1,5 @@
+<app-grid-pesquisa #gridFiltro idGrid="pesquisaCrudeEstabelecimento" [apiService]='apiEstabelecimentoService'
+  nomeMetodoOrdenacao='mudarOrdenacao' nomeMetodoApi='listar' apiFieldKey='IDEstabelec'
+  [colunasGrid]='getColunasGridCadastro()' pageSize='15'
+  [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilho'>
+</app-grid-pesquisa>

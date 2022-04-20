@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE de Tipo de Papel da Pessoa@@crude-tipo-papel-listagem.breadcrumb">
+  Início/Tipo Papel/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Tipo de Papel da Pessoa@@crude-tipo-papel-listagem.titulo.tipo-papel">
+  TIPO DE PAPEL DA PESSOA
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaTipoPapel"
+  [apiService]='apiTipoPapelService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodTipoPapel'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

@@ -1,0 +1,149 @@
+<app-cadastro-barra-acao 
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o codigo ID da sequencia valor@@crude-sequencia-valor-detalhe.label.IDSequenciaValor">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDSequenciaValor']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDSequenciaValor" 
+            [format]="'N0'"
+            [min]="0" 
+            [max]="999999999" 
+            [autoCorrect]="false" 
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor Inicial|Identifica o valor inicial do valor da sequencia@@crude-sequencia-valor-detalhe.label.inNumLimInferior">Valor Inicial</ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumLimInferior']"
+            ></app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox required
+            formControlName="inNumLimInferior" 
+            [format]="'N0'"
+            [min]="0" 
+            [max]="999999999999999" 
+            [autoCorrect]="'true'" 
+            [spinners]="false">
+          </kendo-numerictextbox>            
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor Final|Identifica o valor final do valor da sequencia@@crude-sequencia-valor-detalhe.label.inNumLimSuperior">
+              Valor Final
+            </ng-container> 
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumLimSuperior']"
+            ></app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            required
+            formControlName="inNumLimSuperior" 
+            [format]="'N0'"
+            [min]="0" 
+            [max]="999999999999999" 
+            [autoCorrect]="'true'" 
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Incremento|Identifica o valor do incremento do valor da sequencia@@crude-sequencia-valor-detalhe.label.inNumIncremento">
+              Incremento
+            </ng-container> 
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumIncremento']"
+            ></app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            required
+            formControlName="inNumIncremento" 
+            [format]="'N0'"
+            [min]="0" 
+            [max]="999" 
+            [autoCorrect]="'true'" 
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Último Valor|Identifica o último valor do valor da sequencia@@crude-sequencia-valor-detalhe.label.inNumUltimo">
+              Último Valor
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumUltimo']"
+            ></app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inNumUltimo" 
+            [format]="'N0'"
+            [min]="0" 
+            [max]="999999999999999" 
+            [autoCorrect]="'true'" 
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+              <ng-container i18n="Label Data da ultima utilizacao|Identifica a data da ultima utilização do valor da sequencia@@crude-sequencia-valor-detalhe.label.dtDatUltNum">Última Utilização</ng-container> 
+              <app-form-control-alerta-erro-api
+                [mensagemErro]="apiErrorCollection.campos['dtDatUltNum']"
+              ></app-form-control-alerta-erro-api>
+            </span>
+            {{(modelSequenciaValor.dtDatUltNum == null? textoTraducaoSemAlteracao.innerText: modelSequenciaValor.dtDatUltNum | date: 'short' )}}
+        </label>
+      </div>
+    </div>
+
+    <span  
+      #textoTraducaoSemAlteracao
+      style="display:none;"
+      i18n="Informativo do label Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-sequencia-valor.label.info.semAlteracao">
+      Não houve utilização ainda
+    </span>
+
+  </form>
+</app-cadastro-barra-acao>

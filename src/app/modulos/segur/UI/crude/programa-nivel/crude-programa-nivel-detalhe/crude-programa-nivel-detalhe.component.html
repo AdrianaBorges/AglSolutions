@@ -1,0 +1,159 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb do programa@@crude-programa-nivel-detalhe.breadcrumb">
+  Nível ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'
+  apiFieldKey='IDProgramaNivel'
+  nomeParametroIdRota='IDProgramaNivel'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab usuario de Programa@@tabs-programa.tab.titulo.niveis">
+      NÍVEL DO PROGRAMA
+    </div>
+    <div>
+      <span i18n="Detalhes Programa|texto que precede os dados de Programa@@tabs-programa.tab.titulo.dadosPrograma">
+        Programa:
+      </span>
+      {{modelPrograma.chCodPrograma}} - {{modelPrograma.chDesTitPrograma}}
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o codigo ID do Programa nivel@@crude-programa-nivel-detalhe.label.IDProgramaNivel">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDProgramaNivel']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDProgramaNivel"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-5">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o codigo do Programa nivel@@crude-programa-nivel-detalhe.label.inCodNivel">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodNivel']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodNivel"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica o Descrição@@crude-programa-nivel-detalhe.label.chDesProgramaNivel">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesProgramaNivel']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDesProgramaNivel" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Comando/Link|Identifica o Comando/Link@@crude-programa-nivel-detalhe.label.chDesComandoExecuta">
+              Comando/Link
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesComandoExecuta']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDesComandoExecuta" maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Operações|Identifica o Operações@@crude-programa-nivel-detalhe.label.chDesOperacao">
+              Operações
+            </ng-container>
+            <span class="k-required">*</span>
+            <ng-container i18n="Label Operações det|Identifica o Operações det@@crude-programa-nivel-detalhe.label.det.chDesOperacao">
+              (Lista de Operações Separadas por virgula "," / Para acesso completo colocar apenas asterisco"*")
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesOperacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesOperacao" rows="5" style="width: 100%;">
+          </textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Observação|Identifica o Observação@@crude-programa-nivel-detalhe.label.chDesObservacao">
+              Observação</ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesObservacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesObservacao" rows="5" style="width: 100%;">
+          </textarea>
+        </label>
+      </div>
+    </div>
+  </form>
+  <app-cadastro-barra-acao-container-botoes>
+    <app-cadastro-barra-acao-botao
+      id="btnAcaoExibirSegurancaPrograma s"
+      icone='redo'
+      rotaFilha_url='seguranca-programa'
+      rotaFilha_tooltip='Exibir Lista de Segurança do Programa'
+      i18n-rotaFilha_tooltip="botão para exibir o crude de segurança do programa|btnAcaoExibirSegurancaPrograma@@crude-programa-nivel-detalhe.grid.btn.acao.seguranca">
+    </app-cadastro-barra-acao-botao>
+  </app-cadastro-barra-acao-container-botoes>
+</app-cadastro-barra-acao>

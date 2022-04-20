@@ -1,0 +1,558 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE de Assistência Técnica para Venda@@crude-ass-tecnica-detalhe.breadcrumb">
+  Assistência Técnica ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Assistência Técnica@@crude-ass-tecnica-detalhe.titulo.ass-tecnica">
+      ASSISTÊNCIA TÉCNICA
+    </div>
+  </h1>
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do CRUDE@@crude-ass-tecnica.label.IDAssTecnica">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDAssTecnica']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDAssTecnica"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-4"></div>
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação|Identifica a Situação no CRUDE@@crude-ass-tecnica.label.inCodSituacaoAssTec">
+              Situação:
+            </ng-container>
+            {{modelAssTecnicaEL01.chDesSituacaoAssTec }}
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodSituacaoAssTec']">
+            </app-form-control-alerta-erro-api>
+          </span>
+        </label>
+        <img [src]="getImageSituacao()" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Estabelecimento|Identifica o Estabelecimento@@crude-ass-tecnica.label.IDEstabelec">
+              Estabelecimento
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDEstabelec']">
+            </app-form-control-alerta-erro-api>
+          </span>
+         <app-api-select
+            placeholder='selecione'
+            required
+            formControlName='IDEstabelec'
+            [apiService]='apiEstabelecimentoService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNome"
+            apiFieldKey="IDEstabelec">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Número@@crude-ass-tecnica.label.inNumAssTecnica">
+              Número
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumAssTecnica']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="inNumAssTecnica" name="inNumAssTecnica" id="inNumAssTecnica" disabled="true" />
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data Abertura|Identifica o Data Abertura@@crude-ass-tecnica.label.dtDatAbertura">
+              Data Abertura
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatAbertura']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datetimepicker required formControlName='dtDatAbertura'></kendo-datetimepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo|Identifica o Tipo@@crude-ass-tecnica.label.inCodTipoAssTec">
+              Tipo
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoAssTec']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+            placeholder='selecione' 
+            required 
+            formControlName='inCodTipoAssTec'
+            [apiService]='apiTipoAssTecEL01Service' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodTipoAssTec">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Origem|Identifica o Origem@@crude-ass-tecnica.label.inCodOrigemAssTec">
+              Origem
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodOrigemAssTec']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+            placeholder='selecione' 
+            required 
+            formControlName='inCodOrigemAssTec'
+            [apiService]='apiOrigemAssTecService' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodOrigemAssTec">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cliente|Identifica o Cliente no CRUDE@@crude-ass-tecnica.label.IDClienteVenda">
+              Cliente
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDClienteVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+           <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_Cliente'
+            placeholder="selecione"
+            modalTitulo='Cliente'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiClienteEL02Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeCliente"
+            [colunasGrid]="apiClienteEL02Service.getColunasGrid()"
+            apiFieldKey="inCodCliente"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='Código'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigo'
+            (valorAlterado)='mudancaRepresentante($event)'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome Contato Cliente|Identifica o Nome Contato Cliente no CRUDE@@crude-ass-tecnica.label.chNomContatoCliente">
+              Nome Contato Cliente
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomContatoCliente']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomContatoCliente" type="text" name="chNomContatoCliente" id="chNomContatoCliente" maxlength="50" />
+        </label>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Num.Pedido Cliente|Identifica o Num.Pedido Cliente no CRUDE@@crude-ass-tecnica.label.chNumPedCliente">
+            Num.Pedido Cliente
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumPedCliente']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNumPedCliente" type="text" name="chNumPedCliente" id="chNumPedCliente" maxlength="20" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Representante|Identifica o Representante no CRUDE@@crude-ass-tecnica.label.IDRepresentante">
+              Representante
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDRepresentante']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_Representante'
+            placeholder="selecione"
+            modalTitulo='Representante'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiRepresVendaEL01Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeRepresentante"
+            [colunasGrid]="apiRepresVendaEL01Service.getColunasGrid()" 
+            apiFieldKey="inCodRepresentante" 
+            [pageSize]="'10'"
+            pesquisaRapida="true" 
+            pesquisaRapidaTipo="number" 
+            pesquisaRapidaPlaceholder='Código' 
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigo'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Técnico|Identifica o Técnico@@crude-ass-tecnica.label.IDTecnico">
+              Técnico
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDTecnico']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='IDTecnico'
+            [apiService]='apiTecnicoEL01Service'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeTecnico"
+            apiFieldKey="IDTecnico" 
+            >
+<!-- (valorAlterado)="AlteraTecnico($event)" -->
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <!-- <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Técnico|Identifica o Técnico no CRUDE@@crude-ass-tecnica.label.IDPapelPessoaTecnico">
+              Técnico
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDPapelPessoaTecnico']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa #pesquisa
+            tipo='edicao'
+            formControlName='UIData_PapelPessoaTecnico'
+            placeholder="selecione"
+            modalTitulo='Técnico'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiPapelPessoaService'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomePessoa"
+            [colunasGrid]="apiPapelPessoaService.getColunasGrid()" 
+            apiFieldKey="IDPapelPessoa" 
+            [pageSize]="'10'"
+            pesquisaRapida="true" 
+            pesquisaRapidaTipo="number" 
+            pesquisaRapidaPlaceholder='ID' 
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obter'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div> -->
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número Atendimento|Identifica o Número Atendimento no CRUDE@@crude-ass-tecnica.label.chNumAtendExt">
+              Número Atendimento
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumAtendExt']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNumAtendExt" type="text" name="chNumAtendExt" id="chNumAtendExt" maxlength="50" />
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Num.Nota Fiscal Venda|Identifica oNum.Nota Fiscal Venda no CRUDE@@crude-ass-tecnica.label.chNumNFVendaFinal">
+              Num.Nota Fiscal Venda
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumNFVendaFinal']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNumNFVendaFinal" type="text" name="chNumNFVendaFinal" id="chNumNFVendaFinal" maxlength="20" />
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data Nota Fiscal Venda|Identifica o Data Nota Fiscal Venda no CRUDE@@crude-ass-tecnica.label.daDatVendaFinal">
+              Data Nota Fiscal Venda
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatVendaFinal']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker formControlName="daDatVendaFinal"></kendo-datepicker>
+        </label>
+      </div>    
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Série Nota Fiscal Entrada|Identifica o Série Nota Fiscal Entrada no CRUDE@@crude-ass-tecnica.label.chCodSerieNFEntrada">
+              Série Nota Fiscal Entrada
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodSerieNFEntrada']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodSerieNFEntrada" type="text" name="chCodSerieNFEntrada" id="chCodSerieNFEntrada" maxlength="5" />
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Num.Nota Fiscal Entrada|Identifica o Num.Nota Fiscal Entrada no CRUDE@@crude-ass-tecnica.label.chNumNFEntrada">
+              Num.Nota Fiscal Entrada
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumNFEntrada']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNumNFEntrada" type="text" name="chNumNFEntrada" id="chNumNFEntrada" maxlength="20" />
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data Nota Fiscal Entrada|Identifica o Data Nota Fiscal Entrada no CRUDE@@crude-ass-tecnica.label.daDatEmisNFEntrada">
+              Data Nota Fiscal Entrada
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatEmisNFEntrada']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker formControlName="daDatEmisNFEntrada"></kendo-datepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data Recebimento Item|Identifica o Data Recebimento Item no CRUDE@@crude-ass-tecnica.label.dtDatRecebItem">
+              Data Recebimento Item
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatRecebItem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker formControlName="dtDatRecebItem"></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Observações|Identifica o Observações no CRUDE@@crude-ass-tecnica.label.chDesObservacao">
+              Observações
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesObservacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesObservacao" rows="5" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row" *ngIf="modelAssTecnicaEL01.inCodSituacaoAssTec == 3">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Motivo Cancelamento|Identifica o Motivo Cancelamento no CRUDE@@crude-ass-tecnica.label.chDesMotivoCanc">
+              Motivo Cancelamento
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesMotivoCanc']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesMotivoCanc" rows="5" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <h1 kendoCardTitle>LOG de Inclusão</h1>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Inclusão|Identifica a Data de Inclusão@@crude-ass-tecnica.label.inclusao">
+                  Data/Hora:
+                </span>
+                <span>
+                  {{modelAssTecnicaEL01.dtDatInclusao | date: 'short'}}
+                </span>
+              </div>              
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Usuário Inclusão|Identifica o Usuário de Inclusão@@crude-ass-tecnica.label.UsuarioInclusao">
+                  Usuário:
+                </span>
+                <span>
+                  {{modelAssTecnicaEL01.chNomeUsuarioInclusao }}
+                </span>
+              </div>              
+            </label>
+          </div>
+        </div>    
+      </div>
+      <div class="form-group col-md-6">    
+        <h1 kendoCardTitle>LOG da Última Alteração</h1>    
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Alteração|Identifica a Data de Alteração@@crude-ass-tecnica.label.alteracao">
+                  Data/Hora:
+                </span>
+                <span>
+                  {{modelAssTecnicaEL01.dtDatUltAlteracao | date: 'short'}}
+                </span>
+              </div>              
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Usuário Alteração|Identifica o Usuário de Alteração@@crude-ass-tecnica.label.UsuarioAlteracao">
+                  Usuário:
+                </span>
+                <span>
+                  {{modelAssTecnicaEL01.chNomeUsuarioAlteracao }}
+                </span>
+              </div>              
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+      
+        <h1 kendoCardTitle>LOG de Encerramento</h1>
+      
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Encerramento|Identifica a Data de Encerramento@@crude-ass-tecnica.label.Encerramento">
+                  Data/Hora:
+                </span>
+                <span>
+                  {{modelAssTecnicaEL01.dtDatEncerram | date: 'short'}}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Usuário Encerramento|Identifica o Usuário de Encerramento@@crude-ass-tecnica.label.UsuarioEncerramento">
+                  Usuário:
+                </span>
+                <span>
+                  {{modelAssTecnicaEL01.chNomeUsuarioEncerram }}
+                </span>
+              </div>              
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

@@ -1,0 +1,23 @@
+<span
+  #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de Regiao Listagem@@crude-regiao-listagem.breadcrumb">
+  Regiãos: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Regiao@@crude-regiao-listagem.titulo.regiao">
+     REGIÃO
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaRegiao"
+  [apiService]='apiRegiaoService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='chCodRegiao'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

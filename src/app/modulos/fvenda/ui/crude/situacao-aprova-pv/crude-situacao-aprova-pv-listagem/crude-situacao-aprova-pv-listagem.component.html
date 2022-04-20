@@ -1,0 +1,25 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Situação da Solicitação de Aprovação de Pedido de Venda Listagem@@crude-situacao-aprova-pv-listagem.breadcrumb">
+  Situação: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Situação da Solicitação de Aprovação de Pedido de Venda@@crude-situacao-aprova-pv-listagem.titulo">
+    SITUAÇÃO DA SOLICITAÇÃO DE APROVAÇÃO DE PEDIDO DE VENDA
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaSituacaoSolAprPV"
+  [apiService]='apiSituacaoSolAprPvService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodSituacaoSolAprPV'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>
+

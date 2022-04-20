@@ -1,0 +1,24 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Motivo da Reijeição Listagem@@crude-motivo-rejeita-listagem.breadcrumb">
+  Motivo da Rejeição: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Motivo da Reijeição@@crude-motivo-rejeita-listagem.titulo.motivo-rejeita">
+    MOTIVO DA REJEIÇÃO
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaMotivoRejeita"
+  [apiService]='apiMotivoRejeitaService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodMotivoRejeita'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

@@ -1,0 +1,287 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Processo de Pedido de Bonificação - Rejeição@@crude-aprova-ped-bonif-aprova-detalhe.breadcrumb">
+  Pedido Bonificação - Aprovação ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da TabS|Título do conteúdo do CRUDE Processo de Aprovação de Pedido de Bonificação@@crude-aprova-ped-bonif-aprova-detalhe.titulo.aprova-ped-bonif-aprova">
+      PROCESSO DE PEDIDO DE BONIFICAÇÃO - APROVAÇÃO
+    </div>
+  </h1>
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-2 col-lg-2 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Número do CRUDE@@crude-aprova-ped-bonif-aprova-detalhe.label.IDSolicAprovPV">
+              Número
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDSolicAprovPV']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDSolicAprovPV"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-4 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data da Solicitação|Identifica a Data da Solicitação do CRUDE@@crude-aprova-ped-bonif-aprova-detalhe.label.dtDatSolic">
+              Data da Solicitação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatSolic']">
+            </app-form-control-alerta-erro-api>
+          </span>
+        <input kendoTextBox formControlName="dtDatSolic" type="text" name="dtDatSolic" id="dtDatSolic"  [value]="modelSolicAprovPVEL01.dtDatSolic | date: 'short'" />
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Usuário Solicitante|Identifica o Usuário Solicitante no CRUDE@@crude-aprova-ped-bonif-aprova-detalhe.label.chNomeUsuarioSolic">
+              Usuário Solicitante
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeUsuarioSolic']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeUsuarioSolic" type="text" name="chNomeUsuarioSolic" id="chNomeUsuarioSolic" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-10 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cliente|Identifica o Cliente no CRUDE@@crude-aprova-ped-bonif-aprova-detalhe.label.inCodCliente">
+              Cliente
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodCliente']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_Cliente'
+            placeholder="selecione"
+            modalTitulo='Cliente'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiClienteEL02Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeCliente"
+            [colunasGrid]="apiClienteEL02Service.getColunasGrid()"
+            apiFieldKey="inCodCliente"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='ID'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obter'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-10 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Repesentante|Identifica o Representante no CRUDE@@crude-aprova-ped-bonif-aprova-detalhe.label.inCodRepresentante">
+              Representante
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodRepresentante']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_Representante'
+            placeholder="selecione"
+            modalTitulo='Representante'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiRepresVendaEL01Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeRepresentante"
+            [colunasGrid]="apiRepresVendaEL01Service.getColunasGrid()"
+            apiFieldKey="inCodRepresentante"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='ID'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obter'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor Bonificação|Identifica o Valor Bonificação no CRUDE@@crude-aprova-ped-bonif-aprova-detalhe.label.deValBonific">
+              Valor Bonificação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValBonific']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deValBonific"
+            [format]="'C2'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-4 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor Venda|Identifica o Valor Venda no CRUDE@@crude-aprova-ped-bonif-aprova-detalhe.label.deValVenda">
+              Valor Venda
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deValVenda"
+            [format]="'C2'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-4 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label % Bonificação x Venda|Identifica o % Bonificação x Venda no CRUDE@@crude-aprova-ped-bonif-aprova-detalhe.label.dePercBonifXVenda">
+              % Bonificação x Venda
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dePercBonifXVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="dePercBonifXVenda"
+            [format]="'N2'"
+            [min]="0"
+            [max]="100"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Observação|Identifica a Observação no CRUDE@@crude-aprova-ped-bonif-aprova-detalhe.label.chDesObservacao">
+              Observação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesObservacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesObservacao" rows="6" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Motivo Aprovação|Identifica o Motivo ComplementAprovaçãoar no CRUDE@@crude-aprova-ped-bonif-aprova-detalhe.label.chDesMotivo">
+              Motivo Aprovação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesMotivo']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesMotivo" rows="6" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação Cadastral|Identifica o Situação Cadastral do cliente pessoa física no CRUDE@@crude-aprova-ped-bonif-aprova-detalhe.label.chDesSituacaoSolAprPV">
+              Situação da Solicitação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesSituacaoSolAprPV']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chDesSituacaoSolAprPV" name="chDesSituacaoSolAprPV" id="chDesSituacaoSolAprPV" />
+        </label>
+      </div>
+    </div>
+
+    <div class=" form-row">
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span i18n="Label Inclusão|Identifica a Data de Inclusão da Pessoa@@crude-aprova-ped-bonif-aprova-detalhe.label.inclusao">
+            Inclusão
+          </span>
+          <span>
+            {{modelSolicAprovPVEL01.dtDatInclusao | date: 'short'}}
+          </span>
+        </label>
+      </div>
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span i18n="Label Última Alteração|Identifica a data da Última Alteração do cadastro de pessoa física no CRUDE@@crude-aprova-ped-bonif-aprova-detalhe.label.ultimaAlteracao">
+            Última Alteração
+          </span>
+          <span>
+            {{(modelSolicAprovPVEL01.dtDatUltAlteracao == null? textoTraducaoSemAlteracao.innerText: modelSolicAprovPVEL01.dtDatUltAlteracao | date: 'short' )}}
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <span
+      #textoTraducaoSemAlteracao
+      style="display:none;"
+      i18n="Informativo do label Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-aprova-ped-bonif-aprova-detalhe.label.info.semAlteracao">
+      Não houve alteração ainda
+    </span>
+
+  </form>
+</app-cadastro-barra-acao>

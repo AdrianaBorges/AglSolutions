@@ -1,0 +1,284 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Campanha de Venda@@crude-campanha-detalhe.breadcrumb">
+  Campanha de Venda ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Campanha de Venda@@crude-campanha-detalhe.titulo.CampanhaVenda">
+      CAMPANHA DE VENDA
+    </div>
+  </h1>
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-2 col-lg-2 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do CRUDE@@crude-campanha.label.IDCampanha">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDCampanha']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDCampanha"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-4 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código do CRUDE@@crude-campanha.label.chCodCampanha">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodCampanha']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input maxlength="20" required kendoTextBox formControlName="chCodCampanha" type="text" name="chCodCampanha" id="chCodCampanha" />
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Campanha|Identifica o Tipo de Campanha no CRUDE@@crude-campanha.label.inCodTipoCampanha">
+              Tipo de Campanha
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoCampanha']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='inCodTipoCampanha'
+            [apiService]='apiTipoCampanhaService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodTipoCampanha"
+            (valorAlterado)='mudancaCampanha($event)'
+            required>
+            <kendo-combobox-column
+              field="inCodTipoCampanha"
+              i18n-title="Titulo Código|Identifica o titulo Código das opções de tipo de integração de campanha@@crude-campanha-detalhe.combo.tipo-campanha.codigo"
+              title="Código"
+              width="30">
+            </kendo-combobox-column>
+            <kendo-combobox-column
+              field="chDescricao"
+              i18n-title="Titulo Descrição|Identifica o titulo Descrição das opções de grupo de estabelecimento@@crude-campanha-detalhe.combo.tipo-campanha.descricao"
+              title="Descrição"
+              width="80">
+            </kendo-combobox-column>
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row" *ngIf="IsVendasAcumuladas()">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Origem das Vendas|Identifica o Origem das Vendas no CRUDE@@crude-campanha.label.inCodOrigemVenda">
+              Origem das Vendas
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodOrigemVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select #origemVenda
+            placeholder='selecione'
+            formControlName='inCodOrigemVenda'
+            [apiService]='apiTipoIntegraCampOrigemService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodTipoIntegraCamp"
+            required>
+            <kendo-combobox-column
+              field="inCodTipoIntegraCamp"
+              i18n-title="Titulo Código|Identifica o titulo Código das opções de tipo de integração de campanha@@crude-campanha-detalhe.combo.tipo-integra-camp.codigo"
+              title="Código"
+              width="30">
+            </kendo-combobox-column>
+            <kendo-combobox-column
+              field="chDescricao"
+              i18n-title="Titulo Descrição|Identifica o titulo Descrição das opções de tipo de integração de campanha@@crude-campanha-detalhe.combo.tipo-integra-camp.descricao"
+              title="Descrição"
+              width="80">
+            </kendo-combobox-column>
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-6 col-sm-12" >
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Destinos das Vendas|Identifica o Destinos das Vendas no CRUDE@@crude-campanha.label.inCodDestinoVenda">
+              Destinos das Vendas
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodDestinoVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select #destinoVenda
+            placeholder='selecione'
+            formControlName='inCodDestinoVenda'
+            [apiService]='apiTipoIntegraCampDestinoService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodTipoIntegraCamp"
+            required>
+            <kendo-combobox-column
+              field="inCodTipoIntegraCamp"
+              i18n-title="Titulo Código|Identifica o titulo Código das opções de tipo de integração de campanha@@crude-campanha-detalhe.combo.tipo-integra-camp.codigo"
+              title="Cód"
+              width="30">
+            </kendo-combobox-column>
+            <kendo-combobox-column
+              field="chDescricao"
+              i18n-title="Titulo Descrição|Identifica o titulo Descrição das opções de tipo de integração de campanha@@crude-campanha-detalhe.combo.tipo-integra-camp.descricao"
+              title="Desc"
+              width="80">
+            </kendo-combobox-column>
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+    <div class="form-row" *ngIf="IsSorteioIntantanio()">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Informar Prêmio Instantâneo|Identifica o Informar Prêmio Instantâneo no CRUDE@@crude-campanha.label.inCodInformaPremio">
+              Informar Prêmio Instantâneo
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodInformaPremio']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select #informaPremio
+            placeholder='selecione'
+            formControlName='inCodInformaPremio'
+            [apiService]='apiTipoIntegraCampPremioService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodTipoIntegraCamp"
+            required>
+            <kendo-combobox-column
+              field="inCodTipoIntegraCamp"
+              i18n-title="Titulo Código|Identifica o titulo Código das opções de tipo de integração de campanha@@crude-campanha-detalhe.combo.tipo-integra-camp.codigo"
+              title="Cód"
+              width="30">
+            </kendo-combobox-column>
+            <kendo-combobox-column
+              field="chDescricao"
+              i18n-title="Titulo Descrição|Identifica o titulo Descrição das opções de tipo de integração de campanha@@crude-campanha-detalhe.combo.tipo-integra-camp.descricao"
+              title="Desc"
+              width="80">
+            </kendo-combobox-column>
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica o Descrição no CRUDE@@crude-campanha.label.chDescricao">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox required formControlName="chDescricao" type="text" name="chDescricao" id="chDescricao" maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio Campanha|Identifica o Inicio Campanha no CRUDE@@crude-campanha.label.dtDatInicio">
+              Inicio Campanha
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatInicio']">
+            </app-form-control-alerta-erro-api>
+          </span>
+         <kendo-datetimepicker formControlName='dtDatInicio' required></kendo-datetimepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Fim Campanha|Identifica o Fim Campanha no CRUDE@@crude-campanha.label.dtDatFim">
+             Fim Campanha
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+         <kendo-datetimepicker formControlName='dtDatFim' required></kendo-datetimepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span i18n="Label Cliente Identificado na Venda|Identifica o Cliente Identificado na Venda no CRUDE@@crude-campanha.label.lgIdentifClienteVenda">
+            Cliente Identificado na Venda ?
+          </span>
+          <kendo-switch
+            [onLabel]="'sim'"
+            [offLabel]="'não'"
+            formControlName="lgIdentifClienteVenda"
+            name="lgIdentifClienteVenda"
+            [disabled]="destivarLg()"
+            id="lgIdentifClienteVenda" >
+          </kendo-switch>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação |Identifica o Situação  no CRUDE@@crude-campanha.label.chDesSituacaoCamp">
+              Situação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesSituacaoCamp']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chDesSituacaoCamp" name="chDesSituacaoCamp" id="chDesSituacaoCamp" disabled="true" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

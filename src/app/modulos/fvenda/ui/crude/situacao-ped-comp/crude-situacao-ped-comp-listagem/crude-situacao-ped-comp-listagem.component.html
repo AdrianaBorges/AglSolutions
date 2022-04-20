@@ -1,0 +1,24 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Situação do Pedido de Compra Listagem@@crude-situacao-ped-comp-listagem.breadcrumb">
+  Situação: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Situação do Pedido de Compra@@crude-situacao-ped-comp-listagem.titulo">
+    SITUAÇÃO DO PEDIDO DE COMPRA
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaSituacaoPedComp"
+  [apiService]='apiSituacaoPedCompService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodSituacaoPedComp'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

@@ -1,0 +1,259 @@
+<span
+  #breadcrumb_traducao
+  style="display: none"
+  i18n="breadcrumb|breadcrumb da operação relatório de exportação do pedido de compra do cliente@@fvenda.operacoes.oper0010.breadcrumb">
+  Exportação: Pedido Compra de Cliente
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do relatório de exportação do pedido de compra do cliente@@fvenda.operacoes.oper0010.titulo">
+    EXPORTAÇÃO DE PEDIDO DE COMPRA DE CLIENTE
+  </div>
+</h1>
+
+<app-operacao-barra-acao
+  [formGroupPesquisa]="formGroupPesquisa"
+  [apiSearchObject]="apiSearchObject"
+  [apiService]="apiOper0010Service"
+  nomeMetodoApi="executar"
+  modeloRelatorioNames="Modelo 01|Modelo 02"
+  modeloRelatorioCodigos="01298|78712"
+  [modoExibicao_arquivo]="true"
+  [modoExibicao_relatorio]="false"
+  (exibirErros)="exibirMensagemDeErros($event)">
+
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label for="inputTexto">Estabelecimento</label>
+        <app-filtro-multiselect
+          formControlName='chLstCodEstabelec'
+          [apiService]='apiEstabelecimentoService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chNomeAbreviado"
+          apiFieldKey="IDEstabelec">
+        </app-filtro-multiselect>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data|Identifica a Data do Pedido de Compra Inicial do Intervalo@@fvenda.operacoes.oper0010.label.daDatPedCompraIni">
+              Data do Pedido - De
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatPedCompraIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datetimepicker formControlName='daDatPedCompraIni' required></kendo-datetimepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data|Identifica a Data do Pedido de Compra Final do Intervalo@@fvenda.operacoes.oper0010.label.daDatPedCompraFim">
+              Até
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatPedCompraFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datetimepicker formControlName='daDatPedCompraFim' required></kendo-datetimepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Número do Pedido de Compra Inicial do Intervalo@@fvenda.operacoes.oper0010.label.inNumPedCompraIni">
+              Número do Pedido - de
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumPedCompraIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inNumPedCompraIni"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            >
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Número do Pedido de Compra Final do Intervalo@@fvenda.operacoes.oper0010.label.inNumPedCompraFim">
+              Até
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumPedCompraFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inNumPedCompraFim"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Número do Pedido do Cliente Inicial do Intervalo@@fvenda.operacoes.oper0010.label.chNumPedClienteIni">
+              Pedido do Cliente - De
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumPedClienteIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input maxlength="50" kendoTextBox formControlName="chNumPedClienteIni" type="text" name="chNumPedClienteIni" id="chNumPedClienteIni" />
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Número do Pedido do Cliente Final do Intervalo@@fvenda.operacoes.oper0010.label.chNumPedClienteFim">
+              Até
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumPedClienteFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input maxlength="50" kendoTextBox formControlName="chNumPedClienteFim" type="text" name="chNumPedClienteFim" id="chNumPedClienteFim" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Código do Cliente do Pedido de Compra Inicial do Intervalo@@fvenda.operacoes.oper0010.label.inCodClienteIni">
+              Cód.Cliente - De
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodClienteIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodClienteIni"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Código do Cliente do Pedido de Compra Final do Intervalo@@fvenda.operacoes.oper0010.label.inCodClienteFim">
+              Até
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodClienteFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodClienteFim"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Código do Representante do Pedido de Compra Inicial do Intervalo@@fvenda.operacoes.oper0010.label.inCodRepresIni">
+              Cód.Repres - De
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodRepresIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodRepresIni"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Código do Representante do Pedido de Compra Final do Intervalo@@fvenda.operacoes.oper0010.label.inCodRepresFim">
+              Até
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodRepresFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodRepresFim"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label for="inputTexto">Situação do Pedido</label>
+        <app-filtro-multiselect
+          formControlName='chLstCodSituacaoPedComp'
+          [apiService]='apiSituacaoPedCompService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chDescricao"
+          apiFieldKey="inCodSituacaoPedComp">
+        </app-filtro-multiselect>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label for="inputTexto">Modelo do Arquivo de Saída</label>
+        <kendo-combobox
+            id="comboTipoArquivoSaida"
+            formControlName="inOpcaoModelo"
+            textField="texto"
+            valueField="id"
+            [data]="modeloArquivo"
+            [valuePrimitive]="true"
+            [filterable]="true"
+            class="form-control"
+            required
+            >
+        </kendo-combobox>
+      </div>
+    </div>
+
+  </form>
+</app-operacao-barra-acao>

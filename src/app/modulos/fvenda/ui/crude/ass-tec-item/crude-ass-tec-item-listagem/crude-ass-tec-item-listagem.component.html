@@ -1,0 +1,95 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Item da Assistência Técnica@@crude-ass-tec-item.breadcrumb">
+  Item da Assistência Técnica: listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem do Item da Assistência Técnica@@crude-ass-tec-item.titulo">
+    ITEM DA ASSISTÊNCIA TÉCNICA
+  </div>
+  <div>
+    <span i18n="Detalhes  Estabelecimento Assistência Técnica|texto que precede os dados do EStabelecimento Assistência Técnica@@crude-ass-tec-item-listagem.titulo.dadosEstabelecimentoAssistenciaTecnica">
+      Estab:
+    </span>
+    {{modelAssTecnicaEL01.chCodEstabelec}} - {{modelAssTecnicaEL01.chNomAbrevEstabelec}} /
+    <span i18n="Detalhes  Número Assistência Técnica|texto que precede os dados do Número Assistência Técnica@@crude-ass-tec-item-listagem.titulo.dadosNumeroAssistenciaTecnica">
+      Número:
+    </span>
+    {{modelAssTecnicaEL01.inNumAssTecnica}} /
+    <span i18n="Detalhes  Abertura Assistência Técnica|texto que precede os dados do Abertura Assistência Técnica@@crude-ass-tec-item-listagem.titulo.dadosAberturaAssistenciaTecnica">
+      Abertura:
+    </span>
+    {{modelAssTecnicaEL01.dtDatAbertura | date: 'short'}}
+    <br/>
+    <span i18n="Detalhes Origem Assistência Técnica|texto que precede os dados do Origem Assistência Técnica@@crude-ass-tec-item-listagem.titulo.dadosOrigemAssistenciaTecnica">
+      Origem:
+    </span>
+    {{modelAssTecnicaEL01.chDesOrigemAssTec }} /
+    <span i18n="Detalhes  Tipo Assistência Técnica|texto que precede os dados do Tipo Assistência Técnica@@crude-ass-tec-item-listagem.titulo.dadosTipoAssistenciaTecnica">
+      Tipo:
+    </span>
+    {{modelAssTecnicaEL01.chDesTipoAssTec }} 
+  </div>
+</h1>
+
+<span
+  #traducao_msg_btnCancelar_sucesso
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de Cancelar@@crude-ass-tec-item-listagem.btn.btnCancelar.sucesso">
+  Item da Assistência Têcnica cancelado com Sucesso 
+</span>
+
+<span #traducao_msg_btnAtender_sucesso 
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de Atender@@crude-ass-tec-item-listagem.btn.btnAtender.sucesso">
+  Item da Assistência Têcnica atendido com Sucesso
+</span>
+<!-- [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilho' -->
+<app-grid-pesquisa #gridFiltro 
+  idGrid="pesquisaAssTecItemEL01" 
+  [apiService]='apiAssTecItemEL01Service' 
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar' 
+  apiFieldKey='IDAssTecItem' 
+  [colunasGrid]='getColunasGridCadastro()' 
+  pageSize='15'  
+  [rotaCadastro]='gridRotasCadastro' 
+  (colunaEditarBotaoClick)='colunaEditarBotaoClick($event)'
+  [btn_acao_exibir]='btn_acao_exibir'>
+ <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnCancelar"
+      icone='close'
+      rotaFilha_tooltip='Cancelar o Item da  Assistência Técnica'
+      i18n-rotaFilha_tooltip="botão para Cancelar o item da Assistência Técnica|btnCancelar@@crude-ass-tec-item-listagem.grid.btn.acao.Cancelar">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnAtender"
+      icone='check-circle'
+      rotaFilha_tooltip='Atender o Item da  Assistência Técnica'
+      i18n-rotaFilha_tooltip="botão para Atender o item da Assistência Técnica|btnAtender@@crude-ass-tec-item-listagem.grid.btn.acao.Atender">
+    </app-grid-pesquisa-botao-acao-linha>
+  </app-grid-pesquisa-container-botoes-acao-linha>
+</app-grid-pesquisa>
+
+<div class="k-overlay" *ngIf="AbrirModal"></div>
+<kendo-window #modal [(top)]='topModal' [(left)]="leftModal" *ngIf="AbrirModal" [draggable]="false" [minWidth]="250" [width]="500" >
+  <kendo-window-titlebar>
+    <div class="k-window-title">{{TituloModal}}</div>
+    <div class="text-right">
+      <button kendoWindowCloseAction (click)="DesistirModal()"></button>
+    </div>
+  </kendo-window-titlebar>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <textarea kendoTextArea class="k-textarea" [(ngModel)]="dadoModal" rows="5" style="width: 100%;"></textarea>
+    </div>
+  </div>
+  <div class="text-right">
+    <button type="button" class="k-button k-primary" [disabled]="dadoModal == ''"
+      (click)="EfetivarModal()">Confirmar</button>
+    <button type="button" class="k-button k-danger" (click)="DesistirModal()">Cancelar</button>
+  </div>
+</kendo-window>

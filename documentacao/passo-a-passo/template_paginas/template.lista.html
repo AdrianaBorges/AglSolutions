@@ -1,0 +1,63 @@
+<!--
+    ATENÇÃO!
+
+    Todos os filtros devem ser declarados dentro da DIV com a classe "area-filtro"
+
+    Toda linha de componentes da área de filtro deve é identificada pela DIV com a 
+    classe "form-row"
+
+    Nesse exemplo temos apenas uma linha de filtros cujos 2 ultimos componentes são 
+    os botões para criar um novo registro, substitua os componentes de filtro assim
+    como os botões de NOVO de acordo com seu CRUDE.
+ -->
+<div class="area-filtro">
+    <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputTexto">Tipo de pessoa</label>
+                <app-filtro-multiselect
+                formControlName='listaTipoPessoa'
+                
+                [apiService]='apiPessoaTipoPessoaService'
+                apiNomeMetodoListar='listar'
+                apiFieldExibir="chDesTipoPessoa"
+                apiFieldKey="inCodTipoPessoa"
+
+                placeholder="ambos"
+
+                pesquisaFieldWhere='inCodTipoPessoa'
+                [pesquisaGridFiltro]="gridFiltro"
+
+                ></app-filtro-multiselect>
+            </div>
+            <div class="form-group col-md-1">
+                <button kendoButton 
+                class="form-control btn-filtro-acao"
+                (click)="executarPesquisa()"
+                [primary]="true">pesquisar</button>
+            </div>
+        </div>
+    </form>
+</div>
+      
+<!-- 
+    ATENÇÃO!
+    O Atributo "idGrid" deve ser único no projeto, troque ele por um nome condizente com seu CRUDE
+
+    Revise cada atributo abaixo para adequa-los ao seu CRUDE específico
+-->
+<app-grid-pesquisa
+#gridFiltro
+idGrid="pesquisaPessoa"
+[apiService]='apiService'
+nomeMetodoOrdenacao='mudarOrdenacao'
+nomeMetodoApi='listar'
+apiFieldKey='IDPessoa'
+[colunasGrid]='getColunasGridCadastro()'
+pageSize='8'
+[rotaCadastro]='gridRotasCadastro'
+[formGroupPesquisa]='formGroupPesquisa'>
+
+</app-grid-pesquisa>
+      
+      

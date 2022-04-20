@@ -1,0 +1,95 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do produto de seguro Condição de Pagamento@@crude-prod-seg-cond-pagto-detalhe.label.IDProdSegCondPagto">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDProdSegCondPagto']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox 
+            formControlName="IDProdSegCondPagto" 
+            [format]="'N0'" 
+            [min]="0" 
+            [max]="999999999"
+            [autoCorrect]="false" 
+            [spinners]="false" 
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Condição de Pagamento|Identifica o Condição de Pagamento do produto de seguro Condição de Pagamento@@crude-prod-seg-cond-pagto-detalhe.label.chCodCondPagto">
+              Condição de Pagamento
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodCondPagto']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+            required 
+            placeholder='selecione' 
+            formControlName='chCodCondPagto'
+            [apiService]='apiCondPagtoService' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodCondPagto">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio de Vigência|Identifica o Inicio de Vigência@@crude-prod-seg-cond-pagto-detalhe.label.daDatIniVig">
+              Inicio de Vigência
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatIniVig']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatIniVig'></kendo-datepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Fim de Vigência|Identifica o Fim de Vigência@@crude-prod-seg-cond-pagto-detalhe.label.daDatFimVig">
+              Fim de Vigência
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatFimVig']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatFimVig'></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

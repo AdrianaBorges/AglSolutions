@@ -1,0 +1,119 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Tipo Pedido@@crude-tipo-pedido-edicao.breadcrumb">
+  Tipo Pedido ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Tipo Pedido@@crude-tipo-pedido-detalhe.titulo.tipo-pedido">
+      TIPO DE PEDIDO
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral_html != null' [innerHTML] = 'apiErrorCollection.mensagem_geral_html'>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o Código do Tipo Pedido no CRUDE@@crude-tipo-pedido.label.IDTipoPedido">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDTipoPedido']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDTipoPedido"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            >
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código do CRUDE@@crude-tipo-pedido.label.chCodTipoPedido">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodTipoPedido']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox maxlength="20" formControlName="chCodTipoPedido" type="text" name="chCodTipoPedido" id="chCodTipoPedido"/>
+        </label>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica a Descrição no CRUDE@@crude-tipo-pedido.label.chDescricao">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDescricao" type="text" name="chDescricao" id="chDescricao" maxlength="100" required />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Considera Venda ?|Identifica o Considera Venda ? do Programa do Sistema no CRUDE@@crude-tipo-pedido.label.lgConsideraVenda">
+              Considera Venda ?
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['lgConsideraVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-switch
+            [onLabel]="'Sim'"
+            [offLabel]="'Não'"
+            id="switchID"
+            formControlName='lgConsideraVenda'>
+          </kendo-switch>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação Cadastral|Identifica o Situação Cadastral do Tipo Pedido  no CRUDE@@crude-tipo-pedido.label.chDesSituacaoCad">
+              Situação Cadastral
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesSituacaoCad']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chDesSituacaoCad" name="chDesSituacaoCad" id="chDesSituacaoCad"/>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

@@ -1,0 +1,25 @@
+<span 
+    #breadcrumb_traducao
+    style='display:none;'
+    i18n="breadcrumb|Breadcrumb do CRUDE de Profissão@@crude-profissao-listagem.breadcrumb">
+    Início/Profissão/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+    <div
+    i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Profissão@@crude-profissao-listagem.titulo.profissao">
+    PROFISSÃO
+    </div>
+</h1>
+
+<app-grid-pesquisa
+    #gridFiltro
+    idGrid="pesquisaProfissao"
+    [apiService]='apiProfissaoService'
+    nomeMetodoOrdenacao='mudarOrdenacao'
+    nomeMetodoApi='listar'
+    apiFieldKey='inCodProfissao'
+    [colunasGrid]='getColunasGridCadastro()'
+    pageSize='15'
+    [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

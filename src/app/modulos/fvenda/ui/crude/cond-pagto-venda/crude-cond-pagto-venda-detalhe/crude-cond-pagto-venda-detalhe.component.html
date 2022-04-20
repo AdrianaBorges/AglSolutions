@@ -1,0 +1,75 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Condição de Pagamento@@crude-cond-pagto-venda-edicao.breadcrumb">
+  Condição de Pagamento ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Condição de Pagamento@@crude-cond-pagto-venda-detalhe.titulo.cond-pagto-venda">
+      CONDIÇÃO DE PAGAMENTO
+    </div>
+  </h1>
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Codigo|Identifica o codigo do condição de pagamentos CRUDE@@crude-cond-pagto-venda-detalhe.label.chCodCondPagtoVenda">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodCondPagtoVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodCondPagtoVenda" required maxlength="20" />
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica a descricao do condição de pagamento CRUDE@@crude-cond-pagto-venda-detalhe.label.chDescricao">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDescricao" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Condição de Pagamento|Identifica a Condição de Pagamento do condição de pagamento CRUDE@@crude-cond-pagto-venda-detalhe.label.chCondicao">
+              Condição de Pagamento
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCondicao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCondicao" required maxlength="100" (keypress)="numberOnly($event)" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

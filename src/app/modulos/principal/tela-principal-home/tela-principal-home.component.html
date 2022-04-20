@@ -1,0 +1,30 @@
+<div  *ngIf='erros.mensagem_geral' class="alert alert-danger" role="alert">
+    Erro: {{erros.mensagem_geral}}
+</div>
+<div class="card">
+  <div class="card-header">
+    Página Inicial - Escolha uma opção no menu ao Lado
+  </div>
+  <!--
+  <div class="card-body">
+    <h5 class="card-title">Atenção!</h5>
+    <p class="card-text" style="color:red;">Para uma nova rota ser aceita pela validação de rota cadastre ela no método "criarMenuDev" da classe:</p>
+    <p class="card-text" style="color:red;">"app/validar-permissao-rota.service.ts"!</p>
+    <p class="card-text" style="color:red;">Não esqueça de registrar como uma rota válida para o usuário nesse método "criarMenuDev" usando a função "this.addRotaValida_dev". Basta seguir os exemplos que já estão feitos com essa função.</p>
+    <button type="button" class="k-button" (click)="exibirModalPesquisaTipoUsuario()">teste exibir modal</button>
+    <button type="button" class="k-button" (click)="criarNovoBreadcrumb()">teste mudar breadcrumb</button>
+  </div> -->
+</div>
+<!--
+<app-modal-pesquisa 
+    #instanciaModalPesquisaTipoUsuario
+    titulo='Tipo de usuário' width='600' height='500' 
+    pageSize='30'
+    [apiService]='tipoUsuarioService'
+    nomeMetodoOrdenacao='mudarOrdenacao'
+    nomeMetodoApi='listar'
+    [colunasGrid]='getColunasGridPesquisa()'
+    [interfaceModalCadastro]='this'
+    (confirmado)='tipoUsuarioAlterado($event)'>
+</app-modal-pesquisa>
+-->

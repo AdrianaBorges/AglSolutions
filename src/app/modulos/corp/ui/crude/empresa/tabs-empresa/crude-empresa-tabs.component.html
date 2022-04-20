@@ -1,0 +1,49 @@
+<!-- <kendo-tabstrip #kendoTabStripInstance (tabSelect)="onTabSelect($event)" > -->
+<span #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de empresa@@tabs-empresa.breadcrumb">Início/Empresa/Editar</span>
+<kendo-tabstrip #kendoTab appCadastroTab id='idTabCadempresa' [tab]='kendoTab'
+  [cadastroBarraAcao]='cadPF.cadastroBarraAcao' (tabSelect)="onTabSelect($event)">
+  <kendo-tabstrip-tab i18n-title="Nome Tab empresa|Nome da tab EMPRESA@@tabs-empresa.tab.empresa"
+    [ngClass]='app-tab-content' [title]="'EMPRESA'" [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Titulo empresa|Título interno que identifica o CRUDE de empresa@@tabs-empresa.tab.empresa.titulo">
+          EMPRESA
+        </div>
+      </h1>
+    </ng-template>
+
+    <!-- <ng-template kendoTabContent>
+          <app-cadastro-empresa-dados-pessoais #cadPF></app-cadastro-empresa-dados-pessoais>
+      </ng-template> -->
+
+  </kendo-tabstrip-tab>
+  <!-- [disabled]="cadastroEmEdicao" -->
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab estabelecimentos|Nome da tab estabelecimentos de empresa@@tabs-empresa.tab.estabelecimentos"
+    title='ESTABELECIMENTOS' [selected]="tabSelecionada(1)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div
+          i18n="Título do conteúdo da Tab|Título do conteúdo da tab Estabelecimentos de empresa@@tabs-empresa.tab.titulo.estabelecimentos">
+          ESTABELECIMENTOS DA EMPRESA
+        </div>
+        <div>
+          <span i18n="Detalhes sequenica|texto que precede os dados de empresa@@tabs-empresa.tab.titulo.dadosempresa">
+            Empresa:
+          </span>
+          {{cadPF.modelEmpresa.chCodEmpresa}} - {{cadPF.modelEmpresa.chNomeEmpresa}} - {{cadPF.modelEmpresa.inCNPJEmpresa}}
+        </div>
+      </h1>
+
+
+      <app-crude-estabelecimento-detalhe #gridInterfaceTabCadastroFilhoDocumento></app-crude-estabelecimento-detalhe>
+      <app-crude-estabelecimento-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoDocumento'>
+      </app-crude-estabelecimento-listagem>
+
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+<app-crude-empresa-detalhe #cadPF [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-empresa-detalhe>
+<!-- (estaEmEdicao)='onCadastroEmEdicao($event)' -->

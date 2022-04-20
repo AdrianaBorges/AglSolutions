@@ -1,0 +1,51 @@
+<!-- <kendo-tabstrip #kendoTabStripInstance (tabSelect)="onTabSelect($event)" > -->
+<span #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de sequencia@@tabs-sequencia.breadcrumb">Início/Sequência/Editar</span>
+<kendo-tabstrip #kendoTab appCadastroTab id='idTabCadSequencia' [tab]='kendoTab'
+  [cadastroBarraAcao]='cadPF.cadastroBarraAcao' (tabSelect)="onTabSelect($event)">
+  <kendo-tabstrip-tab i18n-title="Nome Tab Sequencia|Nome da tab SEQUENCIA@@tabs-sequencia.tab.Sequencia"
+    [ngClass]='app-tab-content' [title]="'SEQUÊNCIA'" [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div
+          i18n="Titulo sequência|Título interno que identifica o CRUDE de sequencia@@tabs-sequencia.tab.sequencia.titulo">
+          SEQUÊNCIA
+        </div>
+      </h1>
+    </ng-template>
+
+    <!-- <ng-template kendoTabContent>
+          <app-cadastro-sequencia-dados-pessoais #cadPF></app-cadastro-sequencia-dados-pessoais>
+      </ng-template> -->
+
+  </kendo-tabstrip-tab>
+  <!-- [disabled]="cadastroEmEdicao" -->
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Valores da sequencia'|Nome da tab 'Valores da Sequecia' de sequencia@@tabs-sequencia.tab.sequencia-valor"
+    title='VALORES' [selected]="tabSelecionada(1)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div
+          i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Valores da sequencia' de sequencia@@tabs-sequencia.tab.titulo.SequenciaValor">
+          VALOR DA SEQUÊNCIA
+        </div>
+        <div>
+          <span
+            i18n="Detalhes sequenica|texto que precede os dados de sequencia@@tabs-sequencia.tab.titulo.dadosSequencia">
+            Sequência:
+          </span>
+          {{cadPF.modelSequencia.chCodSequencia}} - {{cadPF.modelSequencia.chDescricao}}
+        </div>
+      </h1>
+
+
+      <app-crude-sequencia-valor-detalhe #gridInterfaceTabCadastroFilhoDocumento></app-crude-sequencia-valor-detalhe>
+      <app-crude-sequencia-valor-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoDocumento'>
+      </app-crude-sequencia-valor-listagem>
+
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+<app-crude-sequencia-detalhe #cadPF [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-sequencia-detalhe>
+<!-- (estaEmEdicao)='onCadastroEmEdicao($event)' -->

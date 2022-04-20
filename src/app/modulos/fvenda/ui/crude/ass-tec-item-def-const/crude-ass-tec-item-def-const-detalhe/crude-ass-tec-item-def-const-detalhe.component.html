@@ -1,0 +1,157 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do CRUDE@@crude-ass-tec-item-def-const.label.IDAssTecItemDefConst">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDAssTecItemDefConst']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDAssTecItemDefConst"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+        <span>
+          <ng-container i18n="Label Lote/Série|Identifica o Lote/Série@@crude-ass-tec-item-def-const.label.IDDefeito">
+            Defeito
+          </ng-container>
+          <span class="k-required">*</span>
+          <app-form-control-alerta-erro-api
+            [mensagemErro]="apiErrorCollection.campos['IDDefeito']">
+          </app-form-control-alerta-erro-api>
+        </span>
+        <app-api-select 
+          placeholder='selecione' 
+          required 
+          formControlName='IDDefeito'
+          [apiService]='apiDefeitoEL01Service' 
+          apiNomeMetodoListar='listarAtivos' 
+          apiFieldExibir="chDescricao"
+          apiFieldKey="IDDefeito">
+          <kendo-combobox-column
+            field="chCodDefeito"
+            i18n-title="Titulo Código|Identifica o titulo Código das opções de defeito@@crude-ass-tec-item-def-aleg.combo.defeito.codigo"
+            title="Cód"
+            width="30">
+          </kendo-combobox-column>
+          <kendo-combobox-column
+            field="chDescricao"
+            i18n-title="Titulo Descrição|Identifica o titulo Descrição das opções de defeito@@crude-ass-tec-item-def-aleg.combo.defeito.descricao"
+            title="Desc"
+            width="50">
+          </kendo-combobox-column>
+        </app-api-select>
+      </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição Problema Alegado|Identifica o Descrição Problema Alegado no CRUDE@@crude-ass-tec-item-def-const.label.chDesProblema">
+              Descrição Problema Constatado
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesProblema']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesProblema" rows="5" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <h1 kendoCardTitle>LOG de Inclusão</h1>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Inclusão|Identifica a Data de Inclusão@@crude-ass-tec-item-def-const.label.inclusao">
+                  Data/Hora:
+                </span>
+                <span>
+                  {{modelAssTecItemDefConst.dtDatInclusao | date: 'short'}}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Usuário Inclusão|Identifica o Usuário de Inclusão@@crude-ass-tec-item-def-const.label.UsuarioInclusao">
+                  Usuário:
+                </span>
+                <span>
+                  {{modelAssTecItemDefConst.chNomeUsuarioInclusao }}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>    
+      </div>
+      <div class="form-group col-md-6">    
+        <h1 kendoCardTitle>LOG da Última Alteração</h1>    
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Alteração|Identifica a Data de Alteração@@crude-ass-tec-item-def-const.label.alteracao">
+                  Data/Hora:
+                </span>
+                <span>
+                  {{modelAssTecItemDefConst.dtDatUltAlteracao | date: 'short'}}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Usuário Alteração|Identifica o Usuário de Alteração@@crude-ass-tec-item-def-const.label.UsuarioAlteracao">
+                  Usuário
+                </span>
+                <span>
+                  {{modelAssTecItemDefConst.chNomeUsuarioAlteracao }}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

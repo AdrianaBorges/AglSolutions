@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE Grupo Seguro@@crude-grupo-seguro-listagem.breadcrumb">
+  Início/Grupo Seguro/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Grupo Seguro@@crude-grupo-seguro-listagem.titulo.grupo">
+    GRUPO DE SEGURO
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaGrupoSeguro"
+  [apiService]='apiGrupoSeguroService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodGrupoSeguro'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+  </app-grid-pesquisa>

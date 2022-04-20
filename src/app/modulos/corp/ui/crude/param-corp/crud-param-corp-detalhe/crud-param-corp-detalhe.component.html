@@ -1,0 +1,94 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE de Parâmetros do Sistema@@crude-param-corp-edicao.breadcrumb">
+  Início/Parâmetros Sistema/Edição
+</span>
+
+<app-cadastro-barra-acao 
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div
+      i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Parâmetros do Sistema@@crude-param-corp-detalhe.titulo.param-corp">
+      PARÂMETROS DO SISTEMA
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código do Parâmetro do Sistema no CRUDE@@crude-param-corp-detalhe.label.codigo">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodParamCorp']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodParamCorp" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica a Descrição do Parâmetro do Sistema no CRUDE@@crude-param-corp-detalhe.label.descricao">
+              Descrição
+            </ng-container>                      
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDescricao" required maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-xl-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor|Identifica o Valor do Parâmetro do Sistema no CRUDE@@crude-param-corp-detalhe.label.valor">
+              Valor
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chValor']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chValor" rows="20" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-xl-8" >
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Observação|Identifica uma Descrição Detalhada do Parâmetro do Sistema no CRUDE@@crude-param-corp-detalhe.label.observacao">
+              Observação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesObservacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesObservacao" rows="10" style="width: 100%;" ></textarea>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

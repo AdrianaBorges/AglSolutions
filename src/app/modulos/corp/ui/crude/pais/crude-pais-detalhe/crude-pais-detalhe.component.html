@@ -1,0 +1,123 @@
+<span #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE País@@crude-pais-edicao.breadcrumb">
+  Início/País/Edição
+</span>
+
+<app-cadastro-barra-acao #cadastroBarraAcao [formGroup]='meuForm' (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()' (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE País@@crude-pais-detalhe.titulo.pais">
+      PAÍS
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o id do pais CRUDE@@crude-pais-detalhe.label.id">
+              ID
+            </ng-container>
+          </span>
+          <kendo-numerictextbox formControlName="IDPais" [format]="'N0'" [min]="1" [max]="999999999"
+            [autoCorrect]="false" [spinners]="false" disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código do pais CRUDE@@crude-pais-detalhe.label.codigo">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chCodPais']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodPais" required maxlength="10" />
+        </label>
+      </div>
+      <div class="form-group col-md-5">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Abreviado|Identifica o Nome Abreviado do pais CRUDE@@crude-pais-detalhe.label.abreviado">
+              Abreviado
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chNomeAbreviado']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeAbreviado" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome|Identifica o Nome completo do pais CRUDE@@crude-pais-detalhe.label.nome">
+              Nome
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chNome']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNome" required maxlength="100" />
+        </label>
+      </div>
+
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label siscomex|Identifica o Código Siscomex do pais CRUDE@@crude-pais-detalhe.label.siscomex">
+              Código no Siscomex
+            </ng-container>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chCodSiscomex']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodSiscomex" maxlength="18" />
+        </label>
+      </div>
+      <div class="col-md-2"></div>
+      <div class="form-group col-md-5">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label IBGE|Identifica o Código no IBGE do pais CRUDE@@crude-pais-detalhe.label.ibge">
+              Código no IBGE
+            </ng-container>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chCodIBGE']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodIBGE" maxlength="10" />
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label nacionalidade|Identifica a nacionalidade do pais CRUDE@@crude-pais-detalhe.label.nacionalidade">
+              Nacionalidade
+            </ng-container>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chDesNacionalidade']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDesNacionalidade" maxlength="50" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

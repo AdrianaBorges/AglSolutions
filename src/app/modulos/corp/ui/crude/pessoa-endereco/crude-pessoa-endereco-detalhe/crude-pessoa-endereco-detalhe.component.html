@@ -1,0 +1,268 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label ID|Identifica o codigo ID do endereço@@crude-pessoa-endereco-detalhe.label.IDPessoaEndereco">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDPessoaEndereco']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDPessoaEndereco"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="'false'"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Endereço|Identifica o tipo de Endereço@@crude-pessoa-endereco-detalhe.label.inCodTipoPessoaEndereco">
+              Tipo de Endereço
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoPessoaEndereco']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            [apiService]='apiTipoPessoaEnderecoService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir='chDescricao'
+            apiFieldKey='inCodTipoPessoaEndereco'
+            formControlName='inCodTipoPessoaEndereco'>
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-2">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cep|Identifica o cep@@crude-pessoa-endereco-detalhe.label.chCEP">
+              CEP
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCEP']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-maskedtextbox #cep
+            id="inputMaskCEP"
+            mask="99.999-999"
+            formControlName="chCEP"
+            [class.maskedCEP]="true"
+            style="width:150px"
+            (blur)="buscarCep(cep.value)"
+            >
+          </kendo-maskedtextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label País|Identifica o pais@@crude-pessoa-endereco-detalhe.label.IDPais">
+              País
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDPais']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            [apiService]='apiPaisService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir='chNome'
+            apiFieldKey='IDPais'
+            formControlName='IDPais'
+            [childComponent]='selectUF'
+            childComponentFieldWhere='Pais.IDPais'>
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label UF|Identifica a unidade federativa@@crude-pessoa-endereco-detalhe.label.IDUF">
+              UF
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDUF']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            #selectUF
+            placeholder='selecione'
+            [apiService]='apiUFService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir='chNome'
+            apiFieldKey='IDUF'
+            formControlName='IDUF'
+            [childComponent]='selectCidade'
+            childComponentFieldWhere='UF.IDUF'>
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cidade|Identifica a cidade@@crude-pessoa-endereco-detalhe.label.IDCidade">
+              Cidade
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDCidade']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            #selectCidade
+            placeholder='selecione'
+            [apiService]='apiCidadeService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir='chNome'
+            apiFieldKey='IDCidade'
+            formControlName='IDCidade'>
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Logradouro|Identificao Tipo de Logradouro@@crude-pessoa-endereco-detalhe.label.inCodTipoLogradouro">
+              Tipo de Logradouro
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoLogradouro']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            [apiService]='apiTipoLogradouroService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir='chDescricao'
+            apiFieldKey='inCodTipoLogradouro'
+            formControlName='inCodTipoLogradouro'>
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Logradouro|Identifica o logradouro@@crude-pessoa-endereco-detalhe.label.chNomeLogradouro">
+              Logradouro
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeLogradouro']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeLogradouro" maxlength="50" />
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o número@@crude-pessoa-endereco-detalhe.label.chNumeroLogradouro">
+              Número
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumeroLogradouro']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNumeroLogradouro" maxlength="10" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Complemento|Identifica o Complemento@@crude-pessoa-endereco-detalhe.label.chComplemento">
+              Complemento
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chComplemento']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chComplemento" maxlength="50" />
+        </label>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Bairro|Identifica o Bairro@@crude-pessoa-endereco-detalhe.label.chBairro">
+              Bairro
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chBairro']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chBairro" maxlength="30" />
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Inclusão|Identifica a Data/Hora de Inclusão do Endereço da Pessoa no CRUDE@@crude-pessoa-endereco-detalhe.label.dtDatInclusao">
+            Inclusão
+          </span>
+          <span>
+            {{modelPessoaEndereco.dtDatInclusao | date: 'short'}}
+          </span>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Última Alteração|Identifica a Data/Hora da Última Alteração do endereço da no CRUDE@@crude-pessoa-endereco-detalhe.label.dtDatUltAlteracao">
+            Última Alteração
+          </span>
+          <span>
+            {{(modelPessoaEndereco.dtDatUltAlteracao == null? textoTraducaoSemAlteracao.innerText: modelPessoaEndereco.dtDatUltAlteracao | date: 'short' )}}
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <span #textoTraducaoSemAlteracao style="display:none;"
+      i18n="Informativo do label Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-pessoa-fisica.label.info.semAlteracao">Não
+      houve alteração ainda
+    </span>
+
+  </form>
+</app-cadastro-barra-acao>

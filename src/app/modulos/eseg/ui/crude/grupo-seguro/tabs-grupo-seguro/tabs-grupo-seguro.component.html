@@ -1,0 +1,51 @@
+<!-- <kendo-tabstrip #kendoTabStripInstance (tabSelect)="onTabSelect($event)" > -->
+<span #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de grupo seguro@@tabs-grupo-seguro.breadcrumb">Início/Grupo Seguro/Editar</span>
+<kendo-tabstrip #kendoTab appCadastroTab id='idTabCadGrupoSeguro' [tab]='kendoTab'
+  [cadastroBarraAcao]='cadPF.cadastroBarraAcao' (tabSelect)="onTabSelect($event)">
+  <kendo-tabstrip-tab i18n-title="Nome Tab grupo seguro|Nome da tab GRUPO@@tabs-grupo-seguro.tab.grupo-seguro"
+    [ngClass]='app-tab-content' [title]="'GRUPO'" [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div
+          i18n="Titulo grupo seguro|Título interno que identifica o CRUDE de grupo seguro@@tabs-grupo-seguro.tab.grupo-seguro.titulo">
+          GRUPO DE SEGURO
+        </div>
+      </h1>
+    </ng-template>
+
+    <!-- <ng-template kendoTabContent>
+          <app-cadastro-grupo-seguro-dados-pessoais #cadPF></app-cadastro-grupo-seguro-dados-pessoais>
+      </ng-template> -->
+
+  </kendo-tabstrip-tab>
+  <!-- [disabled]="cadastroEmEdicao" -->
+  <kendo-tabstrip-tab i18n-title="Nome Tab ramo|Nome da tab ramo de grupo de seguro@@tabs-grupo-seguro.tab.ramo"
+    title='RAMO' [selected]="tabSelecionada(1)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div
+          i18n="Título do conteúdo da Tab|Título do conteúdo da tab Ramo do Grupo de Seguro@@tabs-grupo-seguro.tab.titulo.ramo">
+          RAMO DE SEGURO
+        </div>
+        <div>
+          <span
+            i18n="Detalhes grupo|texto que precede os dados de grupo seguro@@tabs-grupo-seguro.tab.titulo.dadosGrupoSeguro">
+            Grupo:
+          </span>
+          {{cadPF.modelGrupoSeguro.inCodGrupoSeguro}} - {{cadPF.modelGrupoSeguro.chDescricao}}
+        </div>
+      </h1>
+
+
+      <app-crude-ramo-seguro-detalhe #gridInterfaceTabCadastroFilho>
+      </app-crude-ramo-seguro-detalhe>
+      <app-crude-ramo-seguro-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilho'>
+      </app-crude-ramo-seguro-listagem>
+
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+<app-crude-grupo-seguro-detalhe #cadPF [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-grupo-seguro-detalhe>
+<!-- (estaEmEdicao)='onCadastroEmEdicao($event)' -->

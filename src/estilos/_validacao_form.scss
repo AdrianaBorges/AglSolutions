@@ -1,0 +1,19 @@
+.invalido {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+
+.ng-valid.ng-touched[required], .ng-valid.ng-touched.required  {
+  //border-left: 5px solid #42A948; /* green */
+  // border-left: 5px solid rgba($success, 0.8); /* green */
+  border-left: 5px solid darken(desaturate(adjust-hue($success, -5), 56.17), 1.57); /* green */
+}
+
+.ng-invalid:not(form).ng-touched:not(form) {
+  border-left: 5px solid #a94442; /* red */
+  //border-left: 5px solid rgba($error, 0.8); /* red */
+  background-color: rgba($error, 0.2)!important;
+  opacity: 1;
+}

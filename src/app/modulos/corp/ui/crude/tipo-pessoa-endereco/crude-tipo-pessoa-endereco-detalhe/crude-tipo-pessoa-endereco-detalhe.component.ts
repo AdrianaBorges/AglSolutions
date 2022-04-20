@@ -1,0 +1,185 @@
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Location } from '@angular/common';
+import { CadastroBarraAcaoComponent } from '../../../../../../componentes/cadastro-barra-acao/cadastro-barra-acao.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ApiErrorCollection } from '../../../../../../api-error/api-error-collection';
+import { CabecalhoBreadcrumbService } from '../../../../../../componentes/cabecalho-breadcrumb/cabecalho-breadcrumb.service';
+import { ActivatedRoute } from '@angular/router';
+import { ApiTipoDocumentoPessoaEnderecoService } from '../../../../api/api-tipo-pessoa-endereco.service';
+import { ModelTipoPessoaEndereco } from '../../../../models/model-tipo-pessoa-endereco';
+
+@Component({
+  selector: 'app-crude-tipo-pessoa-endereco-detalhe',
+  templateUrl: './crude-tipo-pessoa-endereco-detalhe.component.html',
+  styleUrls: ['./crude-tipo-pessoa-endereco-detalhe.component.scss']
+})
+export class CrudeTipoPessoaEnderecoDetalheComponent implements OnInit {
+
+  @ViewChild('cadastroBarraAcao', { static: true }) cadastroBarraAcao: CadastroBarraAcaoComponent;
+  @ViewChild('breadcrumb_traducao', { static: true }) breadcrumb_traducao: ElementRef;
+
+  public meuForm: FormGroup;
+  public modelPessoaTipoEndereco: ModelTipoPessoaEndereco;
+  public apiErrorCollection: ApiErrorCollection;
+  private operacao: 'inclusao' | 'edicao'; 
+
+  constructor( 
+    public cabecalhoBreadcrumbService: CabecalhoBreadcrumbService,
+    private formB: FormBuilder,
+    private route: ActivatedRoute,
+    public apiTipoDocumentoPessoaEnderecoService: ApiTipoDocumentoPessoaEnderecoService,
+    private _location: Location,
+  ) {
+    this.modelPessoaTipoEndereco = new ModelTipoPessoaEndereco();
+    this.apiErrorCollection = new ApiErrorCollection();
+  }
+
+  ngOnInit() {
+    this.inicializarDados();
+    this.criarBreadCrumbs();
+  }
+
+  private inicializarDados(){
+
+    this.criarForm(true);
+    this.configurarStatusForm();
+    this.getTipoDocumento();
+
+  }
+
+  private criarBreadCrumbs(){
+    this.cabecalhoBreadcrumbService.setBreadcrumbs([
+      {
+        texto: this.breadcrumb_traducao.nativeElement.innerText.split('/')[0],//'Início',
+        url: '/modulos'
+      },
+      {
+        texto: this.breadcrumb_traducao.nativeElement.innerText.split('/')[1], //'tipo-pessoa-endereco',
+        url: '/modulos/corp/tipo-pessoa-endereco'
+      },
+      {
+        texto: this.breadcrumb_traducao.nativeElement.innerText.split('/')[2],//'Listagem',
+        url: null
+      }
+    ]);
+  }
+
+  private configurarStatusForm(){
+
+    var id = +this.route.snapshot.paramMap.get('id');
+
+    if(id >0){
+      this.meuForm.get('inCodTipoPessoaEndereco').disable();
+    }
+
+  }
+
+  private criarForm(emEdicao: boolean){
+
+    if(this.meuForm){
+      this.cadastroBarraAcao.formGroupDatabind.setValues(this.meuForm, this.modelPessoaTipoEndereco, emEdicao);
+    }else{
+      this.meuForm = this.formB.group({
+        inCodTipoPessoaEndereco: [this.modelPessoaTipoEndereco.inCodTipoPessoaEndereco,Validators.required],
+        chDescricao: [this.modelPessoaTipoEndereco.chDescricao,Validators.required]
+      });
+    }
+
+  }
+
+  private getTipoDocumento(){
+
+    var id: number;
+    id = +this.route.snapshot.paramMap.get('id');
+
+    if (id==0){
+      this.modelPessoaTipoEndereco = new ModelTipoPessoaEndereco();
+      this.modelPessoaTipoEndereco.inCodTipoPessoaEndereco = null;
+      this.modelPessoaTipoEndereco.chDescricao = "";
+
+      this.criarForm(true);
+      this.operacao = 'inclusao';
+
+    }else{
+
+      this.apiTipoDocumentoPessoaEnderecoService.obter(id).then(
+        dados_API =>{
+          this.modelPessoaTipoEndereco = dados_API;
+          this.operacao = 'edicao';
+          this.criarForm(false);
+        },
+        erro => {
+          this.apiErrorCollection = erro;
+        }
+      );
+    }
+
+  }
+
+  private coletarDadosForm(){
+    this.cadastroBarraAcao.formGroupDatabind.getValues(this.meuForm, this.modelPessoaTipoEndereco);
+    //this.pessoaSexo.inCodSexo = this.meuForm.controls['inCodSexo'].value;
+  }
+
+  btnCancelar(){
+    this.cadastroBarraAcao.exibirAguarde();
+    this.getTipoDocumento();
+    this.cadastroBarraAcao.esconderAguarde();
+  }
+
+  btnConfirmar(){
+    this.cadastroBarraAcao.exibirAguarde();
+    this.coletarDadosForm();
+    if(this.operacao == 'edicao'){
+      this.alterar();
+    }else{
+      this.incluir();
+    }
+  }
+
+  btnExcluir(){
+    this.apiTipoDocumentoPessoaEnderecoService.excluir(this.modelPessoaTipoEndereco.inCodTipoPessoaEndereco).then(
+      sucesso => {
+        this._location.back();
+      },
+      erro => {
+        this.apiErrorCollection = erro;
+      }
+    );
+  }
+
+  alterar(){
+    this.apiTipoDocumentoPessoaEnderecoService.alterar(this.modelPessoaTipoEndereco).then(
+      sucesso => {
+        this.apiErrorCollection = new ApiErrorCollection();
+        this.modelPessoaTipoEndereco = sucesso;
+        this.criarForm(false);
+        this.cadastroBarraAcao.esconderAguarde();
+      },
+      erro => {
+        console.error('erro = ', erro);
+        this.apiErrorCollection = erro;
+        this.cadastroBarraAcao.esconderAguarde();
+      }
+    );
+  }
+
+  incluir(){
+    this.apiTipoDocumentoPessoaEnderecoService.criar(this.modelPessoaTipoEndereco).then(
+      sucesso => {
+        this.apiErrorCollection = new ApiErrorCollection();
+        this.modelPessoaTipoEndereco = sucesso;
+        this.meuForm.controls['inCodTipoPessoaEndereco'].disable();
+        this.criarForm(false);
+        this.operacao = 'edicao';
+        this.cadastroBarraAcao.esconderAguarde();
+      },
+      erro => {
+        console.error('erro = ', erro);
+        this.apiErrorCollection = erro;
+        this.cadastroBarraAcao.esconderAguarde();
+      }
+    );
+  }
+
+}

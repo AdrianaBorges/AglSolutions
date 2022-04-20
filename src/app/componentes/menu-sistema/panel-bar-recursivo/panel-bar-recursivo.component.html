@@ -1,0 +1,43 @@
+<!-- <kendo-panelbar>
+    <kendo-panelbar-item
+    *ngFor="let itemMenu of menuSistema"
+    [id]="itemMenu.codigo"
+    [title]="itemMenu.titulo"
+    [routerLink]="itemMenu.path"
+    [style.background-color]="getBackgroundColor()"
+    [style.color]="getCorFonte()" >
+    <ng-template kendoPanelBarContent *ngIf="itemMenu.children">
+      <app-panel-bar-recursivo 
+        [menuSistema]='itemMenu.children'
+        [colorR]="colorR"
+        [colorG]="colorG"
+        [colorB]="colorB"
+        [corFonte]="656565"
+        ></app-panel-bar-recursivo>
+    </ng-template>
+  </kendo-panelbar-item>
+</kendo-panelbar> -->
+<kendo-panelbar [style.border-bottom-width]="getBorderBottom()">
+    <kendo-panelbar-item
+    *ngFor="let itemMenu of menuSistema"
+    [id]="itemMenu.codigo"
+    [title]="itemMenu.titulo"
+    [routerLink]="itemMenu.path"
+    [style.background-color]="getBackgroundColor()"
+    [style.margin-left]="getIdentacaoMenu()"
+    
+    [style.color]="getCorFonte()" >
+    <ng-template kendoPanelBarContent *ngIf="itemMenu.children">
+      <app-panel-bar-recursivo 
+        *ngIf="itemMenu.exibir"
+        [profundidade]='profundidade'
+        [menuSistema]='itemMenu.children'
+        [colorR]="colorR"
+        [colorG]="colorG"
+        [colorB]="colorB"
+        [corFonte]="656565"
+        ></app-panel-bar-recursivo>
+    </ng-template>
+  </kendo-panelbar-item>
+</kendo-panelbar>
+

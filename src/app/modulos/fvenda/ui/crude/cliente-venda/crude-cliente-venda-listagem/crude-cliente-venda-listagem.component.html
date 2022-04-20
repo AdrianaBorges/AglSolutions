@@ -1,0 +1,68 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Cliente de venda@@crude-cliente-venda.breadcrumb">
+  Cliente: listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de Cliente de venda física e juridica@@crude-cliente-venda.titulo">
+    CLIENTE
+  </div>
+</h1>
+
+<div class="area-filtro">
+
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Representante</label>
+        <app-filtro-multiselect 
+           formControlName='listaRepresentante' 
+           [apiService]='apiRepresVendaEL01Service'
+           apiNomeMetodoListar='listar' 
+           apiFieldExibir="chNomeAbreviado" 
+           apiFieldKey="IDRepresentante"
+           placeholder="ambos" 
+           pesquisaFieldWhere='Representante.IDRepresentante' 
+           [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Situação Cadastral</label>
+        <app-filtro-multiselect 
+          formControlName='listaSituacaoCadastral' 
+          [apiService]='apiSituacaoCadService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="inCodSituacaoCad" 
+          placeholder="ambos"
+          pesquisaFieldWhere='inCodSituacaoCad' 
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="col-md-2"></div>
+      <div class="form-group col-md-2">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> pesquisar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-grid-pesquisa #gridFiltro 
+  idGrid="pesquisaClienteVenda" 
+  [apiService]='apiClienteEl02Service' 
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar' 
+  apiFieldKey='IDCliente' 
+  [colunasGrid]='getColunasGridCadastro()' 
+  pageSize='15'
+  i18n-rotaCadastroNomeBotoes="botões novo|botões de nova cliente-venda física e jurídica@@crude-cliente-venda.botoes.grid.novo"
+  rotaCadastroNomeBotoes='Física|Jurídica' 
+  [rotaCadastro]='gridRotasCadastro' 
+  [formGroupPesquisa]='formGroupPesquisa'
+  (btn_Inativar_click)='btn_Inativar_click($event)' [btn_Inativar_exibir]='btn_Inativar_exibir' btn_Inativar_titulo='Inativar Cliente' i18n-btn_Inativar_titulo="botão de ação: inativar|botão na coluna de ação para inativar um cliente@@crude-cliente-venda-listagem.btn_Inativar_tooltip"
+  (btn_Reativar_click)='btn_Reativar_click($event)'[btn_Reativar_exibir]='btn_Reativar_exibir' btn_Reativar_titulo='Reativar Cliente' i18n-btn_Reativar_titulo="botão de ação: reativar|botão na coluna de ação para reativar um cliente@@crude-cliente-venda-listagem.btn_Reativar_tooltip">
+</app-grid-pesquisa>

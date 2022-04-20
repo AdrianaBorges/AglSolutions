@@ -1,0 +1,195 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label LOGIN|Identifica o LOGIN do Usuário do Sistema no CRUDE@@crude-usuario-detalhe.label.chCodUsuario">
+              LOGIN
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodUsuario']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodUsuario" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Pessoa|Identifica a Pessoa do  Usuário do Sistema no CRUDE@@crude-usuario-detalhe.label.IDPessoaUsuario">
+              Pessoa
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+            [mensagemErro]="apiErrorCollection.campos['IDPessoaUsuario']">
+          </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_PessoaUsuario'
+            placeholder="selecione"
+            modalTitulo='Pessoa'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiPessoaService'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomePessoa"
+            [colunasGrid]="apiPessoaService.getColunasGrid()"
+            apiFieldKey="IDPessoa"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='ID' 
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obter'>
+          </app-input-modal-pesquisa>
+        </label>
+    </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome|Identifica a Nome do  Usuário do Sistema no CRUDE@@crude-usuario-detalhe.label.chNomeUsuario">
+              Nome
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeUsuario']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeUsuario" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label E-Mail|Identifica a E-Mail do  Usuário do Sistema no CRUDE@@crude-usuario-detalhe.label.chEMail">
+              E-Mail
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chEMail']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chEMail" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Usuário|Identifica a Tipo de Usuário do  Usuário do Sistema no CRUDE@@crude-usuario-detalhe.label.inCodTipoUsuario">
+              Tipo de Usuário
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoUsuario']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select placeholder='selecione'
+            formControlName='inCodTipoUsuario'            
+            [apiService]='apiTipoUsuarioService'
+            apiNomeMetodoListar='listar'
+            required apiFieldExibir="chDesTipoUsuario"
+            apiFieldKey="inCodTipoUsuario"
+            (valorAlterado)='alterarPessoaVinculada($event)'
+            required>
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Alterar Senha Próximo Acesso|Identifica a Alterar Senha Próximo Acesso do  Usuário do Sistema no CRUDE@@crude-usuario-detalhe.label.lgAlteraPass1oAcesso">
+              Alterar Senha Próximo Acesso ?
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['lgAlteraPass1oAcesso']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-switch
+            [onLabel]="'Sim'"
+            [offLabel]="'Não'"
+            id="switchID"
+            formControlName='lgAlteraPass1oAcesso'>
+          </kendo-switch>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Pessoa Vinculada|Identifica a Pessoa Vinculada do  Usuário do Sistema no CRUDE@@crude-usuario-detalhe.label.UIData_PessoaVinculada">
+              Pessoa Vinculada
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['UIData_PessoaVinculada']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa #PessoaVinculado
+            tipo='edicao'
+            formControlName='UIData_PessoaVinculada'
+            placeholder="selecione"
+            modalTitulo='Pessoa Vinculada'
+            modalHeight="600"
+            modalWidth="1200"
+            [apiService]='apiPessoaVinculadaService'
+            [colunasGrid]='apiPessoaVinculadaService.getColunasGrid()'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomePessoa"
+            apiFieldKey="IDPapelPessoa"
+            [pageSize]="10"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='ID'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obterFiltro'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação Cadastral|Identifica a Situação Cadastral do  Usuário do Sistema no CRUDE@@crude-usuario-detalhe.label.chDesSituacaoCad">
+              Situação Cadastral
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesSituacaoCad']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox disabled="true" formControlName="chDesSituacaoCad" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

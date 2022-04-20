@@ -1,0 +1,25 @@
+<span 
+    #breadcrumb_traducao
+    style='display:none;'
+    i18n="breadcrumb|Breadcrumb do CRUDE Grau de Instrução@@crude-grau-inst-listagem.breadcrumb">
+    Início/Grau Instrução/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+    <div
+    i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Grau de Instrução@@crude-grau-inst-listagem.titulo.grau-inst">
+    GRAU DE INSTRUÇÃO DA PESSOA
+    </div>
+</h1>
+
+<app-grid-pesquisa
+    #gridFiltro
+    idGrid="pesquisaGrauInst"
+    [apiService]='apiGrauInstrucaoService'
+    nomeMetodoOrdenacao='mudarOrdenacao'
+    nomeMetodoApi='listar'
+    apiFieldKey='inCodGrauInst'
+    [colunasGrid]='getColunasGridCadastro()'
+    pageSize='15'
+    [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE de Tipo de Contato da Pessoa@@crude-tipo-pessoa-contato-listagem.breadcrumb">
+  Início/Tipo Contato/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Tipo de Contato da Pessoa@@crude-tipo-pessoa-contato-listagem.titulo.tipo-pessoa-contato">
+  TIPO DE CONTATO DA PESSOA
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaTipoPessoaContato"
+  [apiService]='apiTipoPessoaContatoService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodTipoPessoaContato'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

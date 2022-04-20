@@ -1,0 +1,36 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb do seguranca programa@@crude-seguranca-programa-listagem.breadcrumb">
+  Segurança : Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da listagem|Título do conteúdo da listagem do nível do Programa@@crude-seguranca-programa-listagem.titulo.seguranca">
+    SEGURANÇA DO NÍVEL DO PROGRAMA
+  </div>
+  <div >
+    <span i18n="Detalhes Programa|texto que precede os dados do Programa@@crude-seguranca-programa-listagem.titulo.dadosPrograma">
+      Programa:
+    </span>
+    {{modelProgramaNivel.chCodPrograma}} - {{modelProgramaNivel.chDesTitPrograma}}
+  </div>
+  <div >
+    <span i18n="Detalhes Nivel|texto que precede os dados do nivel@@crude-seguranca-programa-listagem.titulo.dadosNivel">
+      Nível:
+    </span>
+    {{modelProgramaNivel.inCodNivel}} - {{modelProgramaNivel.chDesProgramaNivel}}
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaCrudeSegurancaPrograma"
+  [apiService]='apiSegurancaProgramaService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDSegurancaPrograma'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

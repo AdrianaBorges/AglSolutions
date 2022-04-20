@@ -1,0 +1,12 @@
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaCrudeAssTecItemSubs"
+  [apiService]='apiAssTecItemSubsService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDAssTecItemSubs'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilho'
+  [btn_acao_exibir]='btn_acao_exibir'>
+</app-grid-pesquisa>

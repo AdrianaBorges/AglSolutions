@@ -1,0 +1,235 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Item da Assistência Técnica@@tabs-ass-tec-item.breadcrumb">
+  Item da Assistência Técnica ID:
+</span>
+
+<kendo-tabstrip
+  #kendoTab
+  appCadastroTab
+  id='idTabCadItem'
+  [tab]='kendoTab'
+  [cadastroBarraAcao]='cad.cadastroBarraAcao'
+  (tabSelect)="onTabSelect($event)">
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab ITEM|Nome da tab ITEM de Item da Assistência Técnica@@tabs-ass-tec-item.tab.Item"
+    [ngClass]='app-tab-content'
+    [title]="'ITEM'"
+    [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Titulo Item da Assistência Técnica|Título interno que identifica o CRUDE de Item da Assistência Técnica@@tabs-ass-tec-item.tab.Item.titulo">
+          ITEM DA ASSISTÊNCIA TÉCNICA
+        </div>
+        <div>
+          <span i18n="Detalhes  Estabelecimento Assistência Técnica|texto que precede os dados do EStabelecimento Assistência Técnica@@crude-ass-tec-item.titulo.dadosEstabelecimentoAssistenciaTecnica">
+            Estab.:
+          </span>
+          {{cad.modelAssTecnicaEL01.chCodEstabelec}} - {{cad.modelAssTecnicaEL01.chNomAbrevEstabelec}} /
+          <span i18n="Detalhes  Número Assistência Técnica|texto que precede os dados do Número Assistência Técnica@@crude-ass-tec-item.titulo.dadosNumeroAssistenciaTecnica">
+            Número:
+          </span>
+          {{cad.modelAssTecnicaEL01.inNumAssTecnica}} /
+          <span i18n="Detalhes  Abertura Assistência Técnica|texto que precede os dados do Abertura Assistência Técnica@@crude-ass-tec-item.titulo.dadosAberturaAssistenciaTecnica">
+            Abertura:
+          </span>
+          {{cad.modelAssTecnicaEL01.dtDatAbertura | date: 'short'}}
+          <br/>
+          <span i18n="Detalhes  Origem Assistência Técnica|texto que precede os dados do Origem Assistência Técnica@@crude-ass-tec-item.titulo.dadosOrigemAssistenciaTecnica">
+            Origem:
+          </span>
+          {{cad.modelAssTecnicaEL01.chDesOrigemAssTec }} /
+          <span i18n="Detalhes  Tipo Assistência Técnica|texto que precede os dados do Tipo Assistência Técnica@@crude-ass-tec-item.titulo.dadosTipoAssistenciaTecnica">
+            Tipo:
+          </span>
+          {{cad.modelAssTecnicaEL01.chDesTipoAssTec }}
+        </div>
+      </h1>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Defeito Alegado'|Nome da tab 'Defeito Alegado' de Item da Assistência Técnica@@tabs-ass-tec-item.tab.DefeitoAlegado"
+    title='DEFEITO ALEGADO'
+    [selected]="tabSelecionada(1)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Defeito Alegado' de Item da Assistência Técnica@@tabs-ass-tec-item.tab.titulo.DefeitoAlegado">
+          DEFEITO ALEGADO NO ITEM DA ASSISTÊNCIA TÉCNICA
+        </div>
+        <div>
+          <span i18n="Detalhes  Estabelecimento Assistência Técnica|texto que precede os dados do EStabelecimento Assistência Técnica@@crude-ass-tec-item.titulo.dadosEstabelecimentoAssistenciaTecnica">
+            Estab.:
+          </span>
+          {{cad.modelAssTecnicaEL01.chCodEstabelec}} - {{cad.modelAssTecnicaEL01.chNomAbrevEstabelec}} /
+          <span i18n="Detalhes  Número Assistência Técnica|texto que precede os dados do Número Assistência Técnica@@crude-ass-tec-item.titulo.dadosNumeroAssistenciaTecnica">
+            Número:
+          </span>
+          {{cad.modelAssTecnicaEL01.inNumAssTecnica}} /
+          <span i18n="Detalhes  Abertura Assistência Técnica|texto que precede os dados do Abertura Assistência Técnica@@crude-ass-tec-item.titulo.dadosAberturaAssistenciaTecnica">
+            Abertura:
+          </span>
+          {{cad.modelAssTecnicaEL01.dtDatAbertura | date: 'short'}}
+          <br/>
+          <span i18n="Detalhes  Origem Assistência Técnica|texto que precede os dados do Origem Assistência Técnica@@crude-ass-tec-item.titulo.dadosOrigemAssistenciaTecnica">
+            Origem:
+          </span>
+          {{cad.modelAssTecnicaEL01.chDesOrigemAssTec }} /
+          <span i18n="Detalhes  Tipo Assistência Técnica|texto que precede os dados do Tipo Assistência Técnica@@crude-ass-tec-item.titulo.dadosTipoAssistenciaTecnica">
+            Tipo:
+          </span>
+          {{cad.modelAssTecnicaEL01.chDesTipoAssTec }}
+          <br/>
+          <span i18n="Detalhes  Item Assistência Técnica|texto que precede os dados do Item Assistência Técnica@@crude-ass-tec-item.titulo.dadosItemAssistenciaTecnica">
+            Item:
+          </span>
+          {{cad.modelAssTecItemEL01.chCodItem }} -{{cad.modelAssTecItemEL01.chDesItem }}
+        </div>
+      </h1>
+      <app-crude-ass-tec-item-def-aleg-detalhe #gridInterfaceTabCadastroFilhoDefeitoAlegado>
+      </app-crude-ass-tec-item-def-aleg-detalhe>
+      <app-crude-ass-tec-item-def-aleg-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoDefeitoAlegado'>
+      </app-crude-ass-tec-item-def-aleg-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Defeito Constatado'|Nome da tab 'Defeito Constatado' de Item da Assistência Técnica@@tabs-ass-tec-item.tab.DefeitoContatado"
+    title='DEFEITO CONSTATADO'
+    [selected]="tabSelecionada(2)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Defeito Constatado' de Item da Assistência Técnica@@tabs-ass-tec-item.tab.titulo.DefeitoContatado">
+          DEFEITO CONSTATADO NO ITEM DA ASSISTÊNCIA TÉCNICA
+        </div>
+        <div>
+          <span i18n="Detalhes  Estabelecimento Assistência Técnica|texto que precede os dados do EStabelecimento Assistência Técnica@@crude-ass-tec-item.titulo.dadosEstabelecimentoAssistenciaTecnica">
+            Estab.:
+          </span>
+          {{cad.modelAssTecnicaEL01.chCodEstabelec}} - {{cad.modelAssTecnicaEL01.chNomAbrevEstabelec}} /
+          <span i18n="Detalhes  Número Assistência Técnica|texto que precede os dados do Número Assistência Técnica@@crude-ass-tec-item.titulo.dadosNumeroAssistenciaTecnica">
+            Número:
+          </span>
+          {{cad.modelAssTecnicaEL01.inNumAssTecnica}} /
+          <span i18n="Detalhes  Abertura Assistência Técnica|texto que precede os dados do Abertura Assistência Técnica@@crude-ass-tec-item.titulo.dadosAberturaAssistenciaTecnica">
+            Abertura:
+          </span>
+          {{cad.modelAssTecnicaEL01.dtDatAbertura | date: 'short'}}
+          <br/>
+          <span i18n="Detalhes  Origem Assistência Técnica|texto que precede os dados do Origem Assistência Técnica@@crude-ass-tec-item.titulo.dadosOrigemAssistenciaTecnica">
+            Origem:
+          </span>
+          {{cad.modelAssTecnicaEL01.chDesOrigemAssTec }} /
+          <span i18n="Detalhes  Tipo Assistência Técnica|texto que precede os dados do Tipo Assistência Técnica@@crude-ass-tec-item.titulo.dadosTipoAssistenciaTecnica">
+            Tipo:
+          </span>
+          {{cad.modelAssTecnicaEL01.chDesTipoAssTec }}
+          <br/>
+          <span i18n="Detalhes  Item Assistência Técnica|texto que precede os dados do Item Assistência Técnica@@crude-ass-tec-item.titulo.dadosItemAssistenciaTecnica">
+            Item:
+          </span>
+          {{cad.modelAssTecItemEL01.chCodItem }} -{{cad.modelAssTecItemEL01.chDesItem }}
+        </div>
+      </h1>
+      <app-crude-ass-tec-item-def-const-detalhe #gridInterfaceTabCadastroFilhoDefeitoConstatado>
+      </app-crude-ass-tec-item-def-const-detalhe>
+      <app-crude-ass-tec-item-def-const-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoDefeitoConstatado'>
+      </app-crude-ass-tec-item-def-const-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Item Substituido'|Nome da tab 'Item Substituido' de Item da Assistência Técnica@@tabs-ass-tec-item.tab.ItemSubstituido"
+    title='ITEM SUBSTITUÍDO'
+    [selected]="tabSelecionada(3)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Item Substituido' de Item da Assistência Técnica@@tabs-ass-tec-item.tab.titulo.ItemSubstituido">
+          ITEM SUBSTITUÍDO NO ITEM DA ASSISTÊNCIA TÉCNICA
+        </div>
+        <div>
+          <span i18n="Detalhes  Estabelecimento Assistência Técnica|texto que precede os dados do EStabelecimento Assistência Técnica@@crude-ass-tec-item.titulo.dadosEstabelecimentoAssistenciaTecnica">
+            Estab.:
+          </span>
+          {{cad.modelAssTecnicaEL01.chCodEstabelec}} - {{cad.modelAssTecnicaEL01.chNomAbrevEstabelec}} /
+          <span i18n="Detalhes  Número Assistência Técnica|texto que precede os dados do Número Assistência Técnica@@crude-ass-tec-item.titulo.dadosNumeroAssistenciaTecnica">
+            Número:
+          </span>
+          {{cad.modelAssTecnicaEL01.inNumAssTecnica}} /
+          <span i18n="Detalhes  Abertura Assistência Técnica|texto que precede os dados do Abertura Assistência Técnica@@crude-ass-tec-item.titulo.dadosAberturaAssistenciaTecnica">
+            Abertura:
+          </span>
+          {{cad.modelAssTecnicaEL01.dtDatAbertura | date: 'short'}}
+          <br/>
+          <span i18n="Detalhes  Origem Assistência Técnica|texto que precede os dados do Origem Assistência Técnica@@crude-ass-tec-item.titulo.dadosOrigemAssistenciaTecnica">
+            Origem:
+          </span>
+          {{cad.modelAssTecnicaEL01.chDesOrigemAssTec }} /
+          <span i18n="Detalhes  Tipo Assistência Técnica|texto que precede os dados do Tipo Assistência Técnica@@crude-ass-tec-item.titulo.dadosTipoAssistenciaTecnica">
+            Tipo:
+          </span>
+          {{cad.modelAssTecnicaEL01.chDesTipoAssTec }}
+          <br/>
+          <span i18n="Detalhes  Item Assistência Técnica|texto que precede os dados do Item Assistência Técnica@@crude-ass-tec-item.titulo.dadosItemAssistenciaTecnica">
+            Item:
+          </span>
+          {{cad.modelAssTecItemEL01.chCodItem }} -{{cad.modelAssTecItemEL01.chDesItem }}
+        </div>
+      </h1>
+      <app-crude-ass-tec-item-subs-detalhe #gridInterfaceTabCadastroFilhoItemSubstituido>
+      </app-crude-ass-tec-item-subs-detalhe>
+      <app-crude-ass-tec-item-subs-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoItemSubstituido'>
+      </app-crude-ass-tec-item-subs-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Serviços Realizados'|Nome da tab 'Serviços Realizados' de Item da Assistência Técnica@@tabs-ass-tec-item.tab.ServicosRealizados"
+    title='SERVIÇOS REALIZADOS'
+    [selected]="tabSelecionada(4)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Serviços Realizados' de Item da Assistência Técnica@@tabs-ass-tec-item.tab.titulo.ServicosRealizados">
+          SERVIÇO REALIZADO NO ITEM DA ASSISTÊNCIA TÉCNICA
+        </div>
+        <div>
+          <span i18n="Detalhes  Estabelecimento Assistência Técnica|texto que precede os dados do EStabelecimento Assistência Técnica@@crude-ass-tec-item.titulo.dadosEstabelecimentoAssistenciaTecnica">
+            Estab.:
+          </span>
+          {{cad.modelAssTecnicaEL01.chCodEstabelec}} - {{cad.modelAssTecnicaEL01.chNomAbrevEstabelec}} /
+          <span i18n="Detalhes  Número Assistência Técnica|texto que precede os dados do Número Assistência Técnica@@crude-ass-tec-item.titulo.dadosNumeroAssistenciaTecnica">
+            Número:
+          </span>
+          {{cad.modelAssTecnicaEL01.inNumAssTecnica}} /
+          <span i18n="Detalhes  Abertura Assistência Técnica|texto que precede os dados do Abertura Assistência Técnica@@crude-ass-tec-item.titulo.dadosAberturaAssistenciaTecnica">
+            Abertura:
+          </span>
+          {{cad.modelAssTecnicaEL01.dtDatAbertura | date: 'short'}}
+          <br/>
+          <span i18n="Detalhes  Origem Assistência Técnica|texto que precede os dados do Origem Assistência Técnica@@crude-ass-tec-item.titulo.dadosOrigemAssistenciaTecnica">
+            Origem:
+          </span>
+          {{cad.modelAssTecnicaEL01.chDesOrigemAssTec }} /
+          <span i18n="Detalhes  Tipo Assistência Técnica|texto que precede os dados do Tipo Assistência Técnica@@crude-ass-tec-item.titulo.dadosTipoAssistenciaTecnica">
+            Tipo:
+          </span>
+          {{cad.modelAssTecnicaEL01.chDesTipoAssTec }}
+          <br/>
+          <span i18n="Detalhes  Item Assistência Técnica|texto que precede os dados do Item Assistência Técnica@@crude-ass-tec-item.titulo.dadosItemAssistenciaTecnica">
+            Item:
+          </span>
+          {{cad.modelAssTecItemEL01.chCodItem }} -{{cad.modelAssTecItemEL01.chDesItem }}
+        </div>
+      </h1>
+      <app-crude-ass-tec-item-serv-detalhe #gridInterfaceTabCadastroFilhoServicosRealizados>
+      </app-crude-ass-tec-item-serv-detalhe>
+      <app-crude-ass-tec-item-serv-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoServicosRealizados'>
+      </app-crude-ass-tec-item-serv-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+
+<app-crude-ass-tec-item-detalhe #cad [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-ass-tec-item-detalhe>

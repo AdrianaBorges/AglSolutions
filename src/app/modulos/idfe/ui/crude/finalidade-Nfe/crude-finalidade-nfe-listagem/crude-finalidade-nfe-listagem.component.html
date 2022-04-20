@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE Finalidade Da Nfe@@crude-finalidade-nfe-listagem.breadcrumb">
+  Início/Finalidade Nfe/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Finalidade Da Nfe@@crude-finalidade-nfe-listagem.titulo.finalidade-nfe">
+	FINALIDADE DA NFe
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaFinalidadeNfe"
+  [apiService]='apiFinalidadeNfeService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodFinalidadeNFe'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

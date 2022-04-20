@@ -1,0 +1,141 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Pedido de Compra de Cliente@@crude-ped-compra.breadcrumb">
+  Pedido Compra: listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem do Pedido de Compra de Cliente@@crude-ped-compra.titulo">
+    PEDIDO DE COMPRA DE CLIENTE
+  </div>
+</h1>
+
+<div class="area-filtro">
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Estabelecimento</label>
+        <app-filtro-multiselect 
+          formControlName='listaEstabelecimento' 
+          [apiService]='apiEstabelecimentoService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chNomeAbreviado" 
+          apiFieldKey="IDEstabelec" 
+          placeholder="ambos"
+          pesquisaFieldWhere='Estabelec.IDEstabelec' 
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+       <div class="form-group col-md-4">
+        <label for="inputTexto">Situação Pedido Compra</label>
+        <app-filtro-multiselect 
+          formControlName='listaSituacaoPedidoCompra' 
+          [apiService]='apiSituacaoPedCompService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="inCodSituacaoPedComp" 
+          placeholder="ambos"
+          pesquisaFieldWhere='PedCompra.inCodSituacaoPedComp' 
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-2"></div>
+      <div class="form-group col-md-2">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> pesquisar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<span
+  #traducao_msg_btnLiberar_sucesso
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de Liberar@@crude-ped-compra-listagem.btn.btnLiberar.sucesso">
+  Pedido de compra liberado com Sucesso 
+</span>
+<span
+  #traducao_msg_btnReijetarItem_sucesso
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de Liberar@@crude-ped-compra-listagem.btn.btnRejeitarItens.sucesso">
+  Itens do Pedido foram rejeitados com Sucesso 
+</span>
+
+<app-grid-pesquisa #gridFiltro 
+  idGrid="pesquisaPedCompraEL01"
+  [formGroupPesquisa]='formGroupPesquisa'
+  [apiService]='apiPedCompraEL01Service' 
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar' 
+  apiFieldKey='IDPedCompra' 
+  [colunasGrid]='getColunasGridCadastro()' 
+  pageSize='15'  
+  [rotaCadastro]='gridRotasCadastro' 
+  (colunaEditarBotaoClick)='colunaEditarBotaoClick($event)'
+  [btn_acao_exibir]='btn_acao_exibir'>
+  <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnLiberar"
+      icone='redo'
+      rotaFilha_tooltip='Liberar o Pedido de Compra'
+      i18n-rotaFilha_tooltip="botão para liberar o pedido de compra|btnLiberar@@crude-ped-compra-listagem.grid.btn.acao.Liberar">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnRejeitarItens"
+      icone='close'
+      rotaFilha_tooltip='Rejeitar Itens do Pedido de compra'
+      i18n-rotaFilha_tooltip="botão para rejeitar itens do pedido de compra|btnRejeitarItens@@crude-ped-compra-listagem.grid.btn.acao.RejeitarItens">
+    </app-grid-pesquisa-botao-acao-linha>
+  </app-grid-pesquisa-container-botoes-acao-linha>
+</app-grid-pesquisa>
+<div class="k-overlay" *ngIf="abrirModal"></div>
+<kendo-window #modal [(top)]='topModal' [(left)]="leftModal" *ngIf="abrirModal" [draggable]="false" [minWidth]="250" [width]="500">
+  <kendo-window-titlebar>
+    <div class="k-window-title">Rejeitar Itens do Pedido de Compra</div>
+    <div class="text-right">
+      <button kendoWindowCloseAction (click)="desistirModal()"></button>
+    </div>
+  </kendo-window-titlebar>
+  <form action="" [formGroup]="formModalRejeita" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Motivo da Reijeição|Identifica a Observação da Reijeição no CRUDE@@crude-ped-compra-listagem.label.inCodMotRejPedComp">
+              Motivo da Reijeição:
+            </ng-container>
+           <span class="k-required">*</span>
+          </span>
+        </label>
+        <app-api-select 
+          placeholder='selecione' 
+          formControlName='inCodMotRejPedComp' 
+          [apiService]='apiMotRejPedCompService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="inCodMotRejPedComp">
+        </app-api-select>
+      </div>
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Observação da Reijeição|Identifica a Observação da Reijeição no CRUDE@@crude-ped-compra-listagem.label.chDesComplMotRejPedComp">
+              Observação da Reijeição:
+            </ng-container>
+          </span>
+        </label>
+        <textarea kendoTextArea formControlName='chDesComplMotRejPedComp' class="k-textarea" rows="5"
+          style="width: 100%;"></textarea>
+      </div>
+    </div>
+  </form>
+  <div class="text-right">
+    <button type="button" class="k-button k-primary" [disabled]="formModalRejeita.invalid" (click)="efetivarModal()">Confirmar</button>
+    <button type="button" class="k-button k-danger" (click)="desistirModal()">Cancelar</button>
+  </div>
+</kendo-window>

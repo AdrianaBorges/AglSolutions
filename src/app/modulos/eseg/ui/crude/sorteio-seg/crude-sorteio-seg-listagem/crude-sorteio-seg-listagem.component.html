@@ -1,0 +1,11 @@
+<app-grid-pesquisa 
+  #gridFiltro 
+  idGrid="pesquisaCrudeSorteioSeg" 
+  [apiService]='apiSorteioSegService'
+  nomeMetodoOrdenacao='mudarOrdenacao' 
+  nomeMetodoApi='listar' 
+  apiFieldKey='IDSorteioSeg'
+  [colunasGrid]='getColunasGridCadastro()' 
+  pageSize='15'
+  [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilho'>
+</app-grid-pesquisa>

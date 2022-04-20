@@ -1,0 +1,18 @@
+.sombreado-janela{
+    -webkit-box-shadow: 1px 7px 7px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 7px 7px 1px rgba(0, 0, 0, 0.3);
+}
+
+.botoesModal{
+    position: relative;
+    bottom: 0;
+    right: 0;
+
+    button {
+        margin-left: 10px;
+    }
+}
+
+.window {
+    max-width: 100vw;
+}

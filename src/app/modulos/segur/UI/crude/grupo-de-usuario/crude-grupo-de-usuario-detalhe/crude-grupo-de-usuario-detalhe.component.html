@@ -1,0 +1,65 @@
+
+<app-cadastro-barra-acao 
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código do Grupo de Usuário do Sistema no CRUDE@@crude-grupo-de-usuario-detalhe.label.chCodGrupoUsuario">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodGrupoUsuario']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodGrupoUsuario" required maxlength="20" />
+        </label>
+      </div>
+    </div> 
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica a Descrição do Grupo de Usuário do Sistema no CRUDE@@crude-grupo-de-usuario-detalhe.label.chDesGrupoUsuario">
+              Descrição
+            </ng-container>                      
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesGrupoUsuario']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDesGrupoUsuario" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-lg-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Observação|Identifica a Observação do Grupo de Usuário do Sistema no CRUDE@@crude-grupo-de-usuario-detalhe.label.chDesObservacao">
+              Observação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesObservacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesObservacao" rows="10" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

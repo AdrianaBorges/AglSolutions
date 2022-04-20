@@ -1,0 +1,97 @@
+<app-alterar-senha (senhaAlterada)='senhaAlterada()' [instancia]='instanciaModalEsqueciSenha' ></app-alterar-senha>
+<div class="container " style="height:120px;background-color: #FFFF">
+    <div class="row ">
+        <div class="col-lg-12" style="display: flex;width: 100%;justify-content: center;">
+            <img style="margin-top:20px;" class="img-responsive" src="{{configEmpresa.urlLogo}}" alt="Agileit IT Logo" title="AgileIT" data-displaymode="Original">
+        </div>
+    </div>
+</div>
+<div class="containerlogin img-responsive"  style="margin:0 auto;height:565px;background-repeat: no-repeat-x;width: 100%;" [style.background-image]="'url(' + configEmpresa.imgFundoLoginRedirect + ')'">
+    
+    
+    <div class="col-lg-4 box" style="padding:30px;background-color: #FFFF;">
+        <form class="form-signin"
+              #formUsuario="ngForm">
+
+            <div class="invalido" *ngIf='erros.mensagem_geral != null'>
+                {{erros.mensagem_geral}}
+            </div>
+            <h2 class="form-signin-heading"></h2>
+            <label
+            i18n="label login|nome do label de login@@autenticacao-usuario.component.label.login"
+            >Login</label>
+            <label 
+            #elem_login
+            for="inputEmail" class="sr-only input-lg"
+            i18n="placeholder login|placeholder de login@@autenticacao-usuario.component.placeholder.login"
+            >Login</label>
+            <input type="email" 
+                    id="inputEmail" 
+                    class="form-control" 
+                    [placeholder]="getElem_login()" 
+                    name="chCodUsuario"
+                    [(ngModel)]="usuario.chCodUsuario" 
+                    #chCodUsuario="ngModel"
+                    [class.form-control]='true'
+                    [class.invalido]='false' 
+                    [class.is-valid]='!chCodUsuario.invalid && chCodUsuario.touched' 
+                    [class.is-invalid]='chCodUsuario.invalid && chCodUsuario.touched'
+                    required 
+                    autofocus>
+            <label
+            i18n="label senha|label de senha@@autenticacao-usuario.component.label.senha"
+            >Senha</label>
+            <label 
+            #elem_password
+            for="inputPassword" class="sr-only"
+            i18n="placeholder senha|placeholder do input de senha@@autenticacao-usuario.component.placeholder.senha"
+            >Password</label>
+            <input type="password" 
+                    id="inputPassword" 
+                    class="form-control" 
+                    [placeholder]="getElem_password()" 
+                    name="chPass"
+                    [(ngModel)]="usuario.chPass" 
+                    #chPass="ngModel"
+                    [class.form-control]='true'
+                    [class.is-valid]='!chPass.invalid && chPass.touched' 
+                    [class.is-invalid]='chPass.invalid && chPass.touched'
+                    required>
+            <div *ngIf="chPass.invalid && (chPass.dirty || chPass.touched)" class="invalid-feedback">
+                <div *ngIf="chPass.errors.required"
+                i18n="Texto: Obrigatório|Texto indicando que o cmapo é de preenchimento obrigatorio@@autenticacao-usuario.component.placeholder.senha.obrigatorio"
+                >
+                Obrigatório
+                </div>
+            </div>
+            
+            <button 
+                style="margin-top:20px;margin-bottom:20px" 
+                class="btn btn-lg btn-primary btn-block" 
+                type="submit"
+                (click)="acessar()" 
+                [disabled]="!formUsuario.form.valid"
+                i18n="nome botão de login|Nome no botão de login@@autenticacao-usuario.component.botao.login"
+                >Login</button>
+            <section>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me">
+                        <span
+                        i18n="Texto Mantenha me conectado|Texto do checkbox@@autenticacao-usuario.component.check.manter.conectado">
+                        Mantenha me conectado
+                        </span>
+                    </label>
+                    <label>
+                        <a routerLink="/esqueciasenha" routerLinkActive="active"  href="javascript:void(0);"
+                        i18n="Texto Recuperar senha|Texto do link@@autenticacao-usuario.component.link.recuperar.senha"
+                        > Recuperar senha</a>
+                    </label>
+                </div>
+            </section>
+        </form>
+    </div>
+</div> <!-- /container -->
+
+<iframe scrolling="no" style="border: none; overflow:hidden;overflow-y:hidden;" width="100%" height="670px" name="rodapeexterno" [src]="sanitizer.bypassSecurityTrustResourceUrl(configEmpresa.url_rodapeLoginRedirect)"></iframe>
+<app-aguarde-carregando #aguardeCarregando></app-aguarde-carregando>

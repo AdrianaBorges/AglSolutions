@@ -1,0 +1,226 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do produto de seguro cobertura@@crude-prod-seg-cobertura-detalhe.label.IDProdSegCobertura">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDProdSegCobertura']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDProdSegCobertura"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cobertura|Identifica o Cobertura do produto de seguro cobertura@@crude-prod-seg-cobertura-detalhe.label.IDCoberturaSeg">
+              Cobertura
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDCoberturaSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+          required 
+          placeholder='selecione' 
+          formControlName='IDCoberturaSeg' 
+          [apiService]='apiCoberturaSegService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="IDCoberturaSeg">
+        </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio de Vigência|Identifica o Inicio de Vigência@@crude-prod-seg-cobertura-detalhe.label.daDatIniVig">
+              Inicio de Vigência
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatIniVig']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatIniVig'></kendo-datepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Fim de Vigência|Identifica o Fim de Vigência@@crude-prod-seg-cobertura-detalhe.label.daDatFimVig">
+              Fim de Vigência
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatFimVig']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatFimVig'></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3" *ngIf="modelProdSeg.inCodTipoSeguro==1">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor da Cobertura|Identifica o Valor da Cobertura@@crude-prod-seg-cobertura-detalhe.label.deValCobertura">
+              Valor da Cobertura
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValCobertura']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deValCobertura"
+            [format]="'C2'"
+            [min]="0" 
+            [max]="99999999999" 
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3" *ngIf="modelProdSeg.inCodTipoSeguro==2">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor Mínimo|Identifica o Valor Mínimo@@crude-prod-seg-cobertura-detalhe.label.deValCoberturaMin">
+              Valor Mínimo
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValCoberturaMin']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deValCoberturaMin"
+            [format]="'C2'"
+            [min]="0" 
+            [max]="99999999999" 
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3" *ngIf="modelProdSeg.inCodTipoSeguro==2">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor Máximo|Identifica o Valor Máximo@@crude-prod-seg-cobertura-detalhe.label.deValCoberturaMax">
+              Valor Máximo
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValCoberturaMax']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deValCoberturaMax"
+            [format]="'C2'"
+            [autoCorrect]="false"
+            [min]="0" 
+            [max]="99999999999" 
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Num.Dias Carência|Identifica o Num.Dias Carência@@crude-prod-seg-cobertura-detalhe.label.inNumDiaCarencia">
+              Num.Dias Carência
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumDiaCarencia']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inNumDiaCarencia"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Num.Dias Franquia|Identifica o Num.Dias Franquia@@crude-prod-seg-cobertura-detalhe.label.inNumDiaFranquia">
+              Num.Dias Franquia
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumDiaFranquia']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inNumDiaFranquia"
+            [format]="'n0'"
+            [min]="0"
+            [max]="999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Limite por CPF|Identifica o Limite por CPF@@crude-prod-seg-cobertura-detalhe.label.deValLimitePorCPF">
+              Limite por CPF
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValLimitePorCPF']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deValLimitePorCPF"
+            [format]="'C2'"
+            [autoCorrect]="false"
+            [min]="0" 
+            [max]="99999999999" 
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

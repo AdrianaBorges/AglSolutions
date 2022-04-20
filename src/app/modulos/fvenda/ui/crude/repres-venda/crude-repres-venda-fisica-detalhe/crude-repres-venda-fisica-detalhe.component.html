@@ -1,0 +1,292 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do representante pessoa física no CRUDE@@crude-repres-venda-fisica.label.IDRepresentante">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDRepresentante']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDRepresentante"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do representante pessoa física no CRUDE@@crude-repres-venda-fisica.label.inCodRepresentante">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodRepresentante']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodRepresentante"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label CPF|Identifica o CPF do representante da pessoa física@@crude-repres-venda-fisica.label.inNumIdentifRepresentante">
+              CPF
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumIdentifRepresentante']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-maskedtextbox
+            #cpf
+            id="inputMaskCPF"
+            mask="000.000.000-00"
+            formControlName="CPF"
+            [class.maskedCPF]="true"
+            style="width:150px"
+            (blur)="procurarPorCPF(cpf.value)">
+          </kendo-maskedtextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nascimento|Identifica a Data de Nascimento da pessoa física no CRUDE@@crude-repres-venda-fisica.label.daDatNascim">
+              Nascimento
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatNascim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker formControlName='daDatNascim' required></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome|Identifica o nome do representante pessoa física no CRUDE@@crude-repres-venda-fisica.label.chNomeRepresentante">
+              Nome
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeRepresentante']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeRepresentante" type="text" name="chNomePessoa" id="chNomePessoa" maxlength="50" required />
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome|Identifica o nome abreviado do representante pessoa física no CRUDE@@crude-repres-venda-fisica.label.chNomeAbreviado">
+              Abreviado
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeAbreviado']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeAbreviado" type="text" name="chNomeAbreviado" id="chNomeAbreviado" maxlength="25" required>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome da Mãe|Identifica o Nome do Mãe da pessoa física no CRUDE@@crude-repres-venda-fisica.label.chNomeMae">
+              Nome da Mãe
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeMae']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeMae" type="text" name="chNomeMae" id="chNomeMae" maxlength="50">
+        </label>
+      </div>
+      <div class="form-group col-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome da Pai|Identifica o Nome do Pai da pessoa física no CRUDE@@crude-repres-venda-fisica.label.chNomePai">
+              Nome do Pai
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomePai']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chNomePai" name="chNomePai" id="chNomePai" maxlength="50">
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Representante|Identifica a Tipo de Representante do representante pessoa física no CRUDE@@crude-repres-venda-fisica.label.inCodTipoRepresentante">
+              Tipo de Representante
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoRepresentante']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='inCodTipoRepresentante'
+            [apiService]='apiTipoRepresentanteService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodTipoRepresentante">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Caixa Postal|Identifica a Caixa Postal do representante pessoa física no CRUDE@@crude-repres-venda-fisica.label.chCxPostal">
+              Caixa Postal
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCxPostal']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chCxPostal" name="chCxPostal" id="chCxPostal" maxlength="20">
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Representante Superior|Identifica o Representante Superior do representante da pessoa física no CRUDE@@crude-repres-venda-fisica.label.IDRepresentantePai">
+              Representante Superior
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDRepresentantePai']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_RepresentanteSuperior'
+            placeholder="selecione"
+            modalTitulo='Representante Superior'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiRepresentanteEL01SuperiorService'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeRepresentante"
+            [colunasGrid]="apiRepresentanteEL01SuperiorService.getColunasGrid()"
+            apiFieldKey="inCodRepresentante"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='Código'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigo'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Observação|Identifica o Observação do representante pessoa física no CRUDE@@crude-repres-venda-fisica.label.chDesObservacao">
+              Observação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesObservacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesObservacao" rows="6" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação Cadastral|Identifica o Situação Cadastral do representante pessoa física no CRUDE@@crude-repres-venda-fisica.label.chDesSituacaoCad">
+              Situação Cadastral
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesSituacaoCad']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chDesSituacaoCad" name="chDesSituacaoCad" id="chDesSituacaoCad" disabled="true" />
+        </label>
+      </div>
+    </div>
+
+    <div class=" form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Inclusão|Identifica a Data de Inclusão da Pessoa@@crude-repres-venda-fisica.label.inclusao">
+            Inclusão
+          </span>
+          <span>
+            {{modelRepresVendaEL01.dtDatInclusao | date: 'short'}}
+          </span>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span
+            i18n="Label Última Alteração|Identifica a data da Última Alteração do cadastro de pessoa física no CRUDE@@crude-repres-venda-fisica.label.ultimaAlteracao">
+            Última Alteração
+          </span>
+          <span>
+            {{(modelRepresVendaEL01.dtDatUltAlteracao == null? textoTraducaoSemAlteracao.innerText: modelRepresVendaEL01.dtDatUltAlteracao | date: 'short' )}}
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <span
+      #textoTraducaoSemAlteracao
+      style="display:none;"
+      i18n="Informativo do label Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-repres-venda-fisica.label.info.semAlteracao">
+      Não houve alteração ainda
+    </span>
+
+  </form>
+</app-cadastro-barra-acao>

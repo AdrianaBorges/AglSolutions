@@ -1,0 +1,61 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Tabela de Preço@@tabs-tab-preco.breadcrumb">
+  Tabela de Preço ID:
+</span>
+
+<kendo-tabstrip
+  #kendoTab
+  appCadastroTab
+  id='idTabCadTabPreco'
+  [tab]='kendoTab'
+  [cadastroBarraAcao]='cad.cadastroBarraAcao'
+  (tabSelect)="onTabSelect($event)">
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab TABELA|Nome da tab TABELA de Tabela de Preço@@tabs-tab-preco.tab.TABELA"
+    [ngClass]='app-tab-content'
+    [title]="'TABELA'"
+    [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Titulo Tabela de Preço|Título interno que identifica o CRUDE de Tabela de Preço@@tabs-tab-preco.tab.Item.titulo">
+         TABELA DE PREÇO
+        </div>
+      </h1>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'ITEM'|Nome da tab 'ITEM' de Tabela de Preço@@tabs-tab-preco.tab.item"
+    title="ITEM'"
+    [selected]="tabSelecionada(1)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'ITEM' de Tabela de Preço@@tabs-tab-preco.tab.titulo.item">
+          ITEM DA TABELA DE PREÇOS
+        </div>
+        <div>
+          <span i18n="Detalhes  Tabela|texto que precede os dados da Tabela@@crude-tab-preco.titulo.dadosTabela">
+            Tabela:
+          </span>
+          {{cad.modelTabPrecoEL01.chCodTabPreco}} - {{cad.modelTabPrecoEL01.chDescricao}} 
+           <br/>
+          <span i18n="Detalhes  Validade |texto que precede os dados do Validade@@crude-tab-preco.titulo.dadosValidade">
+            Validade:
+          </span>
+          {{cad.modelTabPrecoEL01.dtDatValidIni | date: 'short'}} - {{cad.modelTabPrecoEL01.dtDatValidFim | date: 'short'}}
+          <br/>
+        </div>
+      </h1>
+      <app-crude-tab-preco-item-detalhe #gridInterfaceTabCadastroFilhoItem>
+      </app-crude-tab-preco-item-detalhe>
+      <app-crude-tab-preco-item-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoItem'>
+      </app-crude-tab-preco-item-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+
+<app-crude-tab-preco-detalhe #cad [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-tab-preco-detalhe>

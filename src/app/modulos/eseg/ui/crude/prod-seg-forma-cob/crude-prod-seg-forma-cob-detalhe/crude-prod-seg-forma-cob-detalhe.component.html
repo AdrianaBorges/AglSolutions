@@ -1,0 +1,95 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do produto de seguro Forma de Cobrança@@crude-prod-seg-forma-cob-detalhe.label.IDProdSegFormaCob">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDProdSegFormaCob']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDProdSegFormaCob"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Forma de Cobrança|Identifica o Forma de Cobrança do produto de seguro Forma de Cobrança@@crude-prod-seg-forma-cob-detalhe.label.chCodFormaCobranca">
+              Forma de Cobrança
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodFormaCobranca']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            required
+            placeholder='selecione'
+            formControlName='chCodFormaCobranca'
+            [apiService]='apiFormaCobrancaEL01Service'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodFormaCobranca">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio de Vigência|Identifica o Inicio de Vigência@@crude-prod-seg-forma-cob-detalhe.label.daDatIniVig">
+              Inicio de Vigência
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatIniVig']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatIniVig'></kendo-datepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Fim de Vigência|Identifica o Fim de Vigência@@crude-prod-seg-forma-cob-detalhe.label.daDatFimVig">
+              Fim de Vigência
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatFimVig']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatFimVig'></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

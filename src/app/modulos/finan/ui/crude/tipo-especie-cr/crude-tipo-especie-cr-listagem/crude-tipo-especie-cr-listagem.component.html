@@ -1,0 +1,24 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE de Tipo de Espécie do Contas a Receber@@crude-tipo-especie-cr-listagem.breadcrumb">
+  Tipo Espécie: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Tipo de Espécie do Contas a Receber@@crude-tipo-especie-cr-listagem.titulo.tipo-especie-cr">
+    TIPO DE ESPÉCIE DO CONTAS A RECEBER
+  </div>
+  </h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaTipoEspecieCR"
+  [apiService]='apiTipoEspecieCrService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodTipoEspecieCR'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

@@ -1,0 +1,156 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do CRUDE@@crude-ass-tec-item-serv.label.IDAssTecItemServ">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDAssTecItemServ']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDAssTecItemServ"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-10">
+         <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Serviço|Identifica o Serviço no CRUDE@@crude-ass-tec-item-serv-detalhe.label.IDItem">
+              Serviço
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDItem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa #Pesquisa
+            tipo='edicao'
+            formControlName='UIItem'
+            placeholder="selecione"
+            modalTitulo='SERVIÇO'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiItemEL01Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listarOnlyService'
+            apiFieldExibir="chDescricao"
+            [colunasGrid]="apiItemEL01Service.getColunasGrid()"
+            apiFieldKey="chCodItem"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="text"
+            pesquisaRapidaPlaceholder='Código'
+            pesquisaRapidaMaxlength='50'
+            pesquisaRapidaWidth='20'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigoOnlyService'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Complemento|Identifica o Complemento no CRUDE@@crude-ass-tec-item-serv.label.chDesComplem">
+              Complemento
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesComplem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesComplem" rows="5" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <h1 kendoCardTitle>LOG de Inclusão</h1>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Inclusão|Identifica a Data de Inclusão@@crude-ass-tec-item-serv.label.inclusao">
+                  Data/Hora:
+                </span>
+                <span>
+                  {{modelAssTecItemServ.dtDatInclusao | date: 'short'}}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Usuário Inclusão|Identifica o Usuário de Inclusão@@crude-ass-tec-item-serv.label.UsuarioInclusao">
+                  Usuário:
+                </span>
+                <span>
+                  {{modelAssTecItemServ.chNomeUsuarioInclusao }}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>    
+      </div>
+      <div class="form-group col-md-6">    
+        <h1 kendoCardTitle>LOG da Última Alteração</h1>    
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Alteração|Identifica a Data de Alteração@@crude-ass-tec-item-serv.label.alteracao">
+                  Data/Hora:
+                </span>
+                <span>
+                  {{modelAssTecItemServ.dtDatUltAlteracao | date: 'short'}}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label class="k-form-field">
+              <div>
+                <span i18n="Label Usuário Alteração|Identifica o Usuário de Alteração@@crude-ass-tec-item-serv.label.UsuarioAlteracao">
+                  Usuário:
+                </span>
+                <span>
+                  {{modelAssTecItemServ.chNomeUsuarioAlteracao }}
+                </span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

@@ -1,0 +1,159 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE Modelo De DFe@@crude-nfe-listagem.breadcrumb">
+  Início/NFe/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Modelo De NFe@@crude-nfe-listagem.titulo.nfe">
+    Nota Fiscal Eletrônica - Apenas com XML de Resumo
+  </div>
+</h1>
+
+<div class="area-filtro">
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label i18n="Nome do filtro|Nome do filtro Situação da NFe|@@crude-nfe-listagem.filtro.stuacao.nfe" for="inputTexto">
+          Situação da NFe
+        </label>
+        <app-filtro-multiselect
+          #filtroPessoa
+          formControlName='situacaoNfe'                
+          [apiService]='apiSituacaoNfeService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="campoCalculado"
+          apiFieldKey="inCodSituacaoNFe"
+          placeholder="selecione"
+          pesquisaFieldWhere='NFe.inCodSituacaoNFe'
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-6">
+        <label i18n="Nome do filtro|Nome do filtro Status da Confirmação|@@crude-nfe-listagem.filtro.status.confirmacao" for="inputTexto">
+          Status de Confirmação
+        </label>
+        <app-filtro-multiselect
+          #filtroPessoa
+          formControlName='statusConfNfe'                
+          [apiService]='ApiStatusConfNfeService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="campoCalculado"
+          apiFieldKey="inCodStatusConfNFe"
+          placeholder="selecione"
+          pesquisaFieldWhere='NFe.inCodStatusConfNFe'
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label i18n="Nome do filtro|Nome do filtro Chave da NFe|@@crude-nfe-listagem.filtro.chave.nfe" for="inputTexto">
+            Chave da NFe
+        </label>
+        <input 
+          class="k-textbox"
+          type="text" 
+          formControlName="filtroChaveNFe" 
+          [appGridFiltroExterno]="gridFiltro"
+          field="chChaveNFe"
+          operator="contains"/>
+      </div>
+      <div class="form-group col-md-6">
+        <label i18n="Nome do filtro|Nome do filtro Nome do emitente|@@crude-nfe-listagem.filtro.nome.emitente" for="inputTexto">
+          Nome do emitente
+        </label>
+        <input 
+          class="k-textbox"
+          type="text" 
+          formControlName="filtroNomeEmitente" 
+          [appGridFiltroExterno]="gridFiltro"
+          field="chNomeEmit"
+          operator="contains"/>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-9"></div>
+      <div class="form-group col-md-3">
+        <button kendoButton 
+          class="form-control btn-filtro-acao"
+          (click)="executarPesquisa()"
+          [primary]="true">
+          <span class="k-icon k-i-search"></span>
+          pesquisar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaNFe"
+  [apiService]='apiNfeService'
+  nomeMetodoApi='listar'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  apiFieldKey='IDNFe'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'
+  i18n-cabecalhoBotaoNomes="botões do cabeçalho|nome dos botões do cabeçalho@@crude-nfe-listagem.botoes.cabecalho"
+  cabecalhoBotaoNomes='botão 01|botão 02|botão 03'
+  (cabecalhoBotaoClick)='cabecalhoBotaoClick($event)'
+  [formGroupPesquisa]='formGroupPesquisa'    
+  [camposDetalheLinha]='getColunasGridCadastro()'
+  gridPesquisaBotaoDetalhesOrientacao='horizontal'    
+  i18n-gridPesquisaBotaoDetalhes="botões grid detalhes|botões de detalhes do grid@@crude-nfe-listagem.botoes.grid.detalhe"
+  gridPesquisaBotaoDetalhes='btn 1|btn 02|btn 03'
+  gridPesquisaBotaoDetalhesWidth='200|100|300'
+  (gridPesquisaBotaoDetalhesClick)='gridPesquisaBotaoDetalhesClick($event)'>
+</app-grid-pesquisa>
+
+<kendo-window 
+  top="20" left="20"
+  id='alterarSenhaComponent'
+  *ngIf="openedModalXmlSefaz"
+  [draggable]="true"
+  width ="800"
+  height="400"
+  [resizable]="true"
+  [state]="default"
+  (stateChange)="onStateChange($event)"
+  autofocus
+  [class.sombreado-janela]='true'>
+
+  <kendo-window-titlebar>
+    <div class='k-window-title'>Baixar XML Sefaz</div>
+    <button kendoButton (click)="fecharModalXmlSefaz($event)" [icon]="'close'" [look]="'bare'"></button>
+  </kendo-window-titlebar>
+
+  <div class="invalido" *ngIf='errosXmlSefaz != null'>
+    {{errosXmlSefaz}}
+  </div>
+
+  <p>
+    Aqui vão ter dados sendo solicitados
+  </p>
+  <p>
+    Aqui vão ter dados sendo solicitados
+  </p>
+  <p>
+    Aqui vão ter dados sendo solicitados
+  </p>
+
+  <form class="k-form botoesModal">
+    <div class="text-right">
+      <button i18n="botão cancelar|botão Cancelar do modal de baixa do XML Sefaz@@crude-nfe-listagem.modal.cancelar"
+        type="button"
+        class="k-button btn-filtro-acao"
+        (click)="fecharModalXmlSefaz()">
+        Cancelar
+      </button>
+      <button i18n="botão baixar XML Sefaz|botão de confirmar que deseja baixar o XML Sefaz do modal@@crude-nfe-listagem.modal.baixar_xml_Sefaz"
+        type="button" class="k-button k-primary" (click)="baixar_XML_Sefaz()">
+        Baixar
+      </button>
+    </div>
+  </form>  
+</kendo-window>

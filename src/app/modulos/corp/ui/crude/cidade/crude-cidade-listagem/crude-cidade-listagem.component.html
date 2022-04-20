@@ -1,0 +1,59 @@
+<span #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb da cidade@@crude-cidade-listagem.breadcrumb">Início/Cidade/Listagem</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de cidade @@crude-cidade-listagem.titulo.cidade">
+    CIDADE
+  </div>
+</h1>
+
+<div class="area-filtro">
+
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">País</label>
+        <app-filtro-multiselect 
+          formControlName='listaPais' 
+          [apiService]='apiPaisService' 
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chNomeAbreviado" 
+          apiFieldKey="IDPais" 
+          placeholder="ambos" 
+          pesquisaFieldWhere='IDPais'
+          [childComponent]='filtroUF'
+          childComponentFieldWhere='Pais.IDPais'
+          [pesquisaGridFiltro]="gridFiltro"></app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputTexto">UF</label>
+        <app-filtro-multiselect 
+        #filtroUF
+          formControlName='listaUF' 
+          [apiService]='apiUFService' 
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chNome" 
+          apiFieldKey="IDUF" 
+          placeholder="ambos" 
+          pesquisaFieldWhere='IDUF'
+          [pesquisaGridFiltro]="gridFiltro"></app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-4">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true"><span
+            class="k-icon k-i-search"></span> pesquisar</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-grid-pesquisa #gridFiltro 
+  idGrid="pesquisaCidade" 
+  [apiService]='apiCidadeService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDCidade' 
+  [colunasGrid]='getColunasGridCadastro()' 
+  pageSize='15' 
+  [rotaCadastro]='gridRotasCadastro'
+  [formGroupPesquisa]='formGroupPesquisa'>
+</app-grid-pesquisa>

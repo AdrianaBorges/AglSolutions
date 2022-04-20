@@ -1,0 +1,117 @@
+<span #breadcrumb_traducao style='display:none;' i18n="breadcrumb|breadcrumb de representante @@tabs-representante.breadcrumb">
+  Início/representante/Edição
+</span>
+
+<kendo-tabstrip #kendoTab appCadastroTab id='idTabCadRepresentanteFisica' [tab]='kendoTab' [cadastroBarraAcao]='cadPF.cadastroBarraAcao' (tabSelect)="onTabSelect($event)">
+
+    <kendo-tabstrip-tab i18n-title="Nome Tab Representante|Nome da tab Representante de representante@@tabs-representante.tab.Representante" [ngClass]='app-tab-content' [title]="'REPRESENTANTE'" [selected]="tabSelecionada(0)">
+        <ng-template kendoTabContent>
+            <h1>
+                <div i18n="Titulo representante |Título interno que identifica o CRUDE de representante fisica@@crude-representante-listagem.titulo.representante">
+                    REPRESENTANTE
+                </div>
+            </h1>
+        </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab *ngIf="cadPF.modelRepresentanteEl01.inCodTipoPessoaRepresentante == 1" i18n-title="Nome Tab 'Documentos complementares'|Nome da tab 'Documentos complementares' de pessoas @@tabs-Representante.tab.DocumentosComplementares"
+        title='DOC.COMPLEM.' [selected]="tabSelecionada(1)">
+        <ng-template kendoTabContent>
+            <h1>
+                <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Documentos complementares' de pessoas@@tabs-representante.tab.titulo.DocumentosComplementares">
+                    DOCUMENTOS COMPLEMENTARES DO REPRESENTANTE
+                </div>
+                <div>
+                    <span i18n="Detalhes representante|texto que precede os dados de Representante@@tabs-representante.tab.titulo.dadosRepresentante">
+            Representante:
+          </span> {{cadPF.modelRepresentanteEl01.IDRepresentante}} - {{cadPF.modelRepresentanteEl01.chNomeRepresentante}} - {{this.cadPF.modelRepresentanteEl01.chDesTipoDocumento}}: {{this.cadPF.modelRepresentanteEl01.inNumIdentificacao}}
+                </div>
+            </h1>
+            <app-crude-pessoa-documento-detalhe #gridInterfaceTabCadastroFilhoDocumento></app-crude-pessoa-documento-detalhe>
+            <app-crude-pessoa-documento-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoDocumento'>
+            </app-crude-pessoa-documento-listagem>
+        </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab i18n-title="Nome Tab 'Endereços'|Nome da tab 'Endereços' de pesoas s@@tabs-representante.tab.Enderecos" title='ENDEREÇOS' 
+[selected]="tabSelecionada((cadPF.modelRepresentanteEl01.inCodTipoPessoaRepresentante == 1)?2:1)">
+        <ng-template kendoTabContent>
+            <h1>
+                <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Endereços' de pessoas@@tabs-representante.tab.titulo.Enderecos">
+                    ENDEREÇOS DO REPRESENTANTE
+                </div>
+                <div>
+                    <span i18n="Detalhes representante|texto que precede os dados de Representante@@tabs-representante.tab.titulo.dadosRepresentante">
+            Representante:
+          </span> {{cadPF.modelRepresentanteEl01.IDRepresentante}} - {{cadPF.modelRepresentanteEl01.chNomeRepresentante}} - {{this.cadPF.modelRepresentanteEl01.chDesTipoDocumento}}: {{this.cadPF.modelRepresentanteEl01.inNumIdentificacao}}
+                </div>
+            </h1>
+            <app-crude-pessoa-endereco-detalhe #gridInterfaceTabCadastroFilhoEndereco>
+            </app-crude-pessoa-endereco-detalhe>
+            <app-crude-pessoa-endereco-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoEndereco'>
+            </app-crude-pessoa-endereco-listagem>
+        </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab i18n-title="Nome Tab 'Telefones'|Nome da tab 'Telefones' de pessoas@@tabs-representante.tab.Telefones" title='TELEFONES' 
+    [selected]="tabSelecionada((cadPF.modelRepresentanteEl01.inCodTipoPessoaRepresentante == 1)?3:2)">
+        <ng-template kendoTabContent>
+            <h1>
+                <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Telefones' de pessoas@@tabs-representante.tab.titulo.Telefones">
+                    TELEFONES DO REPRESENTANTE
+                </div>
+                <div>
+                    <span i18n="Detalhes Representante|texto que precede os dados de Representante@@tabs-representante.tab.titulo.dadosRepresentante">
+            Representante:
+          </span> {{cadPF.modelRepresentanteEl01.IDRepresentante}} - {{cadPF.modelRepresentanteEl01.chNomeRepresentante}} - {{this.cadPF.modelRepresentanteEl01.chDesTipoDocumento}}: {{this.cadPF.modelRepresentanteEl01.inNumIdentificacao}}
+                </div>
+            </h1>
+            <app-crude-pessoa-telefone-detalhe #gridInterfaceTabCadastroFilhoTelefone>
+            </app-crude-pessoa-telefone-detalhe>
+            <app-crude-pessoa-telefone-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoTelefone'>
+            </app-crude-pessoa-telefone-listagem>
+        </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab i18n-title="Nome Tab 'e-mails'|Nome da tab 'E-mails' de pessoas@@tabs-representante.tab.emails" title='E-MAILS' 
+[selected]="tabSelecionada((cadPF.modelRepresentanteEl01.inCodTipoPessoaRepresentante == 1)?4:3)">
+        <ng-template kendoTabContent>
+            <h1>
+                <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'E-Mails' de pessoas @@tabs-representante.tab.titulo.Emails">
+                    E-MAILS DO REPRESENTANTE
+                </div>
+                <div>
+                    <span i18n="Detalhes representante|texto que precede os dados de Representante@@tabs-representante.tab.titulo.dadosRepresentante">
+            Representante:
+          </span> {{cadPF.modelRepresentanteEl01.IDRepresentante}} - {{cadPF.modelRepresentanteEl01.chNomeRepresentante}} - {{this.cadPF.modelRepresentanteEl01.chDesTipoDocumento}}: {{this.cadPF.modelRepresentanteEl01.inNumIdentificacao}}
+                </div>
+            </h1>
+            <app-crude-pessoa-email-detalhe #gridInterfaceTabCadastroFilhoEmail>
+            </app-crude-pessoa-email-detalhe>
+            <app-crude-pessoa-email-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoEmail'>
+            </app-crude-pessoa-email-listagem>
+        </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab *ngIf="cadPF.modelRepresentanteEl01.inCodTipoPessoaRepresentante == 2" i18n-title="Nome Tab 'Contatos'|Nome da tab 'Contatos' de pesoas jurídicas@@tabs-representante.tab.Contatos" title='CONTATOS' 
+     [selected]="tabSelecionada(4)">
+        <ng-template kendoTabContent>
+            <h1>
+                <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Contatos' de pesoas jurídicas@@tabs-representante.tab.titulo.Contatos">
+                    CONTATOS DO REPRESENTANTE
+                </div>
+                <div>
+                    <span i18n="Detalhes representante|texto que precede os dados de Representante@@tabs-representante.tab.titulo.dadosRepresentante">
+          Representante:
+        </span> {{cadPF.modelRepresentanteEl01.Representante}} - {{cadPF.modelRepresentanteEl01.Representante}} - {{this.cadPF.modelRepresentanteEl01.chDesTipoDocumento}}: {{this.cadPF.modelRepresentanteEl01.inNumIdentificacao}}
+                </div>
+            </h1>
+            <app-crude-pessoa-contato-detalhe #gridInterfaceTabCadastroFilhoContato>
+            </app-crude-pessoa-contato-detalhe>
+            <app-crude-pessoa-contato-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoContato'>
+            </app-crude-pessoa-contato-listagem>
+        </ng-template>
+    </kendo-tabstrip-tab>
+</kendo-tabstrip>
+
+<app-crude-representante-detalhe #cadPF [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'"></app-crude-representante-detalhe>

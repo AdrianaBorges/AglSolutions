@@ -1,0 +1,67 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Pedido de Venda@@tabs-ped-venda.breadcrumb">
+  Pedido ID:
+</span>
+
+<kendo-tabstrip #kendoTab appCadastroTab id='idTabCadItem' [tab]='kendoTab' [cadastroBarraAcao]='cad.cadastroBarraAcao' (tabSelect)="onTabSelect($event)">
+
+ <kendo-tabstrip-tab
+  i18n-title="Nome Tab CLIENTE|Nome da tab PEDIDO DE VENDAde Clientes físicas@@tabs-ped-venda.tab.Cliente"
+  [ngClass]='app-tab-content'
+  [title]="'PEDIDO'"
+  [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Titulo PEDIDO DE VENDAfísica|Título interno que identifica o CRUDE de PEDIDO DE VENDA@@tabs-ped-venda.tab.Cliente.titulo">
+          PEDIDO DE VENDA
+        </div>
+      </h1>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab ITEM|Nome da tab ITEM de Pedido de Venda@@tabs-ped-venda.tab.Item"
+    [ngClass]='app-tab-content'
+    [title]="'ITEM'"
+    [selected]="tabSelecionada(1)"
+    *ngIf='cad.modelPedVendaEL01'>
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Titulo Pedido de Venda|Título interno que identifica o CRUDE de Pedido de Venda@@tabs-ped-venda.tab.Item.titulo">
+          ITEM DO PEDIDO DE VENDA
+        </div>
+        <div>
+          <span i18n="Detalhes  Estabelecimento Pedido de  Venda|texto que precede os dados do EStabelecimento Pedido de  Venda@@crude-ped-venda.titulo.dadosEstabelecimentoAssistenciaTecnica">
+            Estab.:
+          </span>
+          {{cad.modelPedVendaEL01.chCodEstabelec}} - {{cad.modelPedVendaEL01.chNomAbrevEstabelec}} -  
+          <span i18n="Detalhes  Número Pedido de  Venda|texto que precede os dados do Número Pedido de  Venda@@crude-ped-venda.titulo.dadosNumeroAssistenciaTecnica">
+            Número:
+          </span>
+          {{cad.modelPedVendaEL01.inNumPedVenda}}  - 
+          <span i18n="Detalhes  Abertura Pedido de  Venda|texto que precede os dados do Abertura Pedido de  Venda@@crude-ped-venda.titulo.dadosAberturaAssistenciaTecnica">
+            Emissão:
+          </span>
+          {{cad.modelPedVendaEL01.daDatEmissao | date: 'short'}}
+          <br/>
+          <span i18n="Detalhes  Origem Pedido de  Venda|texto que precede os dados do PEDIDO DE VENDAPedido de  Venda@@crude-ped-venda.titulo.dadosClienteAssistenciaTecnica">
+            Cliente:
+          </span>
+          {{cad.modelPedVendaEL01.IDClienteVenda }}  -   {{cad.modelPedVendaEL01.chNomeCliente}}        
+        </div>
+      </h1>
+      <app-crude-ped-venda-item-detalhe #gridInterfaceTabCadastroFilho>
+    </app-crude-ped-venda-item-detalhe>
+    <app-crude-ped-venda-item-listagem  
+      [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilho'
+      [modelPedVendaEL01]='cad.modelPedVendaEL01'
+    >
+    </app-crude-ped-venda-item-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+
+<app-crude-ped-venda-detalhe #cad [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-ped-venda-detalhe>

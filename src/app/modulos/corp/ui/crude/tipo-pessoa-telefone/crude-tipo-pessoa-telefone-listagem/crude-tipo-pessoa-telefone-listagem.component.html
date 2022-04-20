@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE de Tipo de Telefone da Pessoa@@crude-tipo-pessoa-telefone-listagem.breadcrumb">
+  Início/Tipo Telefone/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Tipo de Telefone da Pessoa@@crude-tipo-pessoa-telefone-listagem.titulo.tipo-pessoa-telefone">
+  TIPO DE TELEFONE DA PESSOA
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaTipoPessoaTelefone"
+  [apiService]='apiTipoDocumentoPessoaTelefoneService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodTipoPessoaTelefone'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

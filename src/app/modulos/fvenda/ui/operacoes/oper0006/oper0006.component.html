@@ -1,0 +1,49 @@
+<span
+  #breadcrumb_traducao
+  style="display: none"
+  i18n="breadcrumb|breadcrumb da operação geração vendas campanha@@fvenda.operacoes.oper0006.breadcrumb">
+  Relatório: Vendas Campanha
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título dos relatório de Vendas da Campanha@@fvenda.operacoes.oper0006.titulo">
+     RELATÓRIO DE VENDAS DA CAMPANHA
+  </div> 
+</h1>
+
+<app-operacao-barra-acao
+  [formGroupPesquisa]="formGroupPesquisa"
+  [apiSearchObject]="apiSearchObject"
+  [apiService]="apiOper0006Service"
+  nomeMetodoApi="executar"
+  modeloRelatorioNames="Modelo 01|Modelo 02"
+  modeloRelatorioCodigos="01298|78712"
+  [modoExibicao_arquivo]="true"
+  [modoExibicao_relatorio]="false"
+  (exibirErros)="exibirMensagemDeErros($event)">
+
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-6 col-sm-12">
+        <span>
+          <label
+            for="inputTexto"
+            i18n="Filtro de campanha |Dropdow exibindo as campanhas cadastradas para filtrar pelo id de uma delas@@fvenda.operacoes.oper0006.label.campanha">
+            Campanha
+          </label>
+          <app-form-control-alerta-erro-api
+            [mensagemErro]="apiErrorCollection.campos['IDCampanha']">
+          </app-form-control-alerta-erro-api>
+        </span>
+        <app-api-select
+          placeholder="selecione"
+          formControlName="IDCampanha"
+          [apiService]="apiCampanhaEL01Service"
+          apiNomeMetodoListar="listar"
+          apiFieldExibir="chDescricao"
+          apiFieldKey="IDCampanha">
+        </app-api-select>        
+      </div>
+    </div>
+  </form>
+</app-operacao-barra-acao>

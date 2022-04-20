@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE Tipo De Tomador Do CTe@@crude-tipo-tomador-cte-listagem.breadcrumb">
+  Início/Tipo Tomador CTe/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Tipo De Tomador Do CTe@@crude-tipo-tomador-cte-listagem.titulo.tipo-tomador-cte">
+    TIPO DE TOMADOR DO CTe
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaTipoTomadorCte"
+  [apiService]='apiTipoTomadorCteService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodTipoTomadorCTe'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

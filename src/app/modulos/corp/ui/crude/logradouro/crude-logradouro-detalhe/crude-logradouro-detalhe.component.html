@@ -1,0 +1,182 @@
+<span #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de cadastro de lograduro @@crude-logradouro-edicao.breadcrumb">Início/Logradouro/Edição</span>
+
+<app-cadastro-barra-acao #cadastroBarraAcao [formGroup]='meuForm' (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()' (excluir)='btnExcluir()'>
+
+  <h1>
+    <div
+      i18n="Título do conteúdo do CRUDE|Título do conteúdo do CRUDE logradouro @@crude-logradouro-detalhe.titulo.logradouro">
+      LOGRADOURO
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label ID|Identifica o id do logradouro CRUDE@@crude-logradouro-detalhe.label.IDLogradouro">
+              ID
+            </ng-container>
+          </span>
+          <kendo-numerictextbox formControlName="IDLogradouro" [format]="'N0'" [min]="1" [max]="999999999"
+            [autoCorrect]="false" [spinners]="false" disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3"></div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Pais|Identifica o pais do logradouro no CRUDE@@crude-logradouro-detalhe.label.IDPais">País
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['IDPais']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select required placeholder='selecione' formControlName='IDPais' [apiService]='apiPaisService'
+            apiNomeMetodoListar='listar' apiFieldExibir="chNomeAbreviado" apiFieldKey="IDPais"
+            [childComponent]='selectUF' childComponentFieldWhere='Pais.IDPais' pesquisaOperator="eq"></app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">      
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label UF|Identifica a unidade federativa do logradouro CRUDE@@crude-logradouro-detalhe.label.IDUF">
+              UF
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['IDUF']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select #selectUF required placeholder='selecione' formControlName='IDUF' [apiService]='apiUFService'
+            apiNomeMetodoListar='listar' apiFieldExibir="chNome" apiFieldKey="IDUF" [childComponent]='selectCidade'
+            childComponentFieldWhere='UF.IDUF' pesquisaOperator="eq">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Cidade|Identifica a cidade do logradouro CRUDE@@crude-logradouro-detalhe.label.IDCidade">
+              Cidade
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['IDCidade']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select #selectCidade required placeholder='selecione' formControlName='IDCidade'
+            [apiService]='apiCidadeService' apiNomeMetodoListar='listar' apiFieldExibir="chNome" apiFieldKey="IDCidade">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Tipo Logradouro|Identifica o Tipo de logradouro CRUDE@@crude-logradouro-detalhe.label.inCodTipoLogradouro">
+              Tipo Logradouro
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['inCodTipoLogradouro']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select required placeholder='selecione' formControlName='inCodTipoLogradouro'
+            [apiService]='apiTipoLogradouroService' apiNomeMetodoListar='listar' apiFieldExibir="chDescricao"
+            apiFieldKey="inCodTipoLogradouro">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Nome Logradouro|Identifica o nome do Logradouro CRUDE@@crude-logradouro-detalhe.label.chNome">
+              Nome Logradouro
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chNome']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNome" maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Nome Abreviado|Identifica o nome Abreviado do Logradouro CRUDE@@crude-logradouro-detalhe.label.chNomeAbreviado">
+              Nome Abreviado
+            </ng-container>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chNomeAbreviado']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeAbreviado" maxlength="50" />
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Complemento|Identifica o complemento do logradouro CRUDE@@crude-logradouro-detalhe.label.chComplemento">
+              Complemento
+            </ng-container>
+
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chComplemento']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chComplemento" maxlength="100" />
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Bairro|Identifica o bairro do logradouro CRUDE@@crude-logradouro-detalhe.label.chBairro">
+              Bairro
+            </ng-container>
+
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chBairro']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chBairro" maxlength="80" />
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label CEP|Identifica o CEP  do logradouro CRUDE@@crude-logradouro-detalhe.label.chCEP">
+              CEP
+            </ng-container>
+
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chCEP']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-maskedtextbox id="inputMaskCEP" mask="99.999-999" formControlName="chCEP" [class.maskedCEP]="true"
+            style="width:150px">
+          </kendo-maskedtextbox>
+        </label>
+      </div>
+    </div>
+  </form>

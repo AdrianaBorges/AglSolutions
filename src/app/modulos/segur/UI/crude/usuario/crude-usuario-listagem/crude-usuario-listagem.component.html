@@ -1,0 +1,92 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb do usúario@@crude-usuario-listagem.breadcrumb">
+  Início/Usuário/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de usuarios@@crude-usuario-listagem.titulo">
+    USUÁRIO
+  </div>
+</h1>
+
+<div class="area-filtro">
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">
+          <span>
+            <ng-container i18n="Label Tipo de Usuário|Label Tipo de Usuário@@crude-usuario-listagem.tipoUsuario">
+              Tipo de Usuário
+            </ng-container>
+          </span>
+        </label>
+        <app-filtro-multiselect
+          formControlName='listaTipoUsuario' 
+          [apiService]='apiTipoUsuarioService' 
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chDesTipoUsuario" 
+          apiFieldKey="inCodTipoUsuario"
+          placeholder="ambos"
+          pesquisaFieldWhere='inCodTipoUsuario'
+          childComponentFieldWhere='Usuario.inCodTipoUsuario'
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputTexto">
+          <span>
+            <ng-container i18n="Label Situação Cadastral|Label Situação Cadastral@@crude-usuario-listagem.situacaoCadastral">
+              Situação Cadastral
+            </ng-container>
+          </span>
+        </label>
+        <app-filtro-multiselect
+          formControlName='listaSituacaoCadastral'
+          [apiService]='apiSituacaoCadService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chDescricao"
+          apiFieldKey="inCodSituacaoCad"
+          placeholder="ambos"
+          pesquisaFieldWhere='inCodSituacaoCad'
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-3">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> 
+          <ng-container i18n="botão Filtrar|botão Filtrar@@crude-usuario-listagem.btnFiltrar">
+            Filtrar
+          </ng-container>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-grid-pesquisa 
+  #gridFiltro 
+  idGrid="pesquisaUsuario" 
+  [apiService]='apiUsuarioEL01Service'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='chCodUsuario'
+  [colunasGrid]='getColunasGridCadastro()' 
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'
+  [formGroupPesquisa]='formGroupPesquisa'
+  (btn_Inativar_click)='btn_Inativar_click($event)' [btn_Inativar_exibir]='btn_Inativar_exibir' btn_Inativar_titulo='Inativar Usuário' i18n-btn_Inativar_titulo="botão de ação: inativar|botão na coluna de ação para inativar um usuário@@crude-usuario-listagem.btn_Inativar_tooltip"
+  (btn_Reativar_click)='btn_Reativar_click($event)'[btn_Reativar_exibir]='btn_Reativar_exibir' btn_Reativar_titulo='Reativar Usuário' i18n-btn_Reativar_titulo="botão de ação: reativar|botão na coluna de ação para reativar um usuário@@crude-usuario-listagem.btn_Reativar_tooltip">
+</app-grid-pesquisa>
+
+<!--
+<app-grid-pesquisa
+  #gridFiltro
+  [apiService]='apiUsuarioService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='30'>
+</app-grid-pesquisa>
+-->

@@ -1,0 +1,25 @@
+<span 
+    #breadcrumb_traducao
+    style='display:none;'
+    i18n="breadcrumb|Breadcrumb do CRUDE Raça/Cor da Pessoa@@crude-raca-cor-listagem.breadcrumb">
+    Início/Raça e Cor/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+    <div
+    i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Raça/Cor da Pessoa@@crude-raca-cor-listagem.titulo.raca-cor">
+    RAÇA E COR DA PESSOA
+    </div>
+</h1>
+
+<app-grid-pesquisa
+    #gridFiltro
+    idGrid="pesquisaRacaCor"
+    [apiService]='apiRacaCorService'
+    nomeMetodoOrdenacao='mudarOrdenacao'
+    nomeMetodoApi='listar'
+    apiFieldKey='inCodRacaCor'
+    [colunasGrid]='getColunasGridCadastro()'
+    pageSize='15'
+    [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

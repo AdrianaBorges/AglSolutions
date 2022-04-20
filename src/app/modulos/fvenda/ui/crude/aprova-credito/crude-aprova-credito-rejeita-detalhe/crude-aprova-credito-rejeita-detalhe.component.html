@@ -1,0 +1,320 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Processo de Solicitação de Crédito para Venda@@crude-aprova-credito-rejeita-detalhe.breadcrumb">
+  Aprovação de Crédito ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Processo solicitacao@@crude-aprova-credito-rejeita-detalhe.titulo.aprova-credito-rejeita">
+      PROCESSO SOLICITAÇÃO DE CRÉDITO PARA VENDA - REJEIÇÃO
+    </div>
+  </h1>
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Número do CRUDE@@crude-aprova-credito-rejeita.label.IDSolicCredVenda">
+              Número
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDSolicCredVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDSolicCredVenda"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data da Solicitação|Identifica o Data da Solicitação do CRUDE@@crude-aprova-credito-rejeita.label.dtDatSolic">
+              Data da Solicitação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatSolic']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input disabled="true" kendoTextBox formControlName="dtDatSolic" type="text" name="dtDatSolic" id="dtDatSolic"
+            [value]="modelSolicCredVendaEL01.dtDatSolic | date: 'short'" />
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Usuário Solicitante|Identifica o Usuário Solicitante no CRUDE@@crude-aprova-credito-rejeita.label.chNomeUsuarioSolic">
+              Usuário Solicitante
+            </ng-container>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chNomeUsuarioSolic']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeUsuarioSolic" type="text" name="chNomeUsuarioSolic" id="chNomeUsuarioSolic" disabled="true" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label CNPJ/CPF|Identifica o CNPJ/CPF no CRUDE@@crude-aprova-credito-rejeita.label.inNumIdentifCliente">
+              CNPJ/CPF
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumIdentifCliente']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-maskedtextbox
+            disabled="true"
+            id="inputMaskCPF"
+            required
+            [mask]="maskTipoPessoa"
+            formControlName="CpfCnpj"
+            [class.maskedCPF]="isCPF"
+            [class.maskedCNPJ]="isCNPJ"
+            style="width:150px">
+          </kendo-maskedtextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome do Cliente|Identifica o Nome do Cliente no CRUDE@@crude-aprova-credito-rejeita.label.chNomeCliente">
+              Nome do Cliente
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeCliente']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox disabled="true" required formControlName="chNomeCliente" type="text" name="chNomeCliente" id="chNomeCliente" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Representante|Identifica o Representante no CRUDE@@crude-aprova-credito-rejeita.label.IDRepresentante">
+              Representante
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDRepresentante']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            disabled="true"
+            tipo='edicao'
+            formControlName='UIData_Representante'
+            placeholder="selecione"
+            modalTitulo='Representante'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiRepresVendaEL01Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeRepresentante"
+            [colunasGrid]="apiRepresVendaEL01Service.getColunasGrid()"
+            apiFieldKey="IDRepresentante"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='ID'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obter'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Condição de Pagamento|Identifica a Condição de Pagamento no CRUDE@@crude-aprova-credito-rejeita.label.chCodCondPagtoVenda">
+              Condição de Pagamento
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodCondPagtoVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            disabled="true"
+            placeholder='selecione'
+            required
+            formControlName='chCodCondPagtoVenda'
+            [apiService]='apiCondPagtoVendaService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodCondPagtoVenda">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Crédito Solicitado|Identifica o Crédito Solicitado no CRUDE@@crude-aprova-credito-rejeita.label.deValCredSolic">
+              Crédito Solicitado
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValCredSolic']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            disabled="true"
+            required
+            formControlName="deValCredSolic"
+            [format]="'C2'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor Pedido Venda|Identifica o Valor Pedido Venda no CRUDE@@crude-aprova-credito-rejeita.label.deValPedVenda">
+              Valor Pedido Venda
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValPedVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            disabled="true"
+            formControlName="deValPedVenda"
+            [format]="'C2'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+    <!--
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Observação da Solicitação|Identifica o Observação da Solicitação no CRUDE@@crude-aprova-credito-rejeita.label.chDesObservacao">
+              Observação da Solicitação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesObservacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea disabled="true" kendoTextArea class="k-textarea" formControlName="chDesObservacao" rows="5" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+    -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Motivo da Rejeição|Identifica o Motivo da Rejeição no CRUDE@@crude-aprova-credito-rejeita.label.inCodMotivoRejeita">
+              Motivo da Rejeição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodMotivoRejeita']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            required
+            formControlName='inCodMotivoRejeita'
+            [apiService]='apiMotivoRejeitaService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodMotivoRejeita">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Motivo Complementar|Identifica o Motivo Complementar no CRUDE@@crude-aprova-credito-rejeita.label.chDesMotivo">
+              Motivo Complementar
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesMotivo']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesMotivo" rows="5" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação Cadastral|Identifica o Situação Cadastral do cliente pessoa física no CRUDE@@crude-aprova-credito-rejeita.label.chDesSituacaoSolicCred">
+              Situação Cadastral
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesSituacaoSolicCred']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chDesSituacaoSolicCred" name="chDesSituacaoSolicCred" id="chDesSituacaoSolicCred" disabled="true" />
+        </label>
+      </div>
+    </div>
+
+    <div class=" form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Inclusão|Identifica a Data de Inclusão da Pessoa@@crude-aprova-credito-rejeita.label.inclusao">
+            Inclusão
+          </span>
+          <span>
+            {{modelSolicCredVendaEL01.dtDatInclusao | date: 'short'}}
+          </span>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Última Alteração|Identifica a data da Última Alteração do cadastro de pessoa física no CRUDE@@crude-aprova-credito-rejeita.label.ultimaAlteracao">
+            Última Alteração
+          </span>
+          <span>
+            {{(modelSolicCredVendaEL01.dtDatUltAlteracao == null? textoTraducaoSemAlteracao.innerText: modelSolicCredVendaEL01.dtDatUltAlteracao | date: 'short' )}}
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <span #textoTraducaoSemAlteracao style="display:none;"
+      i18n="Informativo do label Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-aprova-credito-rejeita.label.info.semAlteracao">
+      Não houve alteração ainda
+    </span>
+
+  </form>
+</app-cadastro-barra-acao>

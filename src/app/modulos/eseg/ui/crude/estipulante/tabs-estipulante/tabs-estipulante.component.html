@@ -1,0 +1,149 @@
+<span #breadcrumb_traducao style='display:none;' i18n="breadcrumb|breadcrumb de estipulante@@tabs-estipulante.breadcrumb">
+  Início/Estipulante/Edição
+</span>
+
+<kendo-tabstrip
+  #kendoTab
+  appCadastroTab
+  id='idTabCadPessoa'
+  [tab]='kendoTab'
+  [cadastroBarraAcao]='cadPF.cadastroBarraAcao'
+  (tabSelect)="onTabSelect($event)">
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab ESTIPULANTE|Nome da tab ESTIPULANTE de pessoas físicas@@tabs-estipulante.tab.Pessoa"
+    [ngClass]='app-tab-content'
+    [title]="'ESTIPULANTE'"
+    [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Titulo estipulante|Título interno que identifica o CRUDE de estipulante@@tabs-estipulante.tab.pessoa.titulo">
+          ESTIPULANTE
+        </div>
+      </h1>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Endereços'|Nome da tab 'Endereços' de estipulante@@tabs-estipulante.tab.Enderecos"
+    title='ENDEREÇOS'
+    [selected]="tabSelecionada(1)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Endereços' de Estipulante@@tabs-estipulante.tab.titulo.Enderecos">
+          ENDEREÇOS DO ESTIPULANTE
+        </div>
+        <div>
+          <span i18n="Detalhes pessoa|texto que precede os dados de Estipulante@@tabs-estipulante.tab.titulo.dadosPessoa">
+            Estipulante:
+          </span>
+          {{cadPF.modelEstipulante.IDPessoa}} - {{cadPF.modelEstipulante.chNomePessoa}} - CNPJ:
+          {{this.cadPF.modelEstipulante.inNumIdentificacao}}
+        </div>
+      </h1>
+      <app-crude-pessoa-endereco-detalhe #gridInterfaceTabCadastroFilhoEndereco>
+      </app-crude-pessoa-endereco-detalhe>
+      <app-crude-pessoa-endereco-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoEndereco'>
+      </app-crude-pessoa-endereco-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Telefones'|Nome da tab 'Telefones' de estipulante@@tabs-estipulante.tab.Telefones"
+    title='TELEFONES'
+    [selected]="tabSelecionada(2)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Telefones' de Estipulante@@tabs-estipulante.tab.titulo.Telefones">
+          TELEFONES DO ESTIPULANTE
+        </div>
+        <div>
+          <span i18n="Detalhes pessoa|texto que precede os dados de Pessoa@@tabs-estipulante.tab.titulo.dadosPessoa">
+           Estipulante:
+          </span>
+          {{cadPF.modelEstipulante.IDPessoa}} - {{cadPF.modelEstipulante.chNomePessoa}} - CNPJ:
+          {{this.cadPF.modelEstipulante.inNumIdentificacao}}
+        </div>
+      </h1>
+      <app-crude-pessoa-telefone-detalhe #gridInterfaceTabCadastroFilhoTelefone>
+      </app-crude-pessoa-telefone-detalhe>
+      <app-crude-pessoa-telefone-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoTelefone'>
+      </app-crude-pessoa-telefone-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'e-mails'|Nome da tab 'E-mails' de estipulante@@tabs-estipulante.tab.emails"
+    title='E-MAILS'
+    [selected]="tabSelecionada(3)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'E-Mails' de Estipulante@@tabs-estipulante.tab.titulo.Emails">
+          E-MAILS DO ESTIPULANTE
+        </div>
+        <div>
+          <span i18n="Detalhes pessoa|texto que precede os dados de Pessoa@@tabs-estipulante.tab.titulo.dadosPessoa">
+           Estipulante:
+          </span>
+          {{cadPF.modelEstipulante.IDPessoa}} - {{cadPF.modelEstipulante.chNomePessoa}} - CNPJ:
+          {{cadPF.modelEstipulante.inNumIdentificacao}}
+        </div>
+      </h1>
+      <app-crude-pessoa-email-detalhe #gridInterfaceTabCadastroFilhoEmail>
+      </app-crude-pessoa-email-detalhe>
+      <app-crude-pessoa-email-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoEmail'>
+      </app-crude-pessoa-email-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Contas Bancárias'|Nome da tab 'Contas Bancárias' de estipulante@@tabs-estipulante.tab.ContasBancarias"
+    title='CONTAS BANCÁRIAS'
+    [selected]="tabSelecionada(4)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Contas Bancárias' de Estipulante@@tabs-estipulante.tab.titulo.ContasBancarias">
+          CONTAS BANCÁRIAS DO ESTIPULANTE
+        </div>
+        <div>
+          <span i18n="Detalhes pessoa|texto que precede os dados de Pessoa@@tabs-estipulante.tab.titulo.dadosPessoa">
+           Estipulante:
+          </span>
+          {{cadPF.modelEstipulante.IDPessoa}} - {{cadPF.modelEstipulante.chNomePessoa}} - CNPJ:
+          {{this.cadPF.modelEstipulante.inNumIdentificacao}}
+        </div>
+      </h1>
+      <app-crude-pessoa-conta-banco-detalhe #gridInterfaceTabCadastroFilhoContaBanco>
+      </app-crude-pessoa-conta-banco-detalhe>
+      <app-crude-pessoa-conta-banco-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoContaBanco'>
+      </app-crude-pessoa-conta-banco-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Contatos'|Nome da tab 'Contatos' de estipulante@@tabs-estipulante.tab.Contatos"
+    title='CONTATOS'
+    [selected]="tabSelecionada(5)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Contatos' de Estipulante@@tabs-estipulante.tab.titulo.Contatos">
+          CONTATOS DO ESTIPULANTE
+        </div>
+        <div>
+          <span i18n="Detalhes pessoa|texto que precede os dados de Pessoa@@tabs-estipulante.tab.titulo.dadosPessoa">
+           Estipulante:
+          </span>
+          {{cadPF.modelEstipulante.IDPessoa}} - {{cadPF.modelEstipulante.chNomePessoa}} - CNPJ:
+          {{this.cadPF.modelEstipulante.inNumIdentificacao}}
+        </div>
+      </h1>
+      <app-crude-pessoa-contato-detalhe #gridInterfaceTabCadastroFilhoContato>
+      </app-crude-pessoa-contato-detalhe>
+      <app-crude-pessoa-contato-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoContato'>
+      </app-crude-pessoa-contato-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+
+<app-crude-estipulante-detalhe #cadPF [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-estipulante-detalhe>

@@ -1,0 +1,24 @@
+.input-code{
+    border-left-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-right-width: 0;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.08);
+    width: 60px !important;
+}
+
+input {
+    height: calc(1.42857143em + (4px * 2) + (1px * 2));
+    border-radius: 2px;
+    font-size: 14px;
+    line-height: 1.42857143em;
+    display: inline-flex;
+    vertical-align: middle;
+    position: relative;
+    -webkit-appearance: none;
+}
+
+.input-code ~ input {
+    width: 85% !important;
+}

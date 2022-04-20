@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE de Tipo de Capital do Seguro@@crude-tipo-capital-seg-listagem.breadcrumb">
+  Início/Tipo Capital/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Tipo de Capital do Seguro@@crude-tipo-capital-seg-listagem.titulo.tipo-capital-seg">
+    TIPO DE CAPITAL DO SEGURO
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaTipoCapitalSeg"
+  [apiService]='apiTipoCapitalSegService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodTipoCapitalSeg'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

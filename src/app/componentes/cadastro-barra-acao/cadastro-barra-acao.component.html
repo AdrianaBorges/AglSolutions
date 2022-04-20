@@ -1,0 +1,71 @@
+<div [ngClass]="{'invisivel': isNotVisible}" >
+    <div id="container">
+    <!-- <div class="area-filtro"> -->
+            <ng-content></ng-content>
+    </div>
+    <app-aguarde-carregando #aguardeCarregando></app-aguarde-carregando>
+    <div class="barra-acao">
+    <div class="form-row">
+        <div class="form-group col-md-1" *ngIf='modoExclusao==false && habilitado_pro_usuario==true'>
+            <button kendoButton 
+            
+            [disabled]='formGroup.status != "VALID" || formGroup.touched == false'
+            class="form-control btn-filtro-acao"
+            (click)="btnConfirmar()"
+            [primary]="true" 
+            i18n="botão de confirmar|confirma a operação de inclusão ou alteração de um cadastro@@componente.cadastroBarraAcao.confirmar"
+            >confirmar</button>
+        </div>
+        <div class="form-group col-md-1" *ngIf='modoExclusao==false && habilitado_pro_usuario==true'>
+            <button kendoButton 
+            [disabled]='formGroup.touched == false'
+            class="form-control btn-filtro-acao"
+            (click)="btnCancelar()"
+            [primary]="false"
+            i18n="botão de desfazer|desfaz as edições feitas no formulário e carrega novamente da API os dados originais@@componente.cadastroBarraAcao.desfazer"
+            >desfazer</button>
+        </div>
+        <div class="form-group col-md-1" *ngIf='modoExclusao==true && habilitado_pro_usuario==true'>
+            <button kendoButton
+            class="form-control"
+            (click)="btnExcluir()"
+            [primary]="true"
+            i18n="botão de excluir|botão que confirma a exclusão de um cadastro onde os dados já estão sendo exibidos de forma não editável@@componente.cadastroBarraAcao.excluir"
+            >excluir</button>
+        </div>
+        <div class="form-group col-md-1">
+            <button kendoButton 
+            class="form-control"
+            (click)="btnVoltar()"
+            [primary]="false"
+            i18n="botão de voltar|botão para voltar para a listagem e sair do formulário de edição sem salvar@@componente.cadastroBarraAcao.voltar"
+            >voltar</button>
+        </div>
+        <ng-container *ngFor="let botao of containerBotoesAcaoComponent.listaBotoesAcao">
+            <div class="form-group col-md-1">
+                <button 
+                kendoButton 
+                [disabled]='modoExclusao == false && (formGroup.status != "VALID" || emEdicao == true)'
+                class='form-control btn-acao'
+                [icon]="botao.icone || 'myspace'" 
+                [title]="botao.rotaFilha_tooltip" 
+                (click)="btnAcao_click(botao)">
+              </button>
+            </div>
+        </ng-container>
+    </div>
+    </div>
+    <kendo-dialog title="Favor confirmar" *ngIf="openedDialog" (close)="closeDialog('cancel')" [minWidth]="100" [width]="200">
+        <p style="margin: 30px; text-align: center;"
+        i18n="mensagem de confirmação de exclusão|Mensagem solicitando para o usuário confirmar que deseja excluir@@componente.cadastroBarraAcao.msgConfirmaExclusao"
+        >Deseja mesmo excluir?</p>
+        <kendo-dialog-actions>
+            <button kendoButton (click)="closeDialogExcluir('no')"
+            i18n="botão 'não' da mensagem de confirmação de exclusão|Botão para o usuário não confirmar que deseja excluir@@componente.cadastroBarraAcao.msgConfirmaExclusao.botao.nao"
+            >Não</button>
+            <button kendoButton (click)="closeDialogExcluir('yes')" primary="true"
+            i18n="botão 'sim' da mensagem de confirmação de exclusão|Botão para o usuário confirmar que deseja excluir@@componente.cadastroBarraAcao.msgConfirmaExclusao.botao.sim"
+            >Sim</button>
+        </kendo-dialog-actions>
+    </kendo-dialog>
+</div>

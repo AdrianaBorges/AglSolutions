@@ -1,0 +1,57 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de usuario@@tabs-usuario.breadcrumb">
+  Início/Usuário/Edição
+</span>
+
+<kendo-tabstrip
+  #kendoTab
+  appCadastroTab
+  id='idTabCadPessoaFisica'
+  [tab]='kendoTab'
+  [cadastroBarraAcao]='cadGU.cadastroBarraAcao'
+  (tabSelect)="onTabSelect($event)">
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab USUÁRIO|Nome da tab USUÁRIO de usuario@@tabs-usuario.tab.usuario"
+    [ngClass]='app-tab-content'
+    [title]="'USUÁRIO'"
+    [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Titulo usuario|Título interno que identifica o CRUDE de Usuário@@tabs-usuario.tab.usuario.titulo">
+          USUÁRIO
+        </div>
+      </h1>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab GRUPOS|Nome da tab GRUPOS de usuário@@tabs-usuario.tab.grupos"
+    title="'GRUPOS'"
+    [selected]="tabSelecionada(1)">    
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab grupo de usuário@@tabs-usuario.tab.titulo.grupo">
+          GRUPOS DO USUÁRIO
+        </div>
+        <div>
+          <span i18n="Detalhes usuário|texto que precede os dados de grupo do Usuario@@tabs-usuario.tab.titulo.dadosUsuario">
+            Usuário:
+          </span>
+          {{cadGU.modelUsuario.chCodUsuario }} - {{cadGU.modelUsuario.chNomeUsuario }} - {{cadGU.modelUsuario.chDesTipoUsuario }}
+        </div>
+      </h1>
+
+      <app-crude-grupos-do-usuario-detalhe #gridInterfaceTabCadastroFilhoGrupo></app-crude-grupos-do-usuario-detalhe>
+      <app-crude-grupos-do-usuario-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoGrupo'>
+      </app-crude-grupos-do-usuario-listagem>
+
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+
+<app-crude-usuario-detalhe
+  #cadGU [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-usuario-detalhe>

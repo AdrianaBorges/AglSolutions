@@ -1,0 +1,308 @@
+<span 
+    #breadcrumb_traducao
+    style='display:none;'
+    i18n="breadcrumb|Breadcrumb do CRUDE de Corretagem de Seguro@@crude-cto-cor-seg-detalhe.breadcrumb">
+    Contrato de Corretagem de Seguro ID:
+</span>
+
+<app-cadastro-barra-acao 
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Contrato de Corretagem de Seguro@@crude-cto-cor-seg-detalhe.titulo.contrato-corretagem">
+      CONTRATO DE CORRETAGEM DE SEGURO
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-2">            
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID@@crude-cto-cor-seg-detalhe.label.IDCtoCorSeg">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDCtoCorSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDCtoCorSeg"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>      
+      </div>
+      <div class="form-group col-md-3"></div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número do Contrato|Identifica a Número do Contrato@@crude-cto-cor-seg-detalhe.label.chNumCtoCorSeg">
+              Número do Contrato
+            </ng-container>                      
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumCtoCorSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNumCtoCorSeg" required maxlength="20" />
+        </label>
+      </div>      
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome Abreviado|Identifica Nome Abreviado@@crude-cto-cor-seg-detalhe.label.chNomeAbreviado">
+              Nome Abreviado
+            </ng-container>                      
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeAbreviado']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeAbreviado" required maxlength="25" />
+        </label>
+      </div>
+
+      <div class="form-group col-md-4">            
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Papel da Pessoa|Identifica Papel da Pessoa@@crude-cto-cor-seg-detalhe.label.inCodTipoPapel">
+              Papel da Pessoa
+            </ng-container>                      
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoPapel']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select #selectTipoPapel
+            required 
+            placeholder='selecione' 
+            formControlName='inCodTipoPapel'
+            [apiService]='apiTipoPapelService'
+            apiNomeMetodoListar='listarCorretor' 
+            apiFieldExibir="chDesTipoPapel" 
+            apiFieldKey="inCodTipoPapel">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">            
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Pessoa|Identifica Pessoa@@crude-cto-cor-seg-detalhe.label.IDPessoa">
+              Pessoa
+            </ng-container>                      
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['UIData_PessoaUsuario']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_PessoaUsuario'
+            placeholder="selecione"
+            modalTitulo='Pessoa'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiPessoaElService'
+            [colunasGrid]='apiPessoaElService.getColunasGridDialog()'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomePessoa"
+            apiFieldKey="IDPessoa"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='ID'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obter'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-2">            
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio de Vigência|Identifica Inicio de Vigência@@crude-cto-cor-seg-detalhe.label.daDatIniVig">
+              Inicio de Vigência
+            </ng-container>                      
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatIniVig']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatIniVig'></kendo-datepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-2">            
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Fim de Vigência|Identifica Fim de Vigência@@crude-cto-cor-seg-detalhe.label.daDatFimVig">
+              Fim de Vigência
+            </ng-container>                      
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatFimVig']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatFimVig'></kendo-datepicker>
+        </label>
+      </div>    
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">            
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número SUSEP|Identifica Número SUSEP@@crude-cto-cor-seg-detalhe.label.chNumSusep">
+              Número SUSEP
+            </ng-container>                      
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumSusep']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNumSusep"  maxlength="20" />
+        </label>
+      </div>
+      <div class="form-group col-md-2">            
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data Registro|Identifica Data Registro@@crude-cto-cor-seg-detalhe.label.daDatRegSusep">
+              Data Registro
+            </ng-container>                      
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatRegSusep']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker formControlName='daDatRegSusep'></kendo-datepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-2">            
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data Expiração|Identifica Data Expiração@@crude-cto-cor-seg-detalhe.label.daDatExpSusep">
+              Data Expiração
+            </ng-container>                      
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatExpSusep']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker formControlName='daDatExpSusep'></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">            
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Contrato do Corretor|Identifica Contrato do Corretor@@crude-cto-cor-seg-detalhe.label.IDCtoCorSegCorretor">
+              Contrato do Corretor
+            </ng-container>                      
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['UIData_PessoaCorretor']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa #corretor
+            tipo='edicao'
+            formControlName='UIData_PessoaCorretor'
+            placeholder="selecione"
+            modalTitulo='Contrato de Corretagem'
+            modalHeight="630"
+            modalWidth="1200"
+
+            [apiService]='apiCtoCorSegCorretorService'
+            [colunasGrid]='apiCtoCorSegCorretorService.getColunasGridDialog()'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomePessoa"
+            apiFieldKey="chNumCtoCorSeg"
+            [pageSize]="'10'"
+
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="text"
+            pesquisaRapidaPlaceholder='Número Contrato'
+            pesquisaRapidaMaxlength='20'
+            pesquisaRapidaWidth="180px"
+            pesquisaRapidaApiNomeMetodo='obterNumContratoCorretagem'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">            
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Contrato de Vinculo Superior|Identifica Contrato de Vinculo Superior@@crude-cto-cor-seg-detalhe.label.UIData_PessoaVinculoSuperior">
+              Contrato de Vinculo Superior
+            </ng-container>                      
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['UIData_PessoaVinculoSuperior']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa #vinculoSuperior
+            tipo='edicao'
+            formControlName='UIData_PessoaVinculoSuperior'
+            placeholder="selecione"
+            modalTitulo="Contrato de Corretagem"
+            modalHeight="630"
+            modalWidth="1200"
+
+            [apiService]='apiCtoCorSegVinculoService'
+            [colunasGrid]='apiCtoCorSegVinculoService.getColunasGridDialog()'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomePessoa"
+            
+            apiFieldKey="chNumCtoCorSeg"
+            [pageSize]="'10'"
+
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="text"
+            pesquisaRapidaPlaceholder='Número Contrato'
+            pesquisaRapidaMaxlength='20'
+            pesquisaRapidaWidth="180px"
+            pesquisaRapidaApiNomeMetodo='obterNumContratoCorretagem'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">            
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação Cadastral|Identifica Situação Cadastral@@crude-cto-cor-seg-detalhe.label.inCodSituacaoCad">
+              Situação Cadastral
+            </ng-container>                      
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodSituacaoCad ']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox [value]="modelCtoCorSeg.chDesSituacaoCad" disabled='true' />
+        </label>
+      </div>
+    </div>    
+  </form>
+</app-cadastro-barra-acao>

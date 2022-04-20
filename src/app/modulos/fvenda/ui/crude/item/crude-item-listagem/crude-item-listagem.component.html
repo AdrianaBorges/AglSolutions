@@ -1,0 +1,125 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Item@@crude-item.breadcrumb">
+  Item: listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de Item@@crude-item.titulo">
+    ITEM
+  </div>
+</h1>
+
+<div class="area-filtro">
+
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Espécie do Item</label>
+        <app-filtro-multiselect 
+           formControlName='listaEspecieItem' 
+           [apiService]='apiEspecieItemService'
+           apiNomeMetodoListar='listar' 
+           apiFieldExibir="chDescricao" 
+           apiFieldKey="inCodEspecieItem"
+           placeholder="ambos" 
+           pesquisaFieldWhere='inCodEspecieItem' 
+           [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Situação Cadastral</label>
+        <app-filtro-multiselect 
+          formControlName='listaSituacaoCadastral' 
+          [apiService]='apiSituacaoCadService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="inCodSituacaoCad" 
+          placeholder="ambos"
+          pesquisaFieldWhere='inCodSituacaoCad' 
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Categoria</label>
+        <app-filtro-multiselect 
+           formControlName='listaCategoria' 
+           [apiService]='apiCategoriaService'
+           apiNomeMetodoListar='listar' 
+           apiFieldExibir="chDescricao" 
+           apiFieldKey="IDCategoria"
+           placeholder="ambos" 
+           pesquisaFieldWhere='IDCategoria' 
+           [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Grupo de Estoque</label>
+        <app-filtro-multiselect 
+          formControlName='listaGrpEst' 
+          [apiService]='apiGrpEstService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="IDGrpEst" 
+          placeholder="ambos"
+          pesquisaFieldWhere='IDGrpEst' 
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Família Comercial</label>
+        <app-filtro-multiselect 
+           formControlName='listaFamCom' 
+           [apiService]='apiFamComService'
+           apiNomeMetodoListar='listar' 
+           apiFieldExibir="chDescricao" 
+           apiFieldKey="IDFamCom"
+           placeholder="ambos" 
+           pesquisaFieldWhere='IDFamCom' 
+           [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Família de Materiais</label>
+        <app-filtro-multiselect 
+           formControlName='listaFamMat' 
+           [apiService]='apiFamMatService'
+           apiNomeMetodoListar='listar' 
+           apiFieldExibir="chDescricao" 
+           apiFieldKey="IDFamMat"
+           placeholder="ambos" 
+           pesquisaFieldWhere='IDFamMat' 
+           [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+
+      <div class="col-md-2"></div>
+      <div class="form-group col-md-2">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> pesquisar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-grid-pesquisa #gridFiltro 
+  idGrid="pesquisaItem" 
+  [apiService]='apiItemEL01Service' 
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar' 
+  apiFieldKey='IDItem' 
+  [colunasGrid]='getColunasGridCadastro()' 
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro' 
+  [formGroupPesquisa]='formGroupPesquisa'
+  (btn_Inativar_click)='btn_Inativar_click($event)' [btn_Inativar_exibir]='btn_Inativar_exibir' btn_Inativar_titulo='Inativar Item' i18n-btn_Inativar_titulo="botão de ação: inativar|botão na coluna de ação para inativar um item@@crude-item-listagem.btn_Inativar_tooltip"
+  (btn_Reativar_click)='btn_Reativar_click($event)'[btn_Reativar_exibir]='btn_Reativar_exibir' btn_Reativar_titulo='Reativar Item' i18n-btn_Reativar_titulo="botão de ação: reativar|botão na coluna de ação para reativar um item@@crude-item-listagem.btn_Reativar_tooltip">
+</app-grid-pesquisa>

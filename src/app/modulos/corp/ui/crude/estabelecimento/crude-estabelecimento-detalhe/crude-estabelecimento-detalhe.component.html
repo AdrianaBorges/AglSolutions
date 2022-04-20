@@ -1,0 +1,160 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o codigo ID do estabelecimento@@crude-estabelecimento-detalhe.label.IDEstabelec">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDEstabelec']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDEstabelec"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o codigo do estabelecimento@@crude-estabelecimento-detalhe.label.chCodEstabelec">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodEstabelec']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodEstabelec" maxlength="10" />
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-5 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Abreviado|Identifica o nome abreviado do estabelecimento@@crude-estabelecimento-detalhe.label.chNomeAbreviado">
+              Abreviado
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeAbreviado']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeAbreviado" maxlength="25" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Pessoa|Identifica a pessoa do Estabelecimento CRUDE@@crude-estabelecimento-detalhe.label.IDPessoa">
+              Pessoa
+            </ng-container>
+            <span class="k-required">*</span>
+          </span>
+          <app-form-control-alerta-erro-api
+            [mensagemErro]="apiErrorCollection.campos['IDPessoa']">
+          </app-form-control-alerta-erro-api>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_CodPessoa'
+            placeholder="selecione"
+            modalTitulo='Pessoa Jurídica'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiPessoaElService'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listarJuridicas'
+            apiFieldExibir="chNomeFantasia"
+            [colunasGrid]="apiPessoaElService.getColunasJuridicaGrid()"
+            apiFieldKey="IDPessoa"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='ID'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obter'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome|Identifica o nome do estabelecimento@@crude-estabelecimento-detalhe.label.chNome">
+              Nome
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNome']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNome" maxlength="100" />
+        </label>
+      </div>
+    </div>
+ <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+         <label class="k-form-field">
+        <span>
+          <ng-container i18n="Label Grupo|Identifica o Grupo@@crude-estabelecimento-detalhe.label.inCodGrupoEstab">
+            Grupo
+          </ng-container>
+          <app-form-control-alerta-erro-api
+            [mensagemErro]="apiErrorCollection.campos['inCodGrupoEstab']">
+          </app-form-control-alerta-erro-api>
+        </span>
+        <app-api-select 
+          placeholder='selecione' 
+          required 
+          formControlName='inCodGrupoEstab'
+          [apiService]='apiGrupoEstabService' 
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao"
+          apiFieldKey="inCodGrupoEstab">
+          <kendo-combobox-column
+            field="inCodGrupoEstab"
+            i18n-title="Titulo Código|Identifica o titulo Código das opções de grupo de estabelecimento@@crude-estabelecimento-detalhe.combo.grupo.codigo"
+            title="Código"
+            width="30">
+          </kendo-combobox-column>
+          <kendo-combobox-column
+            field="chDescricao"
+            i18n-title="Titulo Descrição|Identifica o titulo Descrição das opções de grupo de estabelecimento@@crude-estabelecimento-detalhe.combo.grupo.descricao"
+            title="Descrição"
+            width="50">
+          </kendo-combobox-column>
+        </app-api-select>
+      </label>
+      </div>
+    </div>
+
+  </form>
+</app-cadastro-barra-acao>

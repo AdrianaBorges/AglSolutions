@@ -1,0 +1,102 @@
+@import "../../../../../estilos/_variaveis";
+
+// @media (min-width: 576px) {
+// .centrado {
+//     position: absolute;
+//     top: 50%;
+//     left:50%;
+//     transform: translate(-50%,-50%);
+//   }
+// .card {
+//     width: 300px;
+// }
+// }
+// @media(max-width: 575px){
+//     .card {
+//         margin-top: 20px;
+//     }
+// }
+
+// .alinhar-a-direita {
+//     text-align: right;
+// }
+
+// .card-header > img {
+//     width: 100px;
+//     height: 100px;
+//     position: relative;
+//     top: 70%;
+//     left:50%;
+//     transform: translate(-50%,-0%);
+// }
+
+// .cor-fundo {
+//     margin: auto;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     bottom: 0;
+//     right: 0;
+//     width: 100%;
+//     height: 100%;
+// }
+
+.containerlogin {
+    width: 100vw;
+    height: 80vh;
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+}
+.box {
+    width: 400px;
+    //height: 300px;
+    background: #fff;
+}
+body {
+   margin: 0px;
+   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+   font-size: 14px !important;
+   line-height: 1.42857143 !important;
+   color: #333 !important;
+   background-color: #fff !important;
+}
+.checkbox label:nth-child(2){
+    padding-left: 20px;
+}
+form > label{
+    font-weight: 700;
+}
+form {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    line-height: 1.42857143 !important;
+    label {
+        font-size: 14px;
+    }
+}
+
+/**/
+a{
+    color: $accent !important;
+}
+
+/*Checkbox*/
+.checkbox label {
+    min-height: 20px;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+input[type=checkbox]{
+    margin: 4px 0 0;
+    margin-top: 1px\9;
+    line-height: normal;
+}
+.checkbox input[type=checkbox]{
+    position: absolute;
+    margin-top: 4px\9;
+    margin-left: -20px;
+}

@@ -1,0 +1,56 @@
+@import "~@progress/kendo-theme-default/scss/variables";
+//@import "~@progress/kendo-theme-default/scss/all";
+
+//Para evitar alterar o CSS do tag desse elemento
+//anulo o CSS da classe ".ng-invalid:not(form).ng-touched:not(form)"
+:host {
+    border-left: 0 !important;
+}
+:host.ng-invalid.ng-touched > div > input {
+    border-left: 5px solid #a94442; 
+    background-color: rgba($error, 0.2)!important;
+    opacity: 1;
+}
+input, button{
+    height: calc(1.42857143em + (4px * 2) + (1px * 2));
+    border-radius: 2px;
+    font-size: 14px;
+    line-height: 1.42857143em;
+    display: inline-flex;
+    vertical-align: middle;
+    position: relative;
+    -webkit-appearance: none;
+}
+
+app-modal-pesquisa {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index:9900;
+}
+
+#pesquisaRapida{
+    border-left-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-right-width: 0;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+#pesquisaRapida:hover{
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.inputModalPesquisa, .btn, .input-pesquisa {
+    height: 32px;
+}
+
+.esconder{
+    display: none;
+}

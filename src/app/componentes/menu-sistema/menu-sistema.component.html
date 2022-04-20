@@ -1,0 +1,9 @@
+<div [style.background-color]="configEmpresa.corFundoLogo" >
+  <div class="cabecalho-logo">
+      <img class="card-img-top " alt="Logo" src="{{configEmpresa.urlLogo}}">
+  </div>
+  <!-- <kendo-panelbar [items]="itensMenu">
+  </kendo-panelbar>  -->
+  <app-panel-bar-recursivo [menuSistema]="menu" class="menu-sistema"></app-panel-bar-recursivo>
+  
+</div>

@@ -1,0 +1,9 @@
+<kendo-dialog *ngIf="dialogo.aberto" [title]="dialogo.titulo" (close)="dialogo_fechar()">
+  <p 
+  [class.erro]="exibindoErro"
+  style="margin: 30px; text-align: center;" [innerHTML]="dialogo.mensagem"></p>
+
+  <kendo-dialog-actions>
+    <button kendoButton (click)="confirmar()">OK</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

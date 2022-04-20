@@ -1,0 +1,25 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de estipulante@@crude-estipulante.breadcrumb">
+  Início/Estipulante/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de física e juridica@@crude-estipulante.titulo">
+    ESTIPULANTE
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaEstipulante"
+  [apiService]='apiService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDPessoa'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='12'
+  [rotaCadastro]='gridRotasCadastro'
+  [formGroupPesquisa]='formGroupPesquisa'>
+</app-grid-pesquisa>

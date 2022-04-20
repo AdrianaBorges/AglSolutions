@@ -1,0 +1,24 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE de Tipo de Movimento do Contas a Receber CR@@crude-tipo-movto-cr-listagem.breadcrumb">
+  Tipo Movimento: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Tipo de Movimento do Contas a Receber@@crude-tipo-movto-cr-listagem.titulo.tipo-movto-cr">
+    TIPO DE MOVIMENTO DO CONTAS A RECEBER
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaTipoMovtoCR"
+  [apiService]='apiTipoMovtoCrService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodTipoMovtoCR'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

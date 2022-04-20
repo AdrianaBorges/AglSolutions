@@ -1,0 +1,88 @@
+<span
+  #msgValorNaoLocalizado
+  class='esconder'
+  i18n="mensagem de valor não localizado|mensagem de erro exibida padrão quando a pesquisa não retona valor algum@@input_modal_pesquisa_component_aviso_val_nao_localizado">
+  Valor não localizado
+</span>
+<div class="input-group k-group" kendoTooltip  [title]="getTootip()">
+  <kendo-numerictextbox
+    *ngIf='pesquisaRapidaTipo=="number" && pesquisaRapida'
+    id="pesquisaRapida"
+    [spinners]="false"
+    [step]="1"
+    [value]="1"
+    [min]="'0'"
+    [max]="numero_max"
+    [autoCorrect]="false"
+    format="#"
+    decimals='0'
+    [disabled]='disabled'
+    [style.width]='pesquisaRapidaWidth'
+    height='30px'
+    [placeholder]="pesquisaRapidaPlaceholder"
+    [(ngModel)]='pesquisaRapidaText'
+    (change)="pesquisaRapidaChange($valor)"
+    (keypress)="marcarAlterado()"
+    (keydown.enter)='pesquisaRapida_keydown_enter($value)'
+    (focusout)="onTouched();" >
+    <!-- [style.width]="(pesquisaRapidaMaxlength + 1) * 10 + 'px'" -->
+  </kendo-numerictextbox>
+  <input
+      *ngIf='pesquisaRapidaTipo != "number" && pesquisaRapida'
+      id="pesquisaRapida"
+      class='input-pesquisa'
+      [type]="pesquisaRapidaTipo"
+      [disabled]='disabled'
+      [style.width]="pesquisaRapidaWidth"
+      [attr.maxlength]="pesquisaRapidaMaxlength"
+      [placeholder]="pesquisaRapidaPlaceholder"
+      [(ngModel)]='pesquisaRapidaText'
+      (change)="pesquisaRapidaChange($valor)"
+      (keypress)="marcarAlterado()"
+      (keydown.enter)='pesquisaRapida_keydown_enter($value)'
+      (focusout)="onTouched();" >
+      <!-- [(ngModel)]='pesquisaRapidaText' -->
+      <!-- [ngStyle]="styleWidth"  -->
+      <!-- [size]="pesquisaRapidaMaxlength + 1" -->
+  <input
+
+      [(ngModel)]='model[this.modelPropriedadeDescricao]'
+      [disabled]='true' type="text"
+      class="form-control inputModalPesquisa"
+      placeholder="{{placeholder}}"
+      aria-label="Recipient's username"
+      aria-describedby="basic-addon2"
+      >
+      <!-- [ngClass]="{'ng-touched': touched, 'ng-invalid': !valido, 'ng-valid': valido}" -->
+  <div class="input-group-append" *ngIf='!disabled'>
+    <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (focusout)="onTouched();"
+          (click)="limparFiltro();">
+          <span class="k-icon k-i-close-circle k-i-x-circle"></span>
+    </button>
+    <button class="btn btn-outline-secondary"
+            type="button"
+            (click)="exibirModal();"
+            (focusout)="onTouched();">
+            <span *ngIf='!modoEdicao' class="k-icon k-i-zoom k-i-search"></span>
+            <span *ngIf='modoEdicao' class="k-icon k-i-edit k-i-pencil"></span>
+
+    </button>
+  </div>
+</div>
+<app-modal-pesquisa
+  #instanciaModalPesquisa
+  titulo='{{modalTitulo}}' width='{{modalWidth}}' height='{{modalHeight}}'
+  [pageSize]='pageSize'
+  (click)='onTouched();'
+  [apiService]='apiService'
+  [nomeMetodoOrdenacao]='nomeMetodoOrdenacao'
+  [nomeMetodoApi]='apiNomeMetodoListar'
+  [colunasGrid]='getColunasGrid()'
+  [interfaceModalCadastro]='getInterfaceModalCadastro()'
+  (confirmado)='onChange_modal_pesquisa($event)'
+  [childComponent]='childComponent'
+  [childComponentFieldWhere]='childComponentFieldWhere'>
+</app-modal-pesquisa>

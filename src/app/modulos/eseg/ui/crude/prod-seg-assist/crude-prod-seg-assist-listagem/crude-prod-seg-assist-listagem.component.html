@@ -1,0 +1,11 @@
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaCrudeProdSegAssist"
+  [apiService]='apiProdSegAssistService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDProdSegAssist'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilho'>
+</app-grid-pesquisa>

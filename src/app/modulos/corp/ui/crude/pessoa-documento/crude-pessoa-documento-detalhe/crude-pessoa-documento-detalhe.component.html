@@ -1,0 +1,141 @@
+<app-cadastro-barra-acao 
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o codigo ID do documento@@crude-pessoa-documento-detalhe.label.IDPessoaDocumento">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDPessoaEndereco']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDPessoaDocumento" 
+            [format]="'N0'"
+            [min]="0" 
+            [max]="999999999" 
+            [autoCorrect]="'false'" 
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Documento|Identifica o tipo de documento associado a pessoa@@crude-pessoa-documento-detalhe.label.inCodTipoDocumento">
+              Tipo de Documento
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoDocumento']"
+            ></app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            [apiService]='apiTipoDocumentoService'
+            apiNomeMetodoListar='obterDocCompl'
+            apiFieldExibir='chDesTipoDocumento'
+            apiFieldKey='inCodTipoDocumento'
+            formControlName='inCodTipoDocumento'>
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Numero do Documento|Identifica o número do documento da pessoa@@crude-pessoa-documento-detalhe.label.chNumero">Número do Documento</ng-container> 
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumero']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNumero" maxlength="15" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Documento|Identifica o tipo de documento associado a pessoa@@crude-pessoa-documento-detalhe.label.chDesOrgaoExpedidor">
+              Orgão Expedidor
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesOrgaoExpedidor']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDesOrgaoExpedidor" maxlength="15" />
+        </label>
+      </div>
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Numero do Documento|Identifica o número do documento da pessoa@@crude-pessoa-documento-detalhe.label.daDatExpedicao">
+              Expedição
+            </ng-container> 
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumero']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker
+            required
+            formControlName='daDatExpedicao'>
+          </kendo-datepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Inclusão|Identifica se a pessoa física no CRUDE é Politicamente Exposta@@crude-pessoa-fisica.label.inclusao">
+          Inclusão
+          </span>
+          <span>
+            {{modelPessoaDocumento.dtDatInclusao | date: 'short'}}
+          </span>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Última Alteração|Identifica a data da Última Alteração do cadastro de pessoa física no CRUDE@@crude-pessoa-fisica.label.ultimaAlteracao">
+          Última Alteração
+          </span>
+          <span>
+            {{(modelPessoaDocumento.dtDatUltAlteracao == null? textoTraducaoSemAlteracao.innerText: modelPessoaDocumento.dtDatUltAlteracao | date: 'short' )}}
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <span 
+      #textoTraducaoSemAlteracao
+      style="display:none;"
+      i18n="Informativo do label Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-pessoa-fisica.label.info.semAlteracao">
+      Não houve alteração ainda
+    </span>
+
+  </form>
+</app-cadastro-barra-acao>

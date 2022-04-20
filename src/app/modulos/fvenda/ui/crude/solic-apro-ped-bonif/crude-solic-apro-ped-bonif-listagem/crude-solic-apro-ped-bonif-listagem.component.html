@@ -1,0 +1,68 @@
+<span #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de Solicitação de Aprovação de Pedido de Bonificação@@crude-solic-apro-ped-bonif-listagem.breadcrumb">
+  Aprovação Bonificação: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem Solicitação de Aprovação de Pedido de Bonificação@@crude-solic-apro-ped-bonif-listagem.titulo">
+    SOLICITAÇÃO DE APROVAÇÃO DE PEDIDO DE BONIFICAÇÃO
+  </div>
+</h1>
+
+<span
+  #traducao_msg_btnEncaminharAprovacao_sucesso
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de enviar para aprovação@@crude-solicita-credito-listagem.btn.btnEncaminharAprovacao.sucesso">
+  Solicitação Encaminhada para Aprovação
+</span>
+
+<div class="area-filtro">
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Situação</label>
+        <app-filtro-multiselect
+          formControlName='listaSituacao'
+          [apiService]='apiSituacaoSolAprPvService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chDescricao"
+          apiFieldKey="inCodSituacaoSolAprPV"
+          placeholder="ambos"
+          pesquisaFieldWhere='SolicAprovPV.inCodSituacaoSolAprPV'
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="col-md-6"></div>
+      <div class="form-group col-md-2">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> Filtrar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-grid-pesquisa #gridFiltro
+  idGrid="pesquisaAprovaBonificacao"
+  [apiService]='apiSolicAprovPVEL01Service'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDSolicAprovPV'
+  [colunasGrid]='getColunasGridCadastro()'
+  [formGroupPesquisa]='formGroupPesquisa'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'
+  (colunaEditarBotaoClick)='colunaEditarBotaoClick($event)'
+  [btn_acao_exibir]='btn_acao_exibir'>
+
+  <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha id="btnEncaminharSolic" icone='redo'
+      rotaFilha_tooltip='Encaminhar a Solicitação'
+      i18n-rotaFilha_tooltip="botão para Encaminhar a Solicitação|btnEncaminharSolic@@crude-solic-apro-ped-bonif-listagem.grid.btn.acao.EncaminharSolic">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha id="chamarInterface" icone='grid-layout'
+      rotaFilha_tooltip='Chamar a Interface'
+      i18n-rotaFilha_tooltip="botão para Chamar a Interface|chamarInterface@@crude-solic-apro-ped-bonif-listagem.grid.btn.acao.ChamarInterface">
+    </app-grid-pesquisa-botao-acao-linha>
+  </app-grid-pesquisa-container-botoes-acao-linha>
+</app-grid-pesquisa>

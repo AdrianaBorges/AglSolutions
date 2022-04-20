@@ -1,0 +1,65 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o codigo ID do grupo do usuário@@crude-grupos-do-usuario-detalhe.label.IDUsuariosGrupo">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDUsuariosGrupo']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDUsuariosGrupo"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Grupo de Usuário|Identifica o Grupo de Usuário@@crude-grupos-do-usuario-detalhe.label.chCodGrupoUsuario">
+              Grupo de Usuário
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodGrupoUsuario']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+            placeholder='selecione' 
+            formControlName='chCodGrupoUsuario'
+            [apiService]='apiGrupoUsuarioService' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chDesGrupoUsuario" 
+            apiFieldKey="chCodGrupoUsuario"
+            (valorAlterado)="valorAlteradoGrupoUsuario($event)">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

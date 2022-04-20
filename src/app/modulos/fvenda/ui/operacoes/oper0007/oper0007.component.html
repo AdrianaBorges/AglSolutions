@@ -1,0 +1,171 @@
+<span
+  #breadcrumb_traducao
+  style="display: none"
+  i18n="breadcrumb|breadcrumb da operação relatório de assistências técnicas@@fvenda.operacoes.oper0007.breadcrumb">
+  Relatório: Ass.Técnica
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do relatório de assistências técnicas@@fvenda.operacoes.oper0007.titulo">
+    RELATÓRIO DE ASSISTÊNCIAS TÉCNICAS
+  </div>
+</h1>
+
+<app-operacao-barra-acao
+  [formGroupPesquisa]="formGroupPesquisa"
+  [apiSearchObject]="apiSearchObject"
+  [apiService]="apiOper0007Service"
+  nomeMetodoApi="executar"
+  modeloRelatorioNames="Modelo 01|Modelo 02"
+  modeloRelatorioCodigos="01298|78712"
+  [modoExibicao_arquivo]="true"
+  [modoExibicao_relatorio]="false"
+  (exibirErros)="exibirMensagemDeErros($event)">
+
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Número da Assistência Técnica Inicial do Intervalo@@fvenda.operacoes.oper0007.label.inNumAssTecnicaIni">
+              Número - de
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumAssTecnicaIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inNumAssTecnicaIni"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            >
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Número da Assistência Técnica Final do Intervalo@@fvenda.operacoes.oper0007.label.inNumAssTecnicaFim">
+              Até
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumAssTecnicaFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inNumAssTecnicaFim"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data|Identifica a Data de Abertura da Assistência Técnica Inicial do Intervalo@@fvenda.operacoes.oper0007.label.dtDatAberturaIni">
+              Data Abertura - De
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatAberturaIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datetimepicker formControlName='dtDatAberturaIni' required></kendo-datetimepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data|Identifica a Data de Abertura da Assistência Técnica Final do Intervalo@@fvenda.operacoes.oper0007.label.dtDatAberturaFim">
+              Até
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatAberturaFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datetimepicker formControlName='dtDatAberturaFim' required></kendo-datetimepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Código do Cliente da Assistência Técnica Inicial do Intervalo@@fvenda.operacoes.oper0007.label.inCodClienteIni">
+              Cód.Cliente - De
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodClienteIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodClienteIni"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Código do Cliente da Assistência Técnica Final do Intervalo@@fvenda.operacoes.oper0007.label.inCodClienteFim">
+              Até
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodClienteFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodClienteFim"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Código do Item da Assistência Técnica Inicial do Intervalo@@fvenda.operacoes.oper0007.label.chCodItemIni">
+              Cód.Item - De
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodItemIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input maxlength="50" kendoTextBox formControlName="chCodItemIni" type="text" name="chCodItemIni" id="chCodItemIni" />
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Código do Item da Assistência Técnica Fim do Intervalo@@fvenda.operacoes.oper0007.label.chCodItemFim">
+              Até
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodItemFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input maxlength="50" kendoTextBox formControlName="chCodItemFim" type="text" name="chCodItemFim" id="chCodItemFim" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-operacao-barra-acao>

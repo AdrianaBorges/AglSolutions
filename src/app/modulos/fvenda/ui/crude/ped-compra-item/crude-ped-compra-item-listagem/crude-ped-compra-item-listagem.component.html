@@ -1,0 +1,39 @@
+<div class="area-filtro" [style.visibility]="!gridFiltroApx.isNotVisible? 'visible' : 'hidden'">
+  <form action="" [formGroup]="formGroupPesquisaItem" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Situação Atendimento</label>
+        <app-filtro-multiselect
+          formControlName='listaSituacaoAtendimento'
+          [apiService]='apiSitAtenPedCompService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chDescricao"
+          apiFieldKey="inCodSitAtenPedComp"
+          placeholder="ambos"
+          pesquisaFieldWhere='PedCompraItem.inCodSitAtenPedComp'
+          [pesquisaGridFiltro]="gridFiltroApx">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-6"></div>
+      <div class="form-group col-md-2">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> Pesquisar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-grid-pesquisa
+  #gridFiltroApx
+ [formGroupPesquisa]='formGroupPesquisaItem'
+  idGrid="pesquisaCrudePedCompraItemEL01"
+  [apiService]='apiPedCompraItemEL01Service'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar' 
+  apiFieldKey='IDPedCompraItem'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilho'
+  [btn_acao_exibir]='btn_acao_exibir'>
+</app-grid-pesquisa>

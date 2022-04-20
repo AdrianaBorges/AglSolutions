@@ -1,0 +1,188 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do produto de seguro Valores@@crude-prod-seg-valor-detalhe.label.IDProdSegValor">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDProdSegValor']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox 
+            formControlName="IDProdSegValor" 
+            [format]="'N0'" 
+            [min]="0" 
+            [max]="999999999"
+            [autoCorrect]="false" 
+            [spinners]="false" 
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio de Vigência|Identifica o Inicio de Vigência@@crude-prod-seg-valor-detalhe.label.daDatIniVig">
+              Inicio de Vigência
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatIniVig']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatIniVig'></kendo-datepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Fim de Vigência|Identifica o Fim de Vigência@@crude-prod-seg-valor-detalhe.label.daDatFimVig">
+              Fim de Vigência
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatFimVig']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatFimVig'></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Capital Segurado|Identifica o Capital Segurado@@crude-prod-seg-valor-detalhe.label.deValCapital">
+              Capital Segurado
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValCapital']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox 
+            formControlName="deValCapital" 
+            [format]="'C2'" 
+            [min]="0" 
+            [max]="99999999999"
+            [autoCorrect]="false" 
+            [spinners]="false" 
+            required
+            (blur)="calculaPremioLiquido()">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Prêmio Bruto|Identifica o Prêmio Bruto@@crude-prod-seg-valor-detalhe.label.deValPremioBruto">
+              Prêmio Bruto
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValPremioBruto']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox 
+            formControlName="deValPremioBruto" 
+            [format]="'C2'" 
+            [min]="0" 
+            [max]="99999999999"
+            [autoCorrect]="false" 
+            [spinners]="false" 
+            required
+            (blur)="calculaPremioLiquido()">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor IOF|Identifica o Valor IOF@@crude-prod-seg-valor-detalhe.label.deValIOF">
+              Valor IOF
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValIOF']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox 
+            formControlName="deValIOF" 
+            [format]="'C2'" 
+            [min]="0" 
+            [max]="99999999999"
+            [autoCorrect]="false" 
+            [spinners]="false" 
+            (blur)="calculaPremioLiquido()">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor Serviço|Identifica o Valor Serviço@@crude-prod-seg-valor-detalhe.label.deValServico">
+              Valor Serviço
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValServico']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox 
+            formControlName="deValServico" 
+            [format]="'C2'" 
+            [min]="0" 
+            [max]="99999999999"
+            [autoCorrect]="false" 
+            [spinners]="false" 
+            (blur)="calculaPremioLiquido()">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Prêmio Líquido|Identifica o Prêmio Líquido@@crude-prod-seg-valor-detalhe.label.deValPremioLiquido">
+              Prêmio Líquido
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValPremioLiquido']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox 
+            formControlName="deValPremioLiquido" 
+            [format]="'C2'" 
+            [min]="0" 
+            [max]="99999999999"
+            [autoCorrect]="false" 
+            [spinners]="false" 
+            disable="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

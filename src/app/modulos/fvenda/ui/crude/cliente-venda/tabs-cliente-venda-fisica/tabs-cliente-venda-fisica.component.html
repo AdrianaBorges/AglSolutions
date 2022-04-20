@@ -1,0 +1,141 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Cliente física@@tabs-cliente-venda-fisica.breadcrumb">
+  Cliente: Edição
+</span>
+
+<kendo-tabstrip
+  #kendoTab
+  appCadastroTab
+  id='idTabCadClienteFisica'
+  [tab]='kendoTab'
+  [cadastroBarraAcao]='cadPF.cadastroBarraAcao'
+  (tabSelect)="onTabSelect($event)">
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab CLIENTE|Nome da tab CLIENTE de Clientes físicas@@tabs-cliente-venda-fisica.tab.Cliente"
+    [ngClass]='app-tab-content' [title]="'CLIENTE'" [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Titulo Cliente física|Título interno que identifica o CRUDE de Cliente fisica@@tabs-cliente-venda-fisica.tab.Cliente.titulo">
+          CLIENTE
+        </div>
+      </h1>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Documentos complementares'|Nome da tab 'Documentos complementares' de Clientes físicas@@tabs-cliente-venda-fisica.tab.DocumentosComplementares"
+    title='DOC.COMPLEM.'
+    [selected]="tabSelecionada(1)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Documentos complementares' de Clientes físicas@@tabs-cliente-venda-fisica.tab.titulo.DocumentosComplementares">
+          DOCUMENTOS COMPLEMENTARES DO CLIENTE
+        </div>
+        <div>
+          <span i18n="Detalhes Cliente|texto que precede os dados de Cliente@@tabs-cliente-venda-fisica.tab.titulo.dadosCliente">
+            Cliente:
+          </span>
+          {{cadPF.modelClienteEl02.inCodCliente}} - {{cadPF.modelClienteEl02.chNomeCliente}} -
+          {{this.cadPF.modelClienteEl02.chDesTipoDocumentoCliente}}:
+          {{this.cadPF.modelClienteEl02.inNumIdentifCliente}}
+        </div>
+      </h1>
+      <app-crude-pessoa-documento-detalhe
+        #gridInterfaceTabCadastroFilhoDocumento>
+      </app-crude-pessoa-documento-detalhe>
+      <app-crude-pessoa-documento-listagem
+      [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoDocumento'>
+      </app-crude-pessoa-documento-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Endereços'|Nome da tab 'Endereços' de Clientes físicas@@tabs-cliente-venda-fisica.tab.Enderecos"
+    title='ENDEREÇOS'
+    [selected]="tabSelecionada(2)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Endereços' de Clientes físicas@@tabs-cliente-venda-fisica.tab.titulo.Enderecos">
+          ENDEREÇOS DO CLIENTE
+        </div>
+        <div>
+          <span i18n="Detalhes Cliente|texto que precede os dados de Cliente@@tabs-cliente-venda-fisica.tab.titulo.dadosCliente">
+            Cliente:
+          </span>
+          {{cadPF.modelClienteEl02.inCodCliente}} - {{cadPF.modelClienteEl02.chNomeCliente}} -
+          {{this.cadPF.modelClienteEl02.chDesTipoDocumentoCliente}}:
+          {{this.cadPF.modelClienteEl02.inNumIdentifCliente}}
+        </div>
+      </h1>
+      <app-crude-pessoa-endereco-detalhe
+        #gridInterfaceTabCadastroFilhoEndereco>
+      </app-crude-pessoa-endereco-detalhe>
+      <app-crude-pessoa-endereco-listagem
+        [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoEndereco'>
+      </app-crude-pessoa-endereco-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Telefones'|Nome da tab 'Telefones' de Clientes físicas@@tabs-cliente-venda-fisica.tab.Telefones"
+    title='TELEFONES'
+    [selected]="tabSelecionada(3)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Telefones' de Clientes físicas@@tabs-cliente-venda-fisica.tab.titulo.Telefones">
+          TELEFONES DO CLIENTE
+        </div>
+        <div>
+          <span i18n="Detalhes Cliente|texto que precede os dados de Cliente@@tabs-cliente-venda-fisica.tab.titulo.dadosCliente">
+            Cliente:
+          </span>
+          {{cadPF.modelClienteEl02.inCodCliente}} - {{cadPF.modelClienteEl02.chNomeCliente}} -
+          {{this.cadPF.modelClienteEl02.chDesTipoDocumentoCliente}}:
+          {{this.cadPF.modelClienteEl02.inNumIdentifCliente}}
+        </div>
+      </h1>
+      <app-crude-pessoa-telefone-detalhe
+        #gridInterfaceTabCadastroFilhoTelefone>
+      </app-crude-pessoa-telefone-detalhe>
+      <app-crude-pessoa-telefone-listagem
+        [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoTelefone'>
+      </app-crude-pessoa-telefone-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'e-mails'|Nome da tab 'E-mails' de Clientes físicas@@tabs-cliente-venda-fisica.tab.emails"
+    title='E-MAILS'
+    [selected]="tabSelecionada(4)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'E-Mails' de Clientes físicas@@tabs-cliente-venda-fisica.tab.titulo.Emails">
+          E-MAILS DO CLIENTE
+        </div>
+        <div>
+          <span i18n="Detalhes Cliente|texto que precede os dados de Cliente@@tabs-cliente-venda-fisica.tab.titulo.dadosCliente">
+            Cliente:
+          </span>
+          {{cadPF.modelClienteEl02.inCodCliente}} - {{cadPF.modelClienteEl02.chNomeCliente}} -
+          {{this.cadPF.modelClienteEl02.chDesTipoDocumentoCliente}}:
+          {{this.cadPF.modelClienteEl02.inNumIdentifCliente}}
+        </div>
+      </h1>
+      <app-crude-pessoa-email-detalhe
+        #gridInterfaceTabCadastroFilhoEmail>
+      </app-crude-pessoa-email-detalhe>
+      <app-crude-pessoa-email-listagem
+        [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoEmail'>
+      </app-crude-pessoa-email-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+</kendo-tabstrip>
+
+<app-crude-cliente-venda-fisica-detalhe
+  #cadPF
+  [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-cliente-venda-fisica-detalhe>

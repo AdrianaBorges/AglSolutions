@@ -1,0 +1,100 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE de Banco@@crude-banco-edicao.breadcrumb">
+  Banco - ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Banco@@crude-banco-detalhe.titulo.banco">
+      INSTITUIÇÃO BANCÁRIA
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null' [innerHTML]='apiErrorCollection.mensagem_geral_html'></div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código do banco no CRUDE@@crude-banco-detalhe.label.codigo">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodBanco']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodBanco"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            required>
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome|Identifica o nome do banco no CRUDE@@crude-banco-detalhe.label.nome">
+              Nome
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNome']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNome" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Classe Especialização Cobrança PIX|Identifica a Classe Especialização Cobrança PIX no CRUDE@@crude-banco-detalhe.label.chClasseCobrancaPix">
+              Classe Especialização Cobrança PIX
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chClasseCobrancaPix']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chClasseCobrancaPix" required maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Classe Especialização Boleto|Identifica a Classe Especialização Boleto no CRUDE@@crude-banco-detalhe.label.chClasseBoleto">
+              Classe Especialização Boleto
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chClasseBoleto']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chClasseBoleto" required maxlength="100" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

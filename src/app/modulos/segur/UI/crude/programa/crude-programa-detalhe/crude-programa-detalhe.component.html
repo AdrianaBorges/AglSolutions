@@ -1,0 +1,124 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb do programa@@crude-programa-detalhe.breadcrumb">
+  Programa ID:
+</span>
+
+<app-cadastro-barra-acao 
+  #cadastroBarraAcao 
+  [formGroup]='meuForm' 
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()' 
+  (excluir)='btnExcluir()'
+  apiFieldKey='chCodPrograma'>
+  
+  <h1>
+    <div i18n="titulo|titulo da listagem de programa@@crude-programa-detalhe.titulo">
+      PROGRAMA
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código do Programa do Sistema no CRUDE@@crude-programa-detalhe.label.chCodPrograma">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodPrograma']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodPrograma" required maxlength="50" />
+        </label>
+      </div>
+      <div class="form-group col-md-2">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Disponível no Menu?|Identifica o Disponível no Menu? do Programa do Sistema no CRUDE@@crude-programa-detalhe.label.lgDisponivelMenu">
+              Disponível no Menu?
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['lgDisponivelMenu']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-switch
+            [onLabel]="'Sim'"
+            [offLabel]="'Não'"
+            id="switchID"
+            formControlName='lgDisponivelMenu'>
+          </kendo-switch>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descrição|Identifica a Descrição do  Programa do Sistema no CRUDE@@crude-programa-detalhe.label.chDesTitPrograma">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesTitPrograma']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDesTitPrograma" required maxlength="80" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Caminho|Identifica a Caminho do  Programa do Sistema no CRUDE@@crude-programa-detalhe.label.chDesPasta">
+              Caminho
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesPasta']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDesPasta" maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Observação|Identifica a Observação do  Programa do Sistema no CRUDE@@crude-programa-detalhe.label.chDesObservacao">
+              Observação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesObservacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesObservacao" rows="5" style="width: 100%;">
+          </textarea>
+        </label>
+      </div>
+    </div>
+  </form>
+
+  <app-cadastro-barra-acao-container-botoes>
+    <app-cadastro-barra-acao-botao
+      id="btnAcaoExibirNiveis"
+      icone='redo'
+      rotaFilha_url='programa-nivel'
+      rotaFilha_tooltip='Exibir Lista de Níveis do Programa'
+      i18n-rotaFilha_tooltip="Botão para Exibir o Crude de Níveis do Programa|btnAcaoExibirNiveis@@crude-programa-detalhe.grid.btn.acao.niveis">
+    </app-cadastro-barra-acao-botao>
+  </app-cadastro-barra-acao-container-botoes>
+
+</app-cadastro-barra-acao>

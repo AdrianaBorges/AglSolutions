@@ -1,0 +1,127 @@
+<span #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de cadastro de cidade @@crude-cidade-edicao.breadcrumb">Início/Cidade/Edição</span>
+
+<app-cadastro-barra-acao #cadastroBarraAcao [formGroup]='meuForm' (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()' (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo do CRUDE|Título do conteúdo do CRUDE cidade @@crude-cidade-detalhe.titulo.cidade">
+      CIDADE
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o id da cidade CRUDE@@crude-cidade-detalhe.label.IDCidade">
+              ID
+            </ng-container>
+          </span>
+          <kendo-numerictextbox formControlName="IDCidade" [format]="'N0'" [min]="1" [max]="999999999"
+            [autoCorrect]="false" [spinners]="false" disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Pais|Identifica o pais da cidade no CRUDE@@crude-cidade-detalhe.label.IDPais">País
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['IDPais']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select required placeholder='selecione' formControlName='IDPais' [apiService]='apiPaisService'
+            apiNomeMetodoListar='listar' apiFieldExibir="chNomeAbreviado" apiFieldKey="IDPais" [childComponent]='selectUF'
+            childComponentFieldWhere='Pais.IDPais' pesquisaOperator="eq"></app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-5">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label UF|Identifica a unidade federativa da cidade CRUDE@@crude-cidade-detalhe.label.IDUF">
+              UF
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['IDUF']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select #selectUF required placeholder='selecione' formControlName='IDUF' [apiService]='apiUFService'
+            apiNomeMetodoListar='listar'  apiFieldExibir="chNome" apiFieldKey="IDUF">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome|Identifica o Nome da cidade CRUDE@@crude-cidade-detalhe.label.chNome">
+              Nome da Cidade
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chNome']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNome" required maxlength="80" />
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Nome Abreviado|Identifica o nome abreviado da cidade CRUDE@@crude-cidade-detalhe.label.chNomeAbreviado">
+              Nome Abreviado
+            </ng-container>
+
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chNomeAbreviado']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeAbreviado" maxlength="40" />
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Código no IBGE|Identifica o Código no IBGE da cidade CRUDE@@crude-cidade-detalhe.label.chCodIBGE">
+              Código no IBGE
+            </ng-container>
+
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chCodIBGE']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodIBGE" maxlength="10" />
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label CEP Único|Identifica o CEP Único da cidade CRUDE@@crude-cidade-detalhe.label.chCEPUnico">
+              CEP Único
+            </ng-container>
+
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chCEPUnico']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <!-- <input kendoTextBox formControlName="chCEPUnico" maxlength="10" />-->
+          <kendo-maskedtextbox id="inputMaskCEP" mask="99.999-999" formControlName="chCEPUnico" [class.maskedCEP]="true"
+            style="width:150px">
+          </kendo-maskedtextbox>
+        </label>
+      </div>
+    </div>
+  </form>

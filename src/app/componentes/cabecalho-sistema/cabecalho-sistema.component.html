@@ -1,0 +1,54 @@
+<div class="cabecalho" 
+[style.background-color]="configEmpresa.corFundoLogo"
+[style.color]="configEmpresa.corFonte">
+      <div class="usuario" [style.background-color]='getEstiloUsuarioMenu()' (click)="onToggleDadosUsuario()" #anchor>
+          <span class="k-icon k-i-user"></span>
+          <span [class.descTipoUsuario]='true'>{{usuario.chNomeUsuario}}</span>
+          
+      </div>
+</div>
+
+<kendo-popup [popupClass]="'content popup'" 
+              [anchor]="anchor" 
+              (anchorViewportLeave)="show = false" 
+              *ngIf="exibirDadosUsuario"
+              style="top:none; left: none;">
+
+    <div class="card" style="width: 30rem;" *ngIf="exibirDadosUsuario">
+      <span class="card-img-top k-icon k-i-user popup-icon"></span>
+      <div class="card-body">
+        <p class="card-text"><b i18n="Label nome do Usuário|Identifica o nome do usuário@@cabecalho-sistema.component.label.nome" >Nome do Usuário:</b> {{usuario.chNomeUsuario}}</p>
+        <p class="card-text"><b i18n="Label Perfil do Usuário|Identifica o perfil do usuário@@cabecalho-sistema.component.label.perfil" >Perfil do Usuário:</b> {{usuario.chDesTipoUsuario}}</p>
+        <p class="card-text"><b i18n="Label email do Usuário|Identifica o email do usuário@@cabecalho-sistema.component.label.email" >E-Mail de Contato:</b> {{usuario.chEMail}}</p>
+        <p class="card-text"><b i18n="Label tipo de vinculo|Identifica o tipo de vinculo do usuário@@cabecalho-sistema.component.label.nomeVinculo" >Nome do Vínculo:</b> {{usuario.chNomePessoaVinculada}}</p>
+        <p class="card-text"><b i18n="Label nome do vinculo|Identifica o nome do vinculo do usuário@@cabecalho-sistema.component.label.tipoVinculo" >Tipo Vínculo:</b> {{usuario.chDesTipoPapelVinculada}}</p>
+      </div>
+    </div>
+    <kendo-panelbar>
+        <kendo-panelbar-item (click)="exibirModalTrocarSenha()" [title]="'trocar senha'"></kendo-panelbar-item>
+        <kendo-panelbar-item (click)="sair()" [title]="'sair'"></kendo-panelbar-item>
+    </kendo-panelbar>
+    
+</kendo-popup>
+
+<app-usu-alterar-senha
+  #modalAlterarSenha
+  (senhaAlterada)="senhaAlterada"
+></app-usu-alterar-senha>
+
+<!-- <kendo-dialog title="Please confirm" *ngIf="exibindoTrocarSenha" (close)="closeModalTrocarSenha()" [minWidth]="200" [width]="250">
+  <form class="k-form" #formTrocarSenha>
+      <label class="k-form-field">
+          <span>Senha nova</span>
+          <input class="k-textbox" type="password" placeholder="" [(ngModel)]='senhaNova' required/>
+      </label>
+      <label class="k-form-field">
+          <span>Confirmar senha</span>
+          <input class="k-textbox" type="password" placeholder="" [(ngModel)]='senhaConfirmada' required/>
+      </label>
+  </form>
+  <kendo-dialog-actions>
+      <button kendoButton (click)="closeModalTrocarSenha()">cancelar</button>
+      <button kendoButton (click)="closeModalTrocarSenha()" primary="true">confirmar</button>
+  </kendo-dialog-actions>
+</kendo-dialog> -->

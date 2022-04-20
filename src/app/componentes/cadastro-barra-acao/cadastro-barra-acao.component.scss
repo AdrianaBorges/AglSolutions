@@ -1,0 +1,59 @@
+@import "../../../estilos/crude.mixin";
+
+//Para o container fora de um tab-strip da um espaçamento para não ficar colado a esquerda
+#container {
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow-x: hidden;
+}
+//Como o kendo-tab-strip já tem nativo um padding então removo o padding conferido acima
+::ng-deep .k-tabstrip #container{
+    padding-left: 0;
+}
+
+//Como o kendo-tab-strip tem um padding padrão então realinho a barra de ação para grudar a esquerda
+::ng-deep .k-tabstrip .barra-acao {
+    margin-left: -12px;
+}
+
+
+
+#container{
+    padding-bottom: 50px;
+    
+    /*
+    Referência do "ng-deep"
+    https://blog.angular-university.io/angular-host-context/
+    */
+    ::ng-deep h1 {
+        @include titulo_crude;
+        div {
+            margin-left: 0;
+        }
+        // mixin em: src/estilos/_crude.mixin.scss
+    }
+}
+
+.barra-acao {
+    background-color: lighten($color: rgb(235, 235, 235), $amount: 0.8) ;
+    padding: 10px 15px;
+    width: 100%;
+    height: 50px;
+    position: fixed; 
+    bottom: 0;
+    display: block;
+    z-index: 9000;
+}
+:host {
+    border: 0 !important;
+}
+
+.invisivel{
+    display: none;
+}
+
+.btn-acao{
+    height: 35px;
+    width: 35px;
+}
+

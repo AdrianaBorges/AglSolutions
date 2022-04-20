@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "./estilos/_variaveis";
+@import "./estilos/_kendoSwitch";
+
+@import "~@progress/kendo-theme-default/scss/all";
+/*@import "~@progress/kendo-theme-default/scss/all";*/
+@import "./estilos/bootstrap.min.css";
+@import "./estilos/_validacao_form";
+@import "./estilos/_area-pesquisa-crude";
+
+@import "./estilos/crude.mixin";
+@import "./estilos/crude";

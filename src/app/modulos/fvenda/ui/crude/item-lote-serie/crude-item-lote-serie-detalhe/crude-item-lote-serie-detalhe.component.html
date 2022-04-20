@@ -1,0 +1,203 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Lote/Série do Item@@crude-item-lote-serie-edicao.breadcrumb">
+  Lote/Série do Item ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Lote/Série do Item@@crude-item-lote-serie-detalhe.titulo.item-lote-serie">
+      LOTE/SÉRIE DO ITEM
+    </div>
+  </h1>
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do Lote/Série do Item CRUDE@@crude-item-lote-serie-detalhe.label.IDItemLoteSerie">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDItemLoteSerie']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDItemLoteSerie"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-10 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Item|Identifica o Item do Lote/Série do Item CRUDE@@crude-item-lote-serie-detalhe.label.IDItem">
+              Item
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDItem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIItem'
+            placeholder="selecione"
+            modalTitulo='ITEM'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiItemEL01Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listarOnlyItem'
+            apiFieldExibir="chDescricao"
+            [colunasGrid]="apiItemEL01Service.getColunasGridPesquisa()"
+            apiFieldKey="chCodItem"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="text"
+            pesquisaRapidaPlaceholder='Código'
+            pesquisaRapidaMaxlength='50'
+            pesquisaRapidaWidth='20'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigoOnlyItem'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-5 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Modelo|Identifica o Modelo do Lote/Série do Item CRUDE@@crude-item-lote-serie-detalhe.label.chCodModelo">
+              Modelo
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodModelo']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input maxlength="50" kendoTextBox formControlName="chCodModelo" type="text" name="chCodModelo" id="chCodModelo" />
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-5 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Série|Identifica o Série do Lote/Série do Item CRUDE@@crude-item-lote-serie-detalhe.label.chNumSerie">
+              Série
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumSerie']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input maxlength="50" kendoTextBox formControlName="chNumSerie" type="text" name="chNumSerie" id="chNumSerie" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-5 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Lote|Identifica o Lote do Lote/Série do Item CRUDE@@crude-item-lote-serie-detalhe.label.chNumLote">
+              Lote
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumLote']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input maxlength="50" kendoTextBox formControlName="chNumLote" type="text" name="chNumLote" id="chNumLote" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-5 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data Fabricação|Identifica a Data Fabricação do Lote/Série do Item CRUDE@@crude-item-lote-serie-detalhe.label.daDatFabricacao">
+              Data Fabricação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatFabricacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker formControlName='daDatFabricacao'></kendo-datepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-1 col-lg-2"></div>
+      <div class="form-group col-md-5 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data Validade|Identifica a Data Validade do Lote/Série do Item CRUDE@@crude-item-lote-serie-detalhe.label.daDatValidade">
+              Data Validade
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatValidade']">
+            </app-form-control-alerta-erro-api>
+          </span>
+        <kendo-datepicker formControlName='daDatValidade'></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-5 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Qtd.Entradas|Identifica a Qtd.Entradas do Lote/Série do Item CRUDE@@crude-item-lote-serie-detalhe.label.deQtdEntrada">
+              Qtd.Entradas
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deQtdEntrada']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deQtdEntrada"
+            [format]="'N4'"
+            [min]="0"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-1 col-lg-2"></div>
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Saldo Inicial Ass.Técnica|Saldo Inicial do Lote para as análises das Assistências Técnicas CRUDE@@crude-item-lote-serie-detalhe.label.deQtdSaldoIniAssTec">
+              Saldo Inicial Ass.Técnica
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deQtdSaldoIniAssTec']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deQtdSaldoIniAssTec"
+            [format]="'N4'"
+            [min]="0"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

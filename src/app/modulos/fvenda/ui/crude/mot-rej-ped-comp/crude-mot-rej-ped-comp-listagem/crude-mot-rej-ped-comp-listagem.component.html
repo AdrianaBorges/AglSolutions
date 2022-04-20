@@ -1,0 +1,24 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Motivo da Rejeição de Pedido de Compra Listagem@@crude-mot-rej-ped-comp-listagem.breadcrumb">
+  Motivo: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Motivo da Rejeição de Pedido de Compra@@crude-mot-rej-ped-comp-listagem.titulo">
+    MOTIVO DA REJEIÇÃO DE PEDIDO DE COMPRA
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaCodMotRejPedComp"
+  [apiService]='apiMotRejPedCompService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodMotRejPedComp'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

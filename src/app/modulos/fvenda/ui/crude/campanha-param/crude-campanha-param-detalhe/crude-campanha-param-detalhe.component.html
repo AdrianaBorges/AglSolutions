@@ -1,0 +1,228 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Parâmetros da Campanha@@crude-campanha-param-edicao.breadcrumb">
+  Parâmetros da Campanha ID:
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem do Parâmetros da Campanha@@crude-campanha-param-edicao.titulo">
+    PARÂMETROS DA CAMPANHA
+  </div>
+  <div>
+    <span i18n="Detalhes Campanha|texto que precede os dados da Campanha@@crude-campanha-param-edicao.titulo.dadosCampanha">
+        Campanha:
+    </span>
+      {{modelCampanhaEL01.chCodCampanha}} - {{modelCampanhaEL01.chDescricao}}
+    <br />
+    <span i18n="Detalhes Tipo|texto que precede os dados do Tipo@@crude-campanha-param-edicao.titulo.dadosTipo">
+      Tipo:
+    </span>
+    {{modelCampanhaEL01.chDesTipoCampanha}}
+    <br />
+    <span i18n="Detalhes Período|texto que precede os dados do Período@@crude-campanha-param-edicao.titulo.dadosPeriodo">
+      Período:
+    </span>
+    {{modelCampanhaEL01.dtDatInicio | date: 'short'}} à {{modelCampanhaEL01.dtDatFim | date: 'short'}}
+  </div>
+</h1>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral_html != null' [innerHTML] = 'apiErrorCollection.mensagem_geral_html'>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3 col-lg-2 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do CRUDE@@crude-campanha-param.label.IDCampanhaParam">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDCampanhaParam']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDCampanhaParam"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+         <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Grupo de Estabelecimento|Identifica o Grupo de Estabelecimento do CRUDE@@crude-campanha-param-detalhe.label.inCodGrupoEstab">
+              Grupo de Estabelecimento
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodGrupoEstab']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select  
+            placeholder='selecione' 
+            formControlName='inCodGrupoEstab'
+            [apiService]='apiGrupoEstabService' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodGrupoEstab">
+            <kendo-combobox-column
+              field="inCodGrupoEstab"
+              i18n-title="Titulo Código|Identifica o titulo Código das opções de tipo de grupo de Estabelecimento@@crude-campanha-param-detalhe.combo.grupo-estab.codigo"
+              title="Código"
+              width="30">
+            </kendo-combobox-column>
+            <kendo-combobox-column
+              field="chDescricao"
+              i18n-title="Titulo Descrição|Identifica o titulo Descrição das opções de grupo de estabelecimento@@crude-campanha-detalhe.combo.grupo-estab.descricao"
+              title="Descrição"
+              width="80">
+            </kendo-combobox-column>
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+         <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Estabelecimento|Identifica o Estabelecimento do CRUDE@@crude-campanha-param-detalhe.label.IDEstabelec">
+              Estabelecimento
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDEstabelec']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione' 
+            formControlName='IDEstabelec'
+            [apiService]='apiEstabelecimentoService' 
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chNome"
+            apiFieldKey="IDEstabelec">
+            <kendo-combobox-column
+              field="chCodEstabelec"
+              i18n-title="Titulo Código|Identifica o titulo Código das opções de  Estabelecimento@@crude-campanha-param-detalhe.combo.estabelecimento.codigo"
+              title="Código"
+              width="30">
+            </kendo-combobox-column>
+            <kendo-combobox-column
+              field="chNome"
+              i18n-title="Titulo Nome|Identifica o titulo Nome das opções de estabelecimento@@crude-campanha-detalhe.combo.estabelecimento.nome"
+              title="Nome"
+              width="80">
+            </kendo-combobox-column>
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio Vendas|Identifica o Inicio Vendas@@crude-campanha-param.label.dtDatVendaIni">
+              Inicio Vendas
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatVendaIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+           <kendo-datetimepicker formControlName='dtDatVendaIni' required></kendo-datetimepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-4 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Fim Vendas|Identifica o Fim Vendas@@crude-campanha-param.label.dtDatVendaFim">
+              Fim Vendas
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatVendaFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+           <kendo-datetimepicker formControlName='dtDatVendaFim' required></kendo-datetimepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-4 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor Mínimo Venda|Identifica o Valor Mínimo Venda@@crude-campanha-param.label.deValVendaMinimo">
+              Valor Mínimo Venda
+            </ng-container>
+            <!-- <span class="k-required">*</span> -->
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValVendaMinimo']">
+            </app-form-control-alerta-erro-api>
+          </span>
+           <kendo-numerictextbox
+            formControlName="deValVendaMinimo"
+            [format]="'C2'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false" required>
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row" *ngIf="modelCampanhaEL01.inCodTipoCampanha == 2">
+      <div class="form-group col-md-4 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor Prêmio|Identifica o Valor Prêmio no CRUDE@@crude-campanha-param.label.deValPremio">
+              Valor Prêmio
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValPremio']">
+            </app-form-control-alerta-erro-api>
+          </span>
+           <kendo-numerictextbox
+            formControlName="deValPremio"
+            [format]="'C2'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-4 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Prêmio Sorteado ?|Identifica o Prêmio Sorteado ? no CRUDE@@crude-campanha-param.label.lgPremioInstSorteado">
+              Prêmio Sorteado ?
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['lgPremioInstSorteado']">
+            </app-form-control-alerta-erro-api>
+          </span>
+           <kendo-switch
+            [onLabel]="'SIM'"
+            [offLabel]="'NÃO'"
+            [disabled]="false"
+            formControlName="lgPremioInstSorteado"
+            name="lgPremioInstSorteado"
+            id="lgPremioInstSorteado">
+          </kendo-switch>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

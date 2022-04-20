@@ -1,0 +1,89 @@
+<span #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de cadastro de UF @@crude-uf-edicao.breadcrumb">Início/Unidade Federativa/Edição</span>
+
+<app-cadastro-barra-acao #cadastroBarraAcao [formGroup]='meuForm' (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()' (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo do CRUDE|Título do conteúdo do CRUDE UF @@crude-uf-detalhe.titulo.uf">
+      UNIDADE FEDERATIVA
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o id da uf CRUDE@@crude-uf-detalhe.label.id">
+              ID
+            </ng-container>
+          </span>
+          <kendo-numerictextbox formControlName="IDUF" [format]="'N0'" [min]="1" [max]="999999999" [autoCorrect]="false"
+            [spinners]="false" disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Pais|Identifica o pais da uf no CRUDE@@crude-uf-detalhe.label.pais">País</ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['IDPais']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select required placeholder='selecione' formControlName='IDPais' [apiService]='apiPaisService'
+            apiNomeMetodoListar='listar' apiFieldExibir="chNomeAbreviado" apiFieldKey="IDPais"></app-api-select>
+        </label>
+        
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Sigla|Identifica a Sigla da uf CRUDE@@crude-uf-detalhe.label.sigla">
+              Sigla
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chSigla']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chSigla" required maxlength="5" />
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome|Identifica o Nome da uf CRUDE@@crude-uf-detalhe.label.nome">
+              Nome da UF
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chNome']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNome" required maxlength="50" />
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label IBGE|Identifica o código do ibge da uf CRUDE@@crude-uf-detalhe.label.ibge">
+              Código no IBGE
+            </ng-container>
+
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chCodIBGE']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodIBGE" maxlength="10" />
+        </label>
+      </div>
+    </div>
+  </form>

@@ -1,0 +1,99 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE de Forma de Cobrança@@crude-forma-cobranca-listagem.breadcrumb">
+  Forma de Cobrança: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Forma de Cobrança@@crude-forma-cobranca-listagem.titulo.forma-cobranca">
+    FORMA DE COBRANÇA
+  </div>
+</h1>
+
+<span
+  #traducao_msg_btnManutWhPix
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de Manutenção de Webhook de Confirmação de Recebimento@@crude-forma-cobranca-listagem.btn.btnManutWhPix.sucesso">
+  URL Webhook Atualizado com Sucesso
+</span>
+
+<span
+  #traducao_msg_btnExcluirWhPix
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de exclusão@@crude-forma-cobranca-listagem.btn.btnExcluirWhPix.sucesso">
+  URL Webhook Excluído com Sucesso
+</span>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaFormaCobrancaEL01"
+  [apiService]='apiFormaCobrancaEL01Service'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='chCodFormaCobranca'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'
+  (colunaEditarBotaoClick)='colunaEditarBotaoClick($event)'
+  [btn_acao_exibir]='btn_acao_exibir'
+  >
+
+  <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha id="btnManutWhPix" icone='link-horizontal hyperlink' rotaFilha_tooltip='Manutenção de Webhook de Confirmação de Recebimento'
+      i18n-rotaFilha_tooltip="Manutenção de Webhook de Confirmação de Recebimento|btnManutWhPix@@crude-forma-cobranca-listagem.grid.btn.acao.btnManutWhPix">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha id="btnExcluirWhPix" icone='unlink-horizontal hyperlink-remove' rotaFilha_tooltip='Excluir uma URL de Webhook'
+      i18n-rotaFilha_tooltip="Excluir uma URL de Webhook|btnExcluirWhPix@@crude-forma-cobranca-listagem.grid.btn.acao.btnExcluirWhPix">
+    </app-grid-pesquisa-botao-acao-linha>
+  </app-grid-pesquisa-container-botoes-acao-linha>
+
+</app-grid-pesquisa>
+
+<div class="k-overlay" *ngIf="AbrirModalAtualizaWebhook"></div>
+<kendo-window #modal [(top)]='topModal' [(left)]="leftModal" *ngIf="AbrirModalAtualizaWebhook" [draggable]="false" [minWidth]="250" [width]="600" >
+  <kendo-window-titlebar>
+    <div class="k-window-title">{{TituloModal}}</div>
+    <div class="text-right">
+      <button kendoWindowCloseAction (click)="cancelarModalAtualizaWebhook()"></button>
+    </div>
+  </kendo-window-titlebar>
+  <div class="form-row">
+    <div class="form-group col-md-12 col-lg-12">
+      <input kendoTextBox [(ngModel)]="dadoModal" maxlength="200" style="width: 350px;" />
+    </div>
+  </div>
+  <div class="text-right">
+    <button type="button" class="k-button k-primary" [disabled]="dadoModal == ''"
+      (click)="confirmaModalAtualizaWebhook()">Confirmar</button>
+    <button type="button" class="k-button k-danger" (click)="cancelarModalAtualizaWebhook()">Cancelar</button>
+  </div>
+</kendo-window>
+
+<div class="k-overlay" *ngIf="AbrirDialogExcluirWebhook"></div>
+<kendo-window #modal [(top)]='topModalExcluirWebhook' [(left)]="leftModalExcluirWebhook" *ngIf="AbrirDialogExcluirWebhook" [draggable]="false" [minWidth]="100" [width]="200" >
+  <kendo-window-titlebar>
+    <div class="k-window-title">Favor confirmar</div>
+    <div class="text-right">
+      <button kendoWindowCloseAction (click)="cancelarModalExcluirWebhook()"></button>
+    </div>
+  </kendo-window-titlebar>
+  <div class="form-row">
+    <div class="form-group col-md-12 col-lg-12">
+      <p style="margin: 30px; text-align: center;">Deseja mesmo excluir?</p>
+    </div>
+  </div>
+  <div class="text-right">
+    <button type="button" class="k-button k-primary"
+      (click)="confirmaModalExcluirWebhook()">Sim</button>
+    <button type="button" class="k-button k-danger" (click)="cancelarModalExcluirWebhook()">Não</button>
+  </div>
+</kendo-window>
+
+<!-- <kendo-dialog title="Favor confirmar" *ngIf="AbrirDialogExcluirWebhook" (close)="cancelarModalExcluirWebhook()" [minWidth]="100" [width]="200">
+  <p style="margin: 30px; text-align: center;">Deseja mesmo excluir?</p>
+  <kendo-dialog-actions>
+      <button kendoButton (click)="cancelarModalExcluirWebhook()">Não</button>
+      <button kendoButton (click)="confirmaModalExcluirWebhook()">Sim</button>
+  </kendo-dialog-actions>
+</kendo-dialog> -->

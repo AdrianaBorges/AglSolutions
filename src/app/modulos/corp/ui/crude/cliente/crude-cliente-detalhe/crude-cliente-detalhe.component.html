@@ -1,0 +1,442 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do cliente pessoa no CRUDE@@crude-cliente.label.IDCliente">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <!-- <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDCliente']">
+            </app-form-control-alerta-erro-api> -->
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDCliente"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label codigo|Identifica o codigo do cliente pessoa no CRUDE@@crude-cliente.label.inCodCliente">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodCliente']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inCodCliente"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+     <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome Abreviado|Identifica o nome abreviado do cliente no CRUDE@@crude-cliente.label.chNomeAbreviado">
+              Abreviado
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeAbreviado']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeAbreviado" type="text" name="chNomeAbreviado" id="chNomeAbreviado" maxlength="25" required>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Pessoa|Identifica a Pessoa no CRUDE@@crude-cliente.label.IDPessoaCliente">
+              Pessoa
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDPessoaCliente']">
+            </app-form-control-alerta-erro-api>
+          </span>
+         <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_Pessoa'
+            placeholder="selecione"
+            modalTitulo='Pessoa'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiPessoaElService'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomePessoa"
+            [colunasGrid]="apiPessoaElService.getColunasGrid()"
+            apiFieldKey="IDPessoa"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='ID'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obter'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label de nome de Cliente|Identifica nome do cliente  no CRUDE@@crude-cliente.label.inCodClientePai">
+              Cliente Matriz
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodClientePai']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_ClienteSuperior'
+            placeholder="selecione"
+            modalTitulo='Cliente Matriz'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiClienteEl01SuperiorService'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeCliente"
+            [colunasGrid]="apiClienteEl01SuperiorService.getColunasGrid()"
+            apiFieldKey="inCodCliente"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='Código'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigo'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cliente Superior|Identifica o Cliente Superior do cliente  no CRUDE@@crude-cliente.label.IDPapelPessoaPagador">
+              Pagador
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDPapelPessoaPagador']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_Pagador'
+            placeholder="selecione"
+            modalTitulo='Pagador'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiPapelPessoaService'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomePessoa"
+            [colunasGrid]="apiPapelPessoaService.getColunasGrid()"
+            apiFieldKey="IDPapelPessoa"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='ID'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obter'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Representante |Identifica o Representante  do cliente  no CRUDE@@crude-cliente.label.IDRepresentantePai">
+              Representante
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDRepresentantePai']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_representante'
+            placeholder="selecione"
+            modalTitulo='Representante'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiRepresentanteEl01Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeRepresentante"
+            [colunasGrid]="apiRepresentanteEl01Service.getColunasGrid()"
+            apiFieldKey="inCodRepresentante"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='Código'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigo'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+          <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Grupo de Cliente|Identifica o Grupo de Cliente do cliente pessoa física no CRUDE@@crude-cliente-venda-fisica.label.chCodGrupoCliente">
+              Grupo de Cliente
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodGrupoCliente']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='chCodGrupoCliente'
+            required
+            [apiService]='apiGrupoClienteService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodGrupoCliente">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Canal de Venda|Identifica o Canal de Venda do cliente pessoa física no CRUDE@@crude-cliente-venda-fisica.label.chCodCanalVenda">
+              Canal de Venda
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodCanalVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='chCodCanalVenda'
+            [apiService]='apiCanalVendaService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodCanalVenda">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Região|Identifica o Região do cliente pessoa física no CRUDE@@crude-cliente-venda-fisica.label.chCodRegiao">
+              Região
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodRegiao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            #selectRegiao
+            placeholder='selecione'
+            formControlName='chCodRegiao'
+            [apiService]='apiRegiaoService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodRegiao"
+            [childComponent]='selectMicrorregiao'
+            childComponentFieldWhere='Regiao.chCodRegiao'
+            pesquisaOperator="eq">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Microrregião|Identifica o Microrregião do cliente pessoa física no CRUDE@@crude-cliente-venda-fisica.label.IDMicrorregiao">
+              Microrregião
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDMicrorregiao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            #selectMicrorregiao
+            placeholder='selecione'
+            formControlName='IDMicrorregiao'
+            [apiService]='apiMicrorregiaoService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="IDMicrorregiao">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Suframa|Identifica o Suframa do cliente pessoa física no CRUDE@@crude-cliente-venda-fisica.label.chDesSuframa">
+              Suframa
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesSuframa']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chDesSuframa" name="chDesSuframa" id="chDesSuframa" maxlength="15">
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Aceita Receber Comunicações ?|Identifica o Aceita Receber Comunicações ? do cliente pessoa física no CRUDE@@crude-cliente-venda-fisica.label.lgPermComunic">
+              Aceita Receber Comunicações ?
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['lgPermComunic']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-switch
+            [onLabel]="'SIM'"
+            [offLabel]="'NÃO'"
+            formControlName="lgPermComunic"
+            name="lgPermComunic"
+            id="lgPermComunic">
+          </kendo-switch>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Limite de Crédito|Identifica o Limite de Crédito do cliente pessoa física no CRUDE@@crude-cliente-venda-fisica.label.deValLimCredito">
+              Limite de Crédito
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValLimCredito']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deValLimCredito"
+            [format]="'C2'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Expira Limite Crédito|Identifica o Expira Limite Crédito do cliente pessoa física no CRUDE@@crude-cliente-venda-fisica.label.daDatExpLimCredito">
+              Expira Limite Crédito
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatExpLimCredito']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker formControlName='daDatExpLimCredito' required></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-9">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Observação|Identifica o Observação do cliente no CRUDE@@crude-cliente.label.chDesObservacao">
+              Observação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesObservacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesObservacao" rows="6" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação Cadastral|Identifica o Situação Cadastral do cliente no CRUDE@@crude-cliente.label.chDesSituacaoCad">
+              Situação Cadastral
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesSituacaoCad']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chDesSituacaoCad" name="chDesSituacaoCad" id="chDesSituacaoCad" disabled="true" />
+        </label>
+      </div>
+    </div>
+
+    <div class=" form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Inclusão|Identifica a Data de Inclusão do Cliente@@crude-cliente.label.inclusao">
+            Inclusão
+          </span>
+          <span>
+            {{modelClienteEL01.dtDatInclusao | date: 'short'}}
+          </span>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span
+            i18n="Label Última Alteração|Identifica a data da Última Alteração do cadastro de cliente no CRUDE@@crude-cliente.label.ultimaAlteracao">
+            Última Alteração
+          </span>
+          <span>
+            {{(modelClienteEL01.dtDatUltAlteracao == null? textoTraducaoSemAlteracao.innerText: modelClienteEL01.dtDatUltAlteracao | date: 'short' )}}
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <span
+      #textoTraducaoSemAlteracao
+      style="display:none;"
+      i18n="Informativo do label Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-cliente.label.info.semAlteracao">
+      Não houve alteração ainda
+    </span>
+
+  </form>
+</app-cadastro-barra-acao>

@@ -1,0 +1,94 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Processo de Solicitação de Crédito@@crude-solicita-credito-listagem.breadcrumb">
+  Solicitação de Crédito: listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de Processo de Solicitação de Crédito@@crude-solicita-credito-listagem.titulo">
+    PROCESSO SOLICITAÇÃO DE CRÉDITO PARA VENDA
+  </div>
+</h1>
+
+<span
+  #traducao_msg_btnAtualizarInfo_sucesso
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de atualizar as informações@@crude-solicita-credito-listagem.btn.btnAtualizarInfo.sucesso">
+  Informações Carregadas com Sucesso 
+</span>
+<span
+  #traducao_msg_btnEncaminharAprovacao_sucesso
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de enviar para aprovação@@crude-solicita-credito-listagem.btn.btnEncaminharAprovacao.sucesso">
+  Solicitação encaminhada para Aprovação
+</span>
+
+<div class="area-filtro">
+
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+     <div class="form-group col-md-4">
+        <label for="inputTexto">Situação da Solicitação de Crédito</label>
+        <app-filtro-multiselect 
+          formControlName='listaSituacaoCadastral' 
+          [apiService]='apiSituacaoSolicCredService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="inCodSituacaoSolicCred" 
+          placeholder="ambos"
+          pesquisaFieldWhere='SolicCredVenda.inCodSituacaoSolicCred' 
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="col-md-6"></div>
+      <div class="form-group col-md-2">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> pesquisar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-grid-pesquisa #gridFiltro 
+  idGrid="pesquisaSolicitaCredito" 
+  [apiService]='apiSolicCredVendaEL01Service' 
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar' 
+  apiFieldKey='IDSolicCredVenda' 
+  [colunasGrid]='getColunasGridCadastro()' 
+  pageSize='15'
+  i18n-rotaCadastroNomeBotoes="botões novo|botões de nova solicita-credito@@crude-solicita-credito.botoes.grid.novo"
+  rotaCadastroNomeBotoes='Novo|Reajuste' 
+  [rotaCadastro]='gridRotasCadastro' 
+  [formGroupPesquisa]='formGroupPesquisa'
+  (colunaEditarBotaoClick)='colunaEditarBotaoClick($event)'
+  [btn_acao_exibir]='btn_acao_exibir'>
+ <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnAtualizarInfo"
+      icone='information'
+      rotaFilha_tooltip='Atualizar Informações do Cliente'
+      i18n-rotaFilha_tooltip="botão para Atualizar Informações do Cliente (Datasul + Serasa)|btnAtualizarInfo@@crude-solicita-credito-listagem.grid.btn.acao.AtualizarInfo">
+    </app-grid-pesquisa-botao-acao-linha>
+    <!-- <app-grid-pesquisa-botao-acao-linha
+      id="btnConsultarSolicitacao"
+      icone='preview'
+      rotaFilha_tooltip='Consultar a Solicitação'
+      i18n-rotaFilha_tooltip="botão para Consultar a Solicitação|btnConsultarSolicitacao@@crude-solicita-credito-listagem.grid.btn.acao.ConsultarSolicitacao">
+    </app-grid-pesquisa-botao-acao-linha> -->
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnEncaminharAprovacao"
+      icone='redo'
+      rotaFilha_tooltip='Encaminhar para Aprovação'
+      i18n-rotaFilha_tooltip="botão para Encaminhar para Aprovação|btnEncaminharAprovacao@@crude-solicita-credito-listagem.grid.btn.acao.EncaminharAprovacao">
+    </app-grid-pesquisa-botao-acao-linha>
+   <app-grid-pesquisa-botao-acao-linha
+      id="btnImprimir"
+      icone='print'
+      rotaFilha_tooltip='Imprimir Relatório para Análise de Crédito'
+      i18n-rotaFilha_tooltip="botão para Imprimir|btnImprimir@@crude-solicita-credito-listagem.grid.btn.acao.Imprimir">
+    </app-grid-pesquisa-botao-acao-linha>
+  </app-grid-pesquisa-container-botoes-acao-linha>
+</app-grid-pesquisa>

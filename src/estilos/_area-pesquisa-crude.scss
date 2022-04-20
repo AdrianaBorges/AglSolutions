@@ -1,0 +1,17 @@
+.area-filtro{
+    padding: 0px 10px 5px 10px;
+}
+
+.area-filtro .form-group > button.btn-filtro-acao{
+    top: 15px;
+}
+
+@media screen and (max-width:770px){
+  .area-filtro .form-group > button.btn-filtro-acao{
+    top: 5px;
+  }
+}
+
+.invisivel {
+    display: none;
+}

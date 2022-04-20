@@ -1,0 +1,24 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb da Situação de Atendimento do Item do Pedido de Venda Listagem@@crude-situacao-aten-ped-listagem.breadcrumb">
+  Situação Atendimento: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Situação de Atendimento do Item do Pedido de Venda@@crude-situacao-aten-ped-listagem.titulo.situacao-aten-ped">
+    SITUAÇÃO DE ATENDIMENTO DO ITEM DO PEDIDO DE VENDA
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaSituacaoAtenPed"
+  [apiService]='apiSituacaoAtenPedService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodSituacaoAtenPed'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

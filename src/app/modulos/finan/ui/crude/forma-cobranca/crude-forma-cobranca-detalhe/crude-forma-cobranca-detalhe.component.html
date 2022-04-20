@@ -1,0 +1,540 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE de Forma de Cobrança@@crude-forma-cobranca-edicao.breadcrumb">
+  Forma de Cobrança - ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Forma de Cobrança@@crude-forma-cobranca-detalhe.titulo.forma-cobranca">
+      FORMA DE COBRANÇA
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null' [innerHTML]='apiErrorCollection.mensagem_geral_html'></div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código|Identifica o Código da Forma de Cobrança no CRUDE@@crude-forma-cobranca-detalhe.label.chCodFormaCobranca">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodFormaCobranca']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodFormaCobranca" maxlength="20" />
+        </label>
+      </div>
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Abreviado|Identifica o Descrição Abreviada da Forma de Cobrança no CRUDE@@crude-forma-cobranca-detalhe.label.chDesAbreviada">
+              Abreviado
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chDesAbreviada']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDesAbreviada" maxlength="25" />
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Descrição|Identifica a Descrição da Forma de Cobrança no CRUDE@@crude-forma-cobranca-detalhe.label.chDescricao">
+              Descrição
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDescricao" maxlength="50"/>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Cobrança|Identifica o Tipo de Cobrança no CRUDE@@crude-forma-cobranca-detalhe.label.inCodTipoCobranca">
+              Tipo de Cobrança
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoCobranca']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='inCodTipoCobranca'
+            required
+            [apiService]='apiTipoCobrancaService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodTipoCobranca">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Portador|Identifica o Portador no CRUDE@@crude-forma-cobranca-detalhe.label.inCodPortador">
+              Portador
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodPortador']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='inCodPortador'
+            required
+            [apiService]='apiPortadorService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomAbreviado"
+            apiFieldKey="inCodPortador">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Carteira|Identifica a Descrição da Carteira do Contas a Receber no CRUDE@@crude-forma-cobranca-detalhe.label.inCodCarteiraCR">
+              Carteira
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodCarteiraCR']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='inCodCarteiraCR'
+            required
+            [apiService]='apiCarteiraCrService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="inCodCarteiraCR">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valid.Vencimento (Dias)|Número de Dias após a Data de Vencimento para manter o Documento Registrado no Banco no CRUDE@@crude-forma-cobranca-detalhe.label.inNumDiasValidVenc">
+              Valid.Vencimento (Dias)
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumDiasValidVenc']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inNumDiasValidVenc"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <h1 kendoCardTitle i18n="SubTítulo Cobrança Escritural|SubTítulo Cobrança Escritural do CRUDE Forma de Cobrança@@crude-forma-cobranca-detalhe.label.cobranca-escritural">
+      Cobrança Escritural
+    </h1>
+
+    <div class="form-row">
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número Convenio|Identifica o Número do Convênio de Cobrança com o Portador no CRUDE@@crude-forma-cobranca-detalhe.label.chConvenioCobranca">
+              Número Convenio
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chConvenioCobranca']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chConvenioCobranca" maxlength="20" />
+        </label>
+      </div>
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container
+              i18n="Label Código de Transmissão|Identifica o Código de Transmissão do Arquivo de Cobrança no Banco no CRUDE@@crude-forma-cobranca-detalhe.label.chCodTransmissao">
+              Código de Transmissão
+            </ng-container>
+            <app-form-control-alerta-erro-api [mensagemErro]="apiErrorCollection.campos['chCodTransmissao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chCodTransmissao" maxlength="25" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Sequência Nosso Número|Identifica a Descrição da Sequência para geração do nosso número em caso de Cobrança no CRUDE@@crude-forma-cobranca-detalhe.label.chCodSeqNossoNum">
+              Sequência Nosso Número
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodSeqNossoNum']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='chCodSeqNossoNum'
+            [apiService]='apiSequeciaService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodSequencia">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Sequência Remessa Cobrança|Identifica o Código da Sequência para geração da remessa de cobrança ao portador no CRUDE@@crude-forma-cobranca-detalhe.label.chCodSeqRemCob">
+              Sequência Remessa Cobrança
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodSeqRemCob']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            formControlName='chCodSeqRemCob'
+            [apiService]='apiSequeciaService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodSequencia">
+          </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome da Pasta para Geração de Arquivos de Remessa|Identifica o Nome da Pasta para geração dos arquivos de remessa de cobrança ao portador no CRUDE@@crude-forma-cobranca-detalhe.label.chNomPastaArqRem">
+              Nome da Pasta para Geração de Arquivos de Remessa
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomPastaArqRem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomPastaArqRem" maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome do Arquivo de Remessa|Identifica o Nome do Arquivo de Remessa para o Portador com mascara no CRUDE@@crude-forma-cobranca-detalhe.label.chNomArqRem">
+              Nome do Arquivo de Remessa
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomArqRem']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomArqRem" maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <h1 kendoCardTitle i18n="SubTítulo Cobrança PIX|SubTítulo Cobrança PIX do CRUDE Forma de Cobrança@@crude-forma-cobranca-detalhe.label.cobranca-pix">
+      Cobrança PIX
+    </h1>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Chave Recebedor|Identifica a Chave do Recebedor para Registro do Documento na cobrança via PIX no CRUDE@@crude-forma-cobranca-detalhe.label.chPixChaveRecebedor">
+              Chave Recebedor
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chPixChaveRecebedor']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chPixChaveRecebedor" maxlength="50" />
+        </label>
+      </div>
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valid.Cob.Instantânea (Seg.)|Identifica o Número de Segundos para manter o Documento Registrado na Cobrança via PIX no CRUDE@@crude-forma-cobranca-detalhe.label.inPixNumSegValidCob">
+              Valid.Cob.Instantânea (Seg.)
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inPixNumSegValidCob']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inPixNumSegValidCob"
+            [format]="'N0'"
+            [min]="0"
+            [max]="9999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label URL Base API|Identifica a Base da URL de Acesso as APIs de cobrança via PIX no CRUDE@@crude-forma-cobranca-detalhe.label.chPixUrlBase">
+              URL Base API
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chPixUrlBase']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chPixUrlBase" maxlength="200" />
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label URL Base Token Acesso|Identifica a Base da URL de Acesso a API para Obtenção do Token de Acesso de cobrança via PIX no CRUDE@@crude-forma-cobranca-detalhe.label.chPixUrlTokenBase">
+              URL Base Token Acesso
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chPixUrlTokenBase']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chPixUrlTokenBase" maxlength="200" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Client ID|Identifica a ID do Cliente para Acesso as APIs de cobrança via PIX no CRUDE@@crude-forma-cobranca-detalhe.label.chPixClientID">
+              Client ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chPixClientID']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chPixClientID" maxlength="100" />
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Client Secret|Identifica a Senha do Cliente para Acesso as APIs de cobrança via PIX no CRUDE@@crude-forma-cobranca-detalhe.label.chPixClientSecret">
+              Client Secret
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chPixClientSecret']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chPixClientSecret" maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Arquivo Certificado|Identifica o Arquivo do Certificado para Acesso as APIs de cobrança via PIX no CRUDE@@crude-forma-cobranca-detalhe.label.chPixArqCertificado">
+              Arquivo Certificado
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chPixArqCertificado']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chPixArqCertificado" maxlength="200" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Senha Certificado|Identifica a Senha do Certificado para Acesso as APIs de cobrança via PIX no CRUDE@@crude-forma-cobranca-detalhe.label.chPixPassCertificado">
+              Senha Certificado
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chPixPassCertificado']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chPixPassCertificado" maxlength="100" />
+        </label>
+      </div>
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valid.Access Token (Seg.)|Identifica a Validade em Segundos do Token de Acesso as APIs de cobrança via PIX no CRUDE@@crude-forma-cobranca-detalhe.label.inPixValidAccessToken">
+              Valid.Access Token (Seg.)
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inPixValidAccessToken']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inPixValidAccessToken"
+            [format]="'N0'"
+            [min]="0"
+            [max]="9999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3 col-lg-3 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID Location|Identifica o Identificador do Location para Registro do Documento na cobrança via PIX no CRUDE@@crude-forma-cobranca-detalhe.label.chPixIDLocation">
+              ID Location
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chPixIDLocation']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chPixIDLocation" maxlength="20" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label URL Location|Identifica a URL do Location para Registro do Documento na cobrança via PIX no CRUDE@@crude-forma-cobranca-detalhe.label.chPixURLLocation">
+              URL Location
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chPixURLLocation']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chPixURLLocation" maxlength="200" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Chave Webhook - Confirmação Pagamento|Identifica a Chave do Webhook do métododo de confirmação de pagamento do Documento na cobrança via PIX no CRUDE@@crude-forma-cobranca-detalhe.label.chPixChaveWebhookConfPag">
+              Chave Webhook - Confirmação Pagamento
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chPixChaveWebhookConfPag']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chPixChaveWebhookConfPag" maxlength="50"  />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label URL Webhook - Confirmação Pagamento|Identifica a URL do Webhook do métododo de confirmação de pagamento do Documento na cobrança via PIX no CRUDE@@crude-forma-cobranca-detalhe.label.chPixURLWebhookConfPag">
+              URL Webhook - Confirmação Pagamento
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chPixURLWebhookConfPag']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chPixURLWebhookConfPag" maxlength="200" />
+        </label>
+      </div>
+    </div>
+
+    <h1 kendoCardTitle i18n="SubTítulo Documento de Cobrança|SubTítulo Documento de Cobrança do CRUDE Forma de Cobrança@@crude-forma-cobranca-detalhe.label.documento-cobranca">
+      Documento de Cobrança
+    </h1>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Mensagem|Identifica a Mensagem fixa para ser exibida nas impressões dos documentos de cobrança no CRUDE@@crude-forma-cobranca-detalhe.label.chMsgCobranca">
+              Mensagem
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chMsgCobranca']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chMsgCobranca" rows="6" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <h1 kendoCardTitle i18n="SubTítulo Impressão de Boleto|SubTítulo Impressão de Boleto do CRUDE Forma de Cobrança@@crude-forma-cobranca-detalhe.label.impressao-boleto">
+      Impressão de Boleto
+    </h1>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Arquivo Visualização Boleto Local|Identifica o Arquivo de Visualização da Impressão do Boleto gerado localmente no CRUDE@@crude-forma-cobranca-detalhe.label.chViewImpBoletoLocal">
+              Arquivo Visualização Boleto Local
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chViewImpBoletoLocal']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chViewImpBoletoLocal" maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-12 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Código Visualização Boleto Report Server|Identifica o Código da Visualização da Impressão do Boleto gerado via Servidor WEB no CRUDE@@crude-forma-cobranca-detalhe.label.chViewImpBoletoServer">
+              Código Visualização Boleto Report Server
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chViewImpBoletoServer']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chViewImpBoletoServer" maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+  </form>
+</app-cadastro-barra-acao>

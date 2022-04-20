@@ -1,0 +1,21 @@
+.k-widget{
+    border-width: 0px;
+}
+
+.tela-principal {
+    height: 100vh;/*Sem isso o scroll movimenta a tela toda*/
+    overflow: hidden;
+}
+.kendo-splitter-mestre{
+    height: 100%; 
+    min-height: 400px;
+}
+
+//Não defino o scroll que assim ele só é exibido no menu quando o conteudo extrapola o tamanho dele
+// .splitter-menu{
+//     overflow: scroll;
+// }
+
+.splitter-conteudo{
+    overflow: scroll;
+}

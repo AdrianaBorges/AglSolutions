@@ -1,0 +1,39 @@
+<div class="tela-principal" #telaPrincipal (window:resize)="onResize($event)">
+  <router-outlet name="cabecalho"></router-outlet>
+  <div #areaConteudo [style.height]="alturaConteudo">
+    <kendo-splitter
+      orientation="horizontal"
+      id="idSplitterConteudo"
+      class="kendo-splitter-mestre"
+    >
+      <kendo-splitter-pane
+        [size]="leftSplitSize"
+        (sizeChange)="spliterRedimencionado($event)"
+        (collapsedChange)="spliterRedimencionado($event)"
+        min="0px"
+        class="splitter-menu"
+        [style.height]="alturaConteudo"
+        [collapsible]="true"
+      >
+        <router-outlet name="menu"></router-outlet>
+      </kendo-splitter-pane>
+      <kendo-splitter-pane min="40%" [style.height]="alturaConteudo">
+        <kendo-splitter class="splitter-conteudo" orientation="vertical">
+          <kendo-splitter-pane
+            size="15px"
+            min="15px"
+            max="15px"
+            [collapsible]="false"
+            [resizable]="false"
+          >
+            <!-- [resizable]="false" -->
+            <router-outlet name="breadcrumb"></router-outlet>
+          </kendo-splitter-pane>
+          <kendo-splitter-pane [size]="99">
+            <router-outlet style="background-color: blue"></router-outlet>
+          </kendo-splitter-pane>
+        </kendo-splitter>
+      </kendo-splitter-pane>
+    </kendo-splitter>
+  </div>
+</div>

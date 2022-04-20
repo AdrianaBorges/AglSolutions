@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE de Tipo de Cobrança do Seguro@@crude-tipo-cobranca-seg-listagem.breadcrumb">
+  Início/Tipo Cobrança/Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de Tipo de Cobrança do Seguro@@crude-tipo-cobranca-seg-listagem.titulo.tipo-cobranca-seg">
+    TIPO DE COBRANÇA DO SEGURO
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaTipoCobrancaSeg"
+  [apiService]='apiTipoCobrancaSegService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodTipoCobrancaSeg'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

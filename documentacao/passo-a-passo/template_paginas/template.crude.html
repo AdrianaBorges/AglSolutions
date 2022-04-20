@@ -1,0 +1,85 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Modelo de DFe@@crude-modelo-dfe-edicao.breadcrumb">
+  Início/nome crude/Edição
+</span>
+
+<app-cadastro-barra-acao 
+    #cadastroBarraAcao
+    [formGroup]='meuForm'
+    (confirmar)='btnConfirmar()'
+    (cancelar)='btnCancelar()'
+    (excluir)='btnExcluir()'
+    >
+
+    <h1>
+      <div
+        i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE@@crude-modelo-dfe-detalhe.titulo.modelo-dfe">
+        Título do CRUDE
+      </div>
+    </h1>
+
+    <form action="" [formGroup]="meuForm" class="k-form">
+
+      <!-- Aqui são exibidas as mensagens de erro retornadas pela API -->
+      <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+        {{apiErrorCollection.mensagem_geral}}
+      </div>
+
+      Aqui entram os compoentes como imputs, etc. que serão associados cada um a seu respectivo FormControl
+
+      <!-- ATENÇÃO! Altere o exemplo abaixo pelos componentes que você irá precisar -->
+      <div class="form-row">
+        <div class="form-group col-3">
+            <label class="k-form-field">
+              <span>
+              CPF
+              <span class="k-required">*</span>
+              <app-form-control-alerta-erro-api
+                [mensagemErro]="apiErrorCollection.campos['inNumIdentificacao']"
+              ></app-form-control-alerta-erro-api>
+              </span>
+              <kendo-maskedtextbox 
+              
+                id="inputMaskCPF"
+                mask="000.000.000-00" 
+                formControlName="CPF"
+                [class.maskedCPF]="true"
+                style="width:150px">
+              </kendo-maskedtextbox>
+            </label>
+        </div>
+        <div class="form-group col-md-6">
+            
+            <label class="k-form-field">
+                <span>
+                  Nome 
+                  <span class="k-required">*</span>
+                  <app-form-control-alerta-erro-api
+                    [mensagemErro]="apiErrorCollection.campos['chNomePessoa']"
+                  ></app-form-control-alerta-erro-api>
+                </span>
+              <input kendoTextBox formControlName="chNomePessoa" required />
+            </label>
+        </div>
+        <div class="form-group col-md-3">
+            
+            <label class="k-form-field">
+              <span>
+                Data de nascimento 
+                <span class="k-required">*</span>
+                <app-form-control-alerta-erro-api
+                  [mensagemErro]="apiErrorCollection.campos['daDatNascim']"
+                ></app-form-control-alerta-erro-api>
+              </span>
+              <kendo-datepicker
+                  required
+                  formControlName='daDatNascim'
+              ></kendo-datepicker>
+            </label>
+        </div>
+      </div>
+    </form>
+
+</app-cadastro-barra-acao>

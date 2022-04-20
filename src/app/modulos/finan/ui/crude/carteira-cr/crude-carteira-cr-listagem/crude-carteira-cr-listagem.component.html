@@ -1,0 +1,24 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Carteira do Contas a Receber@@crude-carteira-cr-listagem.breadcrumb">
+  Carteira: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Carteira do Contas a Receber@@crude-carteira-cr-listagem.titulo.carteira-cr">
+    CARTEIRA DO CONTAS A RECEBER
+  </div>
+  </h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaCarteiraCr"
+  [apiService]='apiCarteiraCrService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodCarteiraCR'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

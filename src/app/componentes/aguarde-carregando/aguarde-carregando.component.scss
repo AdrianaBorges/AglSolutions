@@ -1,0 +1,31 @@
+.painel-aguarde{
+    display: block;
+    position: absolute;
+    // left: 0;
+    // top: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9001;//um a mais que o componente: cadastro-barra-acao
+    background-color: rgba(80, 80, 80, 0.8);
+    text-align: center;
+    color: #FFF;
+    //vertical-align: middle;
+}
+
+span {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
+    height: 30%;
+    margin: auto;
+}
+
+//Alinha o painel dentro de um kendo-tab-strip para grudar a esquerda
+::ng-deep .k-tabstrip .painel-aguarde{
+    margin-left: -12px;
+}

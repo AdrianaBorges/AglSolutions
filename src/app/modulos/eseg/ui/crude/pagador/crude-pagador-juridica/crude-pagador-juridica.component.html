@@ -1,0 +1,152 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID (documento de identiddade) da pagador no CRUDE@@crude-pagador.label.IDPessoa">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDPessoa']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDPessoa"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-5">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label CNPJ|Identifica o CNPJ da pessoa@@crude-pagador.label.inNumIdentificacao">
+              CNPJ
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['CNPJ']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-maskedtextbox
+            #cnpj
+            id="inputMaskCNPJ"
+            mask="00.000.000/0000-00"
+            formControlName="CNPJ"
+            [class.maskedCNPJ]="true"
+            style="width:150px" 
+            (blur)="procurarPorCNPJ(cnpj.value)">
+          </kendo-maskedtextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Razão Social|Identifica a Razão Social da pagador no CRUDE@@crude-pagador.label.chNomePessoa">
+              Razão Social
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomePessoa']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName='chNomePessoa' type="text" name="chNomePessoa" id="chNomePessoa" maxlength="50" required class="k-textbox">
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome Fantasia|Identifica a Nome Fantasia da pagador no CRUDE@@crude-pagador.label.chNomeFantasia">
+              Nome Fantasia
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeFantasia']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName='chNomeFantasia' type="text" name="chNomeFantasia" id="chNomeFantasia" maxlength="50"/>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inscrição Estadual|Identifica a Inscrição Estadual da pagador no CRUDE@@crude-pagador.label.chIE">
+              Inscrição Estadual
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chIE']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chIE" type="text" name="chIE" id="chIE" maxlength="15"/>
+        </label>
+      </div>
+      <div class="form-group col-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inscrição Municipal|Identifica o Inscrição Municipal da pagador no CRUDE@@crude-pagador.label.chIM">
+              Inscrição Municipal
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chIM']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chIM" type="text" name="chIM" id="chIM" maxlength="15"/>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Inclusão|Identifica se a pagador no CRUDE é Politicamente Exposta@@crude-pagador.label.inclusao">
+            Inclusão
+          </span>
+          <span>
+            {{modelPagador.dtDatInclusao | date: 'short'}}
+          </span>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Última Alteração|Identifica a data da Última Alteração do cadastro de pagador no CRUDE@@crude-pagador.label.ultimaAlteracao">
+            Última Alteração
+          </span>
+          <span>
+            {{(modelPagador.dtDatUltAlteracao == null? textoTraducaoSemAlteracao.innerText: modelPagador.dtDatUltAlteracao | date: 'short' )}}
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <span #textoTraducaoSemAlteracao style="display:none;"
+      i18n="Informativo do label Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-pagador.label.info.semAlteracao">Não
+      houve alteração ainda</span>
+
+  </form>
+</app-cadastro-barra-acao>

@@ -1,0 +1,48 @@
+<!-- <kendo-tabstrip #kendoTabStripInstance (tabSelect)="onTabSelect($event)" > -->
+<span #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de grupo de usuario@@tabs-grupo-de-usuario.breadcrumb">
+  Início/Grupo Usuário/Edição
+</span>
+
+<kendo-tabstrip #kendoTab appCadastroTab id='idTabCadPessoaFisica' [tab]='kendoTab'
+  [cadastroBarraAcao]='cadGU.cadastroBarraAcao' (tabSelect)="onTabSelect($event)">
+
+  <kendo-tabstrip-tab i18n-title="Nome Tab GRUPO|Nome da tab GRUPO de grupo de usuario@@tabs-grupo-de-usuario.tab.grupo"
+    [ngClass]='app-tab-content' [title]="'GRUPO'" [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div
+          i18n="Titulo grupo de usuario|Título interno que identifica o CRUDE de grupo de Usuário@@tabs-grupo-de-usuario.tab.grupo.titulo">
+          GRUPO DE USUÁRIOS
+        </div>
+      </h1>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab usuário|Nome da tab usuário de grupo de usuário@@tabs-grupo-de-usuario.tab.usuario"
+    title='USUÁRIOS' [selected]="tabSelecionada(1)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div
+          i18n="Título do conteúdo da Tab|Título do conteúdo da tab usuario de grupo de usuário@@tabs-grupo-de-usuario.tab.titulo.usuario">
+          USUÁRIOS DO GRUPO
+        </div>
+        <div>
+          <span
+            i18n="Detalhes grupo|texto que precede os dados de grupo de Usuario@@tabs-grupo-de-usuario.tab.titulo.dadosGrupo">
+            Grupo:
+          </span>
+          {{cadGU.modelGrupoUsuario.chCodGrupoUsuario}} - {{cadGU.modelGrupoUsuario.chDesGrupoUsuario}}
+        </div>
+      </h1>
+
+      <app-crude-usuarios-do-grupo-detalhe #gridInterfaceTabCadastroFilhoUsuario></app-crude-usuarios-do-grupo-detalhe>
+      <app-crude-usuarios-do-grupo-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoUsuario'>
+      </app-crude-usuarios-do-grupo-listagem>
+
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+
+<app-crude-grupo-de-usuario-detalhe #cadGU [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-grupo-de-usuario-detalhe>

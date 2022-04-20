@@ -1,0 +1,24 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do CRUDE Tipo de Integração de Campanha@@crude-tipo-integra-camp-listagem.breadcrumb">
+  Tipo Integração Campanha: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Tipo de Integração de Campanha@@crude-tipo-integra-camp-listagem.titulo.tipo-integra-camp">
+    TIPO DE INTEGRAÇÃO DE CAMPANHA
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaTipoIntegraCamp"
+  [apiService]='apiTipoIntegraCampService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodTipoIntegraCamp'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>

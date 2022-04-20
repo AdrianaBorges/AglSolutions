@@ -1,0 +1,169 @@
+<span
+  #breadcrumb_traducao
+  style="display: none"
+  i18n="breadcrumb|breadcrumb da operação relatório de tempo de permanência das assistências técnicas@@fvenda.operacoes.oper0008.breadcrumb">
+  Relatório: Ass.Técnica
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do relatório de tempo de permanência das assistências técnicas@@fvenda.operacoes.oper0008.titulo">
+    RELATÓRIO DE TEMPO DE PERMANÊNCIA DAS ASSISTÊNCIAS TÉCNICAS
+  </div>
+</h1>
+
+<app-operacao-barra-acao
+  [formGroupPesquisa]="formGroupPesquisa"
+  [apiSearchObject]="apiSearchObject"
+  [apiService]="apiOper0008Service"
+  nomeMetodoApi="executar"
+  modeloRelatorioNames="Modelo 01|Modelo 02"
+  modeloRelatorioCodigos="01298|78712"
+  [modoExibicao_arquivo]="true"
+  [modoExibicao_relatorio]="false"
+  (exibirErros)="exibirMensagemDeErros($event)">
+
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Número da Assistência Técnica Inicial do Intervalo@@fvenda.operacoes.oper0008.label.inNumAssTecnicaIni">
+              Número - de
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumAssTecnicaIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inNumAssTecnicaIni"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Número da Assistência Técnica Final do Intervalo@@fvenda.operacoes.oper0008.label.inNumAssTecnicaFim">
+              Até
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumAssTecnicaFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inNumAssTecnicaFim"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio Validade|Identifica a Data de Abertura da Assistência Técnica Inicial do Intervalo@@fvenda.operacoes.oper0008.label.dtDatAberturaIni">
+              Data Abertura - De
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatAberturaIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datetimepicker formControlName='dtDatAberturaIni' required></kendo-datetimepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio Validade|Identifica a Data de Abertura da Assistência Técnica Final do Intervalo@@fvenda.operacoes.oper0008.label.dtDatAberturaFim">
+              Até
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatAberturaFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datetimepicker formControlName='dtDatAberturaFim' required></kendo-datetimepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio Validade|Identifica a Data de Recebimento dos Itens da Assistência Técnica Inicial do Intervalo@@fvenda.operacoes.oper0008.label.dtDatRecebItemIni">
+              Data Recebimento - De
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatRecebItemIni']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datetimepicker formControlName='dtDatRecebItemIni' required></kendo-datetimepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio Validade|Identifica a Data de Recebimento dos Itens da Assistência Técnica Final do Intervalo@@fvenda.operacoes.oper0008.label.dtDatRecebItemFim">
+              Até
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatRecebItemFim']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datetimepicker formControlName='dtDatRecebItemFim' required></kendo-datetimepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label for="inputTexto">Tipo de Assistência Técnica</label>
+        <app-filtro-multiselect
+          formControlName='chLstTipoAssTec'
+          [apiService]='apiTipoAssTecEL01Service'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chDescricao"
+          apiFieldKey="inCodTipoAssTec"
+          placeholder="ambos">
+        </app-filtro-multiselect>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label for="inputTexto">Situação da Assistência Técnica</label>
+        <app-filtro-multiselect
+          formControlName='chLstSituacaoAssTec'
+          [apiService]='apiSituacaoAssTecService'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chDescricao"
+          apiFieldKey="inCodSituacaoAssTec"
+          placeholder="ambos">
+        </app-filtro-multiselect>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label for="inputTexto">Técnico da Assistência Técnica</label>
+        <app-filtro-multiselect
+          formControlName='chLstIDTecnico'
+          [apiService]='apiTecnicoEL01Service'
+          apiNomeMetodoListar='listar'
+          apiFieldExibir="chNomAbreviado"
+          apiFieldKey="IDTecnico"
+          placeholder="ambos">
+        </app-filtro-multiselect>
+      </div>
+    </div>
+  </form>
+</app-operacao-barra-acao>

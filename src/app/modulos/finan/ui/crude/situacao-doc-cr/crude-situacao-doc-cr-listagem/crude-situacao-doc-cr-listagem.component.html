@@ -1,0 +1,25 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE de Situação do Documento a Receber@@crude-situacao-doc-cr-listagem.breadcrumb">
+  Situação: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Situação do Documento a Receber@@crude-situacao-doc-cr-listagem.titulo.situacao-doc-cr">
+    SITUAÇÃO DO DOCUMENTO A RECEBER
+  </div>
+</h1>
+
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaSituacaoDocCR"
+  [apiService]='apiSituacaoDocCrService'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='inCodSituacaoDocCR'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'>
+</app-grid-pesquisa>
+

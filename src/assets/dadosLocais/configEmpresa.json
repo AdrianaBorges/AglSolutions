@@ -1,0 +1,11 @@
+{
+    "serverApiUrl": "http://179.184.184.146:8085/",
+    "nome": "Agile IT Solutions",
+    "corFundoLogin": "rgb(29, 84, 156)",
+    "corFundoLogo": "rgb(47, 110, 194)",
+    "urlLogo": "assets/img/agileit_logo.png",
+    "corFonte": "#FFF",
+    "corCabecalhoUsuario": "rgb(33, 93, 172)",
+    "imgFundoLoginRedirect":"https://www.agileit.inf.br/images/default-source/agile/site/alterada_3dc63ab754c034c938a12d44e03ef18e5.jpg?sfvrsn=26f925ba_0",
+    "url_rodapeLoginRedirect":"https://www.agileit.inf.br/rodapeaplicacao"
+}

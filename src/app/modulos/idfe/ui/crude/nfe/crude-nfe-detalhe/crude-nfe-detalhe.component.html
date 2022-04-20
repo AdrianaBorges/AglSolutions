@@ -1,0 +1,263 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb de Detalhe do CRUDE NFe@@crude-nfe-detalhe.breadcrumb">
+  Início/NFe/Visualização
+</span>
+
+<app-cadastro-barra-acao 
+    #cadastroBarraAcao
+    [formGroup]='meuForm'
+    (confirmar)='btnConfirmar()'
+    (cancelar)='btnCancelar()'
+    (excluir)='btnExcluir()'
+    >
+
+    <h1>
+      <div
+        i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE de NFe@@crude-nfe-detalhe.titulo.nfe">
+        Nota Fiscal Eletrônica - Apenas com XML de Resumo
+      </div>
+    </h1>
+
+    <form action="" [formGroup]="meuForm" class="k-form">
+
+      <!-- Aqui são exibidas as mensagens de erro retornadas pela API -->
+      <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+        {{apiErrorCollection.mensagem_geral}}
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-2">
+            <label class="k-form-field">
+                <span>
+                  ID
+                </span>
+              <input kendoTextBox formControlName="IDNFe" required />
+            </label>
+        </div>
+        <div class="form-group col-md-4"></div>
+        <div class="form-group col-md-6">
+            <label class="k-form-field">
+                <span>
+                  Estabelecimento
+                </span>
+              <input kendoTextBox formControlName="chCodEstabelec" class="input-code" required />
+              <input kendoTextBox formControlName="chNomeEstabelec" required />
+              <!-- <div class="form-inline">
+                  <label class="sr-only" for="chCodEstabelec">{{modelNfe.chNomeEstabelec}}</label>
+                  <div class="input-group mb-2 mr-sm-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">{{modelNfe.chCodEstabelec}}</div>
+                    </div>
+                    <input type="text" class="form-control" id="chCodEstabelec" placeholder="">
+                  </div>
+              </div> -->
+            </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="k-form-field">
+                <span>
+                  Chave
+                </span>
+              <input kendoTextBox formControlName="chChaveNFe" required />
+            </label>
+        </div>
+        <div class="form-group col-md-2">
+            <label class="k-form-field">
+                <span>
+                  Série
+                </span>
+              <input kendoTextBox formControlName="inNumSerie" required />
+            </label>
+        </div>
+        <div class="form-group col-md-1"></div>
+        <div class="form-group col-md-3">
+            <label class="k-form-field">
+                <span>
+                  Número Documento
+                </span>
+              <input kendoTextBox formControlName="inNumDocto" required />
+            </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="k-form-field">
+                <span>
+                  Emitente
+                </span>
+              <input kendoTextBox formControlName="chNomeEmit" required />
+            </label>
+        </div>
+        <div class="form-group col-2">
+            <label class="k-form-field">
+              <span>
+                CNPJ/CPF
+              </span>
+              <input kendoTextBox formControlName="inNumIdentifEmit" required />
+              <!-- <kendo-maskedtextbox 
+                id="inputMaskCPF"
+                mask="000.000.000-00" 
+                formControlName="CPF"
+                [class.maskedCPF]="true"
+                style="width:150px">
+              </kendo-maskedtextbox> -->
+            </label>
+        </div>
+        <div class="form-group col-1"></div>
+        <div class="form-group col-md-3">
+            <label class="k-form-field">
+                <span>
+                    Inscrição Estadual
+                </span>
+              <input kendoTextBox formControlName="inNumInscEstEmit" required />
+            </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-3">
+            <label class="k-form-field">
+              <span>
+                Data Emissão
+              </span>
+              <!-- <kendo-datepicker
+                  required
+                  formControlName='dtDatEmissao'
+              ></kendo-datepicker> -->
+              {{(modelNfe.dtDatEmissao == null? textoTraducaoSemAlteracao.innerText: modelNfe.dtDatEmissao | date: 'short' )}}
+            </label>
+        </div>
+        <div class="form-group col-md-3">
+            <label class="k-form-field">
+              <span>
+                Data do Recebimento
+              </span>
+              <!-- <kendo-datepicker
+                  required
+                  formControlName='dtDatReceb'
+              ></kendo-datepicker> -->
+              {{(modelNfe.dtDatReceb == null? textoTraducaoSemAlteracao.innerText: modelNfe.dtDatReceb | date: 'short' )}}
+            </label>
+        </div>
+        <div class="form-group col-md-3">
+            <label class="k-form-field">
+              <span>
+                Valor Total
+              </span>
+              <input kendoTextBox formControlName="deValTotal" required />
+            </label>
+        </div>
+        <div class="form-group col-md-3">
+            <label class="k-form-field">
+              <span>
+                Protocolo
+              </span>
+              <input kendoTextBox formControlName="inNumProtocolo" required />
+            </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="k-form-field">
+                <span>
+                  Modelo 
+                </span>
+              <input kendoTextBox formControlName="inCodModeloDFe" class="input-code" required />
+              <input kendoTextBox formControlName="chDesModeloDFe" required />
+            </label>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="k-form-field">
+                <span>
+                  Finalidade 
+                </span>
+              <input kendoTextBox formControlName="inCodFinalidadeNFe" class="input-code" required />
+              <input kendoTextBox formControlName="chDesFinalidadeNFe" required />
+            </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="k-form-field">
+                <span>
+                  Tipo Emissão 
+                </span>
+              <input kendoTextBox formControlName="inCodTipoEmissaoDFe" class="input-code" required />
+              <input kendoTextBox formControlName="chDesTipoEmissaoDFe" required />
+            </label>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="k-form-field">
+                <span>
+                  Situação
+                </span>
+              <input kendoTextBox formControlName="inCodSituacaoNFe" class="input-code" required />
+              <input kendoTextBox formControlName="chDesSituacaoNFe" required />
+            </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="k-form-field">
+                <span>
+                  Status de Confirmação
+                </span>
+              <input kendoTextBox formControlName="inCodStatusConfNFe" class="input-code" required />
+              <input kendoTextBox formControlName="chDesStatusConfNFe" required />
+            </label>
+        </div>
+        <div class="form-group col-md-3">
+          <label class="k-form-field">
+              <span>
+                NSU
+              </span>
+            <input kendoTextBox formControlName="inNSUResNFe" required />
+          </label>
+        </div>
+        <div class="form-group col-md-3">
+          <label class="k-form-field">
+              <span>
+                  Última Validação
+              </span>
+              <!-- <kendo-datepicker
+                  required
+                  formControlName='dtDatUltValidacao'
+              ></kendo-datepicker> -->
+              {{(modelNfe.dtDatUltValidacao == null? textoTraducaoSemAlteracao.innerText: modelNfe.dtDatUltValidacao | date: 'short' )}}
+          </label>
+        </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group col-md-3">
+              <label class="k-form-field">
+                <span i18n="Label campo Inclusão|Nome do campo da data de inclusão da NFe@@crude-nfe-detalhe.label.dtDatInclusao">
+                Inclusão
+                </span>
+                <span>
+                  <!-- https://angular.io/api/common/DatePipe -->
+                  {{modelNfe.dtDatInclusao | date: 'short'}}
+                </span>
+              </label>
+          </div>
+          <div class="form-group col-md-3">
+              <label class="k-form-field">
+                <span i18n="Label Última Alteração|Label que identifica a data da Última Alteração no CRUDE do cadastro de NFe@@crude-nfe-detalhe.label.ultimaALteracao">
+                Última Alteração
+                </span>
+                <span>
+                  {{(modelNfe.dtDatUltAlteracao == null? textoTraducaoSemAlteracao.innerText: modelNfe.dtDatUltAlteracao | date: 'short' )}}
+                </span>
+              </label>
+          </div>
+      </div>
+      <span 
+      #textoTraducaoSemAlteracao
+      style="display:none;"
+      i18n="Informativo do conteúdo do campo Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-nfe-detalhe.label.textoTraducaoSemAlteracao"
+      >Não houve alteração ainda</span>
+    </form>
+
+</app-cadastro-barra-acao>

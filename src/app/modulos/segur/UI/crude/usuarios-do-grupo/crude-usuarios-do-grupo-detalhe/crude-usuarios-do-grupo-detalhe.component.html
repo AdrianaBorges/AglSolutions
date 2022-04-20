@@ -1,0 +1,77 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o codigo ID do usuario do grupo@@crude-usuarios-do-grupo-detalhe.label.IDUsuariosGrupo">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDUsuariosGrupo']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDUsuariosGrupo"
+            [format]="'N0'"
+            [min]="1"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-10">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Usuário|Identifica o Usuário@@crude-usuarios-do-grupo-detalhe.label.chCodUsuario">
+              Usuário
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['UIData_Usuarios']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa tipo='edicao' 
+            formControlName='UIData_Usuarios' 
+            placeholder="selecione"
+            modalTitulo='Usuários'
+            modalHeight="600" 
+            modalWidth="800" 
+            required 
+            [apiService]='apiUsuarioEl01Service'
+            [colunasGrid]='apiUsuarioEl01Service.getColunasGrid()' 
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar' 
+            apiFieldExibir="chNomeUsuario" 
+            apiFieldKey="chCodUsuario" 
+            [pageSize]="'10'"
+            pesquisaRapida="true" 
+            pesquisaRapidaTipo="text" 
+            pesquisaRapidaMaxlength='50'
+            pesquisaRapidaPlaceholder='Login' 
+            pesquisaRapidaApiNomeMetodo='obter'
+            pesquisaRapidaWidth='300px'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

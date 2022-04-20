@@ -1,0 +1,204 @@
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  isNotVisible='true'
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o ID do produto de seguro Assistência@@crude-prod-seg-assist-detalhe.label.IDProdSegAssist">
+              ID
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDProdSegAssist']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDProdSegAssist"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Assistência|Identifica o Assistência do produto de seguro Assistência@@crude-prod-seg-assist-detalhe.label.IDAssistSeg">
+              Assistência
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDAssistSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+          required 
+          placeholder='selecione' 
+          formControlName='IDAssistSeg' 
+          [apiService]='apiAssistSegService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="IDAssistSeg">
+        </app-api-select>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Inicio de Vigência|Identifica o Inicio de Vigência@@crude-prod-seg-assist-detalhe.label.daDatIniVig">
+              Inicio de Vigência
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatIniVig']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatIniVig'></kendo-datepicker>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Fim de Vigência|Identifica o Fim de Vigência@@crude-prod-seg-assist-detalhe.label.daDatFimVig">
+              Fim de Vigência
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['daDatFimVig']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker required formControlName='daDatFimVig'></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3" >
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor Limite|Identifica o Valor Limite@@crude-prod-seg-assist-detalhe.label.deValLimite">
+              Valor Limite
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValLimite']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deValLimite"
+            [format]="'C2'"
+            [min]="0" 
+            [max]="99999999999" 
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Quantidade Eventos|Identifica o Quantidade Eventos@@crude-prod-seg-assist-detalhe.label.inQtdEventos">
+              Quantidade Eventos
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inQtdEventos']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inQtdEventos"
+            [format]="'n0'"
+            [min]="0"
+            [max]="999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Num.Dias Carência|Identifica o Num.Dias Carência@@crude-prod-seg-assist-detalhe.label.inNumDiaCarencia">
+              Num.Dias Carência
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumDiaCarencia']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inNumDiaCarencia"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Num.Dias Franquia|Identifica o Num.Dias Franquia@@crude-prod-seg-assist-detalhe.label.inNumDiaFranquia">
+              Num.Dias Franquia
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inNumDiaFranquia']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="inNumDiaFranquia"
+            [format]="'n0'"
+            [min]="0"
+            [max]="999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>      
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cobertura|Identifica o Quantidade Eventos@@crude-prod-seg-assist-detalhe.label.IDCoberturaSeg">
+              Cobertura
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDCoberturaSeg']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select 
+          placeholder='selecione' 
+          formControlName='IDCoberturaSeg' 
+          [apiService]='apiProdSegCoberturaService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDesCoberturaSeg" 
+          apiFieldKey="IDCoberturaSeg">
+        </app-api-select>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

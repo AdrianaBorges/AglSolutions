@@ -1,0 +1,71 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de Parâmetros da Campanha@@crude-campanha-param.breadcrumb">
+  Parâmetros da Campanha: listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem do Parâmetros da Campanha@@crude-campanha-param.titulo">
+    PARÂMETROS DA CAMPANHA
+  </div>
+
+  <div>
+    <span i18n="Detalhes Campanha|texto que precede os dados da Campanha@@crude-campanha-param-listagem.titulo.dadosCampanha">
+      Campanha:
+    </span>
+    {{modelCampanhaEL01.chCodCampanha}} - {{modelCampanhaEL01.chDescricao}}
+    <br />
+    <span i18n="Detalhes Tipo|texto que precede os dados do Tipo@@crude-campanha-param-listagem.titulo.dadosTipo">
+      Tipo:
+    </span>
+    {{modelCampanhaEL01.chDesTipoCampanha}}
+    <br />
+    <span i18n="Detalhes Período|texto que precede os dados do Período@@crude-campanha-param-listagem.titulo.dadosPeriodo">
+      Período:
+    </span>
+    {{modelCampanhaEL01.dtDatInicio | date: 'short'}} à {{modelCampanhaEL01.dtDatFim | date: 'short'}}
+  </div>
+</h1>
+
+<app-grid-pesquisa #gridFiltro *ngIf="modelCampanhaEL01.inCodTipoCampanha != 2"
+  idGrid="pesquisaCampanhaParamEL01" 
+  [apiService]='apiCampanhaParamEL01Service'
+  nomeMetodoOrdenacao='mudarOrdenacao' 
+  nomeMetodoApi='listar' 
+  apiFieldKey='IDCampanhaParam'
+  [colunasGrid]='getColunasGridCadastro()' 
+  pageSize='15' 
+  [rotaCadastro]='gridRotasCadastro'
+  (colunaEditarBotaoClick)='colunaEditarBotaoClick($event)' 
+  [btn_acao_exibir]='btn_acao_exibir'>
+  <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnCampanhaVenda"
+      icone='grid-layout'
+      rotaFilha_tooltip='Vendas da Campanha'
+      i18n-rotaFilha_tooltip="botão para Vendas da Campanha|btnCampanhaVenda@@crude-campanha-param-listagem.grid.btn.acao.VendasCampanha">
+    </app-grid-pesquisa-botao-acao-linha>
+  </app-grid-pesquisa-container-botoes-acao-linha>
+</app-grid-pesquisa>
+
+<app-grid-pesquisa #gridFiltro *ngIf="modelCampanhaEL01.inCodTipoCampanha == 2"
+  idGrid="pesquisaCampanhaParamEL01" 
+  [apiService]='apiCampanhaParamEL01Service'
+  nomeMetodoOrdenacao='mudarOrdenacao' 
+  nomeMetodoApi='listar' 
+  apiFieldKey='IDCampanhaParam'
+  [colunasGrid]='getColunasGridCadastroInsta()' 
+  pageSize='15' 
+  [rotaCadastro]='gridRotasCadastro'
+  (colunaEditarBotaoClick)='colunaEditarBotaoClick($event)' 
+  [btn_acao_exibir]='btn_acao_exibir'>
+  <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha
+      id="btnCampanhaVenda"
+      icone='grid-layout'
+      rotaFilha_tooltip='Vendas da Campanha'
+      i18n-rotaFilha_tooltip="botão para Vendas da Campanha|btnCampanhaVenda@@crude-campanha-param-listagem.grid.btn.acao.VendasCampanha">
+    </app-grid-pesquisa-botao-acao-linha>
+  </app-grid-pesquisa-container-botoes-acao-linha>
+</app-grid-pesquisa>

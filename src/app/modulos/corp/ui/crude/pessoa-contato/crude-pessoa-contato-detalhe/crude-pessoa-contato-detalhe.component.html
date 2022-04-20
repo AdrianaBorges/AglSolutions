@@ -1,0 +1,284 @@
+<app-cadastro-barra-acao #cadastroBarraAcao isNotVisible='true' [formGroup]='meuForm' (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()' (excluir)='btnExcluir()'>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o codigo ID do contato@@crude-pessoa-contato-detalhe.label.IDPessoaContato">
+              ID
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDPessoaContato']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDPessoaContato"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Tipo de Contato|Identifica o tipo de contato@@crude-pessoa-contato-detalhe.label.inCodTipoPessoaContato">
+              Tipo de Contato
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoPessoaContato']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            [apiService]='apiTipoPessoaContatoService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir='chDescricao'
+            apiFieldKey='inCodTipoPessoaContato'
+            formControlName='inCodTipoPessoaContato'>
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-2">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label CPF|Identifica o cpf do contato@@crude-pessoa-contato-detalhe.label.inCPF">
+              CPF
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCPF']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-maskedtextbox
+            id="inputMaskCPF"
+            mask="000.000.000-00"
+            formControlName="inCPF"
+            [class.maskedCPF]="true"
+            style="width:150px"
+            [includeLiterals]="false">
+          </kendo-maskedtextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Nome|Identifica o nome do contato@@crude-pessoa-contato-detalhe.label.chNome">
+              Nome
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNome']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNome" maxlength="50" required/>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-1">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label DDD|Identifica o ddd do telefone@@crude-pessoa-contato-detalhe.label.chDDDTelefone">
+              DDD
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDDDTelefone']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDDDTelefone" maxlength="2" />
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Telefone|Identifica o telefone do contato@@crude-pessoa-contato-detalhe.label.chNumTelefone">
+              Telefone
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumTelefone']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNumTelefone" maxlength="15" />
+        </label>
+      </div>
+      <div class="form-group col-md-2">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Ramal|Identifica o ramal do contato@@crude-pessoa-contato-detalhe.label.chNumRamal">
+              Ramal
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumRamal']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNumRamal" maxlength="6" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-1">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label DDD Celular|Identifica o ddd do celular do contato@@crude-pessoa-contato-detalhe.label.chDDDCelular">
+              DDD
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDDDCelular']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDDDCelular" maxlength="2" />
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Celular|Identifica o celular do contato@@crude-pessoa-contato-detalhe.label.chNumCelular">
+              Celular
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNumCelular']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNumCelular" maxlength="15" />
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Aniversário|Identifica o Aniversário do contato@@crude-pessoa-contato-detalhe.label.inAniverDia.inAniverMes">
+              Aniversário
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtAniversario ']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker
+            [activeView]="'month'"
+            [format]="'dd MMMM'"
+            [value]="dataAniversario"
+            formControlName="dtAniversario">
+          </kendo-datepicker>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Endereço de E-Mail|Identifica o Endereço de E-Mail do contato@@crude-pessoa-contato-detalhe.label.chEMail">
+              Endereço de E-Mail
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chEMail']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input type="email" kendoTextBox formControlName="chEMail" maxlength="100" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cargo|Identifica o Cargo do contato@@crude-pessoa-contato-detalhe.label.chDesCargo">
+              Cargo
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesCargo']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDesCargo" maxlength="50" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Departamento|Identifica o Departamento do contato@@crude-pessoa-contato-detalhe.label.chDesDepartamento">
+              Departamento
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesDepartamento']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDesDepartamento" maxlength="50" />
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Observação|Identifica o Observação do contato@@crude-pessoa-contato-detalhe.label.chDesObservacao">
+              Observação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesObservacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea
+            kendoTextArea
+            class="k-textarea"
+            formControlName="chDesObservacao"
+            rows="5"
+            style="width: 100%;">
+          </textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Inclusão|Identifica se a pessoa física no CRUDE é Politicamente Exposta@@crude-pessoa-contato-detalhe.label.dtDatInclusao">
+            Inclusão
+          </span>
+          <span>
+            {{modelPessoaContato.dtDatInclusao | date: 'short'}}
+          </span>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Última Alteração|Identifica a data da Última Alteração do cadastro de pessoa física no CRUDE@@crude-pessoa-contato-detalhe.label.dtDatUltAlteracao">
+            Última Alteração
+          </span>
+          <span>
+            {{(modelPessoaContato.dtDatUltAlteracao == null? textoTraducaoSemAlteracao.innerText: modelPessoaContato.dtDatUltAlteracao | date: 'short' )}}
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <span #textoTraducaoSemAlteracao style="display:none;"
+      i18n="Informativo do label Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-pessoa-fisica.label.info.semAlteracao">
+      Não houve alteração ainda
+    </span>
+
+  </form>
+</app-cadastro-barra-acao>

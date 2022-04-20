@@ -1,0 +1,184 @@
+<span #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de prod seg detalhe@@tabs-prod-seg.breadcrumb">
+  Produto de Seguro ID:
+</span>
+
+<kendo-tabstrip #kendoTab appCadastroTab id='idTabCadProdutoSeguro' [tab]='kendoTab'
+  [cadastroBarraAcao]='cadProdSeg.cadastroBarraAcao' (tabSelect)="onTabSelect($event)">
+
+  <kendo-tabstrip-tab i18n-title="Nome Tab PRODUTO|Nome da tab PRODUTO do Produto de Seguro@@tabs-prod-seg.tab.produto"
+    [ngClass]='app-tab-content' [title]="'PRODUTO'" [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div
+          i18n="Titulo produto|Título interno que identifica o CRUDE de produto de seguro@@tabs-prod-seg.tab.produto.titulo">
+          PRODUTO DE SEGURO
+        </div>
+      </h1>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab COBERTURAS|Nome da tab COBERTURAS do Produto de Seguro@@tabs-prod-seg.tab.coberturas"
+    [ngClass]='app-tab-content' [title]="'COBERTURAS'" [selected]="tabSelecionada(1)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div
+          i18n="Titulo coberturas|Título interno que identifica o CRUDE de produto seguro cobertura@@tabs-prod-seg.tab.coberturas.titulo">
+          COBERTURA DO PRODUTO DE SEGURO
+        </div>
+        <div>
+          <span
+            i18n="Detalhes seguradora|texto que precede os dados de seguradora@@tabs-prod-seg.tab.coberturas.titulo.dadosSeguradora">
+            Seguradora:
+          </span>
+          {{cadProdSeg.modelSeguradora.IDSeguradora}} - {{cadProdSeg.modelSeguradora.chNomeSeguradora}} -
+          {{cadProdSeg.modelSeguradora.inCNPJSeguradora}}
+        </div>
+        <div>
+          <span
+            i18n="Detalhes produto|texto que precede os dados de idTabCadProdutoSeguro@@tabs-prod-seg.tab.coberturas.titulo.dadosProduto">
+            Produto:
+          </span>
+          {{cadProdSeg.modelProdSeg.IDProdSeg}} - {{cadProdSeg.modelProdSeg.chCodProdSeg}} -
+          {{this.cadProdSeg.modelProdSeg.chDescricao}}
+        </div>
+      </h1>
+       <app-crude-prod-seg-cobertura-detalhe #gridInterfaceTabCadastroFilhoCobertura></app-crude-prod-seg-cobertura-detalhe>
+      <app-crude-prod-seg-cobertura-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoCobertura'>
+      </app-crude-prod-seg-cobertura-listagem>
+      
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab ASSISTÊNCIAS|Nome da tab ASSISTÊNCIAS de produtos de seguros@@tabs-prod-seg.tab.assistencias"
+    title='ASSISTÊNCIAS' [selected]="tabSelecionada(2)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div
+          i18n="Título do conteúdo da Tab|Título do conteúdo da tab assistencias de produto de seguro@@tabs-prod-seg.tab.titulo.assistencias">
+          ASSISTÊNCIAS DO PRODUTO DE SEGURO
+        </div>
+        <div>
+          <span
+            i18n="Detalhes seguradora|texto que precede os dados de seguradora@@tabs-prod-seg.tab.assistencias.titulo.dadosSeguradora">
+            Seguradora:
+          </span>
+          {{cadProdSeg.modelSeguradora.IDSeguradora}} - {{cadProdSeg.modelSeguradora.chNomeSeguradora}} -
+          {{cadProdSeg.modelSeguradora.inCNPJSeguradora}}
+        </div>
+        <div>
+          <span
+            i18n="Detalhes produto|texto que precede os dados de idTabCadProdutoSeguro@@tabs-prod-seg.tab.assistencias.titulo.dadosProduto">
+            Produto:
+          </span>
+          {{cadProdSeg.modelProdSeg.IDProdSeg}} - {{cadProdSeg.modelProdSeg.chCodProdSeg}} -
+          {{this.cadProdSeg.modelProdSeg.chDescricao}}
+        </div>
+      </h1>
+      <app-crude-prod-seg-assist-detalhe #gridInterfaceTabCadastroFilhoAssist></app-crude-prod-seg-assist-detalhe>
+      <app-crude-prod-seg-assist-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoAssist'>
+      </app-crude-prod-seg-assist-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab COND.PAGTO|Nome da tab COND.PAGTO de produtos de seguros@@tabs-prod-seg.tab.condPagto"
+    title='COND.PAGTO' [selected]="tabSelecionada(3)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div
+          i18n="Título do conteúdo da Tab|Título do conteúdo da tab condPagto de produto de seguro@@tabs-prod-seg.tab.titulo.condPagto">
+          CONDIÇÕES DE PAGAMENTO DO PRODUTO DE SEGURO
+        </div>
+        <div>
+          <span
+            i18n="Detalhes seguradora|texto que precede os dados de seguradora@@tabs-prod-seg.tab.condPagto.titulo.dadosSeguradora">
+            Seguradora:
+          </span>
+          {{cadProdSeg.modelSeguradora.IDSeguradora}} - {{cadProdSeg.modelSeguradora.chNomeSeguradora}} -
+          {{cadProdSeg.modelSeguradora.inCNPJSeguradora}}
+        </div>
+        <div>
+          <span
+            i18n="Detalhes produto|texto que precede os dados de idTabCadProdutoSeguro@@tabs-prod-seg.tab.condPagto.titulo.dadosProduto">
+            Produto:
+          </span>
+          {{cadProdSeg.modelProdSeg.IDProdSeg}} - {{cadProdSeg.modelProdSeg.chCodProdSeg}} -
+          {{this.cadProdSeg.modelProdSeg.chDescricao}}
+        </div>
+      </h1>
+      <app-crude-prod-seg-cond-pagto-detalhe #gridInterfaceTabCadastroFilhoCondPagto></app-crude-prod-seg-cond-pagto-detalhe>
+      <app-crude-prod-seg-cond-pagto-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoCondPagto'>
+      </app-crude-prod-seg-cond-pagto-listagem>
+
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab *ngIf="cadProdSeg.modelProdSeg.inCodTipoSeguro == 1"
+    i18n-title="Nome Tab FORMA COB.|Nome da tab FORMA COB. de produtos de seguros@@tabs-prod-seg.tab.formaCob"
+    title='FORMA COB.' [selected]="tabSelecionada(4)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div
+          i18n="Título do conteúdo da Tab|Título do conteúdo da tab formaCob de produto de seguro@@tabs-prod-seg.tab.titulo.formaCob">
+          FORMAS DE COBRANÇA DO PRODUTO DE SEGURO INDIVIDUAL
+        </div>
+        <div>
+          <span
+            i18n="Detalhes seguradora|texto que precede os dados de seguradora@@tabs-prod-seg.tab.formaCob.titulo.dadosSeguradora">
+            Seguradora:
+          </span>
+          {{cadProdSeg.modelSeguradora.IDSeguradora}} - {{cadProdSeg.modelSeguradora.chNomeSeguradora}} -
+          {{cadProdSeg.modelSeguradora.inCNPJSeguradora}}
+        </div>
+        <div>
+          <span
+            i18n="Detalhes produto|texto que precede os dados de idTabCadProdutoSeguro@@tabs-prod-seg.tab.formaCob.titulo.dadosProduto">
+            Produto:
+          </span>
+          {{cadProdSeg.modelProdSeg.IDProdSeg}} - {{cadProdSeg.modelProdSeg.chCodProdSeg}} -
+          {{this.cadProdSeg.modelProdSeg.chDescricao}}
+        </div>
+      </h1>
+      <app-crude-prod-seg-forma-cob-detalhe  #gridInterfaceTabCadastroFilhoFormaCob></app-crude-prod-seg-forma-cob-detalhe>
+      <app-crude-prod-seg-forma-cob-listagem  [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoFormaCob'>
+      </app-crude-prod-seg-forma-cob-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  <kendo-tabstrip-tab *ngIf="cadProdSeg.modelProdSeg.inCodTipoSeguro == 1"
+    i18n-title="Nome Tab VALORES|Nome da tab VALORES de produtos de seguros@@tabs-prod-seg.tab.valores"
+    title='VALORES' [selected]="tabSelecionada(5)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div
+          i18n="Título do conteúdo da Tab|Título do conteúdo da tab valores de produto de seguro@@tabs-prod-seg.tab.titulo.valores">
+          VALORES DO PRODUTO DE SEGURO INDIVIDUAL
+        </div>
+        <div>
+          <span
+            i18n="Detalhes seguradora|texto que precede os dados de seguradora@@tabs-prod-seg.tab.valores.titulo.dadosSeguradora">
+            Seguradora:
+          </span>
+          {{cadProdSeg.modelSeguradora.IDSeguradora}} - {{cadProdSeg.modelSeguradora.chNomeSeguradora}} -
+          {{cadProdSeg.modelSeguradora.inCNPJSeguradora}}
+        </div>
+        <div>
+          <span
+            i18n="Detalhes produto|texto que precede os dados de idTabCadProdutoSeguro@@tabs-prod-seg.tab.valores.titulo.dadosProduto">
+            Produto:
+          </span>
+          {{cadProdSeg.modelProdSeg.IDProdSeg}} - {{cadProdSeg.modelProdSeg.chCodProdSeg}} -
+          {{this.cadProdSeg.modelProdSeg.chDescricao}}
+        </div>
+      </h1>
+      <app-crude-prod-seg-valor-detalhe  #gridInterfaceTabCadastroFilhoValor></app-crude-prod-seg-valor-detalhe>
+      <app-crude-prod-seg-valor-listagem  [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoValor'>
+      </app-crude-prod-seg-valor-listagem>
+
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+
+</kendo-tabstrip>
+
+<app-crude-prod-seg-detalhe #cadProdSeg [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-prod-seg-detalhe>

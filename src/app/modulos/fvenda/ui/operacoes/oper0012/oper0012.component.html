@@ -1,0 +1,49 @@
+<span
+  #breadcrumb_traducao
+  style="display: none"
+  i18n="breadcrumb|breadcrumb da operação relatório para análise de reclamações de clientes@@fvenda.operacoes.oper0012.breadcrumb">
+  Relatório: Análise Reclamação Cliente
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Titulo do conteúdo da Tab|Titulo do relatório para análise de reclamações de clientes@@fvenda.operacoes.oper0012.titulo">
+    RELATÓRIO PARA ANÁLISE DE RECLAMAÇÕES DE CLIENTES
+  </div>
+</h1>
+
+<app-operacao-barra-acao
+  [formGroupPesquisa]="formGroupPesquisa"
+  [apiSearchObject]="apiSearchObject"
+  [apiService]="apiOper0012Service"
+  nomeMetodoApi="executar"
+  modeloRelatorioNames="Modelo 01|Modelo 02"
+  modeloRelatorioCodigos="01298|78712"
+  [modoExibicao_arquivo]="true"
+  [modoExibicao_relatorio]="false"
+  (exibirErros)="exibirMensagemDeErros($event)"
+  [arquivoSaida_csv]='false'
+  [arquivoSaida_excel]='false'
+  [arquivoSaida_word]='true'>
+
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Expira Limite Crédito|Identifica o Expira Limite Crédito do cliente pessoa física no CRUDE@@fvenda.operacoes.oper0012.label.inPeriodoAnalise">
+              Período de Análise
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inPeriodoAnalise']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-datepicker
+          format="MM/yyyy"
+          activeView="year"
+          bottomView="year"
+          formControlName='inPeriodoAnalise' required></kendo-datepicker>
+        </label>
+      </div>
+    </div>
+  </form>
+</app-operacao-barra-acao>

@@ -1,0 +1,42 @@
+@import "~@progress/kendo-theme-default/scss/variables";
+
+//Para evitar alterar o CSS do tag desse elemento
+//anulo o CSS da classe ".ng-invalid:not(form).ng-touched:not(form)"
+:host {
+    border-left: 0 !important;
+    background-color: transparent !important;
+}
+
+:host.ng-valid.ng-touched select[required], :host.ng-valid.ng-touched select.required {
+    //border-left: 5px solid #42A948; /* green */
+    //link para calcular como chegar de uma cor a outra
+    //http://razorltd.github.io/sasscolourfunctioncalculator/
+    border-left: 5px solid darken(desaturate(adjust-hue($success, -5), 56.17), 1.57); /* green */
+}
+  
+//:host.ng-invalid:not(form):host.ng-touched:not(form) select {
+:host.ng-invalid.ng-touched  {
+  //border-left: 5px solid #a94442; /* red */
+  background-color: transparent !important;
+  
+  select {
+    border-left: 5px solid darken(desaturate(adjust-hue($error, -5), 56.17), 1.57); /* red */
+    background-color: rgba($error, 0.2);
+    opacity: 1;
+  }
+}
+
+select{
+    height: calc(1.42857143em + (4px * 2) + (1px * 2));
+    border-radius: 2px;
+    font-size: 14px;
+    line-height: 1.42857143em;
+    display: inline-flex;
+    vertical-align: middle;
+    position: relative;
+    -webkit-appearance: none;
+}
+
+kendo-combobox{
+  width: 100%;
+}

@@ -1,0 +1,1942 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="pt" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="4e9993e088a293543eb0c2801343518c115b6f20" datatype="html">
+        <source>NO DATA FOUND</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dropdowns/dist/es2015/autocomplete.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The text displayed in the popup when there are no items</note>
+        <note priority="1" from="meaning">kendo.autocomplete.noDataText</note>
+      </trans-unit>
+      <trans-unit id="2b6e00c74a6d9c98c03a6274d0224e9bd457ff89" datatype="html">
+        <source>NO DATA FOUND</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dropdowns/dist/es2015/combobox.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The text displayed in the popup when there are no items</note>
+        <note priority="1" from="meaning">kendo.combobox.noDataText</note>
+      </trans-unit>
+      <trans-unit id="4fc2f70c9c8cf7b18affd6b938105996d6ac3306" datatype="html">
+        <source>NO DATA FOUND</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dropdowns/dist/es2015/dropdownlist.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The text displayed in the popup when there are no items</note>
+        <note priority="1" from="meaning">kendo.dropdownlist.noDataText</note>
+      </trans-unit>
+      <trans-unit id="3cc1323f79a5fe012960578e513f8a35b2af1e96" datatype="html">
+        <source>NO DATA FOUND</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dropdowns/dist/es2015/multiselect.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The text displayed in the popup when there are no items</note>
+        <note priority="1" from="meaning">kendo.multiselect.noDataText</note>
+      </trans-unit>
+      <trans-unit id="0fa71630d40c425b9c366afd7f6c3cecc5bef59d" datatype="html">
+        <source>increment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-inputs/dist/es2015/slider/slider.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The title of the **Increase** button of the Slider.</note>
+        <note priority="1" from="meaning">kendo.slider.increment</note>
+      </trans-unit>
+      <trans-unit id="042c26f68d78afd6834ea46a5f7533850fe8c800" datatype="html">
+        <source>decrement</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-inputs/dist/es2015/slider/slider.component.d.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">The title of the **Decrease** button of the Slider.</note>
+        <note priority="1" from="meaning">kendo.slider.decrement</note>
+      </trans-unit>
+      <trans-unit id="481eb98e9cd8ef8e8b22051796441901e883763d" datatype="html">
+        <source>Drag</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-inputs/dist/es2015/slider/slider.component.d.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">The title of the drag handle of the Slider.</note>
+        <note priority="1" from="meaning">kendo.slider.dragHandle</note>
+      </trans-unit>
+      <trans-unit id="155f0a38198ffbf0429c5dbf9765e74f246a8617" datatype="html">
+        <source>ON</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-inputs/dist/es2015/switch/switch.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The **On** label of the Switch.</note>
+        <note priority="1" from="meaning">kendo.switch.on</note>
+      </trans-unit>
+      <trans-unit id="79df1a6d2b35c32b2948e3cee56dd3ffe28127bc" datatype="html">
+        <source>OFF</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-inputs/dist/es2015/switch/switch.component.d.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">The **Off** label of the Switch.</note>
+        <note priority="1" from="meaning">kendo.switch.off</note>
+      </trans-unit>
+      <trans-unit id="0fc68540ffa04fdc246cf6cf8a1fed085f8b19a5" datatype="html">
+        <source>Increase value</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-inputs/dist/es2015/numerictextbox/numerictextbox.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The title for the **Increment** button in the NumericTextBox</note>
+        <note priority="1" from="meaning">kendo.numerictextbox.increment</note>
+      </trans-unit>
+      <trans-unit id="df4751834075bf970c77d0da2c960b4e19a6b0dd" datatype="html">
+        <source>Decrease value</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-inputs/dist/es2015/numerictextbox/numerictextbox.component.d.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">The title for the **Decrement** button in the NumericTextBox</note>
+        <note priority="1" from="meaning">kendo.numerictextbox.decrement</note>
+      </trans-unit>
+      <trans-unit id="2df64767cd895a8fabe3e18b94b5b6b6f9e2e3f0" datatype="html">
+        <source>TODAY</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/calendar/calendar.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The label for the today button in the calendar header</note>
+        <note priority="1" from="meaning">kendo.calendar.today</note>
+      </trans-unit>
+      <trans-unit id="a55944f9de69e7cc86b91200fe96f980a947d704" datatype="html">
+        <source>Increase value</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/dateinput/dateinput.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The label for the **Increment** button in the DateInput</note>
+        <note priority="1" from="meaning">kendo.dateinput.increment</note>
+      </trans-unit>
+      <trans-unit id="0eded761107e6dad120997006a7f915bade9b15c" datatype="html">
+        <source>Decrease value</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/dateinput/dateinput.component.d.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">The label for the **Decrement** button in the DateInput</note>
+        <note priority="1" from="meaning">kendo.dateinput.decrement</note>
+      </trans-unit>
+      <trans-unit id="91a84f2d4871dbe7e90d84865d4a4d83c8ae041e" datatype="html">
+        <source>TODAY</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/datepicker/datepicker.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The label for the today button in the calendar header</note>
+        <note priority="1" from="meaning">kendo.datepicker.today</note>
+      </trans-unit>
+      <trans-unit id="f6c28c2d80dbe993c4b33f4dc4010364f41cc2ae" datatype="html">
+        <source>Toggle calendar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/datepicker/datepicker.component.d.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">The label for the toggle button in the datepicker component</note>
+        <note priority="1" from="meaning">kendo.datepicker.toggle</note>
+      </trans-unit>
+      <trans-unit id="4c3bf42192220c7611c09ece1c5de14855139dd0" datatype="html">
+        <source>Set</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/timepicker/timepicker.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The Accept button text in the timepicker component</note>
+        <note priority="1" from="meaning">kendo.timepicker.accept</note>
+      </trans-unit>
+      <trans-unit id="93c2a9c3aa49f56e452c0aecbaabe3bb33fa4222" datatype="html">
+        <source>Set time</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/timepicker/timepicker.component.d.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">The label for the Accept button in the timepicker component</note>
+        <note priority="1" from="meaning">kendo.timepicker.acceptLabel</note>
+      </trans-unit>
+      <trans-unit id="132eefca16bd41d489b4647724b91e93793603aa" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/timepicker/timepicker.component.d.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">The Cancel button text in the timepicker component</note>
+        <note priority="1" from="meaning">kendo.timepicker.cancel</note>
+      </trans-unit>
+      <trans-unit id="2cf6f4ca4470810944b4016c9b6f87943d3390ab" datatype="html">
+        <source>Cancel changes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/timepicker/timepicker.component.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">The label for the Cancel button in the timepicker component</note>
+        <note priority="1" from="meaning">kendo.timepicker.cancelLabel</note>
+      </trans-unit>
+      <trans-unit id="bbc99bb74ae75a503bd813aad0c7253d3553e923" datatype="html">
+        <source>Now</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/timepicker/timepicker.component.d.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">The Now button text in the timepicker component</note>
+        <note priority="1" from="meaning">kendo.timepicker.now</note>
+      </trans-unit>
+      <trans-unit id="df1a696f318275aa934e27850920889d494c2740" datatype="html">
+        <source>Select now</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/timepicker/timepicker.component.d.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">The label for the Now button in the timepicker component</note>
+        <note priority="1" from="meaning">kendo.timepicker.nowLabel</note>
+      </trans-unit>
+      <trans-unit id="f2c196786ed2d3ecb2369750c36aac9a4053fb30" datatype="html">
+        <source>Toggle time list</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/timepicker/timepicker.component.d.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description">The label for the toggle button in the timepicker component</note>
+        <note priority="1" from="meaning">kendo.timepicker.toggle</note>
+      </trans-unit>
+      <trans-unit id="063d99483243b27bc8282abfb5f2c76877e1112e" datatype="html">
+        <source>TODAY</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/calendar/multiview-calendar.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The label for the today button in the calendar header</note>
+        <note priority="1" from="meaning">kendo.multiviewcalendar.today</note>
+      </trans-unit>
+      <trans-unit id="e783e2af4828224b846fa92148ea1cc52b21bb13" datatype="html">
+        <source>Navigate to previous view</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/calendar/multiview-calendar.component.d.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">The label for the previous button in the Multiview calendar</note>
+        <note priority="1" from="meaning">kendo.multiviewcalendar.prevButtonTitle</note>
+      </trans-unit>
+      <trans-unit id="3e3a529a242f39d22f841c3bd8045ec75b696b7a" datatype="html">
+        <source>Navigate to next view</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/calendar/multiview-calendar.component.d.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">The label for the next button in the Multiview calendar</note>
+        <note priority="1" from="meaning">kendo.multiviewcalendar.nextButtonTitle</note>
+      </trans-unit>
+      <trans-unit id="801811aa1609e3f173c86baa82cee037f75a215f" datatype="html">
+        <source>Set</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/timepicker/timeselector.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The Accept button text in the timeselector component</note>
+        <note priority="1" from="meaning">kendo.timeselector.accept</note>
+      </trans-unit>
+      <trans-unit id="b4b1e5ac55f0330f6c4e32b866ae4339ad969978" datatype="html">
+        <source>Set time</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/timepicker/timeselector.component.d.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">The label for the Accept button in the timeselector component</note>
+        <note priority="1" from="meaning">kendo.timeselector.acceptLabel</note>
+      </trans-unit>
+      <trans-unit id="3004d7704ffa6202a3b3925fcea490e486203a3e" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/timepicker/timeselector.component.d.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">The Cancel button text in the timeselector component</note>
+        <note priority="1" from="meaning">kendo.timeselector.cancel</note>
+      </trans-unit>
+      <trans-unit id="08dfbdfffd662371a6ff4c0b6ed82b9faa48143b" datatype="html">
+        <source>Cancel changes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/timepicker/timeselector.component.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">The label for the Cancel button in the timeselector component</note>
+        <note priority="1" from="meaning">kendo.timeselector.cancelLabel</note>
+      </trans-unit>
+      <trans-unit id="98cba1ae36a7bbe15e1bac1837e07922ec109e7d" datatype="html">
+        <source>Now</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/timepicker/timeselector.component.d.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">The Now button text in the timeselector component</note>
+        <note priority="1" from="meaning">kendo.timeselector.now</note>
+      </trans-unit>
+      <trans-unit id="08e6a8a51d970609e138950fdd89c5cf201869f3" datatype="html">
+        <source>Select now</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-dateinputs/dist/es2015/timepicker/timeselector.component.d.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">The label for the Now button in the timeselector component</note>
+        <note priority="1" from="meaning">kendo.timeselector.nowLabel</note>
+      </trans-unit>
+      <trans-unit id="30bcb3a2fbc22fcab6ca805e74b90adb8ba1ae96" datatype="html">
+        <source>Drag a column header and drop it here to group by that column</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">The label visible in the Grid group panel when it is empty</note>
+        <note priority="1" from="meaning">kendo.grid.groupPanelEmpty</note>
+      </trans-unit>
+      <trans-unit id="ff9cfd4bf3e40305db251f2b6961796c0550b4b0" datatype="html">
+        <source>No records available.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">The label visible in the Grid when there are no records</note>
+        <note priority="1" from="meaning">kendo.grid.noRecords</note>
+      </trans-unit>
+      <trans-unit id="b405dfc5ee42415daa08d54847d3010de1821111" datatype="html">
+        <source>Go to the first page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="description">The label for the first page button in Grid pager</note>
+        <note priority="1" from="meaning">kendo.grid.pagerFirstPage</note>
+      </trans-unit>
+      <trans-unit id="47aa4fe05f5a2577d3336971d7c44ce48802b860" datatype="html">
+        <source>Go to the previous page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">The label for the previous page button in Grid pager</note>
+        <note priority="1" from="meaning">kendo.grid.pagerPreviousPage</note>
+      </trans-unit>
+      <trans-unit id="90031133fca899b4e491d9fc51128c1a184afb30" datatype="html">
+        <source>Go to the next page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">The label for the next page button in Grid pager</note>
+        <note priority="1" from="meaning">kendo.grid.pagerNextPage</note>
+      </trans-unit>
+      <trans-unit id="fe84f2ea868286ce03e50b6e55558c16d675c753" datatype="html">
+        <source>Go to the last page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">The label for the last page button in Grid pager</note>
+        <note priority="1" from="meaning">kendo.grid.pagerLastPage</note>
+      </trans-unit>
+      <trans-unit id="89c1f616c25bb610824cd8a26473a03921df48bd" datatype="html">
+        <source>Page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description">The label before the current page number in the Grid pager</note>
+        <note priority="1" from="meaning">kendo.grid.pagerPage</note>
+      </trans-unit>
+      <trans-unit id="0c9abe48f5d4bd2cb51846712e41864fc64aad6a" datatype="html">
+        <source>of</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description">The label before the total pages number in the Grid pager</note>
+        <note priority="1" from="meaning">kendo.grid.pagerOf</note>
+      </trans-unit>
+      <trans-unit id="7c1704d11bfb77340485acd891439c2b6c6616ca" datatype="html">
+        <source>items</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">The label after the total pages number in the Grid pager</note>
+        <note priority="1" from="meaning">kendo.grid.pagerItems</note>
+      </trans-unit>
+      <trans-unit id="3331fe7ec45f299afaa4c1e08ea25c493eda9144" datatype="html">
+        <source>items per page</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <note priority="1" from="description">The label for the page size chooser in the Grid pager</note>
+        <note priority="1" from="meaning">kendo.grid.pagerItemsPerPage</note>
+      </trans-unit>
+      <trans-unit id="21a04b7b090dac60e0449cb6e435b7e879173c75" datatype="html">
+        <source>Filter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <note priority="1" from="description">The label of the filter cell or icon</note>
+        <note priority="1" from="meaning">kendo.grid.filter</note>
+      </trans-unit>
+      <trans-unit id="8b31e1604d10a2f8709dcb1ed5c237e33cffc135" datatype="html">
+        <source>Is equal to</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">The text of the equal filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterEqOperator</note>
+      </trans-unit>
+      <trans-unit id="d46e14d35d89d2fadf5c852abf5557643510a013" datatype="html">
+        <source>Is not equal to</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <note priority="1" from="description">The text of the not equal filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterNotEqOperator</note>
+      </trans-unit>
+      <trans-unit id="078c50eb1fe8b2b43fcc40c5e7f4493152310c2f" datatype="html">
+        <source>Is null</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <note priority="1" from="description">The text of the is null filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterIsNullOperator</note>
+      </trans-unit>
+      <trans-unit id="70b39eeaf2674907b2e59b414baf17e032b464dc" datatype="html">
+        <source>Is not null</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <note priority="1" from="description">The text of the is not null filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterIsNotNullOperator</note>
+      </trans-unit>
+      <trans-unit id="a4e77e444b4e9b63851ac818e20136212b06c750" datatype="html">
+        <source>Is empty</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <note priority="1" from="description">The text of the is empty filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterIsEmptyOperator</note>
+      </trans-unit>
+      <trans-unit id="dee7553c341248e90aef4a8e7438c52e667e68be" datatype="html">
+        <source>Is not empty</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <note priority="1" from="description">The text of the is not empty filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterIsNotEmptyOperator</note>
+      </trans-unit>
+      <trans-unit id="da43b363b636156e3ccdbb64a0788bdeab51e992" datatype="html">
+        <source>Starts with</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <note priority="1" from="description">The text of the starts with filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterStartsWithOperator</note>
+      </trans-unit>
+      <trans-unit id="5b568a46d2e34ebde7dd53a7e599cbbb7dc6bae1" datatype="html">
+        <source>Contains</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+        <note priority="1" from="description">The text of the contains filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterContainsOperator</note>
+      </trans-unit>
+      <trans-unit id="be06aa4fde7fa722c9de5a45f241ff595071d718" datatype="html">
+        <source>Does not contain</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+        <note priority="1" from="description">The text of the does not contain filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterNotContainsOperator</note>
+      </trans-unit>
+      <trans-unit id="a54b2ecffb41f0603ceedc7ea5a40b7d130e2fa1" datatype="html">
+        <source>Ends with</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <note priority="1" from="description">The text of the ends with filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterEndsWithOperator</note>
+      </trans-unit>
+      <trans-unit id="68471603db771d0304d02fe086da9701c16911c3" datatype="html">
+        <source>Is greater than or equal to</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <note priority="1" from="description">The text of the greater than or equal filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterGteOperator</note>
+      </trans-unit>
+      <trans-unit id="ae68acc0e18252a348bdfb32112996d81e5305de" datatype="html">
+        <source>Is greater than</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+        <note priority="1" from="description">The text of the greater than filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterGtOperator</note>
+      </trans-unit>
+      <trans-unit id="e48d50a6422c616a00b95025adc5283aff4fa8cb" datatype="html">
+        <source>Is less than or equal to</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+        <note priority="1" from="description">The text of the less than or equal filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterLteOperator</note>
+      </trans-unit>
+      <trans-unit id="c4d58f0e509cb7e37014715dd91546a724210d70" datatype="html">
+        <source>Is less than</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+        <note priority="1" from="description">The text of the less than filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterLtOperator</note>
+      </trans-unit>
+      <trans-unit id="d5f1e9028bc60c30e8f8e0f9cfeb872512446cea" datatype="html">
+        <source>Is True</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+        <note priority="1" from="description">The text of the IsTrue boolean filter option</note>
+        <note priority="1" from="meaning">kendo.grid.filterIsTrue</note>
+      </trans-unit>
+      <trans-unit id="6d34731320e2536fd78f4a9e08f0b8dcd01edf3d" datatype="html">
+        <source>Is False</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+        <note priority="1" from="description">The text of the IsFalse boolean filter option</note>
+        <note priority="1" from="meaning">kendo.grid.filterIsFalse</note>
+      </trans-unit>
+      <trans-unit id="4da1456a62bafe2614ed2bc05a2c790a64a4dd0b" datatype="html">
+        <source>(All)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+        <note priority="1" from="description">The text of the (All) boolean filter option</note>
+        <note priority="1" from="meaning">kendo.grid.filterBooleanAll</note>
+      </trans-unit>
+      <trans-unit id="d7dac1bbc2372d578a9d2bca099de766043aed7e" datatype="html">
+        <source>Is after or equal to</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+        <note priority="1" from="description">The text of the after or equal date filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterAfterOrEqualOperator</note>
+      </trans-unit>
+      <trans-unit id="bff777df0d0831cc02679227422fab4ef2763fa9" datatype="html">
+        <source>Is after</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+        <note priority="1" from="description">The text of the after date filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterAfterOperator</note>
+      </trans-unit>
+      <trans-unit id="35ef5cf367670f15432c9f8761bc85fbdb2b1830" datatype="html">
+        <source>Is before</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+        <note priority="1" from="description">The text of the before date filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterBeforeOperator</note>
+      </trans-unit>
+      <trans-unit id="27a6b29ffbc1eb498de8d7af20051461a2e842ec" datatype="html">
+        <source>Is before or equal to</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+        <note priority="1" from="description">The text of the before or equal date filter operator</note>
+        <note priority="1" from="meaning">kendo.grid.filterBeforeOrEqualOperator</note>
+      </trans-unit>
+      <trans-unit id="4f1c08d0b056646cdb668da669e2e15825adfe4d" datatype="html">
+        <source>Filter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+        <note priority="1" from="description">The text of the filter button</note>
+        <note priority="1" from="meaning">kendo.grid.filterFilterButton</note>
+      </trans-unit>
+      <trans-unit id="06e4e4dadede6f91f261cdbb7fb174246a135238" datatype="html">
+        <source>Clear</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+        <note priority="1" from="description">The text of the clear filter button</note>
+        <note priority="1" from="meaning">kendo.grid.filterClearButton</note>
+      </trans-unit>
+      <trans-unit id="f73fbcc2f813d469e4a34491950ca01ea1ac8f60" datatype="html">
+        <source>And</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+        <note priority="1" from="description">The text of the And filter logic</note>
+        <note priority="1" from="meaning">kendo.grid.filterAndLogic</note>
+      </trans-unit>
+      <trans-unit id="04e64780de0fc1c3a9986997e0808ec53a5f2a63" datatype="html">
+        <source>Or</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">109</context>
+        </context-group>
+        <note priority="1" from="description">The text of the Or filter logic</note>
+        <note priority="1" from="meaning">kendo.grid.filterOrLogic</note>
+      </trans-unit>
+      <trans-unit id="781c049cc69efc30bc8053af9ace3cb4b04bd438" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">112</context>
+        </context-group>
+        <note priority="1" from="description">The loading text</note>
+        <note priority="1" from="meaning">kendo.grid.loading</note>
+      </trans-unit>
+      <trans-unit id="3596c6b21d39223adc5c352daec9938474a8cc0d" datatype="html">
+        <source>Column Menu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+        <note priority="1" from="description">The title of the column menu icon</note>
+        <note priority="1" from="meaning">kendo.grid.columnMenu</note>
+      </trans-unit>
+      <trans-unit id="9b841399fbb3d81f2401f98b4f4763834b72a1e5" datatype="html">
+        <source>Columns</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">118</context>
+        </context-group>
+        <note priority="1" from="description">The text shown in the column menu for the columns item</note>
+        <note priority="1" from="meaning">kendo.grid.columns</note>
+      </trans-unit>
+      <trans-unit id="f356cae509dec3dc1b7156326b9a0328a79c62a8" datatype="html">
+        <source>Lock</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">121</context>
+        </context-group>
+        <note priority="1" from="description">The text shown in the column menu for the lock item</note>
+        <note priority="1" from="meaning">kendo.grid.lock</note>
+      </trans-unit>
+      <trans-unit id="f33355540003068372e39ba7f3def794869ea9f8" datatype="html">
+        <source>Unlock</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">124</context>
+        </context-group>
+        <note priority="1" from="description">The text shown in the column menu for the unlock item</note>
+        <note priority="1" from="meaning">kendo.grid.unlock</note>
+      </trans-unit>
+      <trans-unit id="a692ba271be066ce379f942ff67094e1ea989f4c" datatype="html">
+        <source>Sortable</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">127</context>
+        </context-group>
+        <note priority="1" from="description">The label of the sort icon</note>
+        <note priority="1" from="meaning">kendo.grid.sortable</note>
+      </trans-unit>
+      <trans-unit id="96beffd8446c5455f3bbdc313c946db32df7dcc2" datatype="html">
+        <source>Sort Ascending</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">130</context>
+        </context-group>
+        <note priority="1" from="description">The text shown in the column menu for the sort ascending item</note>
+        <note priority="1" from="meaning">kendo.grid.sortAscending</note>
+      </trans-unit>
+      <trans-unit id="208d0538d4c2537a1cbf456941e34a2884053d52" datatype="html">
+        <source>Sort Descending</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">133</context>
+        </context-group>
+        <note priority="1" from="description">The text shown in the column menu for the sort descending item</note>
+        <note priority="1" from="meaning">kendo.grid.sortDescending</note>
+      </trans-unit>
+      <trans-unit id="947c64329461efd9f8a9aa2c51acbbd099170aa5" datatype="html">
+        <source>Sorted Ascending</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">136</context>
+        </context-group>
+        <note priority="1" from="description">The status announcement when a column is sorted ascending</note>
+        <note priority="1" from="meaning">kendo.grid.sortedAscending</note>
+      </trans-unit>
+      <trans-unit id="092a688d1b2b6d873bdc29beaaf43c3f45336581" datatype="html">
+        <source>Sorted Descending</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">139</context>
+        </context-group>
+        <note priority="1" from="description">The status announcement when a column is sorted descending</note>
+        <note priority="1" from="meaning">kendo.grid.sortedDescending</note>
+      </trans-unit>
+      <trans-unit id="66e99ea340974022c07c52a6f668f5573e7edab0" datatype="html">
+        <source>Not Sorted</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">142</context>
+        </context-group>
+        <note priority="1" from="description">The status announcement when a column is no longer sorted</note>
+        <note priority="1" from="meaning">kendo.grid.sortedDefault</note>
+      </trans-unit>
+      <trans-unit id="04600bd6e362cf9da9f7f9c4666eab2c88eb6a90" datatype="html">
+        <source>Apply</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">145</context>
+        </context-group>
+        <note priority="1" from="description">The text shown in the column menu or column chooser for the columns apply button</note>
+        <note priority="1" from="meaning">kendo.grid.columnsApply</note>
+      </trans-unit>
+      <trans-unit id="94d3b472d99994a5cca9930afd4cf0ac2774c382" datatype="html">
+        <source>Reset</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">../node_modules/@progress/kendo-angular-grid/dist/es2015/grid.component.d.ts</context>
+          <context context-type="linenumber">148</context>
+        </context-group>
+        <note priority="1" from="description">The text shown in the column menu or column chooser for the columns reset button</note>
+        <note priority="1" from="meaning">kendo.grid.columnsReset</note>
+      </trans-unit>
+      <trans-unit id="componente.cadastroBarraAcao.confirmar" datatype="html">
+        <source>confirmar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/cadastro-barra-acao/cadastro-barra-acao.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description">confirma a operação de inclusão ou alteração de um cadastro</note>
+        <note priority="1" from="meaning">botão de confirmar</note>
+      </trans-unit>
+      <trans-unit id="componente.cadastroBarraAcao.desfazer" datatype="html">
+        <source>desfazer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/cadastro-barra-acao/cadastro-barra-acao.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description">desfaz as edições feitas no formulário e carrega novamente da API os dados originais</note>
+        <note priority="1" from="meaning">botão de desfazer</note>
+      </trans-unit>
+      <trans-unit id="componente.cadastroBarraAcao.excluir" datatype="html">
+        <source>excluir</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/cadastro-barra-acao/cadastro-barra-acao.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <note priority="1" from="description">botão que confirma a exclusão de um cadastro onde os dados já estão sendo exibidos de forma não editável</note>
+        <note priority="1" from="meaning">botão de excluir</note>
+      </trans-unit>
+      <trans-unit id="componente.cadastroBarraAcao.voltar" datatype="html">
+        <source>voltar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/cadastro-barra-acao/cadastro-barra-acao.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <note priority="1" from="description">botão para voltar para a listagem e sair do formulário de edição sem salvar</note>
+        <note priority="1" from="meaning">botão de voltar</note>
+      </trans-unit>
+      <trans-unit id="componente.cadastroBarraAcao.msgConfirmaExclusao" datatype="html">
+        <source>Deseja mesmo excluir?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/cadastro-barra-acao/cadastro-barra-acao.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <note priority="1" from="description">Mensagem solicitando para o usuário confirmar que deseja excluir</note>
+        <note priority="1" from="meaning">mensagem de confirmação de exclusão</note>
+      </trans-unit>
+      <trans-unit id="componente.cadastroBarraAcao.msgConfirmaExclusao.botao.nao" datatype="html">
+        <source>Não</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/cadastro-barra-acao/cadastro-barra-acao.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+        <note priority="1" from="description">Botão para o usuário não confirmar que deseja excluir</note>
+        <note priority="1" from="meaning">botão &apos;não&apos; da mensagem de confirmação de exclusão</note>
+      </trans-unit>
+      <trans-unit id="componente.cadastroBarraAcao.msgConfirmaExclusao.botao.sim" datatype="html">
+        <source>Sim</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/cadastro-barra-acao/cadastro-barra-acao.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+        <note priority="1" from="description">Botão para o usuário confirmar que deseja excluir</note>
+        <note priority="1" from="meaning">botão &apos;sim&apos; da mensagem de confirmação de exclusão</note>
+      </trans-unit>
+      <trans-unit id="id_grid_pesquisa_component_btn_novo" datatype="html">
+        <source>{VAR_SELECT, select, Novo {Novo} other {<x id="INTERPOLATION" equiv-text="{{rotaBtn.textoBotaoCriarNovo}}"/> } }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/grid-pesquisa/grid-pesquisa.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <note priority="1" from="description">botão padrão de criar novo registro no cabeçalho do grid</note>
+        <note priority="1" from="meaning">grid.btn.novo</note>
+      </trans-unit>
+      <trans-unit id="id_grid_pesquisa_component_exportar_pdf" datatype="html">
+        <source>Exportar para PDF</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/grid-pesquisa/grid-pesquisa.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description">botão no cabeçalho do grid para exportar os dados para pdf</note>
+        <note priority="1" from="meaning">button.exportar pdf</note>
+      </trans-unit>
+      <trans-unit id="id_grid_pesquisa_component_exportar_excel" datatype="html">
+        <source>Exportar para Excel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/grid-pesquisa/grid-pesquisa.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <note priority="1" from="description">botão no cabeçalho do grid para exportar os dados para pdf</note>
+        <note priority="1" from="meaning">button.exportar excel</note>
+      </trans-unit>
+      <trans-unit id="id_grid_pesquisa_component_visualizar_item" datatype="html">
+        <source>Visualizar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/grid-pesquisa/grid-pesquisa.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+        <note priority="1" from="description">botão de visualizar no registro do grid</note>
+        <note priority="1" from="meaning">button.row.visualizar</note>
+      </trans-unit>
+      <trans-unit id="id_grid_pesquisa_component_editar_item" datatype="html">
+        <source>Editar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/grid-pesquisa/grid-pesquisa.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <note priority="1" from="description">botão de editar no registro do grid</note>
+        <note priority="1" from="meaning">button.row.editar</note>
+      </trans-unit>
+      <trans-unit id="id_grid_pesquisa_component_excluir_item" datatype="html">
+        <source>Visualizar para exclusão</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/grid-pesquisa/grid-pesquisa.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+        <note priority="1" from="description">botão de excluir no registro do grid</note>
+        <note priority="1" from="meaning">button.row.excluir</note>
+      </trans-unit>
+      <trans-unit id="componente.modalPesquisaComponente.cancelar" datatype="html">
+        <source>Cancelar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/modal-pesquisa/modal-pesquisa.component.html</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+        <note priority="1" from="description">botão Cancelar da seleção de um novo registro para coleta de chave estrangeira</note>
+        <note priority="1" from="meaning">botão cancelar</note>
+      </trans-unit>
+      <trans-unit id="componente.modalPesquisaComponente.confirmar" datatype="html">
+        <source>Confirmar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/componentes/modal-pesquisa/modal-pesquisa.component.html</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+        <note priority="1" from="description">botão Conformar da seleção de um novo registro para coleta de chave estrangeira</note>
+        <note priority="1" from="meaning">botão confirmar</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.breadcrumb" datatype="html">
+        <source>Início/Pessoa/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-listagem/crude-pessoa-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de pessoa física</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.id" datatype="html">
+        <source>ID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o ID (documento de identiddade) da pessoa física no CRUDE</note>
+        <note priority="1" from="meaning">Label ID</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.cpf" datatype="html">
+        <source>CPF</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o CPF da pessoa</note>
+        <note priority="1" from="meaning">Label CPF</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.nome" datatype="html">
+        <source>Nome</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o nome da pessoa física no CRUDE</note>
+        <note priority="1" from="meaning">Label Nome</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.nascimento" datatype="html">
+        <source>Nascimento</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Data de Nascimento da pessoa física no CRUDE</note>
+        <note priority="1" from="meaning">Label Nascimento</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.NomeDaMae" datatype="html">
+        <source>Nome da Mãe</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Nome do Mãe da pessoa física no CRUDE</note>
+        <note priority="1" from="meaning">Label Nome da Mãe</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.NomeDoPai" datatype="html">
+        <source>Nome do Pai</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Nome do Pai da pessoa física no CRUDE</note>
+        <note priority="1" from="meaning">Label Nome da Pai</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.EstadoCivil" datatype="html">
+        <source>Estado Civil</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">116</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Estado Civil da pessoa física no CRUDE</note>
+        <note priority="1" from="meaning">Label Estado Civil</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.Genero" datatype="html">
+        <source>Gênero</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Gênero da pessoa física no CRUDE</note>
+        <note priority="1" from="meaning">Label Genero</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.GrauDeInstrucao" datatype="html">
+        <source>Grau de Instrução</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">157</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Grau de Instrução da pessoa física no CRUDE</note>
+        <note priority="1" from="meaning">Label Grau de Instrução</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.nacionalidade" datatype="html">
+        <source>Nacionalidade</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">176</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Nacionalidade da pessoa física no CRUDE</note>
+        <note priority="1" from="meaning">Label Nacionalidade</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.RacaOuCor" datatype="html">
+        <source>Raça/Cor</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">196</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Raça ou Cor da pessoa física no CRUDE</note>
+        <note priority="1" from="meaning">Label Raça/Cor</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.RendaMensal" datatype="html">
+        <source>Renda Mensal</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">215</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Renda Mensal da pessoa física no CRUDE</note>
+        <note priority="1" from="meaning">Label Renda Mensal</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.profissao" datatype="html">
+        <source>Profissão</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">234</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">299</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Profissão da pessoa física no CRUDE</note>
+        <note priority="1" from="meaning">Label Profissão</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.inclusao" datatype="html">
+        <source>
+              Inclusão
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">315</context>
+        </context-group>
+        <note priority="1" from="description">Identifica se a pessoa física no CRUDE é Politicamente Exposta</note>
+        <note priority="1" from="meaning">Label Inclusão</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.ultimaAlteracao" datatype="html">
+        <source>
+              Última Alteração
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">326</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a data da Última Alteração do cadastro de pessoa física no CRUDE</note>
+        <note priority="1" from="meaning">Label Última Alteração</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-fisica.label.info.semAlteracao" datatype="html">
+        <source>Não houve alteração ainda</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-fisica/crude-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">340</context>
+        </context-group>
+        <note priority="1" from="description">Texto informativo exibido quando o cadastro ainda não teve edição</note>
+        <note priority="1" from="meaning">Informativo do label Ultima Alteração</note>
+      </trans-unit>
+      <trans-unit id="tabs-pessoa-fisica.breadcrumb" datatype="html">
+        <source>Início/Pessoa/Edição</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/tabs-pessoa-fisica/tabs-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de pessoa física</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="tabs-pessoa-fisica.tab.DocumentosComplementares" datatype="html">
+        <source>DOC.COMPLEM.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/tabs-pessoa-fisica/tabs-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description">Nome da tab &apos;Documentos complementares&apos; de pesoas físicas</note>
+        <note priority="1" from="meaning">Nome Tab &apos;Documentos complementares&apos;</note>
+      </trans-unit>
+      <trans-unit id="tabs-pessoa-fisica.tab.Enderecos" datatype="html">
+        <source>ENDEREÇOS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/tabs-pessoa-fisica/tabs-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <note priority="1" from="description">Nome da tab &apos;Endereços&apos; de pesoas físicas</note>
+        <note priority="1" from="meaning">Nome Tab &apos;Endereços&apos;</note>
+      </trans-unit>
+      <trans-unit id="tabs-pessoa-fisica.tab.Telefones" datatype="html">
+        <source>TELEFONES</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/tabs-pessoa-fisica/tabs-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <note priority="1" from="description">Nome da tab &apos;Telefones&apos; de pesoas físicas</note>
+        <note priority="1" from="meaning">Nome Tab &apos;Telefones&apos;</note>
+      </trans-unit>
+      <trans-unit id="tabs-pessoa-fisica.tab.emails" datatype="html">
+        <source>E-MAILS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/tabs-pessoa-fisica/tabs-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+        <note priority="1" from="description">Nome da tab &apos;E-mails&apos; de pesoas físicas</note>
+        <note priority="1" from="meaning">Nome Tab &apos;e-mails&apos;</note>
+      </trans-unit>
+      <trans-unit id="tabs-pessoa-fisica.tab.ContasBancarias" datatype="html">
+        <source>CONTAS BANCÁRIAS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/tabs-pessoa-fisica/tabs-pessoa-fisica.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+        <note priority="1" from="description">Nome da tab &apos;Contas Bancárias&apos; de pesoas físicas</note>
+        <note priority="1" from="meaning">Nome Tab &apos;Contas Bancárias&apos;</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-juridica.breadcrumb" datatype="html">
+        <source>Início/Pessoa/Edição</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa/crude-pessoa-juridica-detalhe/dados-principais/crude-pessoa-juridica-dados-principais.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">Breadcrumb de pessoa jurídica</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-estado-civil-listagem.breadcrumb" datatype="html">
+        <source>Início/Estado Civil/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/estado-civil/crude-estado-civil-listagem/crude-estado-civil-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Estado Civil</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-estado-civil-detalhe.label.codigo" datatype="html">
+        <source>Codigo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/estado-civil/crude-estado-civil-detalhe/crude-estado-civil-detalhe.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o codigo do estado civil CRUDE</note>
+        <note priority="1" from="meaning">Label Codigo</note>
+      </trans-unit>
+      <trans-unit id="crude-estado-civil-detalhe.label.descricao" datatype="html">
+        <source>Descricao</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/estado-civil/crude-estado-civil-detalhe/crude-estado-civil-detalhe.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a descricao do estado civil CRUDE</note>
+        <note priority="1" from="meaning">Label Codigo</note>
+      </trans-unit>
+      <trans-unit id="crude-grau-inst-detalhe.label.codigo" datatype="html">
+        <source>Codigo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/grau-inst/crude-grau-inst-detalhe/crude-grau-inst-detalhe.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o codigo do grau de instrução CRUDE</note>
+        <note priority="1" from="meaning">Label Codigo</note>
+      </trans-unit>
+      <trans-unit id="crude-grau-inst-detalhe.label.descricao" datatype="html">
+        <source>Descricao</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/grau-inst/crude-grau-inst-detalhe/crude-grau-inst-detalhe.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a descricao do grau de instrução CRUDE</note>
+        <note priority="1" from="meaning">Label Descricao</note>
+      </trans-unit>
+      <trans-unit id="crude-grau-inst-listagem.breadcrumb" datatype="html">
+        <source>Início/Grau Instrucao/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/grau-inst/crude-grau-inst-listagem/crude-grau-inst-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Grau de Instrucao</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-raca-cor-listagem.breadcrumb" datatype="html">
+        <source>Início/Início/Raca Cor/Listagem/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/raca-cor/crude-raca-cor-listagem/crude-raca-cor-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de RacaCor</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-raca-cor-detalhe.label.codigo" datatype="html">
+        <source>Codigo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/raca-cor/crude-raca-cor-detalhe/crude-raca-cor-detalhe.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o codigo de Raça/Cor CRUDE</note>
+        <note priority="1" from="meaning">Label Codigo</note>
+      </trans-unit>
+      <trans-unit id="crude-raca-cor-detalhe.label.descricao" datatype="html">
+        <source>Descricao</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/raca-cor/crude-raca-cor-detalhe/crude-raca-cor-detalhe.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a descricao de Raça/Cor CRUDE</note>
+        <note priority="1" from="meaning">Label Descricao</note>
+      </trans-unit>
+      <trans-unit id="crude-sexo-detalhe.label.codigo" datatype="html">
+        <source>Codigo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/sexo/crude-sexo-detalhe/crude-sexo-detalhe.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o codigo do Sexo CRUDE</note>
+        <note priority="1" from="meaning">Label Codigo</note>
+      </trans-unit>
+      <trans-unit id="crude-sexo-detalhe.label.descricao" datatype="html">
+        <source>Descricao</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/sexo/crude-sexo-detalhe/crude-sexo-detalhe.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a descrição do Sexo CRUDE</note>
+        <note priority="1" from="meaning">Label Descricao</note>
+      </trans-unit>
+      <trans-unit id="crude-sexo-listagem.breadcrumb" datatype="html">
+        <source>Início/Sexo/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/sexo/crude-sexo-listagem/crude-sexo-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Sexo</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-pessoa-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipo Pessoa/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-pessoa/crude-tipo-pessoa-listagem/crude-tipo-pessoa-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Tipo Pessoa</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-pessoa-detalhe.label.codigo" datatype="html">
+        <source>Codigo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-pessoa/crude-tipo-pessoa-detalhe/crude-tipo-pessoa-detalhe.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o codigo do tipo pessoa CRUDE</note>
+        <note priority="1" from="meaning">Label Codigo</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-pessoa-detalhe.label.descricao" datatype="html">
+        <source>Descricao</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-pessoa/crude-tipo-pessoa-detalhe/crude-tipo-pessoa-detalhe.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a descrição do tipo pessoa CRUDE</note>
+        <note priority="1" from="meaning">Label Descricao</note>
+      </trans-unit>
+      <trans-unit id="crude-situacao-cad-detalhe.label.codigo" datatype="html">
+        <source>Codigo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/situacao-cad/crude-situacao-cad-detalhe/crude-situacao-cad-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o codigo da Situação Cadastral CRUDE</note>
+        <note priority="1" from="meaning">Label Codigo</note>
+      </trans-unit>
+      <trans-unit id="crude-situacao-cad-detalhe.label.descricao" datatype="html">
+        <source>Descricao</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/situacao-cad/crude-situacao-cad-detalhe/crude-situacao-cad-detalhe.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a descrição da Situação Cadastral CRUDE</note>
+        <note priority="1" from="meaning">Label Descricao</note>
+      </trans-unit>
+      <trans-unit id="crude-situacao-cad-listagem.breadcrumb" datatype="html">
+        <source>Início/Situacao Cad/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/situacao-cad/crude-situacao-cad-listagem/crude-situacao-cad-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Situacao Cadastral</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-situacao-env-email-listagem.breadcrumb" datatype="html">
+        <source>Início/Situacao Env Email/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/situacao-env-email/crude-situacao-env-email-listagem/crude-situacao-env-email-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Situacao Envio Email</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-situacao-env-email-detalhe.label.codigo" datatype="html">
+        <source>Codigo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/situacao-env-email/crude-situacao-env-email-detalhe/crude-situacao-env-email-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o codigo da Situação Envio Email CRUDE</note>
+        <note priority="1" from="meaning">Label Codigo</note>
+      </trans-unit>
+      <trans-unit id="crude-situacao-env-email-detalhe.label.descricao" datatype="html">
+        <source>Descricao</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/situacao-env-email/crude-situacao-env-email-detalhe/crude-situacao-env-email-detalhe.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a descrição da Situação Envio Email CRUDE</note>
+        <note priority="1" from="meaning">Label Descricao</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-documento-detalhe.label.codigo" datatype="html">
+        <source>Codigo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-documento/crude-tipo-documento-detalhe/crude-tipo-documento-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o codigo do tipo documento CRUDE</note>
+        <note priority="1" from="meaning">Label Codigo</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-documento-detalhe.label.descricao" datatype="html">
+        <source>Descricao</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-documento/crude-tipo-documento-detalhe/crude-tipo-documento-detalhe.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a descrição do tipo documento CRUDE</note>
+        <note priority="1" from="meaning">Label Descricao</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-documento-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipo Documento/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-documento/crude-tipo-documento-listagem/crude-tipo-documento-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Tipo de Documento</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-pessoa-endereco-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipo Pessoa Endereco/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-pessoa-endereco/crude-tipo-pessoa-endereco-listagem/crude-tipo-pessoa-endereco-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Tipo Pessoa Endereco</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-pessoa-endereco-detalhe.label.codigo" datatype="html">
+        <source>Codigo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-pessoa-endereco/crude-tipo-pessoa-endereco-detalhe/crude-tipo-pessoa-endereco-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o codigo do tipo pessoa endereco CRUDE</note>
+        <note priority="1" from="meaning">Label Codigo</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-pessoa-endereco-detalhe.label.descricao" datatype="html">
+        <source>Descricao</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-pessoa-endereco/crude-tipo-pessoa-endereco-detalhe/crude-tipo-pessoa-endereco-detalhe.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a descricao do tipo pessoa endereco CRUDE</note>
+        <note priority="1" from="meaning">Label Descricao</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-pessoa-email-detalhe.label.codigo" datatype="html">
+        <source>Codigo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-pessoa-email/crude-tipo-pessoa-email-detalhe/crude-tipo-pessoa-email-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o codigo do tipo pessoa email CRUDE</note>
+        <note priority="1" from="meaning">Label Codigo</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-pessoa-email-detalhe.label.descricao" datatype="html">
+        <source>Descricao</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-pessoa-email/crude-tipo-pessoa-email-detalhe/crude-tipo-pessoa-email-detalhe.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a descricao do tipo pessoa email CRUDE</note>
+        <note priority="1" from="meaning">Label Descricao</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-pessoa-email-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipo Pessoa Email/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-pessoa-email/crude-tipo-pessoa-email-listagem/crude-tipo-pessoa-email-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Tipo Pessoa Email</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-pessoa-telefone-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipo Pessoa Telefone/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-pessoa-telefone/crude-tipo-pessoa-telefone-listagem/crude-tipo-pessoa-telefone-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Tipo Pessoa Telefone</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-pessoa-telefone-detalhe.label.codigo" datatype="html">
+        <source>Codigo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-pessoa-telefone/crude-tipo-pessoa-telefone-detalhe/crude-tipo-pessoa-telefone-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o codigo do tipo pessoa telefone CRUDE</note>
+        <note priority="1" from="meaning">Label Codigo</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-pessoa-telefone-detalhe.label.descricao" datatype="html">
+        <source>Descricao</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/tipo-pessoa-telefone/crude-tipo-pessoa-telefone-detalhe/crude-tipo-pessoa-telefone-detalhe.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a descricao do tipo pessoa telefone CRUDE</note>
+        <note priority="1" from="meaning">Label Descricao</note>
+      </trans-unit>
+      <trans-unit id="crude-param-corp-detalhe.label.codigo" datatype="html">
+        <source>
+                          Código
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/param-corp/crud-param-corp-detalhe/crud-param-corp-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código do Parâmetro do Sistema no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-param-corp-detalhe.label.descricao" datatype="html">
+        <source>
+                          Descrição
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/param-corp/crud-param-corp-detalhe/crud-param-corp-detalhe.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição do Parâmetro do Módulo Corporativo no CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-param-corp-detalhe.label.valor" datatype="html">
+        <source>
+            Valor
+          </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/param-corp/crud-param-corp-detalhe/crud-param-corp-detalhe.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Valor do Parâmetro do Sistema no CRUDE</note>
+        <note priority="1" from="meaning">Label Valor</note>
+      </trans-unit>
+      <trans-unit id="crude-param-corp-detalhe.label.observacao" datatype="html">
+        <source>
+                Observação
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/param-corp/crud-param-corp-detalhe/crud-param-corp-detalhe.component.html</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+        <note priority="1" from="description">Identifica uma Descrição Detalhada do Parâmetro do Sistema no CRUDE</note>
+        <note priority="1" from="meaning">Label Observação</note>
+      </trans-unit>
+      <trans-unit id="crude-param-corp-listagem.breadcrumb" datatype="html">
+        <source>Início/Parâmetros do Sistema/Listagem</source>
+        <target>Início/Parâmetros do Sistema/Listagem</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/param-corp/crud-param-corp-listagem/crud-param-corp-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Parâmetros do Sistema</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-documento-detalhe.label.IDPessoaDocumento" datatype="html">
+        <source>ID</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa-documento/crude-pessoa-documento-detalhe/crude-pessoa-documento-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o codigo ID do documento</note>
+        <note priority="1" from="meaning">Label ID</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-documento-detalhe.label.inCodTipoDocumento" datatype="html">
+        <source>Tipo de Documento</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa-documento/crude-pessoa-documento-detalhe/crude-pessoa-documento-detalhe.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o tipo de documento associado a pessoa</note>
+        <note priority="1" from="meaning">Label Tipo de Documento</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-documento-detalhe.label.chNumero" datatype="html">
+        <source>Número do Documento</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa-documento/crude-pessoa-documento-detalhe/crude-pessoa-documento-detalhe.component.html</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o número do documento da pessoa</note>
+        <note priority="1" from="meaning">Label Numero do Documento</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-documento-detalhe.label.chDesOrgaoExpedidor" datatype="html">
+        <source>Orgão Expedidor</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa-documento/crude-pessoa-documento-detalhe/crude-pessoa-documento-detalhe.component.html</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o tipo de documento associado a pessoa</note>
+        <note priority="1" from="meaning">Label Tipo de Documento</note>
+      </trans-unit>
+      <trans-unit id="crude-pessoa-documento-detalhe.label.daDatExpedicao" datatype="html">
+        <source>Expedição</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/corp/ui/crude/pessoa-documento/crude-pessoa-documento-detalhe/crude-pessoa-documento-detalhe.component.html</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o número do documento da pessoa</note>
+        <note priority="1" from="meaning">Label Numero do Documento</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-usuario-detalhe.label.codigo" datatype="html">
+        <source>
+                          Código
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/segur/ui/crude/tipo-usuario/crude-tipo-usuario-detalhe/crude-tipo-usuario-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código do Tipo de Usuário no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-usuario-detalhe.label.descricao" datatype="html">
+        <source>
+                          Descrição
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/segur/ui/crude/tipo-usuario/crude-tipo-usuario-detalhe/crude-tipo-usuario-detalhe.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição do Tipo de usuário no CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-menu-opcao-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipos de Usuários/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/segur/ui/crude/tipo-usuario/crude-tipo-usuario-listagem/crude-tipo-usuario-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/segur/ui/crude/tipo-menu-opcao/crude-tipo-menu-opcao-listagem/crude-tipo-menu-opcao-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb do Tipo de Menu opções</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-menu-opcao-detalhe.label.codigo" datatype="html">
+        <source>
+                          Código
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/segur/ui/crude/tipo-menu-opcao/crude-tipo-menu-opcao-detalhe/crude-tipo-menu-opcao-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código do Tipo de Opção de Menu no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-menu-opcao-detalhe.label.descricao" datatype="html">
+        <source>
+                          Descrição
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/segur/ui/crude/tipo-menu-opcao/crude-tipo-menu-opcao-detalhe/crude-tipo-menu-opcao-detalhe.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição do Tipo de opção de Menu no CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-grau-parent-detalhe.label.codigo" datatype="html">
+        <source>
+                          Código
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/grau-parent/crude-grau-parent-detalhe/crude-grau-parent-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código do Grau de Parentesco no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-grau-parent-detalhe.label.descricao" datatype="html">
+        <source>
+                          Descrição
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/grau-parent/crude-grau-parent-detalhe/crude-grau-parent-detalhe.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição do Grau de Parentesco no CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-grau-parent-listagem.breadcrumb" datatype="html">
+        <source>Início/Graus de Parentesco/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/grau-parent/crude-grau-parent-listagem/crude-grau-parent-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb do Graus de Parentesco</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-situacao-venda-detalhe.label.codigo" datatype="html">
+        <source>
+                          Código
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/situacao-venda/crude-situacao-venda-detalhe/crude-situacao-venda-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código da Situação de Venda no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-situacao-venda-detalhe.label.descricao" datatype="html">
+        <source>
+                          Descrição
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/situacao-venda/crude-situacao-venda-detalhe/crude-situacao-venda-detalhe.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição da Situação de Venda CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-situacao-venda-listagem.breadcrumb" datatype="html">
+        <source>Início/Situações de Vendas/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/situacao-venda/crude-situacao-venda-listagem/crude-situacao-venda-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb do Situações de Vendas</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-capital-seg-detalhe.label.codigo" datatype="html">
+        <source>
+                          Código
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-capital-seg/crude-tipo-capital-seg-detalhe/crude-tipo-capital-seg-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código do Tipo de Capital de Seguro no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-capital-seg-detalhe.label.descricao" datatype="html">
+        <source>
+                          Descrição
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-capital-seg/crude-tipo-capital-seg-detalhe/crude-tipo-capital-seg-detalhe.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição do Tipo de capital do seguro no CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-capital-seg-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipos de Capital de Seguro/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-capital-seg/crude-tipo-capital-seg-listagem/crude-tipo-capital-seg-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb do Tipos de Capital de Seguro</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-cobranca-seg-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipos de Cobrança do Seguro/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-cobranca-seg/crude-tipo-cobranca-seg-listagem/crude-tipo-cobranca-seg-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb do Tipos de Cobrança do Seguro</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-cobranca-seg-detalhe.label.codigo" datatype="html">
+        <source>
+                          Código
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-cobranca-seg/crude-tipo-cobranca-seg-detalhe/crude-tipo-cobranca-seg-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código do Tipo de Cobrança do Seguro no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-cobranca-seg-detalhe.label.descricao" datatype="html">
+        <source>
+                          Descrição
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-cobranca-seg/crude-tipo-cobranca-seg-detalhe/crude-tipo-cobranca-seg-detalhe.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição do Tipo de cobrança do Seguro no CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-per-contrib-detalhe.label.codigo" datatype="html">
+        <source>
+                          Código
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-per-contrib/crude-tipo-per-contrib-detalhe/crude-tipo-per-contrib-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código do Tipo de Periodicidade de Contribuição no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-per-contrib-detalhe.label.descricao" datatype="html">
+        <source>
+                          Descrição
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-per-contrib/crude-tipo-per-contrib-detalhe/crude-tipo-per-contrib-detalhe.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição do Tipo de Periodicidade de Contribuição  no CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-per-contrib-detalhe.label.numMeses" datatype="html">
+        <source>
+                      Número de Meses
+                    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-per-contrib/crude-tipo-per-contrib-detalhe/crude-tipo-per-contrib-detalhe.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Número de Meses do Tipo de Periodicidade de Contribuição no CRUDE</note>
+        <note priority="1" from="meaning">Label Número de Meses</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-per-contrib-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipos de Periodicidade de Contribuição do Seguro/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-per-contrib/crude-tipo-per-contrib-listagem/crude-tipo-per-contrib-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb do Tipos de Periodicidade de Contribuição dos Seguros</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-seguro-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipos de Seguro/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-seguro/crude-tipo-seguro-listagem/crude-tipo-seguro-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb do Tipos de Seguro </note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-seguro-detalhe.label.codigo" datatype="html">
+        <source>
+              Código
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-seguro/crude-tipo-seguro-detalhe/crude-tipo-seguro-detalhe.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código do Tipo de Seguro no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-seguro-detalhe.label.descricao" datatype="html">
+        <source>
+              Descrição
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-seguro/crude-tipo-seguro-detalhe/crude-tipo-seguro-detalhe.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição do Tipo de Seguro no CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-taxa-seg-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipos de Taxa de Seguro/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-taxa-seg/crude-tipo-taxa-seg-listagem/crude-tipo-taxa-seg-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb do Tipos de Taxa de Seguro</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-taxa-seg-detalhe.label.codigo" datatype="html">
+        <source>
+                          Código
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-taxa-seg/crude-tipo-taxa-seg-detalhe/crude-tipo-taxa-seg-detalhe.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código do Tipo de Taxa do Seguro no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-taxa-seg-detalhe.label.descricao" datatype="html">
+        <source>
+                          Descrição
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/eseg/ui/crude/tipo-taxa-seg/crude-tipo-taxa-seg-detalhe/crude-tipo-taxa-seg-detalhe.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição do Tipo de Taxa do seguro no CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-cobranca-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipo de Cobrança/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/tipo-cobranca/crude-tipo-cobranca-listagem/crude-tipo-cobranca-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Tipo de Cobrança</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-cobranca-detalhe.label.codigo" datatype="html">
+        <source>
+                  Código
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/tipo-cobranca/crude-tipo-cobranca-detalhe/crude-tipo-cobranca-detalhe.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código do tipo de cobrança no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-cobranca-detalhe.label.descricao" datatype="html">
+        <source>
+                  Descrição
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/tipo-cobranca/crude-tipo-cobranca-detalhe/crude-tipo-cobranca-detalhe.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição do tipo de cobrança no CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-banco-listagem.breadcrumb" datatype="html">
+        <source>Início/Banco/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/banco/crude-banco-listagem/crude-banco-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Banco</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-banco-detalhe.label.codigo" datatype="html">
+        <source>
+                Código
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/banco/crude-banco-detalhe/crude-banco-detalhe.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código do banco no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-banco-detalhe.label.nome" datatype="html">
+        <source>
+                Nome
+            </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/banco/crude-banco-detalhe/crude-banco-detalhe.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o nome do banco no CRUDE</note>
+        <note priority="1" from="meaning">Label Nome</note>
+      </trans-unit>
+      <trans-unit id="crude-cond-pagto-listagem.breadcrumb" datatype="html">
+        <source>Início/Condição de Pagamento/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/cond-pagto/crude-cond-pagto-listagem/crude-cond-pagto-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Condição de Pagamento</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-cond-pagto-detalhe.label.codigo" datatype="html">
+        <source>
+                        Código
+                    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/cond-pagto/crude-cond-pagto-detalhe/crude-cond-pagto-detalhe.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código da condição de pagamento no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-cond-pagto-detalhe.label.descricao" datatype="html">
+        <source>
+                        Descrição
+                    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/cond-pagto/crude-cond-pagto-detalhe/crude-cond-pagto-detalhe.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição da condição de pagamento no CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-cond-pagto-detalhe.label.cond-pagto" datatype="html">
+        <source>
+                          Condição de Pagamento
+                      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/cond-pagto/crude-cond-pagto-detalhe/crude-cond-pagto-detalhe.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a condição de pagamento no CRUDE</note>
+        <note priority="1" from="meaning">Label Condição de Pagamento</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-conta-banco-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipo de Conta Bancária/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/tipo-conta-banco/crude-tipo-conta-banco-listagem/crude-tipo-conta-banco-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Tipo de Conta Bancária</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-conta-banco-detalhe.label.codigo" datatype="html">
+        <source>
+                  Código
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/tipo-conta-banco/crude-tipo-conta-banco-detalhe/crude-tipo-conta-banco-detalhe.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código do tipo de conta bancária no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-conta-banco-detalhe.label.descricao" datatype="html">
+        <source>
+                  Descrição
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/tipo-conta-banco/crude-tipo-conta-banco-detalhe/crude-tipo-conta-banco-detalhe.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição do tipo de conta bancária no CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-matricula-cob-detalhe.label.codigo" datatype="html">
+        <source>
+                  Código
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/tipo-matricula-cob/crude-tipo-matricula-cob-detalhe/crude-tipo-matricula-cob-detalhe.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">Identifica o Código do tipo de matrícula de cobrança no CRUDE</note>
+        <note priority="1" from="meaning">Label Código</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-matricula-cob-detalhe.label.descricao" datatype="html">
+        <source>
+                  Descrição
+              </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/tipo-matricula-cob/crude-tipo-matricula-cob-detalhe/crude-tipo-matricula-cob-detalhe.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <note priority="1" from="description">Identifica a Descrição do tipo de matrícula de cobrança no CRUDE</note>
+        <note priority="1" from="meaning">Label Descrição</note>
+      </trans-unit>
+      <trans-unit id="crude-tipo-matricula-cob-listagem.breadcrumb" datatype="html">
+        <source>Início/Tipo de Matricula de Cobrança/Listagem</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modulos/finan/ui/crude/tipo-matricula-cob/crude-tipo-matricula-cob-listagem/crude-tipo-matricula-cob-listagem.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">breadcrumb de Tipo de Matricula de Cobrança</note>
+        <note priority="1" from="meaning">breadcrumb</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

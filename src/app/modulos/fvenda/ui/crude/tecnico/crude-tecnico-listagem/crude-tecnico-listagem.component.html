@@ -1,0 +1,62 @@
+<span
+  #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de Técnico Listagem@@crude-tecnico-listagem.breadcrumb">
+  Técnico: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Técnico@@crude-tecnico-listagem.titulo.tecnico">
+     TÉCNICO
+  </div> 
+</h1>
+<div class="area-filtro">
+  <form action="" [formGroup]="formGroupPesquisa" class="k-form">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Tipo de Técnico</label>
+        <app-filtro-multiselect 
+           formControlName='listaTipoTecnico' 
+           [apiService]='apiTipoTecnicoService'
+           apiNomeMetodoListar='listar' 
+           apiFieldExibir="chDescricao" 
+           apiFieldKey="inCodTipoTecnico"
+           placeholder="ambos" 
+           pesquisaFieldWhere='inCodTipoTecnico' 
+           [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputTexto">Situação Cadastral</label>
+        <app-filtro-multiselect 
+          formControlName='listaSituacaoCadastral' 
+          [apiService]='apiSituacaoCadService'
+          apiNomeMetodoListar='listar' 
+          apiFieldExibir="chDescricao" 
+          apiFieldKey="inCodSituacaoCad" 
+          placeholder="ambos"
+          pesquisaFieldWhere='inCodSituacaoCad' 
+          [pesquisaGridFiltro]="gridFiltro">
+        </app-filtro-multiselect>
+      </div>
+      <div class="col-md-2"></div>
+      <div class="form-group col-md-2">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> pesquisar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<app-grid-pesquisa
+  #gridFiltro
+  idGrid="pesquisaTecnico"
+  [apiService]='apiTecnicoEL01Service'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDTecnico'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'
+  (btn_Inativar_click)='btn_Inativar_click($event)' [btn_Inativar_exibir]='btn_Inativar_exibir' btn_Inativar_titulo='Inativar Técnico' i18n-btn_Inativar_titulo="botão de ação: inativar|botão na coluna de ação para inativar um técnico@@crude-tecnico-listagem.btn_Inativar_tooltip"
+  (btn_Reativar_click)='btn_Reativar_click($event)'[btn_Reativar_exibir]='btn_Reativar_exibir' btn_Reativar_titulo='Reativar Técnico' i18n-btn_Reativar_titulo="botão de ação: reativar|botão na coluna de ação para reativar um técnico@@crude-tecnico-listagem.btn_Reativar_tooltip">
+</app-grid-pesquisa>

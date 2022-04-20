@@ -1,0 +1,110 @@
+<!-- <kendo-tabstrip #kendoTabStripInstance (tabSelect)="onTabSelect($event)" > -->
+<span #breadcrumb_traducao style='display:none;' i18n="breadcrumb|breadcrumb de seguradora@@tabs-seguradora.breadcrumb">
+  Início/Seguradora/Editar
+</span>
+
+<kendo-tabstrip
+  #kendoTab appCadastroTab id='idTabCadSeguradora'
+  [tab]='kendoTab'
+  [cadastroBarraAcao]='cadPF.cadastroBarraAcao'
+  (tabSelect)="onTabSelect($event)">
+
+  <kendo-tabstrip-tab i18n-title="Nome Tab seguradora|Nome da tab SEGURADORA@@tabs-seguradora.tab.seguradora"
+    [ngClass]='app-tab-content'
+    [title]="'SEGURADORA'"
+    [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Titulo seguradora|Título interno que identifica o CRUDE de seguradora@@tabs-seguradora.tab.seguradora.titulo">
+          SEGURADORA
+        </div>
+      </h1>
+    </ng-template>
+
+    <!-- <ng-template kendoTabContent>
+          <app-cadastro-seguradora-dados-pessoais #cadPF></app-cadastro-seguradora-dados-pessoais>
+      </ng-template> -->
+
+  </kendo-tabstrip-tab>
+
+  <!-- [disabled]="cadastroEmEdicao" -->
+  <kendo-tabstrip-tab i18n-title="Nome Tab cobertura|Nome da tab cobertura deSeguradora@@tabs-seguradora.tab.cobertura"
+    title='COBERTURAS'
+    [selected]="tabSelecionada(1)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab cobertura doSeguradora@@tabs-seguradora.tab.titulo.cobertura">
+          COBERTURAS DA SEGURADORA
+        </div>
+        <div>
+          <span i18n="Detalhes seguradora|texto que precede os dados de seguradora@@tabs-seguradora.tab.titulo.dadosSeguradora">
+            Seguradora:
+          </span>
+          {{cadPF.modelSeguradora.IDSeguradora}} - {{cadPF.modelSeguradora.chNomeSeguradora }} -
+          {{cadPF.modelSeguradora.inCNPJSeguradora }}
+        </div>
+      </h1>
+
+      <app-crude-cobertura-seg-detalhe #gridInterfaceTabCadastroFilhoCobertura>
+      </app-crude-cobertura-seg-detalhe>
+      <app-crude-cobertura-seg-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoCobertura'>
+      </app-crude-cobertura-seg-listagem>
+
+    </ng-template>    
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab i18n-title="Nome Tab sorteios|Nome da tab sorteios de seguradora@@tabs-seguradora.tab.sorteios"
+    title='SORTEIOS'
+    [selected]="tabSelecionada(2)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab sorteios da Seguradora@@tabs-seguradora.tab.titulo.sorteios">
+          SORTEIOS DA SEGURADORA
+        </div>
+        <div>
+          <span i18n="Detalhes seguradora|texto que precede os dados de seguradora@@tabs-seguradora.tab.titulo.dadosSeguradora">
+            Seguradora:
+          </span>
+          {{cadPF.modelSeguradora.IDSeguradora}} - {{cadPF.modelSeguradora.chNomeSeguradora }} -
+          {{cadPF.modelSeguradora.inCNPJSeguradora }}
+        </div>
+      </h1>
+
+      <app-crude-sorteio-seg-detalhe #gridInterfaceTabCadastroFilhoSorteio>        
+      </app-crude-sorteio-seg-detalhe>
+      <app-crude-sorteio-seg-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoSorteio'>
+      </app-crude-sorteio-seg-listagem>
+
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab i18n-title="Nome Tab assistencias|Nome da tab assistencias de seguradora@@tabs-seguradora.tab.assistencias"
+    title='ASSISTÊNCIAS'
+    [selected]="tabSelecionada(3)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab assistencias da Seguradora@@tabs-seguradora.tab.titulo.assistencias">
+          ASSISTÊNCIAS DA SEGURADORA
+        </div>
+        <div>
+          <span i18n="Detalhes seguradora|texto que precede os dados de seguradora@@tabs-seguradora.tab.titulo.dadosSeguradora">
+            Seguradora:
+          </span>
+          {{cadPF.modelSeguradora.IDSeguradora}} - {{cadPF.modelSeguradora.chNomeSeguradora }} -
+          {{cadPF.modelSeguradora.inCNPJSeguradora }}
+        </div>
+      </h1>
+
+      <app-crude-assist-seg-detalhe #gridInterfaceTabCadastroFilhoAssist>
+      </app-crude-assist-seg-detalhe>
+      <app-crude-assist-seg-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoAssist'>
+      </app-crude-assist-seg-listagem>
+
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+</kendo-tabstrip>
+
+<app-crude-seguradora-detalhe #cadPF [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-seguradora-detalhe>
+<!-- (estaEmEdicao)='onCadastroEmEdicao($event)' -->

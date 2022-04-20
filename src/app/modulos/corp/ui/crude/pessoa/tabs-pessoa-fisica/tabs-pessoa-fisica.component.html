@@ -1,0 +1,149 @@
+<span #breadcrumb_traducao style='display:none;' i18n="breadcrumb|breadcrumb de pessoa física@@tabs-pessoa-fisica.breadcrumb">
+  Início/Pessoa/Edição
+</span>
+
+<kendo-tabstrip
+  #kendoTab
+  appCadastroTab
+  id='idTabCadPessoaFisica'
+  [tab]='kendoTab'
+  [cadastroBarraAcao]='cadPF.cadastroBarraAcao'
+  (tabSelect)="onTabSelect($event)">
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab PESSOA|Nome da tab PESSOA de pessoas físicas@@tabs-pessoa-fisica.tab.Pessoa"
+    [ngClass]='app-tab-content'
+    [title]="'PESSOA'"
+    [selected]="tabSelecionada(0)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Titulo pessoa física|Título interno que identifica o CRUDE de pessoa fisica@@tabs-pessoa-fisica.tab.pessoa.titulo">
+          PESSOA FÍSICA
+        </div>
+      </h1>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Documentos complementares'|Nome da tab 'Documentos complementares' de pesoas físicas@@tabs-pessoa-fisica.tab.DocumentosComplementares"
+    title='DOC.COMPLEM.'
+    [selected]="tabSelecionada(1)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Documentos complementares' de pesoas físicas@@tabs-pessoa-fisica.tab.titulo.DocumentosComplementares">
+          DOCUMENTOS COMPLEMENTARES DA PESSOA
+        </div>
+        <div>
+          <span i18n="Detalhes pessoa|texto que precede os dados de Pessoa@@tabs-pessoa-fisica.tab.titulo.dadosPessoa">
+            Pessoa:
+          </span>
+          {{cadPF.pessoalEL.IDPessoa}} - {{cadPF.pessoalEL.chNomePessoa}} - {{this.cadPF.pessoalEL.chDesTipoDocumento}}:
+          {{this.cadPF.pessoalEL.inNumIdentificacao}}
+        </div>
+      </h1>
+      <app-crude-pessoa-documento-detalhe #gridInterfaceTabCadastroFilhoDocumento></app-crude-pessoa-documento-detalhe>
+      <app-crude-pessoa-documento-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoDocumento'>
+      </app-crude-pessoa-documento-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Endereços'|Nome da tab 'Endereços' de pesoas físicas@@tabs-pessoa-fisica.tab.Enderecos"
+    title='ENDEREÇOS'
+    [selected]="tabSelecionada(2)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Endereços' de pesoas físicas@@tabs-pessoa-fisica.tab.titulo.Enderecos">
+          ENDEREÇOS DA PESSOA
+        </div>
+        <div>
+          <span i18n="Detalhes pessoa|texto que precede os dados de Pessoa@@tabs-pessoa-fisica.tab.titulo.dadosPessoa">
+            Pessoa:
+          </span>
+          {{cadPF.pessoalEL.IDPessoa}} - {{cadPF.pessoalEL.chNomePessoa}} - {{this.cadPF.pessoalEL.chDesTipoDocumento}}:
+          {{this.cadPF.pessoalEL.inNumIdentificacao}}
+        </div>
+      </h1>
+      <app-crude-pessoa-endereco-detalhe #gridInterfaceTabCadastroFilhoEndereco>
+      </app-crude-pessoa-endereco-detalhe>
+      <app-crude-pessoa-endereco-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoEndereco'>
+      </app-crude-pessoa-endereco-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Telefones'|Nome da tab 'Telefones' de pesoas físicas@@tabs-pessoa-fisica.tab.Telefones"
+    title='TELEFONES'
+    [selected]="tabSelecionada(3)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Telefones' de pesoas físicas@@tabs-pessoa-fisica.tab.titulo.Telefones">
+          TELEFONES DA PESSOA
+        </div>
+        <div>
+          <span i18n="Detalhes pessoa|texto que precede os dados de Pessoa@@tabs-pessoa-fisica.tab.titulo.dadosPessoa">
+            Pessoa:
+          </span>
+          {{cadPF.pessoalEL.IDPessoa}} - {{cadPF.pessoalEL.chNomePessoa}} - {{this.cadPF.pessoalEL.chDesTipoDocumento}}:
+          {{this.cadPF.pessoalEL.inNumIdentificacao}}
+        </div>
+      </h1>
+      <app-crude-pessoa-telefone-detalhe #gridInterfaceTabCadastroFilhoTelefone>
+      </app-crude-pessoa-telefone-detalhe>
+      <app-crude-pessoa-telefone-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoTelefone'>
+      </app-crude-pessoa-telefone-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'e-mails'|Nome da tab 'E-mails' de pesoas físicas@@tabs-pessoa-fisica.tab.emails"
+    title='E-MAILS'
+    [selected]="tabSelecionada(4)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'E-Mails' de pesoas físicas@@tabs-pessoa-fisica.tab.titulo.Emails">
+          E-MAILS DA PESSOA
+        </div>
+        <div>
+          <span i18n="Detalhes pessoa|texto que precede os dados de Pessoa@@tabs-pessoa-fisica.tab.titulo.dadosPessoa">
+            Pessoa:
+          </span>
+          {{cadPF.pessoalEL.IDPessoa}} - {{cadPF.pessoalEL.chNomePessoa}} - {{this.cadPF.pessoalEL.chDesTipoDocumento}}:
+          {{this.cadPF.pessoalEL.inNumIdentificacao}}
+        </div>
+      </h1>
+      <app-crude-pessoa-email-detalhe #gridInterfaceTabCadastroFilhoEmail>
+      </app-crude-pessoa-email-detalhe>
+      <app-crude-pessoa-email-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoEmail'>
+      </app-crude-pessoa-email-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab 'Contas Bancárias'|Nome da tab 'Contas Bancárias' de pesoas físicas@@tabs-pessoa-fisica.tab.ContasBancarias"
+    title='CONTAS BANCÁRIAS'
+    [selected]="tabSelecionada(5)">
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab 'Contas Bancárias' de pesoas físicas@@tabs-pessoa-fisica.tab.titulo.ContasBancarias">
+          CONTAS BANCÁRIAS DA PESSOA
+        </div>
+        <div>
+          <span i18n="Detalhes pessoa|texto que precede os dados de Pessoa@@tabs-pessoa-fisica.tab.titulo.dadosPessoa">
+            Pessoa:
+          </span>
+          {{cadPF.pessoalEL.IDPessoa}} - {{cadPF.pessoalEL.chNomePessoa}} - {{this.cadPF.pessoalEL.chDesTipoDocumento}}:
+          {{this.cadPF.pessoalEL.inNumIdentificacao}}
+        </div>
+      </h1>
+      <app-crude-pessoa-conta-banco-detalhe #gridInterfaceTabCadastroFilhoContaBanco>
+      </app-crude-pessoa-conta-banco-detalhe>
+      <app-crude-pessoa-conta-banco-listagem [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoContaBanco'>
+      </app-crude-pessoa-conta-banco-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+</kendo-tabstrip>
+
+<app-crude-pessoa-fisica #cadPF [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-pessoa-fisica>

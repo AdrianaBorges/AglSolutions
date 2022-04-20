@@ -1,0 +1,42 @@
+.BtnCreateArea{
+    padding-right: 25px;
+}
+
+.BtnCreateArea button {
+    margin-right: 4px
+}
+
+.invisivel{
+    display: none;
+}
+
+.btn-coluna {
+    min-width: 95px;
+    width: 100%;
+    margin-left: -41px;
+    margin-top:2px;
+    margin-bottom: 2px;
+}
+
+.btn-horizontal{
+    margin-right: 5px;
+}
+
+.col-btn-linha {
+    margin-top: 10px;
+}
+
+.btn-grid-coluna-editar{
+    // margin-left: 0.16em;
+    // margin-right: 0.16em;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.filtroBoolean{
+    margin-top: 10px;
+    margin-left: 10px;
+    label {
+        margin-left: 5px;
+    }
+}

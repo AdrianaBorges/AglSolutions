@@ -1,0 +1,62 @@
+<span #breadcrumb_traducao style='display:none;'
+  i18n="breadcrumb|breadcrumb de Aprovação Solicitação de Crédito@@crude-aprova-credito-listagem.breadcrumb">
+  Aprovação de Crédito: Listagem
+</span>
+
+<h1 class='titulo_tela_listagem'>
+  <div i18n="titulo|titulo da listagem de Aprovação de Crédito de venda física e juridica@@crude-aprova-credito-listagem.titulo">
+    APROVAÇÃO DA SOLICITAÇÃO DE CRÉDITO PARA VENDA
+  </div>
+</h1>
+
+<span
+  #traducao_msg_btnAtualizarInfo_sucesso
+  style='display:none;'
+  i18n="mensagem de operação salva com sucesso|exibida após usuário ter clicado no botão de atualizar as informações@@crude-aprova-credito-listagem.btn.btnAtualizarInfo.sucesso">
+  Informações Carregadas com Sucesso 
+</span>
+
+<div class="area-filtro">
+  <div class="form-row">
+    <div class="col-md-10"></div>
+    <div class="form-group col-md-2">
+      <div class="pull-right">
+        <button kendoButton class="form-control btn-filtro-acao" (click)="executarPesquisa()" [primary]="true">
+          <span class="k-icon k-i-search"></span> Atualizar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-grid-pesquisa #gridFiltro
+  idGrid="pesquisaAprovaCredito"
+  [apiService]='apiSolicCredVendaEL01Service'
+  nomeMetodoOrdenacao='mudarOrdenacao'
+  nomeMetodoApi='listar'
+  apiFieldKey='IDSolicCredVenda'
+  [colunasGrid]='getColunasGridCadastro()'
+  pageSize='15'
+  [rotaCadastro]='gridRotasCadastro'
+  (colunaEditarBotaoClick)='colunaEditarBotaoClick($event)'
+  [btn_acao_exibir]='btn_acao_exibir'>
+
+  <app-grid-pesquisa-container-botoes-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha id="btnAtualizarInfo" icone='information'
+      rotaFilha_tooltip='Atualizar Informações do Cliente'
+      i18n-rotaFilha_tooltip="botão para Atualizar Informações do Cliente (Datasul + Serasa)|btnAtualizarInfo@@crude-aprova-credito-listagem.grid.btn.acao.AtualizarInfo">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha id="btnAprovarSolicitacao" icone='check-circle'
+      rotaFilha_tooltip='Aprovar a Solicitação'
+      i18n-rotaFilha_tooltip="botão para Aprovar a Solicitação|btnAprovarSolicitacao@@crude-aprova-credito-listagem.grid.btn.acao.AprovarSolicitacao">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha id="btnRejeitarSolicitacao" icone='close'
+      rotaFilha_tooltip='Rejeitar a Solicitação'
+      i18n-rotaFilha_tooltip="botão para Rejeitar a Solicitação|btnRejeitarSolicitacao@@crude-aprova-credito-listagem.grid.btn.acao.RejeitarSolicitacao">
+    </app-grid-pesquisa-botao-acao-linha>
+    <app-grid-pesquisa-botao-acao-linha id="btnImprimir" icone='print'
+      rotaFilha_tooltip='Imprimir Relatório para Análise de Crédito'
+      i18n-rotaFilha_tooltip="botão para Imprimir|btnImprimir@@crude-aprova-credito-listagem.grid.btn.acao.Imprimir">
+    </app-grid-pesquisa-botao-acao-linha>
+  </app-grid-pesquisa-container-botoes-acao-linha>
+</app-grid-pesquisa>

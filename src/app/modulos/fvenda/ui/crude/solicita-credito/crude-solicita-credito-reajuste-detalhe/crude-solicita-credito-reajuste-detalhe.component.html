@@ -1,0 +1,348 @@
+<span
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Processo de Solicitação de Crédito para Venda@@crude-solicita-credito-reajuste-detalhe.breadcrumb">
+  Solicitação de Crédito ID:
+</span>
+
+<app-cadastro-barra-acao
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Processo solicitacao@@crude-solicita-credito-reajuste-detalhe.titulo.solicita-credito-reajuste">
+      PROCESSO SOLICITAÇÃO DE CRÉDITO PARA VENDA - REAJUSTE DE CRÉDITO
+    </div>
+  </h1>
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Número|Identifica o Número do CRUDE@@crude-solicita-credito-reajuste.label.IDSolicCredVenda">
+              Número
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDSolicCredVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="IDSolicCredVenda"
+            [format]="'N0'"
+            [min]="0"
+            [max]="999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Data da Solicitação|Identifica o Data da Solicitação do CRUDE@@crude-solicita-credito-reajuste.label.dtDatSolic">
+              Data da Solicitação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['dtDatSolic']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input disabled="true" kendoTextBox formControlName="dtDatSolic" type="text" name="dtDatSolic" id="dtDatSolic"
+            [value]="modelSolicCredVendaEL01.dtDatSolic | date: 'short'" />
+        </label>
+      </div>
+      <div class="form-group col-md-4">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label ID|Identifica o Usuário Solicitante no CRUDE@@crude-solicita-credito-reajuste.label.chNomeUsuarioSolic">
+              Usuário Solicitante
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeUsuarioSolic']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeUsuarioSolic" type="text" name="chNomeUsuarioSolic" id="chNomeUsuarioSolic" disabled="true" />
+        </label>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Cliente|Identifica o Cliente@@crude-solicita-credito-reajuste.label.IDClienteVenda">
+              Cliente
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDClienteVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_Cliente'
+            placeholder="selecione"
+            modalTitulo='Cliente'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiClienteEL02Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeCliente"
+            [colunasGrid]="apiClienteEL02Service.getColunasGrid()"
+            apiFieldKey="inCodCliente"
+            [pageSize]="'10'"
+            pesquisaRapida="true"
+            pesquisaRapidaTipo="number"
+            pesquisaRapidaPlaceholder='Código'
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigo'
+            (valorAlterado)='mudancaCondpagto($event)'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Representante|Identifica o Representante no CRUDE@@crude-solicita-credito-reajuste.label.IDRepresentante">
+              Representante
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['IDRepresentante']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-input-modal-pesquisa
+            tipo='edicao'
+            formControlName='UIData_Representante'
+            placeholder="selecione"
+            modalTitulo='Representante'
+            modalHeight="630"
+            modalWidth="1200"
+            [apiService]='apiRepresVendaEL01Service'
+            nomeMetodoOrdenacao='mudarOrdenacao'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chNomeRepresentante"
+            [colunasGrid]="apiRepresVendaEL01Service.getColunasGrid()" 
+            apiFieldKey="inCodRepresentante" 
+            [pageSize]="'10'"
+            pesquisaRapida="true" 
+            pesquisaRapidaTipo="number" 
+            pesquisaRapidaPlaceholder='Código' 
+            pesquisaRapidaMaxlength='9'
+            pesquisaRapidaApiNomeMetodo='obterPorCodigo'>
+          </app-input-modal-pesquisa>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Condição de Pagamento|Identifica a Condição de Pagamento no CRUDE@@crude-solicita-credito-reajuste.label.chCodCondPagtoVenda">
+              Condição de Pagamento
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chCodCondPagtoVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <app-api-select
+            placeholder='selecione'
+            required
+            formControlName='chCodCondPagtoVenda'
+            [apiService]='apiCondPagtoVendaService'
+            apiNomeMetodoListar='listar'
+            apiFieldExibir="chDescricao"
+            apiFieldKey="chCodCondPagtoVenda">
+          </app-api-select>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor Pedido Venda|Identifica o Valor Pedido Venda no CRUDE@@crude-solicita-credito-reajuste.label.deValPedVenda">
+              Valor Pedido Venda
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValPedVenda']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deValPedVenda"
+            [format]="'C2'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Valor Crédito Solicitado|Identifica o Valor Crédito Solicitado no CRUDE@@crude-solicita-credito-reajuste.label.deValCredSolic">
+              Valor Crédito Solicitado
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValCredSolic']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deValCredSolic"
+            [format]="'C2'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false" [spinners]="false">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+    <!--
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Observação da Solicitação|Identifica o Observação da Solicitação no CRUDE@@crude-solicita-credito-reajuste.label.chDesObservacao">
+              Observação da Solicitação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesObservacao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesObservacao" rows="5" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+    -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Usuário Aprovação|Identifica o Usuário Aprovação no CRUDE@@crude-solicita-credito-reajuste.label.chNomeUsuarioAprov">
+              Usuário Aprovação
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chNomeUsuarioAprov']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chNomeUsuarioAprov" type="text" name="chNomeUsuarioAprov" id="chNomeUsuarioAprov" disabled="true" />
+        </label>
+      </div>
+
+      <div class="form-group col-md-3" *ngIf="modelSolicCredVendaEL01.inCodSituacaoSolicCred == 3">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Crédito Aprovado|Identifica o Crédito Aprovado no CRUDE@@crude-solicita-credito-reajuste.label.deValCredAprov">
+              Crédito Aprovado
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['deValCredAprov']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox
+            formControlName="deValCredAprov"
+            [format]="'C2'"
+            [min]="0"
+            [max]="99999999999"
+            [autoCorrect]="false"
+            [spinners]="false"
+            disabled="true">
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row" *ngIf="modelSolicCredVendaEL01.inCodSituacaoSolicCred == 4">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Motivo da Rejeição|Identifica o Motivo da Rejeição no CRUDE@@crude-solicita-credito-reajuste.label.chDesMotivoRejeita">
+              Motivo da Rejeição
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesMotivoRejeita']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDesMotivoRejeita" type="text" name="chDesMotivoRejeita" id="chNomeUsuarioAprov" disabled="true" />
+        </label>
+      </div>
+    </div>
+    
+    <div class="form-row"
+      *ngIf="modelSolicCredVendaEL01.inCodSituacaoSolicCred == 4 || modelSolicCredVendaEL01.inCodSituacaoSolicCred == 3">
+      <div class="form-group col-md-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Motivo|Identifica o Motivo no CRUDE@@crude-solicita-credito-reajuste.label.chDesMotivo">
+              Motivo
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesMotivo']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <textarea kendoTextArea class="k-textarea" formControlName="chDesMotivo" rows="5" style="width: 100%;"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Situação Cadastral|Identifica o Situação Cadastral do cliente pessoa física no CRUDE@@crude-solicita-credito-reajuste.label.chDesSituacaoSolicCred">
+              Situação Cadastral
+            </ng-container>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDesSituacaoSolicCred']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox type="text" formControlName="chDesSituacaoSolicCred" name="chDesSituacaoSolicCred" id="chDesSituacaoSolicCred" disabled="true" />
+        </label>
+      </div>
+    </div>
+
+    <div class=" form-row">
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Inclusão|Identifica a Data de Inclusão da Pessoa@@crude-solicita-credito-reajuste.label.inclusao">
+            Inclusão
+          </span>
+          <span>
+            {{modelSolicCredVendaEL01.dtDatInclusao | date: 'short'}}
+          </span>
+        </label>
+      </div>
+      <div class="form-group col-md-3">
+        <label class="k-form-field">
+          <span i18n="Label Última Alteração|Identifica a data da Última Alteração do cadastro de pessoa física no CRUDE@@crude-solicita-credito-reajuste.label.ultimaAlteracao">
+            Última Alteração
+          </span>
+          <span>
+            {{(modelSolicCredVendaEL01.dtDatUltAlteracao == null? textoTraducaoSemAlteracao.innerText: modelSolicCredVendaEL01.dtDatUltAlteracao | date: 'short' )}}
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <span
+      #textoTraducaoSemAlteracao
+      style="display:none;"
+      i18n="Informativo do label Ultima Alteração|Texto informativo exibido quando o cadastro ainda não teve edição@@crude-solicita-credito-reajuste.label.info.semAlteracao">
+      Não houve alteração ainda
+    </span>
+
+  </form>
+</app-cadastro-barra-acao>

@@ -1,0 +1,70 @@
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|Breadcrumb do Detalhe do CRUDE Tipo de Campanha@@crude-tipo-campanha-edicao.breadcrumb">
+  Tipo Campanha ID:
+</span>
+
+<app-cadastro-barra-acao 
+  #cadastroBarraAcao
+  [formGroup]='meuForm'
+  (confirmar)='btnConfirmar()'
+  (cancelar)='btnCancelar()'
+  (excluir)='btnExcluir()'>
+
+  <h1>
+    <div i18n="Título do conteúdo da Tab|Título do conteúdo do CRUDE Tipo de Campanha@@crude-tipo-campanha-detalhe.titulo.tipo-campanha">
+      TIPO DE CAMPANHA
+    </div>
+  </h1>
+
+  <form action="" [formGroup]="meuForm" class="k-form">
+
+    <div class="invalido" *ngIf='apiErrorCollection.mensagem_geral != null'>
+      {{apiErrorCollection.mensagem_geral}}
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Codigo|Identifica o codigo do Tipo de Campanha CRUDE@@crude-tipo-campanha-detalhe.label.inCodTipoCampanha">
+              Código
+            </ng-container>
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['inCodTipoCampanha']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <kendo-numerictextbox            
+            formControlName="inCodTipoCampanha" 
+            [format]="'N0'"
+            [min]="1" 
+            [max]="999999999"            
+            [autoCorrect]="false" 
+            [spinners]="false"
+            required
+            >
+          </kendo-numerictextbox>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12 col-lg-8 col-sm-12">
+        <label class="k-form-field">
+          <span>
+            <ng-container i18n="Label Descricao|Identifica a descricao do Tipo de Campanha CRUDE@@crude-tipo-campanha-detalhe.label.chDescricao">
+              Descrição
+            </ng-container> 
+            <span class="k-required">*</span>
+            <app-form-control-alerta-erro-api
+              [mensagemErro]="apiErrorCollection.campos['chDescricao']">
+            </app-form-control-alerta-erro-api>
+          </span>
+          <input kendoTextBox formControlName="chDescricao" required maxlength="100" />
+        </label>
+      </div>
+    </div>
+  </form>
+</app-cadastro-barra-acao>

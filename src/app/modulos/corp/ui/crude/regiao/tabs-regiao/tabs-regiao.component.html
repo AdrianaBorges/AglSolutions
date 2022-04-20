@@ -1,0 +1,63 @@
+<!-- <kendo-tabstrip #kendoTabStripInstance (tabSelect)="onTabSelect($event)" > -->
+<span 
+  #breadcrumb_traducao
+  style='display:none;'
+  i18n="breadcrumb|breadcrumb de regiao@@tabs-regiao.breadcrumb">
+  Região ID: 
+</span>
+
+<kendo-tabstrip
+  #kendoTab
+  appCadastroTab
+  id='idTabCadregiao'
+  [tab]='kendoTab'
+  [cadastroBarraAcao]='cadReg.cadastroBarraAcao'
+  (tabSelect)="onTabSelect($event)">
+
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab regiao|Nome da tab REGIÃO@@tabs-regiao.tab.regiao"
+    [ngClass]='app-tab-content'
+    [title]="'REGIÃO'"
+    [selected]="tabSelecionada(0)">
+    
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Titulo regiao|Título interno que identifica o CRUDE de regiao@@tabs-regiao.tab.regiao.titulo">
+          REGIÃO
+        </div>
+      </h1>
+    </ng-template>
+
+  </kendo-tabstrip-tab>
+
+  <!-- [disabled]="cadastroEmEdicao" -->
+  <kendo-tabstrip-tab
+    i18n-title="Nome Tab microrregião|Nome da tab microrregião de regiao@@tabs-regiao.tab.microrregiao"
+    title='MICRORREGIÃO'
+    [selected]="tabSelecionada(1)">
+
+    <ng-template kendoTabContent>
+      <h1>
+        <div i18n="Título do conteúdo da Tab|Título do conteúdo da tab microrregião de regiao@@tabs-regiao.tab.titulo.microrregiao">
+          MICRORREGIÃO
+        </div>
+        <div>
+          <span i18n="Detalhes Região|texto que precede os dados de regiao@@tabs-regiao.tab.titulo.dadosregiao">
+            Região:
+          </span>
+          {{cadReg.modelRegiao.chCodRegiao}} - {{cadReg.modelRegiao.chDescricao}}
+        </div>
+      </h1>
+
+      <app-crude-microrregiao-detalhe #gridInterfaceTabCadastroFilhoDocumento></app-crude-microrregiao-detalhe>
+      <app-crude-microrregiao-listagem
+        [gridInterfaceTabCadastroFilho]='gridInterfaceTabCadastroFilhoDocumento'>
+      </app-crude-microrregiao-listagem>
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+
+<app-crude-regiao-detalhe
+  #cadReg
+  [style.visibility]="tabSelecionada(0)? 'visible' : 'hidden'">
+</app-crude-regiao-detalhe>
